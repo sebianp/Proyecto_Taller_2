@@ -126,7 +126,7 @@ namespace Datos
                 //Recibe dos parametros: el nombre del procedimiento y la conexion a la BD especifica
                 SqlCommand comando = new SqlCommand("categoria_existe", SqlCon);
                 comando.CommandType = CommandType.StoredProcedure; //Indico que estoy haciendo referencia a un comando de la BD
-                comando.Parameters.Add("@nombre", SqlDbType.VarChar).Value = valor;
+                comando.Parameters.Add("@valor", SqlDbType.VarChar).Value = valor;
                 SqlParameter ParExiste = new SqlParameter(); //Se crea un objeto del tipo parametro para recibir resultado del procedimiento
                 ParExiste.ParameterName = "@existe"; //Enlazamos el valor de los parametros
                 ParExiste.SqlDbType = SqlDbType.Int; //Indicamos que ese parametro es un entero
