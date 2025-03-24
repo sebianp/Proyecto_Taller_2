@@ -77,24 +77,14 @@ namespace Negocio
         //Metodo para actualizar una categoria existente en la base de datos
         //Parametros: id, nombre y descripcion
         //Devuelve una cadena con los valores necesarios para el insert
-        public static string Actualizar(int id, string nombre, string descripcion)
+        public static string Actualizar(int id,string nombreAnt, string nombre, string descripcion)
         {
             DCategoria datos = new DCategoria();
+            //Crea el objeto de la clase categoria
+            Categoria Obj = new Categoria();
 
-            //Se verifica si la categoria que intento insertar existe o no
-            string existe = datos.Existe(nombre);
-
-            //Aplicamos la lógica dependiendo de si ya existe la categoria o no
-            if (existe.Equals("1"))
+            if(nombreAnt.Equals(nombre))
             {
-                //La categoria existe y se notifica al usuario
-                return "La categoría ya existe";
-            }
-            else
-            {
-                //Creamos el objeto de la clase categoria
-                Categoria Obj = new Categoria();
-
                 //Una vez instanciado el objeto de la clase categoria se le ingresan los datos
                 Obj.IdCategoria = id;
                 Obj.Nombre = nombre;
@@ -103,6 +93,29 @@ namespace Negocio
                 //Al enviar el objeto al metodo actualizar en DCategoria, este retorna una cadena de confirmacion
                 return datos.Actualizar(Obj);
             }
+            else
+            {
+                //Se verifica si la categoria que intento insertar existe o no
+                string existe = datos.Existe(nombre);
+
+                //Aplicamos la lógica dependiendo de si ya existe la categoria o no
+                if (existe.Equals("1"))
+                {
+                    //La categoria existe y se notifica al usuario
+                    return "La categoría ya existe";
+                }
+                else
+                {
+                    //Una vez instanciado el objeto de la clase categoria se le ingresan los datos
+                    Obj.IdCategoria = id;
+                    Obj.Nombre = nombre;
+                    Obj.Descripcion = descripcion;
+                    return datos.Actualizar(Obj);
+
+                }
+            }
+
+            
 
                 
         }
