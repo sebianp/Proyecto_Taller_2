@@ -220,6 +220,7 @@ namespace Datos
                     SqlCommand comando = new SqlCommand("articulo_actualizar", SqlCon);
                     comando.CommandType = CommandType.StoredProcedure; //Indico que estoy haciendo referencia a un comando de la BD
                     comando.Parameters.Add("@idarticulo", SqlDbType.Int).Value = Obj.IdArticulo;
+                    comando.Parameters.Add("@idcategoria", SqlDbType.Int).Value = Obj.IdCategoria;
                     comando.Parameters.Add("@codigo", SqlDbType.VarChar).Value = Obj.Codigo;
                     comando.Parameters.Add("@nombre", SqlDbType.VarChar).Value = Obj.Nombre;
                     comando.Parameters.Add("@precio_venta", SqlDbType.Decimal).Value = Obj.PrecioVenta;

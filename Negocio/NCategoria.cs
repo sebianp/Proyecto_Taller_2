@@ -40,6 +40,17 @@ namespace Negocio
 
         }
 
+        //Metodo para listar todos los elementos de la categoria que se encuentran activos
+        //devuelve un objeto del tipo DataTable
+        public static DataTable Seleccionar()
+        {
+            //Instanciamos un objeto de la clase DCategoria
+            DCategoria datos = new DCategoria();
+            //Devolvemos el metodo Listar de la clase DCategoria
+            return datos.Seleccionar();
+
+        }
+
         //Metodo para insertar una nueva categoria en la base de datos
         //Parametros: nombre y descripcion
         //Devuelve una cadena con los valores necesarios para el insert
