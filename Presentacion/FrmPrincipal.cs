@@ -7,12 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
+
 
 namespace Presentacion
 {
     public partial class FrmPrincipal : Form
     {
         private int childFormNumber = 0;
+        public int idUsuario;
+        public int idRol;
+        public string nombre;
+        public string rol;
+        public bool estado;
 
         public FrmPrincipal()
         {
@@ -126,6 +133,106 @@ namespace Presentacion
             FrmArticulo frm = new FrmArticulo();
             frm.MdiParent = this;
             frm.Show();
+        }
+
+        private void rolesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmRol frm = new FrmRol();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //La clase en Presentacion fue creada con el nombre Usuario, no FrmUsuario
+            Usuarios frm = new Usuarios();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show(
+                "¿Estás seguro de que deseas cerrar la sesión? Se cerrarán todos los formularios abiertos.",
+                "Confirmar salida",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Warning);
+
+            if (resultado == DialogResult.Yes)
+            {
+                //Cierra todos los formularios hijos
+                foreach (Form hijo in this.MdiChildren)
+                {
+                    hijo.Close();
+                }
+
+                //Cierra este formulario
+                this.Close();
+
+                //Muestra el login
+                FrmLogin frm = new FrmLogin();
+                frm.Show();
+            }
+        }
+
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+            MessageBox.Show("Bienvenido " + this.nombre, "LIBERTEL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            StBarraInferior.Text = "Desarrollado por Sebastian Prado - Taller de Programación 2 - UNNE - 2025  ----------- USUARIO:" + this.nombre;
+            if (this.rol.Equals("Administrador"))
+            {
+                MnuAlmacen.Enabled = true;
+                MnuIngresos.Enabled = true;
+                MnuVentas.Enabled = true;
+                MnuAccesos.Enabled = true;
+                MnuConsultas.Enabled = true;
+                TsCompras.Enabled = true;
+                TsVentas.Enabled = true;
+            }
+            else
+            {
+                if (this.rol.Equals("Vendedor"))
+                {
+                    MnuAlmacen.Enabled = false;
+                    MnuIngresos.Enabled = false;
+                    MnuVentas.Enabled = true;
+                    MnuAccesos.Enabled = false;
+                    MnuConsultas.Enabled = true;
+                    TsCompras.Enabled = false;
+                    TsVentas.Enabled = true;
+                }
+                else
+                {
+                    if (this.rol.Equals("Almacenero"))
+                    {
+                        MnuAlmacen.Enabled = true;
+                        MnuIngresos.Enabled = true;
+                        MnuVentas.Enabled = false;
+                        MnuAccesos.Enabled = false;
+                        MnuConsultas.Enabled = true;
+                        TsCompras.Enabled = false;
+                        TsVentas.Enabled = false;
+                    }
+                    else
+                    {
+                        MnuAlmacen.Enabled = false;
+                        MnuIngresos.Enabled = false;
+                        MnuVentas.Enabled = false;
+                        MnuAccesos.Enabled = false;
+                        MnuConsultas.Enabled = false;
+                        TsCompras.Enabled = false;
+                        TsVentas.Enabled = false;
+                    }
+                }
+
+            }
+        }
+
+        private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            Application.Exit();
+            
         }
     }
 }
