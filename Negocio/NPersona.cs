@@ -1,5 +1,5 @@
 ﻿using Datos;
-using Entidades; //Espacio de nombres
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,21 +9,32 @@ using System.Threading.Tasks;
 
 namespace Negocio
 {
-    public class NUsuario
+    public class NPersona
     {
-        //Las funciones declaradas van a ser estaticas (static) a nivel de clase
-        //Porque no se van a generar objetos instanciando la clase
-        //Solo se va a referenciarla y al método especifico
-        //Sin necesidad de crear un objeto en la capa Presentacion
-
-        //Metodo para listar todos los elementos de articulos
-        //devuelve un objeto del tipo DataTable
         public static DataTable Listar()
         {
             //Instanciamos un objeto de la clase
-            DUsuario datos = new DUsuario();
+            DPersona datos = new DPersona();
             //Devolvemos el metodo Listar de la clase
             return datos.Listar();
+
+        }
+
+        public static DataTable ListarProveedores()
+        {
+            //Instanciamos un objeto de la clase
+            DPersona datos = new DPersona();
+            //Devolvemos el metodo Listar de la clase
+            return datos.ListarProveedores();
+
+        }
+
+        public static DataTable ListarClientes()
+        {
+            //Instanciamos un objeto de la clase
+            DPersona datos = new DPersona();
+            //Devolvemos el metodo Listar de la clase
+            return datos.ListarClientes();
 
         }
 
@@ -33,53 +44,61 @@ namespace Negocio
         public static DataTable Buscar(string valor)
         {
             //Instanciamos un objeto de la clase
-            DUsuario datos = new DUsuario();
+            DPersona datos = new DPersona();
             //Devolvemos el metodo buscar de la clase incluyendo el parametro valor de busqueda
             return datos.Buscar(valor);
 
         }
 
-        //Método para el ingreso de usuarios al sistema
-        public static DataTable Login(string Email, string Clave)
+        public static DataTable BuscarProveedores(string valor)
         {
             //Instanciamos un objeto de la clase
-            DUsuario datos = new DUsuario();
-            //Devolvemos el metodo login de la clase incluyendo los parametros de acceso
-            return datos.Login(Email,Clave);
+            DPersona datos = new DPersona();
+            //Devolvemos el metodo buscar de la clase incluyendo el parametro valor de busqueda
+            return datos.BuscarProveedores(valor);
 
         }
 
+        public static DataTable BuscarClientes(string valor)
+        {
+            //Instanciamos un objeto de la clase
+            DPersona datos = new DPersona();
+            //Devolvemos el metodo buscar de la clase incluyendo el parametro valor de busqueda
+            return datos.BuscarClientes(valor);
+
+        }
+
+
         //Metodo para insertar una nueva categoria en la base de datos
         //Devuelve una cadena con los resultados
-        public static string Insertar(int idRol, string nombre, string tipoDocumento, string numDocumento, string direccion, string telefono, string email, string clave)
+        public static string Insertar(string TipoPersona, string nombre, string tipoDocumento, string numDocumento, string direccion, string telefono, string email)
         {
-            DUsuario datos = new DUsuario();
+            DPersona datos = new DPersona();
 
             //Se verifica si la categoria que intento insertar existe o no
-            string existe = datos.Existe(email);
+            string existe = datos.Existe(nombre);
 
             //Aplicamos la lógica dependiendo de si ya existe el objeto
             if (existe.Equals("1"))
             {
                 //Si existe y se notifica al usuario
-                return "El usuario con ese Email ya existe";
+                return "La persona con ese nombre ya existe";
             }
             else
             {
                 //Si el objeto no existe por ende se procede a su creacion
                 //Creamos el objeto de la clase
-                Usuario Obj = new Usuario();
+                Persona Obj = new Persona();
 
                 //Una vez instanciado el objeto se ingresan los datos
-                Obj.IdRol = idRol;
+                Obj.TipoPersona = TipoPersona;
                 Obj.Nombre = nombre;
                 Obj.TipoDocumento = tipoDocumento;
                 Obj.NumDocumento = numDocumento;
                 Obj.Direccion = direccion;
                 Obj.Telefono = telefono;
                 Obj.Email = email;
-                Obj.Clave = clave;
-
+                
                 //Al enviar el objeto al metodo insertar, este retorna una cadena de confirmacion
                 return datos.Insertar(Obj);
             }
@@ -87,25 +106,25 @@ namespace Negocio
 
         //Metodo para actualizar un objeto existente en la base de datos
         //Devuelve una cadena los resultados de la operacion.
-        public static string Actualizar(int id, int idRol, string nombre, string tipoDocumento, string numDocumento, string direccion, string telefono, string emailAnt, string email, string clave)
+        public static string Actualizar(int id, string tipoPersona, string nombreAnt, string nombre, string tipoDocumento, string numDocumento, string direccion, string telefono, string email)
         {
-            DUsuario datos = new DUsuario();
+            DPersona datos = new DPersona();
             //Crea el objeto de la clase
-            Usuario Obj = new Usuario();
+            Persona Obj = new Persona();
 
-            //Si existe el email quiere decir que no se esta modificando el email, sino los otros parametros.
-            if (emailAnt.Equals(email))
+            //Si existe el nombre quiere decir que no se esta modificando el nombre, sino los otros parametros.
+            if (nombreAnt.Equals(nombre))
             {
                 //Una vez instanciado el objeto de la clase se le ingresan los datos
-                Obj.IdUsuario = id;
-                Obj.IdRol = idRol;
+                Obj.IdPersona = id;
+                Obj.TipoPersona = tipoPersona;
                 Obj.Nombre = nombre;
                 Obj.TipoDocumento = tipoDocumento;
                 Obj.NumDocumento = numDocumento;
                 Obj.Direccion = direccion;
                 Obj.Telefono = telefono;
                 Obj.Email = email;
-                Obj.Clave = clave;
+                
 
                 //Al enviar el objeto al metodo actualizar este retorna una cadena de confirmacion
                 return datos.Actualizar(Obj);
@@ -119,21 +138,19 @@ namespace Negocio
                 if (existe.Equals("1"))
                 {
                     //El objeto existe y se notifica al usuario
-                    return "El usuario con ese Email ya existe";
+                    return "Ya existe una persona con ese nombre";
                 }
                 else
                 {
                     //Una vez instanciado el objeto de la clase se ingresan los datos
-                    Obj.IdUsuario = id;
-                    Obj.IdRol = idRol;
+                    Obj.IdPersona = id;
+                    Obj.TipoPersona = tipoPersona;
                     Obj.Nombre = nombre;
                     Obj.TipoDocumento = tipoDocumento;
                     Obj.NumDocumento = numDocumento;
                     Obj.Direccion = direccion;
                     Obj.Telefono = telefono;
                     Obj.Email = email;
-                    Obj.Clave = clave;
-
                     return datos.Actualizar(Obj);
 
                 }
@@ -144,27 +161,9 @@ namespace Negocio
         //Devuelve una cadena con los resultados de la operacion
         public static string Eliminar(int id)
         {
-            DUsuario datos = new DUsuario();
+            DPersona datos = new DPersona();
 
             return datos.Eliminar(id);
-        }
-
-        //Metodo para activar un registro que se encuentra desactivado
-        //Devuelve una cadena con los resultados de la operacion
-        public static string Activar(int id)
-        {
-            DUsuario datos = new DUsuario();
-
-            return datos.Activar(id);
-        }
-
-        //Metodo para desactivar un registro
-        //Devuelve una cadena con los resultados de la operacion
-        public static string Desactivar(int id)
-        {
-            DUsuario datos = new DUsuario();
-
-            return datos.Desactivar(id);
         }
     }
 }

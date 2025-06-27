@@ -11,13 +11,10 @@ using System.Windows.Forms;
 
 namespace Presentacion
 {
-    public partial class FrmCategoria : Form
+    public partial class FrmCliente : Form
     {
-        //Variable para almacenar el nombre anterior, utilizada en el metodo Actualizar.
-        private string NombreAnt;   
-
-        //Constructor
-        public FrmCategoria()
+        private string nombreAnt;
+        public FrmCliente()
         {
             InitializeComponent();
         }
@@ -28,7 +25,7 @@ namespace Presentacion
             {
                 //Agregamos como recurso del Datagrid el listado obtenido de la BD
                 //Esto permite cargar y mostrar los datos de la tabla Categoria
-                DgvListado.DataSource = NCategoria.Listar();
+                DgvListado.DataSource = NPersona.ListarClientes();
                 this.Formato();
                 this.Limpiar();
                 LblTotal.Text = "Total Registros: " + Convert.ToString(DgvListado.Rows.Count); //Cuenta todas las filas
@@ -38,7 +35,6 @@ namespace Presentacion
                 //Mostramos el mensaje en caso de que haya alguna excepcion y que el programa pueda
                 //seguir ejecutandose, proporcionando una explicación de lo que ocurrio
                 MessageBox.Show(ex.Message + ex.StackTrace);
-
             }
         }
 
@@ -48,7 +44,7 @@ namespace Presentacion
             {
                 //Agregamos como recurso el listado obtenido de la BD en base al parametro enviado
                 //Esto permite mostrar los datos recibidos con los resultados de la busqueda
-                DgvListado.DataSource = NCategoria.Buscar(TxtBuscar.Text);
+                DgvListado.DataSource = NPersona.BuscarClientes(TxtBuscar.Text);
                 this.Formato();
                 LblTotal.Text = "Total Registros: " + Convert.ToString(DgvListado.Rows.Count); //Cuenta todas las filas
             }
@@ -64,12 +60,26 @@ namespace Presentacion
         //Este metodo permite darle un formato a las columnas del datagrid Categorias
         private void Formato()
         {
+            //Visibilidad
             DgvListado.Columns[0].Visible = false;
-            DgvListado.Columns[1].Visible = false;
-            DgvListado.Columns[2].Width = 200;
-            DgvListado.Columns[3].Width = 400;
-            DgvListado.Columns[3].HeaderText = "Descripción"; //Porque desde la BD recibe sin tilde
-            DgvListado.Columns[4].Width = 150;
+
+
+            //Dimensiones
+            DgvListado.Columns[1].Width = 50;
+            DgvListado.Columns[2].Width = 150;
+            DgvListado.Columns[3].Width = 170;
+            DgvListado.Columns[4].Width = 100;
+            DgvListado.Columns[5].Width = 120;
+            DgvListado.Columns[6].Width = 150;
+            DgvListado.Columns[7].Width = 150;
+            DgvListado.Columns[8].Width = 170;
+
+            //Headers
+            DgvListado.Columns[2].HeaderText = "Tipo Persona";
+            DgvListado.Columns[4].HeaderText = "Documento";
+            DgvListado.Columns[5].HeaderText = "Número Doc";
+            DgvListado.Columns[6].HeaderText = "Dirección";
+            DgvListado.Columns[7].HeaderText = "Teléfono";
 
         }
 
@@ -79,19 +89,22 @@ namespace Presentacion
             TxtBuscar.Clear();
             TxtNombre.Clear();
             TxtId.Clear();
-            TxtDescripcion.Clear();
+            TxtNumDocumento.Clear();
+            TxtDireccion.Clear();
+            TxtEmail.Clear();
+            TxtTelefono.Clear();
             BtnInsertar.Visible = true;
             BtnActualizar.Visible = false;
             ErrorIcono.Clear();
 
             //Si el check box Seleccionar esta desactivado se desactivan las siguientes funcionalidades
             DgvListado.Columns[0].Visible = false;
-            BtnActivar.Visible = false;
-            BtnDesactivar.Visible = false;
+
             BtnEliminar.Visible = false;
             ChkSeleccionar.Checked = false;
 
         }
+
 
         private void MensajeError(string Mensaje)
         {
@@ -103,11 +116,8 @@ namespace Presentacion
             MessageBox.Show(Mensaje, "COMPLETADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        //FORMULARIO DE INICIO
-        private void FrmCategoria_Load(object sender, EventArgs e)
+        private void FrmCliente_Load(object sender, EventArgs e)
         {
-            //Cuando el formulario se cargue, se hace referencia al metodo Listar que
-            //proporciona la información al bloque Listado para mostrar todas las categorias
             this.Listar();
         }
 
@@ -115,6 +125,7 @@ namespace Presentacion
         {
             this.Buscar();
         }
+
 
         private void BtnInsertar_Click(object sender, EventArgs e)
         {
@@ -132,21 +143,21 @@ namespace Presentacion
                 {
                     //Se almacena la respuesta recibida al insertar un nuevo registro
                     //Enviado por el metodo insertar de la capa negocio
-                    respuesta = NCategoria.Insertar(TxtNombre.Text.Trim(), TxtDescripcion.Text.Trim());
+                    respuesta = NPersona.Insertar("Cliente", TxtNombre.Text.Trim(), CboTipoDocumento.Text, TxtNumDocumento.Text.Trim(), TxtDireccion.Text.Trim(), TxtTelefono.Text.Trim(), TxtEmail.Text.Trim());
                     //Validamos que tipo de mensaje recibimos para mostrar al usuario
                     if (respuesta.Equals("OK"))
                     {
                         //Si almaceno correctamente recibirá OK y va a mostrar la respuesta OK
-                        this.MensajeOk("El registro se almacenó de forma correcta");
+                        this.MensajeOk("El Cliente se registro de forma correcta");
                         this.Limpiar();
                         this.Listar();
                     }
                     else
-                    {   
+                    {
                         //Si hay algún error que muestre como un mensaje de error
                         this.MensajeError(respuesta);
                     }
-                    
+
                 }
 
             }
@@ -158,36 +169,32 @@ namespace Presentacion
             }
         }
 
-        private void BtnCancelar_Click(object sender, EventArgs e)
+        private void DgvListado_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.Limpiar();
-            TabGeneral.SelectedIndex = 0;
-        }
-
-        private void DgvListado_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
             try
             {
+                //Se prepara la ventana del formulario para Actualizar
                 this.Limpiar();
-                //Modificamos la visibilidad de los botones para actualizar
                 BtnActualizar.Visible = true;
                 BtnInsertar.Visible = false;
-                //Obtenemos los valores de las celdas para cargar en los textbox de actualizar
+
+                //Se cargan todos los datos correspondiente a la casilla seleccionada
                 TxtId.Text = Convert.ToString(DgvListado.CurrentRow.Cells["ID"].Value);
+                this.nombreAnt = Convert.ToString(DgvListado.CurrentRow.Cells["Nombre"].Value);
                 TxtNombre.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Nombre"].Value);
-                this.NombreAnt = Convert.ToString(DgvListado.CurrentRow.Cells["Nombre"].Value);
-                TxtDescripcion.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Descripcion"].Value);
-                //Pasamos directamente a la tab page de mantenimiento
+                CboTipoDocumento.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Tipo_Documento"].Value);
+                TxtNumDocumento.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Num_Documento"].Value);
+                TxtDireccion.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Direccion"].Value);
+                TxtTelefono.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Telefono"].Value);
+                TxtEmail.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Email"].Value);
+
+                //Pasamos al formulario de actualizar con todos los datos cargados
                 TabGeneral.SelectedIndex = 1;
             }
-            catch (Exception) 
+            catch (Exception ex)
             {
-                MessageBox.Show("Para modificar haga doble click en la celda Nombre de la categoría especifica");
+                MessageBox.Show("Seleccione desde la celda nombre." + " | Error:" + ex.Message);
             }
-
-            
-
         }
 
         private void BtnActualizar_Click(object sender, EventArgs e)
@@ -206,14 +213,15 @@ namespace Presentacion
                 {
                     //Se almacena la respuesta recibida al insertar un nuevo registro
                     //Enviado por el metodo insertar de la capa negocio
-                    respuesta = NCategoria.Actualizar(Convert.ToInt32(TxtId.Text), this.NombreAnt, TxtNombre.Text.Trim(), TxtDescripcion.Text.Trim());
+                    respuesta = NPersona.Actualizar(Convert.ToInt32(TxtId.Text), "Cliente", this.nombreAnt, TxtNombre.Text.Trim(), CboTipoDocumento.Text, TxtNumDocumento.Text.Trim(), TxtDireccion.Text.Trim(), TxtTelefono.Text.Trim(), TxtEmail.Text.Trim());
                     //Validamos que tipo de mensaje recibimos para mostrar al usuario
                     if (respuesta.Equals("OK"))
                     {
                         //Si almaceno correctamente recibirá OK y va a mostrar la respuesta OK
-                        this.MensajeOk("El registro se actualizó de forma correcta");
+                        this.MensajeOk("El cliente se actualizo de forma correcta");
                         this.Limpiar();
                         this.Listar();
+                        TabGeneral.SelectedIndex = 0;
                     }
                     else
                     {
@@ -232,14 +240,18 @@ namespace Presentacion
             }
         }
 
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Limpiar();
+            TabGeneral.SelectedIndex = 0;
+        }
+
         private void ChkSeleccionar_CheckedChanged(object sender, EventArgs e)
         {
             if (ChkSeleccionar.Checked == true)
             {
                 //Si el check box Seleccionar esta activado se activan las siguientes funcionalidades
                 DgvListado.Columns[0].Visible = true;
-                BtnActivar.Visible = true;
-                BtnDesactivar.Visible = true;
                 BtnEliminar.Visible = true;
 
             }
@@ -247,8 +259,6 @@ namespace Presentacion
             {
                 //Si el check box Seleccionar esta desactivado se desactivan las siguientes funcionalidades
                 DgvListado.Columns[0].Visible = false;
-                BtnActivar.Visible = false;
-                BtnDesactivar.Visible = false;
                 BtnEliminar.Visible = false;
             }
         }
@@ -271,7 +281,7 @@ namespace Presentacion
                 //Utilizamos esta variable para guardar el resultado de la selección del mensaje
                 DialogResult Opcion;
                 //Se le pide al usuario por medio de un mensaje que confirme la eliminación
-                Opcion = MessageBox.Show("Realmente deseas eliminar el/los registro/s?","Eliminar Categoria", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                Opcion = MessageBox.Show("Realmente deseas eliminar el/los registro/s?", "Eliminar Categoria", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
                 //Se valida la entrada elegida por el usuario
                 if (Opcion == DialogResult.OK)
@@ -289,103 +299,11 @@ namespace Presentacion
                             codigo = Convert.ToInt32(row.Cells[1].Value);
 
                             //envio la solicitud de eliminacion y guardo la respuesta recibida
-                            respuesta = NCategoria.Eliminar(codigo);
+                            respuesta = NPersona.Eliminar(codigo);
 
                             if (respuesta.Equals("OK"))
                             {
-                                this.MensajeOk("Se elimino el registro: " + Convert.ToString(row.Cells[2].Value));
-                            }
-                            else
-                            {
-                                this.MensajeError(respuesta);
-                            }
-                        }
-                    }
-                    this.Listar();
-                }
-            }
-            catch (Exception ex) 
-            {
-                MessageBox.Show(ex.Message + ex.StackTrace);
-            }
-        }
-
-        private void BtnActivar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //Utilizamos esta variable para guardar el resultado de la selección del mensaje
-                DialogResult Opcion;
-                //Se le pide al usuario por medio de un mensaje que confirme la la activación.
-                Opcion = MessageBox.Show("Realmente deseas activar el/los registro/s?", "Eliminar Categoria", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-                //Se valida la entrada elegida por el usuario
-                if (Opcion == DialogResult.OK)
-                {
-                    int codigo;
-                    string respuesta = "";
-
-                    //Activo todos los registros seleccionados (ya que pueden ser muchos)
-                    foreach (DataGridViewRow row in DgvListado.Rows)
-                    {
-                        //Si el check box esta seleccionado se activa ese registro
-                        if (Convert.ToBoolean(row.Cells[0].Value))
-                        {
-                            //Guardo el codigo de la categoria que deseo eliminar
-                            codigo = Convert.ToInt32(row.Cells[1].Value);
-
-                            //envio la solicitud de activacion y guardo la respuesta recibida
-                            respuesta = NCategoria.Activar(codigo);
-
-                            if (respuesta.Equals("OK"))
-                            {
-                                this.MensajeOk("Se activo el registro: " + Convert.ToString(row.Cells[2].Value));
-                            }
-                            else
-                            {
-                                this.MensajeError(respuesta);
-                            }
-                        }
-                    }
-                    this.Listar();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + ex.StackTrace);
-            }
-        }
-
-        private void BtnDesactivar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //Utilizamos esta variable para guardar el resultado de la selección del mensaje
-                DialogResult Opcion;
-                //Se le pide al usuario por medio de un mensaje que confirme la desactivación
-                Opcion = MessageBox.Show("Realmente deseas desactivar el/los registro/s?", "Eliminar Categoria", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-                //Se valida la entrada elegida por el usuario
-                if (Opcion == DialogResult.OK)
-                {
-                    int codigo;
-                    string respuesta = "";
-
-                    //Desactivo todos los registros seleccionados (ya que pueden ser muchos)
-                    foreach (DataGridViewRow row in DgvListado.Rows)
-                    {
-                        //Si el check box esta seleccionado se activa ese registro
-                        if (Convert.ToBoolean(row.Cells[0].Value))
-                        {
-                            //Guardo el codigo de la categoria que deseo eliminar
-                            codigo = Convert.ToInt32(row.Cells[1].Value);
-
-                            //Envio la solicitud de desactivación y guardo la respuesta recibida
-                            respuesta = NCategoria.Desactivar(codigo);
-
-                            if (respuesta.Equals("OK"))
-                            {
-                                this.MensajeOk("Se desactivo el registro: " + Convert.ToString(row.Cells[2].Value));
+                                this.MensajeOk("Se elimino el registro: " + Convert.ToString(row.Cells[4].Value));
                             }
                             else
                             {
@@ -402,4 +320,5 @@ namespace Presentacion
             }
         }
     }
+
 }

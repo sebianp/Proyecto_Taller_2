@@ -324,9 +324,9 @@
             this.TxtImg.AutoSize = true;
             this.TxtImg.Location = new System.Drawing.Point(758, 38);
             this.TxtImg.Name = "TxtImg";
-            this.TxtImg.Size = new System.Drawing.Size(62, 21);
+            this.TxtImg.Size = new System.Drawing.Size(83, 21);
             this.TxtImg.TabIndex = 11;
-            this.TxtImg.Text = "Imagen";
+            this.TxtImg.Text = "Imagen (*)";
             // 
             // CboCategoria
             // 

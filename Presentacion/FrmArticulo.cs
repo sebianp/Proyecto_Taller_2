@@ -100,8 +100,12 @@ namespace Presentacion
             TxtCodigo.Clear();
             TxtPrecioVenta.Clear();
             TxtStock.Clear();
-            TxtImagen.Clear();
-            PicImagen.Image = null;
+            if(PicImagen != null)
+            {
+                TxtImagen.Clear();
+                PicImagen.Image = null;
+            }
+            
             TxtDescripcion.Clear();
             PanelCodigo.BackgroundImage = null;
             BtnGuardarCodigo.Enabled = true;
@@ -246,13 +250,14 @@ namespace Presentacion
                 string respuesta = "";
 
                 //El nombre debe tener algun valor porque es obligatorio
-                if (TxtNombre.Text == string.Empty || CboCategoria.Text == string.Empty || TxtPrecioVenta.Text == string.Empty || TxtStock.Text == string.Empty)
+                if (TxtNombre.Text == string.Empty || TxtImagen.Text == string.Empty || CboCategoria.Text == string.Empty || TxtPrecioVenta.Text == string.Empty || TxtStock.Text == string.Empty)
                 {
                     this.MensajeError("Faltan ingresar datos");
                     ErrorIcono.SetError(TxtNombre, "Ingrese un nombre");
                     ErrorIcono.SetError(CboCategoria, "Seleccione una Categoría");
                     ErrorIcono.SetError(TxtPrecioVenta, "Ingrese un Precio de Venta");
                     ErrorIcono.SetError(TxtStock, "Ingrese un valor de Stock");
+                    ErrorIcono.SetError(TxtImagen, "Ingrese una imagen representativa");
                 }
                 else //En caso de cumplir con el campo obligatorio del nombre, se puede almacenar
                 {
@@ -353,7 +358,7 @@ namespace Presentacion
                     string rutaCompleta = Path.Combine(this.directorio, imagen);
 
                     //begin verificacion
-                    MessageBox.Show("Buscando imagen en: " + rutaCompleta);
+                    //MessageBox.Show("Buscando imagen en: " + rutaCompleta);
                     //end verificacion
 
                     if (File.Exists(rutaCompleta))
@@ -390,13 +395,15 @@ namespace Presentacion
                 string respuesta = "";
 
                 //El nombre debe tener algun valor porque es obligatorio
-                if (TxtId.Text == string.Empty || TxtNombre.Text == string.Empty || CboCategoria.Text == string.Empty || TxtPrecioVenta.Text == string.Empty || TxtStock.Text == string.Empty)
+                if (TxtId.Text == string.Empty || TxtImagen.Text == string.Empty || TxtNombre.Text == string.Empty || CboCategoria.Text == string.Empty || TxtPrecioVenta.Text == string.Empty || TxtStock.Text == string.Empty)
                 {
                     this.MensajeError("Faltan ingresar datos");
                     ErrorIcono.SetError(TxtNombre, "Ingrese un nombre");
                     ErrorIcono.SetError(CboCategoria, "Seleccione una Categoría");
                     ErrorIcono.SetError(TxtPrecioVenta, "Ingrese un Precio de Venta");
                     ErrorIcono.SetError(TxtStock, "Ingrese un valor de Stock");
+                    ErrorIcono.SetError(TxtImagen, "Ingrese una imagen representativa");
+
                 }
                 else //En caso de cumplir con el campo obligatorio del nombre, se puede almacenar
                 {
@@ -413,6 +420,20 @@ namespace Presentacion
                         {
                             //Se utiliza el directorio definido como variable inicial para guardar
                             this.rutaDestino = this.directorio + TxtImagen.Text;
+
+                            //Liberar recursos
+                            GC.Collect();
+                            GC.WaitForPendingFinalizers();
+
+                            //pausa
+                            System.Threading.Thread.Sleep(50); // 50ms de espera
+
+                            // Eliminar la imagen anterior si existe
+                            if (File.Exists(this.rutaDestino))
+                            {
+                                File.Delete(this.rutaDestino);
+                            }
+
                             File.Copy(this.rutaOrigen, this.rutaDestino);
                         }
                         this.Listar();

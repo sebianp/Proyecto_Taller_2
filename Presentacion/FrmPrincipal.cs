@@ -160,7 +160,7 @@ namespace Presentacion
 
             if (resultado == DialogResult.Yes)
             {
-                //Cierra todos los formularios hijos
+                //Cierra todos los formularios contenidos
                 foreach (Form hijo in this.MdiChildren)
                 {
                     hijo.Close();
@@ -233,6 +233,20 @@ namespace Presentacion
 
             Application.Exit();
             
+        }
+
+        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmProveedor frm = new FrmProveedor();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCliente cliente = new FrmCliente();
+            cliente.MdiParent = this;
+            cliente.Show();
         }
     }
 }
