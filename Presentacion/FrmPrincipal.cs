@@ -248,5 +248,12 @@ namespace Presentacion
             cliente.MdiParent = this;
             cliente.Show();
         }
+
+        private void comprasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmIngreso ingreso = new FrmIngreso();
+            ingreso.MdiParent = this;
+            ingreso.Show();
+        }
     }
 }

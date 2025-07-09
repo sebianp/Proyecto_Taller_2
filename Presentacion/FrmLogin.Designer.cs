@@ -68,6 +68,7 @@
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(222, 20);
             this.TxtEmail.TabIndex = 2;
+            this.TxtEmail.Text = "administrador@prueba.com";
             // 
             // TxtClave
             // 
@@ -77,6 +78,7 @@
             this.TxtClave.PasswordChar = '*';
             this.TxtClave.Size = new System.Drawing.Size(222, 20);
             this.TxtClave.TabIndex = 3;
+            this.TxtClave.Text = "123456";
             // 
             // label3
             // 
