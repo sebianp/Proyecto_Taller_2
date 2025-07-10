@@ -86,6 +86,7 @@
     <Compile Include="NPersona.cs" />
     <Compile Include="NRol.cs" />
     <Compile Include="NUsuario.cs" />
+    <Compile Include="NVenta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

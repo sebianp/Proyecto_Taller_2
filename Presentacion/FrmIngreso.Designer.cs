@@ -76,16 +76,16 @@
             this.LblTotal = new System.Windows.Forms.Label();
             this.DgvListado = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.TabGeneral = new System.Windows.Forms.TabControl();
             this.PanelMostrar = new System.Windows.Forms.Panel();
-            this.DgvMostrarDetalle = new System.Windows.Forms.DataGridView();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.BtnCerrarDetalle = new System.Windows.Forms.Button();
-            this.TxtSubTotalD = new System.Windows.Forms.TextBox();
-            this.TxtImpuestosD = new System.Windows.Forms.TextBox();
             this.TxtTotalD = new System.Windows.Forms.TextBox();
+            this.TxtImpuestosD = new System.Windows.Forms.TextBox();
+            this.TxtSubTotalD = new System.Windows.Forms.TextBox();
+            this.BtnCerrarDetalle = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.DgvMostrarDetalle = new System.Windows.Forms.DataGridView();
+            this.TabGeneral = new System.Windows.Forms.TabControl();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -95,9 +95,9 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).BeginInit();
             this.tabPage1.SuspendLayout();
-            this.TabGeneral.SuspendLayout();
             this.PanelMostrar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMostrarDetalle)).BeginInit();
+            this.TabGeneral.SuspendLayout();
             this.SuspendLayout();
             // 
             // ErrorIcono
@@ -212,7 +212,7 @@
             this.PanelArticulos.Controls.Add(this.BtnFiltrarArticulos);
             this.PanelArticulos.Controls.Add(this.TxtBuscarArticulo);
             this.PanelArticulos.Controls.Add(this.label11);
-            this.PanelArticulos.Location = new System.Drawing.Point(6, 0);
+            this.PanelArticulos.Location = new System.Drawing.Point(6, 82);
             this.PanelArticulos.Name = "PanelArticulos";
             this.PanelArticulos.Size = new System.Drawing.Size(1145, 353);
             this.PanelArticulos.TabIndex = 26;
@@ -627,18 +627,6 @@
             this.tabPage1.Text = "Listado";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // TabGeneral
-            // 
-            this.TabGeneral.Controls.Add(this.tabPage1);
-            this.TabGeneral.Controls.Add(this.tabPage2);
-            this.TabGeneral.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TabGeneral.Location = new System.Drawing.Point(12, 12);
-            this.TabGeneral.Multiline = true;
-            this.TabGeneral.Name = "TabGeneral";
-            this.TabGeneral.SelectedIndex = 0;
-            this.TabGeneral.Size = new System.Drawing.Size(1181, 678);
-            this.TabGeneral.TabIndex = 1;
-            // 
             // PanelMostrar
             // 
             this.PanelMostrar.BackColor = System.Drawing.Color.Khaki;
@@ -657,45 +645,32 @@
             this.PanelMostrar.TabIndex = 6;
             this.PanelMostrar.Visible = false;
             // 
-            // DgvMostrarDetalle
+            // TxtTotalD
             // 
-            this.DgvMostrarDetalle.AllowUserToAddRows = false;
-            this.DgvMostrarDetalle.AllowUserToDeleteRows = false;
-            this.DgvMostrarDetalle.BackgroundColor = System.Drawing.SystemColors.Menu;
-            this.DgvMostrarDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvMostrarDetalle.Location = new System.Drawing.Point(33, 45);
-            this.DgvMostrarDetalle.Name = "DgvMostrarDetalle";
-            this.DgvMostrarDetalle.ReadOnly = true;
-            this.DgvMostrarDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvMostrarDetalle.Size = new System.Drawing.Size(952, 337);
-            this.DgvMostrarDetalle.TabIndex = 0;
+            this.TxtTotalD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtTotalD.Enabled = false;
+            this.TxtTotalD.Location = new System.Drawing.Point(806, 455);
+            this.TxtTotalD.Name = "TxtTotalD";
+            this.TxtTotalD.Size = new System.Drawing.Size(179, 28);
+            this.TxtTotalD.TabIndex = 7;
             // 
-            // label12
+            // TxtImpuestosD
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(723, 394);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(77, 21);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Sub-Total";
+            this.TxtImpuestosD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtImpuestosD.Enabled = false;
+            this.TxtImpuestosD.Location = new System.Drawing.Point(806, 422);
+            this.TxtImpuestosD.Name = "TxtImpuestosD";
+            this.TxtImpuestosD.Size = new System.Drawing.Size(179, 28);
+            this.TxtImpuestosD.TabIndex = 6;
             // 
-            // label13
+            // TxtSubTotalD
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(718, 424);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(82, 21);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "Impuestos";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(752, 458);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(44, 21);
-            this.label14.TabIndex = 3;
-            this.label14.Text = "Total";
+            this.TxtSubTotalD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtSubTotalD.Enabled = false;
+            this.TxtSubTotalD.Location = new System.Drawing.Point(806, 387);
+            this.TxtSubTotalD.Name = "TxtSubTotalD";
+            this.TxtSubTotalD.Size = new System.Drawing.Size(179, 28);
+            this.TxtSubTotalD.TabIndex = 5;
             // 
             // BtnCerrarDetalle
             // 
@@ -711,32 +686,57 @@
             this.BtnCerrarDetalle.UseVisualStyleBackColor = false;
             this.BtnCerrarDetalle.Click += new System.EventHandler(this.BtnCerrarDetalle_Click);
             // 
-            // TxtSubTotalD
+            // label14
             // 
-            this.TxtSubTotalD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtSubTotalD.Enabled = false;
-            this.TxtSubTotalD.Location = new System.Drawing.Point(806, 387);
-            this.TxtSubTotalD.Name = "TxtSubTotalD";
-            this.TxtSubTotalD.Size = new System.Drawing.Size(179, 28);
-            this.TxtSubTotalD.TabIndex = 5;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(752, 458);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(44, 21);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "Total";
             // 
-            // TxtImpuestosD
+            // label13
             // 
-            this.TxtImpuestosD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtImpuestosD.Enabled = false;
-            this.TxtImpuestosD.Location = new System.Drawing.Point(806, 422);
-            this.TxtImpuestosD.Name = "TxtImpuestosD";
-            this.TxtImpuestosD.Size = new System.Drawing.Size(179, 28);
-            this.TxtImpuestosD.TabIndex = 6;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(718, 424);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(82, 21);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Impuestos";
             // 
-            // TxtTotalD
+            // label12
             // 
-            this.TxtTotalD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtTotalD.Enabled = false;
-            this.TxtTotalD.Location = new System.Drawing.Point(806, 455);
-            this.TxtTotalD.Name = "TxtTotalD";
-            this.TxtTotalD.Size = new System.Drawing.Size(179, 28);
-            this.TxtTotalD.TabIndex = 7;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(723, 394);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(77, 21);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Sub-Total";
+            // 
+            // DgvMostrarDetalle
+            // 
+            this.DgvMostrarDetalle.AllowUserToAddRows = false;
+            this.DgvMostrarDetalle.AllowUserToDeleteRows = false;
+            this.DgvMostrarDetalle.BackgroundColor = System.Drawing.SystemColors.Menu;
+            this.DgvMostrarDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvMostrarDetalle.Location = new System.Drawing.Point(33, 45);
+            this.DgvMostrarDetalle.Name = "DgvMostrarDetalle";
+            this.DgvMostrarDetalle.ReadOnly = true;
+            this.DgvMostrarDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgvMostrarDetalle.Size = new System.Drawing.Size(952, 337);
+            this.DgvMostrarDetalle.TabIndex = 0;
+            // 
+            // TabGeneral
+            // 
+            this.TabGeneral.Controls.Add(this.tabPage1);
+            this.TabGeneral.Controls.Add(this.tabPage2);
+            this.TabGeneral.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TabGeneral.Location = new System.Drawing.Point(12, 12);
+            this.TabGeneral.Multiline = true;
+            this.TabGeneral.Name = "TabGeneral";
+            this.TabGeneral.SelectedIndex = 0;
+            this.TabGeneral.Size = new System.Drawing.Size(1181, 678);
+            this.TabGeneral.TabIndex = 1;
             // 
             // FrmIngreso
             // 
@@ -762,10 +762,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.TabGeneral.ResumeLayout(false);
             this.PanelMostrar.ResumeLayout(false);
             this.PanelMostrar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMostrarDetalle)).EndInit();
+            this.TabGeneral.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

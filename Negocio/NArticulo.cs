@@ -39,6 +39,16 @@ namespace Negocio
 
         }
 
+        public static DataTable BuscarVenta(string valor)
+        {
+            //Instanciamos un objeto de la clase
+            DArticulo datos = new DArticulo();
+            //Devolvemos el metodo buscar de la clase incluyendo el parametro valor de busqueda
+            return datos.BuscarVenta(valor);
+
+        }
+
+
         //Metodo para buscar un elemento que coincida con el codigo ingresado
         //Parametro: valor (cadena de caracteres que asociara a un/unos registros de la DB)
         //Devuelve: un articulo (o ninguno) dependiendo de que haya coincidencia con el código o no.
@@ -51,6 +61,14 @@ namespace Negocio
 
         }
 
+        public static DataTable BuscarCodigoVenta(string valor)
+        {
+            //Instanciamos un objeto de la clase
+            DArticulo datos = new DArticulo();
+            //Devolvemos el metodo buscar de la clase incluyendo el parametro valor de busqueda
+            return datos.BuscarCodigoVenta(valor);
+
+        }
         //Metodo para insertar una nueva categoria en la base de datos
         //Devuelve una cadena con los resultados
         public static string Insertar(int idCategoria, string codigo ,string nombre, decimal precioVenta, int stock, string descripcion, string imagen)

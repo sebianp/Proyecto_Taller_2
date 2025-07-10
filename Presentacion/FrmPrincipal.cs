@@ -255,5 +255,12 @@ namespace Presentacion
             ingreso.MdiParent = this;
             ingreso.Show();
         }
+
+        private void ventasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmVenta venta = new FrmVenta();
+            venta.MdiParent = this;
+            venta.Show();
+        }
     }
 }
