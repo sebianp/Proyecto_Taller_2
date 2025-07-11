@@ -492,5 +492,125 @@ namespace Presentacion
                 }
             }
         }
+
+        private void DgvListado_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                //Los datos obtenemos de listar detalles y como parametro usamos el ID de la fila seleccionada
+                DgvMostrarDetalle.DataSource = NVenta.ListarDetalle(Convert.ToInt32(DgvListado.CurrentRow.Cells["ID"].Value));
+                
+                //Formato de columnas
+                DgvMostrarDetalle.Columns[5].HeaderText = "Descuento (%)";
+                DgvMostrarDetalle.Columns["IMPORTE"].DefaultCellStyle.Format = "C2";
+                DgvMostrarDetalle.Columns["PRECIO"].DefaultCellStyle.Format = "C2";
+                DgvMostrarDetalle.Columns["DESCUENTO"].DefaultCellStyle.Format = "N0";
+                DgvMostrarDetalle.Columns[0].Width = 50;
+                DgvMostrarDetalle.Columns[2].Width = 250;
+                DgvMostrarDetalle.Columns[4].Width = 200;
+                DgvMostrarDetalle.Columns[5].Width = 150;
+                DgvMostrarDetalle.Columns[6].Width = 200;
+
+                //Variables a mostrar
+                decimal Total, Subtotal;
+                decimal Impuesto = Convert.ToDecimal(DgvListado.CurrentRow.Cells["Impuesto"].Value);
+                Total = Convert.ToDecimal(DgvListado.CurrentRow.Cells["Total"].Value);
+                //Total*(1 - Convert.ToDecimal(TxtImpuesto.Text));
+                Subtotal = Total * (1 - Impuesto);
+                TxtSubTotalD.Text = Subtotal.ToString("#0.00#");
+                TxtImpuestosD.Text = (Total - Subtotal).ToString("#0.00#"); //TOTAL IMPUESTOS
+                TxtTotalD.Text = Total.ToString("#0.00#");
+
+                //Mostrar el panel
+                PanelMostrar.Visible = true;
+
+            }
+            catch (Exception ex)
+            {
+                //Mensaje por si algo falla
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BtnCerrarDetalle_Click(object sender, EventArgs e)
+        {
+            PanelMostrar.Visible=false;
+        }
+
+        private void DgvListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Segun la documentación, esta es la forma técnica de poder marcar y desmarcar casillas en cada
+            // fila del datagrid
+            if (e.ColumnIndex == DgvListado.Columns["Seleccionar"].Index)
+            {
+                DataGridViewCheckBoxCell ChkEliminar = (DataGridViewCheckBoxCell)DgvListado.Rows[e.RowIndex].Cells["Seleccionar"];
+                ChkEliminar.Value = !Convert.ToBoolean(ChkEliminar.Value);
+            }
+        }
+
+        private void ChkSeleccionar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ChkSeleccionar.Checked == true)
+            {
+                //Si el check box Seleccionar esta activado se activan las siguientes funcionalidades
+                DgvListado.Columns[0].Visible = true;
+                BtnAnular.Visible = true;
+
+
+            }
+            else
+            {
+                //Si el check box Seleccionar esta desactivado se desactivan las siguientes funcionalidades
+                DgvListado.Columns[0].Visible = false;
+                BtnAnular.Visible = false;
+
+            }
+        }
+
+        private void BtnAnular_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Utilizamos esta variable para guardar el resultado de la selección del mensaje
+                DialogResult Opcion;
+                //Se le pide al usuario por medio de un mensaje que confirme la la activación.
+                Opcion = MessageBox.Show("Realmente deseas anular el/los registro/s?", "Eliminar Categoria", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                //Se valida la entrada elegida por el usuario
+                if (Opcion == DialogResult.OK)
+                {
+                    int codigo;
+                    string respuesta = "";
+
+                    //Activo todos los registros seleccionados (ya que pueden ser muchos)
+                    foreach (DataGridViewRow row in DgvListado.Rows)
+                    {
+                        //Si el check box esta seleccionado se activa ese registro
+                        if (Convert.ToBoolean(row.Cells[0].Value))
+                        {
+                            //Guardo el codigo de la categoria que deseo eliminar
+                            codigo = Convert.ToInt32(row.Cells[1].Value);
+
+                            //envio la solicitud de activacion y guardo la respuesta recibida
+                            respuesta = NVenta.Anular(codigo);
+
+                            if (respuesta.Equals("OK"))
+                            {
+                                this.MensajeOk("Se anulo el registro: " + Convert.ToString(row.Cells[6].Value) + " - " + Convert.ToString(row.Cells[7].Value));
+                            }
+                            else
+                            {
+                                this.MensajeError(respuesta);
+                            }
+                        }
+                    }
+                    this.Listar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
     }
 }

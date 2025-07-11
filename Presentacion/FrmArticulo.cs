@@ -632,5 +632,11 @@ namespace Presentacion
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Reportes.FrmReporteArticulos Reporte = new Reportes.FrmReporteArticulos();
+            Reporte.ShowDialog();
+        }
     }
 }

@@ -60,18 +60,19 @@
             this.LblTotal = new System.Windows.Forms.Label();
             this.DgvListado = new System.Windows.Forms.DataGridView();
             this.TabGeneral = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.BtnReporte = new System.Windows.Forms.TabPage();
             this.BtnEliminar = new System.Windows.Forms.Button();
             this.BtnDesactivar = new System.Windows.Forms.Button();
             this.BtnActivar = new System.Windows.Forms.Button();
             this.ChkSeleccionar = new System.Windows.Forms.CheckBox();
             this.BtnBuscar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicImagen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).BeginInit();
             this.TabGeneral.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.BtnReporte.SuspendLayout();
             this.SuspendLayout();
             // 
             // ErrorIcono
@@ -397,7 +398,7 @@
             // 
             // TabGeneral
             // 
-            this.TabGeneral.Controls.Add(this.tabPage1);
+            this.TabGeneral.Controls.Add(this.BtnReporte);
             this.TabGeneral.Controls.Add(this.tabPage2);
             this.TabGeneral.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TabGeneral.Location = new System.Drawing.Point(12, 12);
@@ -407,25 +408,26 @@
             this.TabGeneral.Size = new System.Drawing.Size(1318, 497);
             this.TabGeneral.TabIndex = 1;
             // 
-            // tabPage1
+            // BtnReporte
             // 
-            this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.tabPage1.Controls.Add(this.BtnEliminar);
-            this.tabPage1.Controls.Add(this.BtnDesactivar);
-            this.tabPage1.Controls.Add(this.BtnActivar);
-            this.tabPage1.Controls.Add(this.ChkSeleccionar);
-            this.tabPage1.Controls.Add(this.BtnBuscar);
-            this.tabPage1.Controls.Add(this.TxtBuscar);
-            this.tabPage1.Controls.Add(this.LblTotal);
-            this.tabPage1.Controls.Add(this.DgvListado);
-            this.tabPage1.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1310, 468);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Listado";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.BtnReporte.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.BtnReporte.Controls.Add(this.button1);
+            this.BtnReporte.Controls.Add(this.BtnEliminar);
+            this.BtnReporte.Controls.Add(this.BtnDesactivar);
+            this.BtnReporte.Controls.Add(this.BtnActivar);
+            this.BtnReporte.Controls.Add(this.ChkSeleccionar);
+            this.BtnReporte.Controls.Add(this.BtnBuscar);
+            this.BtnReporte.Controls.Add(this.TxtBuscar);
+            this.BtnReporte.Controls.Add(this.LblTotal);
+            this.BtnReporte.Controls.Add(this.DgvListado);
+            this.BtnReporte.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnReporte.Location = new System.Drawing.Point(4, 25);
+            this.BtnReporte.Name = "BtnReporte";
+            this.BtnReporte.Padding = new System.Windows.Forms.Padding(3);
+            this.BtnReporte.Size = new System.Drawing.Size(1310, 468);
+            this.BtnReporte.TabIndex = 0;
+            this.BtnReporte.Text = "Listado";
+            this.BtnReporte.UseVisualStyleBackColor = true;
             // 
             // BtnEliminar
             // 
@@ -487,6 +489,18 @@
             this.BtnBuscar.UseVisualStyleBackColor = false;
             this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Gainsboro;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Location = new System.Drawing.Point(527, 25);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(125, 28);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Reporte";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FrmArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -503,8 +517,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.PicImagen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).EndInit();
             this.TabGeneral.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.BtnReporte.ResumeLayout(false);
+            this.BtnReporte.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -513,7 +527,7 @@
 
         private System.Windows.Forms.ErrorProvider ErrorIcono;
         private System.Windows.Forms.TabControl TabGeneral;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage BtnReporte;
         private System.Windows.Forms.Button BtnEliminar;
         private System.Windows.Forms.Button BtnDesactivar;
         private System.Windows.Forms.Button BtnActivar;
@@ -548,5 +562,6 @@
         private System.Windows.Forms.Label TxtStk;
         private System.Windows.Forms.TextBox TxtPrecioVenta;
         private System.Windows.Forms.Label TxtPrice;
+        private System.Windows.Forms.Button button1;
     }
 }
