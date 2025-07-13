@@ -18,5 +18,8 @@ namespace Presentacion
         //Datos de un cliente seleccionado
         public static int IdCliente;
         public static string NombreCliente;
+
+        //Datos de la venta seleccionada
+        public static int IdVenta;
     }
 }

@@ -61,12 +61,12 @@
             this.DgvListado = new System.Windows.Forms.DataGridView();
             this.TabGeneral = new System.Windows.Forms.TabControl();
             this.BtnReporte = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.BtnEliminar = new System.Windows.Forms.Button();
             this.BtnDesactivar = new System.Windows.Forms.Button();
             this.BtnActivar = new System.Windows.Forms.Button();
             this.ChkSeleccionar = new System.Windows.Forms.CheckBox();
             this.BtnBuscar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicImagen)).BeginInit();
@@ -429,6 +429,18 @@
             this.BtnReporte.Text = "Listado";
             this.BtnReporte.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Gainsboro;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Location = new System.Drawing.Point(527, 25);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(125, 28);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Reporte";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // BtnEliminar
             // 
             this.BtnEliminar.BackColor = System.Drawing.Color.IndianRed;
@@ -488,18 +500,6 @@
             this.BtnBuscar.Text = "BUSCAR";
             this.BtnBuscar.UseVisualStyleBackColor = false;
             this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Gainsboro;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(527, 25);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 28);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Reporte";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FrmArticulo
             // 

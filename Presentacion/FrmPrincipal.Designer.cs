@@ -154,14 +154,14 @@
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
             this.clientesToolStripMenuItem.Text = "Clien&tes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // ventasToolStripMenuItem1
             // 
             this.ventasToolStripMenuItem1.Name = "ventasToolStripMenuItem1";
-            this.ventasToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
+            this.ventasToolStripMenuItem1.Size = new System.Drawing.Size(135, 26);
             this.ventasToolStripMenuItem1.Text = "&Ventas";
             this.ventasToolStripMenuItem1.Click += new System.EventHandler(this.ventasToolStripMenuItem1_Click);
             // 
@@ -200,14 +200,15 @@
             // consultarVentasToolStripMenuItem
             // 
             this.consultarVentasToolStripMenuItem.Name = "consultarVentasToolStripMenuItem";
-            this.consultarVentasToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
-            this.consultarVentasToolStripMenuItem.Text = "Consultar Ventas";
+            this.consultarVentasToolStripMenuItem.Size = new System.Drawing.Size(222, 26);
+            this.consultarVentasToolStripMenuItem.Text = "Ventas por Fechas";
+            this.consultarVentasToolStripMenuItem.Click += new System.EventHandler(this.consultarVentasToolStripMenuItem_Click);
             // 
             // consultarComprasToolStripMenuItem
             // 
             this.consultarComprasToolStripMenuItem.Name = "consultarComprasToolStripMenuItem";
-            this.consultarComprasToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
-            this.consultarComprasToolStripMenuItem.Text = "Consultar Compras";
+            this.consultarComprasToolStripMenuItem.Size = new System.Drawing.Size(222, 26);
+            this.consultarComprasToolStripMenuItem.Text = "Compras por Fechas";
             // 
             // viewMenu
             // 

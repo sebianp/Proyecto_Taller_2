@@ -612,5 +612,47 @@ namespace Presentacion
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
+
+        private void BtnComprobante_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 1) Validamos que haya al menos una fila en el DataGridView
+                if (DgvListado.Rows.Count == 0)
+                {
+                    MessageBox.Show("No hay ventas para generar comprobante.", "Atención",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // 2) Validamos que CurrentRow no sea nulo (aunque Rows.Count > 0)
+                if (DgvListado.CurrentRow == null)
+                {
+                    MessageBox.Show("Seleccione una venta antes de generar el comprobante.", "Atención",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // 3) Validamos que la celda ID tenga un valor
+                var cellValue = DgvListado.CurrentRow.Cells["ID"].Value;
+                if (cellValue == null || cellValue == DBNull.Value)
+                {
+                    MessageBox.Show("La venta seleccionada no tiene ID válido.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // 4) Convertimos y seguimos con la lógica normal
+                Variables.IdVenta = Convert.ToInt32(cellValue);
+
+                var reporte = new Reportes.FrmReporteComprobanteVenta();
+                reporte.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error inesperado:\n" + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
