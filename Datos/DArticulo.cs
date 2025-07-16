@@ -328,9 +328,9 @@ namespace Datos
                     comando.Parameters.Add("@precio_venta", SqlDbType.Decimal).Value = Obj.PrecioVenta;
                     comando.Parameters.Add("@stock", SqlDbType.Int).Value = Obj.Stock;
                     comando.Parameters.Add("@descripcion", SqlDbType.VarChar).Value = Obj.Descripcion;
-                    comando.Parameters.Add("@imagen", SqlDbType.VarChar).Value = Obj.Imagen;
+                    comando.Parameters.Add("@imagen", SqlDbType.VarChar, 255).Value = Obj.Imagen;
 
-                    SqlCon.Open(); //Se abre la conexion
+                SqlCon.Open(); //Se abre la conexion
 
                     //Establecemos el valor de la respuesta en base al resultado de la operacion
                     //Solo puede tener dos valores
@@ -374,7 +374,7 @@ namespace Datos
                     comando.Parameters.Add("@precio_venta", SqlDbType.Decimal).Value = Obj.PrecioVenta;
                     comando.Parameters.Add("@stock", SqlDbType.Int).Value = Obj.Stock;
                     comando.Parameters.Add("@descripcion", SqlDbType.VarChar).Value = Obj.Descripcion;
-                    comando.Parameters.Add("@imagen", SqlDbType.VarChar).Value = Obj.Imagen;
+                    comando.Parameters.Add("@imagen", SqlDbType.VarChar, 255).Value = Obj.Imagen;
                     SqlCon.Open(); //Se abre la conexion
 
                     //Establecemos el valor de la respuesta en base al resultado de la operacion

@@ -107,6 +107,35 @@ namespace Datos
 
         }
 
+        //Metodo para buscar registros de la tabla que coincidan con una fecha inicial y una fecha final.
+        public DataTable ConsultaFechas(DateTime FechaInicio, DateTime FechaFin)
+        {
+            SqlDataReader resultado;
+            DataTable tabla = new DataTable();
+            SqlConnection SqlCon = Conexion.getInstancia().CrearConexion();
+
+            try
+            {
+                SqlCommand comando = new SqlCommand("ingreso_consulta_fechas", SqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("@fecha_inicio", SqlDbType.DateTime).Value = FechaInicio;
+                comando.Parameters.Add("@fecha_fin", SqlDbType.DateTime).Value = FechaFin;
+
+                SqlCon.Open();
+                resultado = comando.ExecuteReader();
+                tabla.Load(resultado);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
+
         public DataTable ListarDetalle(int Id)
         {
 

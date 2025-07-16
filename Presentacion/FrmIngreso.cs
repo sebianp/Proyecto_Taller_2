@@ -60,7 +60,7 @@ namespace Presentacion
             }
         }
 
-        //Este metodo permite darle un formato a las columnas del datagrid Categorias
+        //Este metodo permite darle un formato a las columnas del datagrid
         private void Formato()
         {
             //Visibilidad

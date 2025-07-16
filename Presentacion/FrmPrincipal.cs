@@ -269,5 +269,13 @@ namespace Presentacion
             consulta.MdiParent = this;
             consulta.Show();
         }
+
+        private void consultarComprasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmConsulta_ComprasFecha consulta = new FrmConsulta_ComprasFecha();
+            consulta.MdiParent = this;
+            consulta.Show();
+        }
     }
+    
 }

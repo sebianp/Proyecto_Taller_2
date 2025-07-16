@@ -579,7 +579,7 @@ namespace Presentacion.Reportes {
                 this.columnPrecio_Venta.AllowDBNull = false;
                 this.columnStock.AllowDBNull = false;
                 this.columnDescripcion.MaxLength = 255;
-                this.columnImagen.MaxLength = 20;
+                this.columnImagen.MaxLength = 255;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

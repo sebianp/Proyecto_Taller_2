@@ -350,8 +350,9 @@ namespace Presentacion
                 TxtPrecioVenta.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Precio_Venta"].Value);
                 TxtStock.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Stock"].Value);
                 TxtDescripcion.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Descripcion"].Value);
-                
+
                 //Imagen
+                MessageBox.Show("Imagen en DB: [" +DgvListado.CurrentRow.Cells["Imagen"].Value + "]");
                 string imagen = Convert.ToString(DgvListado.CurrentRow.Cells["Imagen"].Value);
                 if( imagen != string.Empty)
                 {

@@ -23,6 +23,13 @@ namespace Negocio
             return Datos.Buscar(Valor);
         }
 
+        //Método para buscar ingresos por fecha
+        public static DataTable ConsultaFechas(DateTime FechaInicio, DateTime FechaFin)
+        {
+            DIngreso Datos = new DIngreso();
+            return Datos.ConsultaFechas(FechaInicio, FechaFin);
+        }
+
         public static DataTable ListarDetalle(int Id)
         {
             DIngreso Datos = new DIngreso();
