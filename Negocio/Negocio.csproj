@@ -84,6 +84,7 @@
     <Compile Include="NCategoria.cs" />
     <Compile Include="NIngreso.cs" />
     <Compile Include="NPersona.cs" />
+    <Compile Include="NReporte.cs" />
     <Compile Include="NRol.cs" />
     <Compile Include="NUsuario.cs" />
     <Compile Include="NVenta.cs" />

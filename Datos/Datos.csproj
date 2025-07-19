@@ -85,6 +85,7 @@
     <Compile Include="DCategoria.cs" />
     <Compile Include="DIngreso.cs" />
     <Compile Include="DPersona.cs" />
+    <Compile Include="DReporte.cs" />
     <Compile Include="DRol.cs" />
     <Compile Include="DUsuario.cs" />
     <Compile Include="DVenta.cs" />

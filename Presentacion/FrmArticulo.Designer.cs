@@ -84,7 +84,7 @@
             this.BtnActualizar.BackColor = System.Drawing.Color.Khaki;
             this.BtnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnActualizar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnActualizar.Location = new System.Drawing.Point(762, 412);
+            this.BtnActualizar.Location = new System.Drawing.Point(748, 414);
             this.BtnActualizar.Name = "BtnActualizar";
             this.BtnActualizar.Size = new System.Drawing.Size(123, 36);
             this.BtnActualizar.TabIndex = 8;
@@ -95,7 +95,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(771, 375);
+            this.label3.Location = new System.Drawing.Point(757, 377);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(217, 21);
             this.label3.TabIndex = 7;
@@ -106,7 +106,7 @@
             this.BtnCancelar.BackColor = System.Drawing.Color.IndianRed;
             this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelar.Location = new System.Drawing.Point(891, 412);
+            this.BtnCancelar.Location = new System.Drawing.Point(877, 414);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(123, 36);
             this.BtnCancelar.TabIndex = 6;
@@ -119,7 +119,7 @@
             this.BtnInsertar.BackColor = System.Drawing.Color.CornflowerBlue;
             this.BtnInsertar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnInsertar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnInsertar.Location = new System.Drawing.Point(762, 412);
+            this.BtnInsertar.Location = new System.Drawing.Point(748, 414);
             this.BtnInsertar.Name = "BtnInsertar";
             this.BtnInsertar.Size = new System.Drawing.Size(123, 36);
             this.BtnInsertar.TabIndex = 5;
@@ -131,7 +131,7 @@
             // 
             this.TxtId.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.TxtId.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TxtId.Location = new System.Drawing.Point(529, 11);
+            this.TxtId.Location = new System.Drawing.Point(515, 13);
             this.TxtId.Name = "TxtId";
             this.TxtId.Size = new System.Drawing.Size(100, 21);
             this.TxtId.TabIndex = 4;
@@ -140,7 +140,7 @@
             // TxtDescripcion
             // 
             this.TxtDescripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtDescripcion.Location = new System.Drawing.Point(260, 352);
+            this.TxtDescripcion.Location = new System.Drawing.Point(246, 354);
             this.TxtDescripcion.Multiline = true;
             this.TxtDescripcion.Name = "TxtDescripcion";
             this.TxtDescripcion.Size = new System.Drawing.Size(369, 96);
@@ -149,7 +149,7 @@
             // TxtNombre
             // 
             this.TxtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtNombre.Location = new System.Drawing.Point(260, 79);
+            this.TxtNombre.Location = new System.Drawing.Point(246, 81);
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(369, 28);
             this.TxtNombre.TabIndex = 2;
@@ -157,7 +157,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(163, 386);
+            this.label2.Location = new System.Drawing.Point(149, 388);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 21);
             this.label2.TabIndex = 1;
@@ -194,7 +194,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1310, 468);
+            this.tabPage2.Size = new System.Drawing.Size(1247, 468);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -202,7 +202,7 @@
             // TxtStock
             // 
             this.TxtStock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtStock.Location = new System.Drawing.Point(891, 332);
+            this.TxtStock.Location = new System.Drawing.Point(877, 334);
             this.TxtStock.Name = "TxtStock";
             this.TxtStock.Size = new System.Drawing.Size(123, 28);
             this.TxtStock.TabIndex = 23;
@@ -212,7 +212,7 @@
             // TxtStk
             // 
             this.TxtStk.AutoSize = true;
-            this.TxtStk.Location = new System.Drawing.Point(916, 308);
+            this.TxtStk.Location = new System.Drawing.Point(902, 310);
             this.TxtStk.Name = "TxtStk";
             this.TxtStk.Size = new System.Drawing.Size(69, 21);
             this.TxtStk.TabIndex = 22;
@@ -221,7 +221,7 @@
             // TxtPrecioVenta
             // 
             this.TxtPrecioVenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtPrecioVenta.Location = new System.Drawing.Point(762, 332);
+            this.TxtPrecioVenta.Location = new System.Drawing.Point(748, 334);
             this.TxtPrecioVenta.Name = "TxtPrecioVenta";
             this.TxtPrecioVenta.Size = new System.Drawing.Size(123, 28);
             this.TxtPrecioVenta.TabIndex = 21;
@@ -230,7 +230,7 @@
             // TxtPrice
             // 
             this.TxtPrice.AutoSize = true;
-            this.TxtPrice.Location = new System.Drawing.Point(787, 308);
+            this.TxtPrice.Location = new System.Drawing.Point(773, 310);
             this.TxtPrice.Name = "TxtPrice";
             this.TxtPrice.Size = new System.Drawing.Size(74, 21);
             this.TxtPrice.TabIndex = 20;
@@ -240,7 +240,7 @@
             // 
             this.PanelCodigo.BackColor = System.Drawing.Color.LightGray;
             this.PanelCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PanelCodigo.Location = new System.Drawing.Point(260, 196);
+            this.PanelCodigo.Location = new System.Drawing.Point(246, 198);
             this.PanelCodigo.Name = "PanelCodigo";
             this.PanelCodigo.Size = new System.Drawing.Size(369, 150);
             this.PanelCodigo.TabIndex = 19;
@@ -250,7 +250,7 @@
             this.BtnGuardarCodigo.BackColor = System.Drawing.Color.Gainsboro;
             this.BtnGuardarCodigo.Enabled = false;
             this.BtnGuardarCodigo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnGuardarCodigo.Location = new System.Drawing.Point(476, 156);
+            this.BtnGuardarCodigo.Location = new System.Drawing.Point(462, 158);
             this.BtnGuardarCodigo.Name = "BtnGuardarCodigo";
             this.BtnGuardarCodigo.Size = new System.Drawing.Size(153, 34);
             this.BtnGuardarCodigo.TabIndex = 18;
@@ -262,7 +262,7 @@
             // 
             this.BtnGenerar.BackColor = System.Drawing.Color.Gainsboro;
             this.BtnGenerar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnGenerar.Location = new System.Drawing.Point(262, 156);
+            this.BtnGenerar.Location = new System.Drawing.Point(248, 158);
             this.BtnGenerar.Name = "BtnGenerar";
             this.BtnGenerar.Size = new System.Drawing.Size(153, 34);
             this.BtnGenerar.TabIndex = 17;
@@ -273,7 +273,7 @@
             // TxtCodigo
             // 
             this.TxtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtCodigo.Location = new System.Drawing.Point(262, 122);
+            this.TxtCodigo.Location = new System.Drawing.Point(248, 124);
             this.TxtCodigo.Name = "TxtCodigo";
             this.TxtCodigo.Size = new System.Drawing.Size(367, 28);
             this.TxtCodigo.TabIndex = 16;
@@ -283,7 +283,7 @@
             // TxtCod
             // 
             this.TxtCod.AutoSize = true;
-            this.TxtCod.Location = new System.Drawing.Point(125, 122);
+            this.TxtCod.Location = new System.Drawing.Point(111, 124);
             this.TxtCod.Name = "TxtCod";
             this.TxtCod.Size = new System.Drawing.Size(129, 21);
             this.TxtCod.TabIndex = 15;
@@ -292,7 +292,7 @@
             // PicImagen
             // 
             this.PicImagen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PicImagen.Location = new System.Drawing.Point(762, 110);
+            this.PicImagen.Location = new System.Drawing.Point(748, 112);
             this.PicImagen.Name = "PicImagen";
             this.PicImagen.Size = new System.Drawing.Size(252, 191);
             this.PicImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -303,7 +303,7 @@
             // 
             this.BtnCargarImagen.BackColor = System.Drawing.Color.Gainsboro;
             this.BtnCargarImagen.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnCargarImagen.Location = new System.Drawing.Point(888, 30);
+            this.BtnCargarImagen.Location = new System.Drawing.Point(874, 32);
             this.BtnCargarImagen.Name = "BtnCargarImagen";
             this.BtnCargarImagen.Size = new System.Drawing.Size(126, 29);
             this.BtnCargarImagen.TabIndex = 13;
@@ -315,7 +315,7 @@
             // 
             this.TxtImagen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtImagen.Enabled = false;
-            this.TxtImagen.Location = new System.Drawing.Point(762, 70);
+            this.TxtImagen.Location = new System.Drawing.Point(748, 72);
             this.TxtImagen.Name = "TxtImagen";
             this.TxtImagen.Size = new System.Drawing.Size(252, 28);
             this.TxtImagen.TabIndex = 12;
@@ -323,7 +323,7 @@
             // TxtImg
             // 
             this.TxtImg.AutoSize = true;
-            this.TxtImg.Location = new System.Drawing.Point(758, 38);
+            this.TxtImg.Location = new System.Drawing.Point(744, 40);
             this.TxtImg.Name = "TxtImg";
             this.TxtImg.Size = new System.Drawing.Size(83, 21);
             this.TxtImg.TabIndex = 11;
@@ -332,7 +332,7 @@
             // CboCategoria
             // 
             this.CboCategoria.FormattingEnabled = true;
-            this.CboCategoria.Location = new System.Drawing.Point(262, 38);
+            this.CboCategoria.Location = new System.Drawing.Point(248, 40);
             this.CboCategoria.Name = "CboCategoria";
             this.CboCategoria.Size = new System.Drawing.Size(367, 29);
             this.CboCategoria.TabIndex = 10;
@@ -340,7 +340,7 @@
             // TxtCategoria
             // 
             this.TxtCategoria.AutoSize = true;
-            this.TxtCategoria.Location = new System.Drawing.Point(156, 38);
+            this.TxtCategoria.Location = new System.Drawing.Point(142, 40);
             this.TxtCategoria.Name = "TxtCategoria";
             this.TxtCategoria.Size = new System.Drawing.Size(98, 21);
             this.TxtCategoria.TabIndex = 9;
@@ -349,7 +349,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(165, 79);
+            this.label1.Location = new System.Drawing.Point(151, 81);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 21);
             this.label1.TabIndex = 0;
@@ -387,11 +387,11 @@
             this.DgvListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar});
-            this.DgvListado.Location = new System.Drawing.Point(5, 59);
+            this.DgvListado.Location = new System.Drawing.Point(6, 59);
             this.DgvListado.Name = "DgvListado";
             this.DgvListado.ReadOnly = true;
             this.DgvListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvListado.Size = new System.Drawing.Size(1300, 366);
+            this.DgvListado.Size = new System.Drawing.Size(1231, 366);
             this.DgvListado.TabIndex = 0;
             this.DgvListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellContentClick);
             this.DgvListado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellDoubleClick);
@@ -405,7 +405,7 @@
             this.TabGeneral.Multiline = true;
             this.TabGeneral.Name = "TabGeneral";
             this.TabGeneral.SelectedIndex = 0;
-            this.TabGeneral.Size = new System.Drawing.Size(1318, 497);
+            this.TabGeneral.Size = new System.Drawing.Size(1255, 497);
             this.TabGeneral.TabIndex = 1;
             // 
             // BtnReporte
@@ -424,7 +424,7 @@
             this.BtnReporte.Location = new System.Drawing.Point(4, 25);
             this.BtnReporte.Name = "BtnReporte";
             this.BtnReporte.Padding = new System.Windows.Forms.Padding(3);
-            this.BtnReporte.Size = new System.Drawing.Size(1310, 468);
+            this.BtnReporte.Size = new System.Drawing.Size(1247, 468);
             this.BtnReporte.TabIndex = 0;
             this.BtnReporte.Text = "Listado";
             this.BtnReporte.UseVisualStyleBackColor = true;
@@ -506,7 +506,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1367, 521);
+            this.ClientSize = new System.Drawing.Size(1279, 521);
             this.Controls.Add(this.TabGeneral);
             this.Name = "FrmArticulo";
             this.Text = "Articulos";

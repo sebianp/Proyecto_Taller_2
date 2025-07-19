@@ -276,6 +276,34 @@ namespace Presentacion
             consulta.MdiParent = this;
             consulta.Show();
         }
+
+        private void evoluciónDeVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmGrafico_VentasPorFecha consulta = new FrmGrafico_VentasPorFecha();
+            consulta.MdiParent = this;
+            consulta.Show();
+        }
+
+        private void rankingArticulosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_TopArticulosVendidos consulta = new Frm_TopArticulosVendidos();
+            consulta.MdiParent = this;
+            consulta.Show();
+        }
+
+        private void rankingVendedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_TopVendedores consulta = new Frm_TopVendedores();
+            consulta.MdiParent = this;
+            consulta.Show();
+        }
+
+        private void controlDeStockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_ControlStock consulta = new Frm_ControlStock();
+            consulta.MdiParent = this;
+            consulta.Show();
+        }
     }
     
 }

@@ -66,6 +66,11 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.StBarraInferior = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.estadisticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.evoluciónDeVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rankingArticulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rankingVendedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.controlDeStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TsCompras = new System.Windows.Forms.ToolStripButton();
             this.TsVentas = new System.Windows.Forms.ToolStripButton();
             this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,6 +89,7 @@
             this.MnuVentas,
             this.MnuAccesos,
             this.MnuConsultas,
+            this.estadisticasToolStripMenuItem,
             this.viewMenu,
             this.windowsMenu,
             this.helpMenu,
@@ -365,6 +371,45 @@
             this.StBarraInferior.Size = new System.Drawing.Size(371, 17);
             this.StBarraInferior.Text = "Desarrolado por Sebastian Prado - Universidad Nacional del Nordeste";
             // 
+            // estadisticasToolStripMenuItem
+            // 
+            this.estadisticasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.evoluciónDeVentasToolStripMenuItem,
+            this.rankingArticulosToolStripMenuItem,
+            this.rankingVendedoresToolStripMenuItem,
+            this.controlDeStockToolStripMenuItem});
+            this.estadisticasToolStripMenuItem.Name = "estadisticasToolStripMenuItem";
+            this.estadisticasToolStripMenuItem.Size = new System.Drawing.Size(101, 25);
+            this.estadisticasToolStripMenuItem.Text = "Estadisticas";
+            // 
+            // evoluciónDeVentasToolStripMenuItem
+            // 
+            this.evoluciónDeVentasToolStripMenuItem.Name = "evoluciónDeVentasToolStripMenuItem";
+            this.evoluciónDeVentasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.evoluciónDeVentasToolStripMenuItem.Text = "Evolución de Ventas";
+            this.evoluciónDeVentasToolStripMenuItem.Click += new System.EventHandler(this.evoluciónDeVentasToolStripMenuItem_Click);
+            // 
+            // rankingArticulosToolStripMenuItem
+            // 
+            this.rankingArticulosToolStripMenuItem.Name = "rankingArticulosToolStripMenuItem";
+            this.rankingArticulosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.rankingArticulosToolStripMenuItem.Text = "Ranking Articulos";
+            this.rankingArticulosToolStripMenuItem.Click += new System.EventHandler(this.rankingArticulosToolStripMenuItem_Click);
+            // 
+            // rankingVendedoresToolStripMenuItem
+            // 
+            this.rankingVendedoresToolStripMenuItem.Name = "rankingVendedoresToolStripMenuItem";
+            this.rankingVendedoresToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.rankingVendedoresToolStripMenuItem.Text = "Ranking Vendedores";
+            this.rankingVendedoresToolStripMenuItem.Click += new System.EventHandler(this.rankingVendedoresToolStripMenuItem_Click);
+            // 
+            // controlDeStockToolStripMenuItem
+            // 
+            this.controlDeStockToolStripMenuItem.Name = "controlDeStockToolStripMenuItem";
+            this.controlDeStockToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.controlDeStockToolStripMenuItem.Text = "Control de Stock";
+            this.controlDeStockToolStripMenuItem.Click += new System.EventHandler(this.controlDeStockToolStripMenuItem_Click);
+            // 
             // TsCompras
             // 
             this.TsCompras.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -469,6 +514,11 @@
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton TsCompras;
         private System.Windows.Forms.ToolStripButton TsVentas;
+        private System.Windows.Forms.ToolStripMenuItem estadisticasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem evoluciónDeVentasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rankingArticulosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rankingVendedoresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem controlDeStockToolStripMenuItem;
     }
 }
 

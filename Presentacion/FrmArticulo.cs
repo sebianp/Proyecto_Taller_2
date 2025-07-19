@@ -247,10 +247,12 @@ namespace Presentacion
         {
             try
             {
-                string respuesta = "";
-
-                //El nombre debe tener algun valor porque es obligatorio
-                if (TxtNombre.Text == string.Empty || TxtImagen.Text == string.Empty || CboCategoria.Text == string.Empty || TxtPrecioVenta.Text == string.Empty || TxtStock.Text == string.Empty)
+                //1) Validaciones básicas de campos obligatorios
+                if (string.IsNullOrWhiteSpace(TxtNombre.Text) ||
+                    string.IsNullOrWhiteSpace(TxtImagen.Text) ||
+                    string.IsNullOrWhiteSpace(CboCategoria.Text) ||
+                    string.IsNullOrWhiteSpace(TxtPrecioVenta.Text) ||
+                    string.IsNullOrWhiteSpace(TxtStock.Text))
                 {
                     this.MensajeError("Faltan ingresar datos");
                     ErrorIcono.SetError(TxtNombre, "Ingrese un nombre");
@@ -258,42 +260,63 @@ namespace Presentacion
                     ErrorIcono.SetError(TxtPrecioVenta, "Ingrese un Precio de Venta");
                     ErrorIcono.SetError(TxtStock, "Ingrese un valor de Stock");
                     ErrorIcono.SetError(TxtImagen, "Ingrese una imagen representativa");
+                    return;
                 }
-                else //En caso de cumplir con el campo obligatorio del nombre, se puede almacenar
+
+                //2)Comprobacion si la imagen ya existe en la carpeta
+                string nombreArchivo = TxtImagen.Text.Trim();
+                string rutaDestino = Path.Combine(this.directorio, nombreArchivo);
+
+                if (File.Exists(rutaDestino))
                 {
-                    //Se almacena la respuesta recibida al insertar un nuevo registro
-                    //Enviado por el metodo insertar de la capa negocio
-                    respuesta = NArticulo.Insertar(Convert.ToInt32(CboCategoria.SelectedValue),TxtCodigo.Text.Trim(),TxtNombre.Text.Trim(),Convert.ToDecimal(TxtPrecioVenta.Text), Convert.ToInt32(TxtStock.Text), TxtDescripcion.Text.Trim(), TxtImagen.Text.Trim());
-                    //Validamos que tipo de mensaje recibimos para mostrar al usuario
-                    if (respuesta.Equals("OK"))
-                    {
-                        //Si almaceno correctamente recibirá OK y va a mostrar la respuesta OK
-                        this.MensajeOk("El registro se almacenó de forma correcta");
-                        //Verificacion de insercion de imagen
-                        if (TxtImagen.Text != string.Empty)
-                        {
-                            //Se utiliza el directorio definido como variable inicial para guardar
-                            this.rutaDestino = this.directorio + TxtImagen.Text;
-                            File.Copy(this.rutaOrigen, this.rutaDestino);
-                        }
-                        this.Listar();
-                    }
-                    else
-                    {
-                        //Si hay algún error que muestre como un mensaje de error
-                        this.MensajeError(respuesta);
-                    }
-
+                    MessageBox.Show(
+                        $"Ya existe una imagen con el nombre:\n{nombreArchivo}\n" +
+                        "Por favor, seleccione otra imagen o cambie el nombre.",
+                        "Imagen duplicada",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    return; //El sistema sale antes insertar en la BD
                 }
 
+                //3)Inserto el artículo
+                string respuesta = NArticulo.Insertar(
+                    Convert.ToInt32(CboCategoria.SelectedValue),
+                    TxtCodigo.Text.Trim(),
+                    TxtNombre.Text.Trim(),
+                    Convert.ToDecimal(TxtPrecioVenta.Text),
+                    Convert.ToInt32(TxtStock.Text),
+                    TxtDescripcion.Text.Trim(),
+                    nombreArchivo
+                );
+
+                //4)Reviso la respuesta del backend
+                if (respuesta.Equals("OK", StringComparison.OrdinalIgnoreCase))
+                {
+                    this.MensajeOk("El registro se almacenó de forma correcta");
+
+                    // 5) Ya que insertó bien, copio el fichero
+                    File.Copy(this.rutaOrigen, rutaDestino);
+
+                    // 6) Refresco el listado
+                    this.Listar();
+                }
+                else
+                {
+                    this.MensajeError(respuesta);
+                }
             }
             catch (Exception ex)
             {
-                //Mostramos el mensaje en caso de que haya alguna excepcion y que el programa pueda
-                //seguir ejecutandose, proporcionando una explicación de lo que ocurrio
-                MessageBox.Show(ex.Message + ex.StackTrace);
+                MessageBox.Show(
+                    "Ocurrió un error inesperado:\n" + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
             }
         }
+
 
         //Método asociado a la validación de caracteres unicamente numéricos
         private void TxtCodigo_TextChanged(object sender, EventArgs e)
