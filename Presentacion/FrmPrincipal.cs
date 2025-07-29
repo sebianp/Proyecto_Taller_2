@@ -304,6 +304,13 @@ namespace Presentacion
             consulta.MdiParent = this;
             consulta.Show();
         }
+
+        private void backupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Backup backup = new Frm_Backup();
+            backup.MdiParent = this;
+            backup.Show();
+        }
     }
     
 }

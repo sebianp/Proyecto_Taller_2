@@ -10,5 +10,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=INTERCEPTOR02-S;Initial Catalog=db_libertel;Integrated Security=True;TrustServerCertificate=True</Value>
     </Setting>
+    <Setting Name="RestorePassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">12345</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

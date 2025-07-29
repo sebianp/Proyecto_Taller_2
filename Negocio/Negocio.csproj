@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NArticulo.cs" />
+    <Compile Include="NBackup.cs" />
     <Compile Include="NCategoria.cs" />
     <Compile Include="NIngreso.cs" />
     <Compile Include="NPersona.cs" />

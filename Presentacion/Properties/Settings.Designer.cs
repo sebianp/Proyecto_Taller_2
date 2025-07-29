@@ -33,5 +33,14 @@ namespace Presentacion.Properties {
                 return ((string)(this["db_libertelConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("12345")]
+        public string RestorePassword {
+            get {
+                return ((string)(this["RestorePassword"]));
+            }
+        }
     }
 }

@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Conexion.cs" />
     <Compile Include="DArticulo.cs" />
+    <Compile Include="DBackup.cs" />
     <Compile Include="DCategoria.cs" />
     <Compile Include="DIngreso.cs" />
     <Compile Include="DPersona.cs" />

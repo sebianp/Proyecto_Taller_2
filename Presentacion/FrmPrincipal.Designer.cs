@@ -46,6 +46,12 @@
             this.MnuConsultas = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarComprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.estadisticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.evoluciónDeVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rankingArticulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rankingVendedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.controlDeStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,31 +63,27 @@
             this.arrangeIconsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.StBarraInferior = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.estadisticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.evoluciónDeVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rankingArticulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rankingVendedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.controlDeStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.TsCompras = new System.Windows.Forms.ToolStripButton();
             this.TsVentas = new System.Windows.Forms.ToolStripButton();
-            this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.menuStrip.SuspendLayout();
-            this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
+            this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
             // 
+            this.menuStrip.BackColor = System.Drawing.Color.Khaki;
             this.menuStrip.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MnuAlmacen,
@@ -90,6 +92,7 @@
             this.MnuAccesos,
             this.MnuConsultas,
             this.estadisticasToolStripMenuItem,
+            this.backupToolStripMenuItem,
             this.viewMenu,
             this.windowsMenu,
             this.helpMenu,
@@ -217,6 +220,52 @@
             this.consultarComprasToolStripMenuItem.Text = "Compras por Fechas";
             this.consultarComprasToolStripMenuItem.Click += new System.EventHandler(this.consultarComprasToolStripMenuItem_Click);
             // 
+            // estadisticasToolStripMenuItem
+            // 
+            this.estadisticasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.evoluciónDeVentasToolStripMenuItem,
+            this.rankingArticulosToolStripMenuItem,
+            this.rankingVendedoresToolStripMenuItem,
+            this.controlDeStockToolStripMenuItem});
+            this.estadisticasToolStripMenuItem.Name = "estadisticasToolStripMenuItem";
+            this.estadisticasToolStripMenuItem.Size = new System.Drawing.Size(101, 25);
+            this.estadisticasToolStripMenuItem.Text = "Estadisticas";
+            // 
+            // evoluciónDeVentasToolStripMenuItem
+            // 
+            this.evoluciónDeVentasToolStripMenuItem.Name = "evoluciónDeVentasToolStripMenuItem";
+            this.evoluciónDeVentasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.evoluciónDeVentasToolStripMenuItem.Text = "Evolución de Ventas";
+            this.evoluciónDeVentasToolStripMenuItem.Click += new System.EventHandler(this.evoluciónDeVentasToolStripMenuItem_Click);
+            // 
+            // rankingArticulosToolStripMenuItem
+            // 
+            this.rankingArticulosToolStripMenuItem.Name = "rankingArticulosToolStripMenuItem";
+            this.rankingArticulosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.rankingArticulosToolStripMenuItem.Text = "Ranking Articulos";
+            this.rankingArticulosToolStripMenuItem.Click += new System.EventHandler(this.rankingArticulosToolStripMenuItem_Click);
+            // 
+            // rankingVendedoresToolStripMenuItem
+            // 
+            this.rankingVendedoresToolStripMenuItem.Name = "rankingVendedoresToolStripMenuItem";
+            this.rankingVendedoresToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.rankingVendedoresToolStripMenuItem.Text = "Ranking Vendedores";
+            this.rankingVendedoresToolStripMenuItem.Click += new System.EventHandler(this.rankingVendedoresToolStripMenuItem_Click);
+            // 
+            // controlDeStockToolStripMenuItem
+            // 
+            this.controlDeStockToolStripMenuItem.Name = "controlDeStockToolStripMenuItem";
+            this.controlDeStockToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.controlDeStockToolStripMenuItem.Text = "Control de Stock";
+            this.controlDeStockToolStripMenuItem.Click += new System.EventHandler(this.controlDeStockToolStripMenuItem_Click);
+            // 
+            // backupToolStripMenuItem
+            // 
+            this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
+            this.backupToolStripMenuItem.Size = new System.Drawing.Size(72, 25);
+            this.backupToolStripMenuItem.Text = "Backup";
+            this.backupToolStripMenuItem.Click += new System.EventHandler(this.backupToolStripMenuItem_Click);
+            // 
             // viewMenu
             // 
             this.viewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -312,6 +361,22 @@
             this.contentsToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
             this.contentsToolStripMenuItem.Text = "&Contenido";
             // 
+            // indexToolStripMenuItem
+            // 
+            this.indexToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("indexToolStripMenuItem.Image")));
+            this.indexToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
+            this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
+            this.indexToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
+            this.indexToolStripMenuItem.Text = "&Índice";
+            // 
+            // searchToolStripMenuItem
+            // 
+            this.searchToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("searchToolStripMenuItem.Image")));
+            this.searchToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
+            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
+            this.searchToolStripMenuItem.Text = "&Buscar";
+            // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
@@ -330,30 +395,6 @@
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
-            // toolStrip
-            // 
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator1,
-            this.toolStripSeparator2,
-            this.TsCompras,
-            this.TsVentas});
-            this.toolStrip.Location = new System.Drawing.Point(0, 29);
-            this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStrip.Size = new System.Drawing.Size(1090, 25);
-            this.toolStrip.TabIndex = 1;
-            this.toolStrip.Text = "ToolStrip";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -368,47 +409,19 @@
             // StBarraInferior
             // 
             this.StBarraInferior.Name = "StBarraInferior";
-            this.StBarraInferior.Size = new System.Drawing.Size(371, 17);
-            this.StBarraInferior.Text = "Desarrolado por Sebastian Prado - Universidad Nacional del Nordeste";
+            this.StBarraInferior.Size = new System.Drawing.Size(513, 17);
+            this.StBarraInferior.Text = "Desarrolado por Sebastian Prado - Taller de Programación 2 - Universidad Nacional" +
+    " del Nordeste";
             // 
-            // estadisticasToolStripMenuItem
+            // toolStripSeparator1
             // 
-            this.estadisticasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.evoluciónDeVentasToolStripMenuItem,
-            this.rankingArticulosToolStripMenuItem,
-            this.rankingVendedoresToolStripMenuItem,
-            this.controlDeStockToolStripMenuItem});
-            this.estadisticasToolStripMenuItem.Name = "estadisticasToolStripMenuItem";
-            this.estadisticasToolStripMenuItem.Size = new System.Drawing.Size(101, 25);
-            this.estadisticasToolStripMenuItem.Text = "Estadisticas";
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // evoluciónDeVentasToolStripMenuItem
+            // toolStripSeparator2
             // 
-            this.evoluciónDeVentasToolStripMenuItem.Name = "evoluciónDeVentasToolStripMenuItem";
-            this.evoluciónDeVentasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.evoluciónDeVentasToolStripMenuItem.Text = "Evolución de Ventas";
-            this.evoluciónDeVentasToolStripMenuItem.Click += new System.EventHandler(this.evoluciónDeVentasToolStripMenuItem_Click);
-            // 
-            // rankingArticulosToolStripMenuItem
-            // 
-            this.rankingArticulosToolStripMenuItem.Name = "rankingArticulosToolStripMenuItem";
-            this.rankingArticulosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.rankingArticulosToolStripMenuItem.Text = "Ranking Articulos";
-            this.rankingArticulosToolStripMenuItem.Click += new System.EventHandler(this.rankingArticulosToolStripMenuItem_Click);
-            // 
-            // rankingVendedoresToolStripMenuItem
-            // 
-            this.rankingVendedoresToolStripMenuItem.Name = "rankingVendedoresToolStripMenuItem";
-            this.rankingVendedoresToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.rankingVendedoresToolStripMenuItem.Text = "Ranking Vendedores";
-            this.rankingVendedoresToolStripMenuItem.Click += new System.EventHandler(this.rankingVendedoresToolStripMenuItem_Click);
-            // 
-            // controlDeStockToolStripMenuItem
-            // 
-            this.controlDeStockToolStripMenuItem.Name = "controlDeStockToolStripMenuItem";
-            this.controlDeStockToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.controlDeStockToolStripMenuItem.Text = "Control de Stock";
-            this.controlDeStockToolStripMenuItem.Click += new System.EventHandler(this.controlDeStockToolStripMenuItem_Click);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // TsCompras
             // 
@@ -428,26 +441,26 @@
             this.TsVentas.Size = new System.Drawing.Size(23, 22);
             this.TsVentas.Text = "Ventas";
             // 
-            // indexToolStripMenuItem
+            // toolStrip
             // 
-            this.indexToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("indexToolStripMenuItem.Image")));
-            this.indexToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
-            this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-            this.indexToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
-            this.indexToolStripMenuItem.Text = "&Índice";
-            // 
-            // searchToolStripMenuItem
-            // 
-            this.searchToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("searchToolStripMenuItem.Image")));
-            this.searchToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
-            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
-            this.searchToolStripMenuItem.Text = "&Buscar";
+            this.toolStrip.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator1,
+            this.toolStripSeparator2,
+            this.TsCompras,
+            this.TsVentas});
+            this.toolStrip.Location = new System.Drawing.Point(0, 29);
+            this.toolStrip.Name = "toolStrip";
+            this.toolStrip.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStrip.Size = new System.Drawing.Size(1090, 25);
+            this.toolStrip.TabIndex = 1;
+            this.toolStrip.Text = "ToolStrip";
             // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1090, 608);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip);
@@ -457,16 +470,16 @@
             this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmPrincipal";
-            this.Text = "LIBERTEL";
+            this.Text = "Sistema de Ventas - LIBERTEL";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -475,10 +488,7 @@
 
 
         private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripStatusLabel StBarraInferior;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
@@ -512,13 +522,17 @@
         private System.Windows.Forms.ToolStripMenuItem consultarVentasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarComprasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
-        private System.Windows.Forms.ToolStripButton TsCompras;
-        private System.Windows.Forms.ToolStripButton TsVentas;
         private System.Windows.Forms.ToolStripMenuItem estadisticasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem evoluciónDeVentasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rankingArticulosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rankingVendedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem controlDeStockToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton TsCompras;
+        private System.Windows.Forms.ToolStripButton TsVentas;
+        private System.Windows.Forms.ToolStrip toolStrip;
     }
 }
 
