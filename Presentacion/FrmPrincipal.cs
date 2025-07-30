@@ -73,15 +73,15 @@ namespace Presentacion
         {
         }
 
-        private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            toolStrip.Visible = toolBarToolStripMenuItem.Checked;
-        }
+        //private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    toolStrip.Visible = toolBarToolStripMenuItem.Checked;
+        //}
 
-        private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            statusStrip.Visible = statusBarToolStripMenuItem.Checked;
-        }
+        //private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    statusStrip.Visible = statusBarToolStripMenuItem.Checked;
+        //}
 
         private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -113,14 +113,17 @@ namespace Presentacion
 
         private void categoríasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Se instancia un objeto del formulario categoria
-            FrmCategoria frm = new FrmCategoria();
-            //Indicamos que el formulario instanciado sea hijo del MDI principal
-            // De esta forma el FrmPrincipal va a ser contenedor del FrmCategoria
-            frm.MdiParent = this;
 
-            //Mostramos el formulario categoria
-            frm.Show();
+            //Se instancia un objeto del formulario categoria
+            AbrirFormularioUnico(new FrmCategoria());
+
+            //FrmCategoria frm = new FrmCategoria();
+            ////Indicamos que el formulario instanciado sea hijo del MDI principal
+            //// De esta forma el FrmPrincipal va a ser contenedor del FrmCategoria
+            //frm.MdiParent = this;
+
+            ////Mostramos el formulario categoria
+            //frm.Show();
 
             //
 
@@ -130,24 +133,27 @@ namespace Presentacion
 
         private void articulosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmArticulo frm = new FrmArticulo();
-            frm.MdiParent = this;
-            frm.Show();
+            AbrirFormularioUnico(new FrmArticulo());
+            //FrmArticulo frm = new FrmArticulo();
+            //frm.MdiParent = this;
+            //frm.Show();
         }
 
         private void rolesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmRol frm = new FrmRol();
-            frm.MdiParent = this;
-            frm.Show();
+            AbrirFormularioUnico(new FrmRol());
+            //FrmRol frm = new FrmRol();
+            //frm.MdiParent = this;
+            //frm.Show();
         }
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //La clase en Presentacion fue creada con el nombre Usuario, no FrmUsuario
-            Usuarios frm = new Usuarios();
-            frm.MdiParent = this;
-            frm.Show();
+            AbrirFormularioUnico(new Usuarios());
+            //Usuarios frm = new Usuarios();
+            //frm.MdiParent = this;
+            //frm.Show();
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -186,8 +192,13 @@ namespace Presentacion
                 MnuVentas.Enabled = true;
                 MnuAccesos.Enabled = true;
                 MnuConsultas.Enabled = true;
-                TsCompras.Enabled = true;
-                TsVentas.Enabled = true;
+                Menu_Backup.Enabled = true;
+                Menu_estadisticas.Enabled = true;
+                OPC_Control_stock.Enabled = true;
+                OPC_rank_vendedores.Enabled = true;
+                OPC_evol_ventas.Enabled = true;
+                OPC_rank_articulos.Enabled = true;
+                
             }
             else
             {
@@ -198,8 +209,13 @@ namespace Presentacion
                     MnuVentas.Enabled = true;
                     MnuAccesos.Enabled = false;
                     MnuConsultas.Enabled = true;
-                    TsCompras.Enabled = false;
-                    TsVentas.Enabled = true;
+                    Menu_Backup.Enabled = false;
+                    Menu_estadisticas.Enabled = true;
+                    OPC_Control_stock.Enabled = false;
+                    OPC_rank_vendedores.Enabled = true;
+                    OPC_evol_ventas.Enabled = false;
+                    OPC_rank_articulos.Enabled = true;
+
                 }
                 else
                 {
@@ -210,8 +226,13 @@ namespace Presentacion
                         MnuVentas.Enabled = false;
                         MnuAccesos.Enabled = false;
                         MnuConsultas.Enabled = true;
-                        TsCompras.Enabled = false;
-                        TsVentas.Enabled = false;
+                        Menu_Backup.Enabled = false;
+                        Menu_estadisticas.Enabled = true;
+                        OPC_Control_stock.Enabled = true;
+                        OPC_rank_vendedores.Enabled = false;
+                        OPC_evol_ventas.Enabled = false;
+                        OPC_rank_articulos.Enabled = true;
+
                     }
                     else
                     {
@@ -220,8 +241,13 @@ namespace Presentacion
                         MnuVentas.Enabled = false;
                         MnuAccesos.Enabled = false;
                         MnuConsultas.Enabled = false;
-                        TsCompras.Enabled = false;
-                        TsVentas.Enabled = false;
+                        Menu_Backup.Enabled = false;
+                        Menu_estadisticas.Enabled = false;
+                        OPC_Control_stock.Enabled = false;
+                        OPC_rank_vendedores.Enabled = false;
+                        OPC_evol_ventas.Enabled = false;
+                        OPC_rank_articulos.Enabled = false;
+
                     }
                 }
 
@@ -237,79 +263,134 @@ namespace Presentacion
 
         private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmProveedor frm = new FrmProveedor();
-            frm.MdiParent = this;
-            frm.Show();
+            AbrirFormularioUnico(new FrmProveedor());
+            //FrmProveedor frm = new FrmProveedor();
+            //frm.MdiParent = this;
+            //frm.Show();
         }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmCliente cliente = new FrmCliente();
-            cliente.MdiParent = this;
-            cliente.Show();
+            AbrirFormularioUnico(new FrmCliente());
+            //FrmCliente cliente = new FrmCliente();
+            //cliente.MdiParent = this;
+            //cliente.Show();
         }
 
         private void comprasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmIngreso ingreso = new FrmIngreso();
-            ingreso.MdiParent = this;
-            ingreso.Show();
+            AbrirFormularioUnico(new FrmIngreso());
+            //FrmIngreso ingreso = new FrmIngreso();
+            //ingreso.MdiParent = this;
+            //ingreso.Show();
         }
 
         private void ventasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FrmVenta venta = new FrmVenta();
-            venta.MdiParent = this;
-            venta.Show();
+            AbrirFormularioUnico(new FrmVenta());
+            //FrmVenta venta = new FrmVenta();
+            //venta.MdiParent = this;
+            //venta.Show();
         }
 
         private void consultarVentasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmConsulta_VentaFechas consulta = new FrmConsulta_VentaFechas();
-            consulta.MdiParent = this;
-            consulta.Show();
+            AbrirFormularioUnico(new FrmConsulta_VentaFechas());
+            //FrmConsulta_VentaFechas consulta = new FrmConsulta_VentaFechas();
+            //consulta.MdiParent = this;
+            //consulta.Show();
         }
 
         private void consultarComprasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmConsulta_ComprasFecha consulta = new FrmConsulta_ComprasFecha();
-            consulta.MdiParent = this;
-            consulta.Show();
+            AbrirFormularioUnico(new FrmConsulta_ComprasFecha());
+            //FrmConsulta_ComprasFecha consulta = new FrmConsulta_ComprasFecha();
+            //consulta.MdiParent = this;
+            //consulta.Show();
         }
 
         private void evoluciónDeVentasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmGrafico_VentasPorFecha consulta = new FrmGrafico_VentasPorFecha();
-            consulta.MdiParent = this;
-            consulta.Show();
+            AbrirFormularioUnico(new FrmGrafico_VentasPorFecha());
+            //FrmGrafico_VentasPorFecha consulta = new FrmGrafico_VentasPorFecha();
+            //consulta.MdiParent = this;
+            //consulta.Show();
         }
 
         private void rankingArticulosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_TopArticulosVendidos consulta = new Frm_TopArticulosVendidos();
-            consulta.MdiParent = this;
-            consulta.Show();
+            AbrirFormularioUnico(new Frm_TopArticulosVendidos());
+            //Frm_TopArticulosVendidos consulta = new Frm_TopArticulosVendidos();
+            //consulta.MdiParent = this;
+            //consulta.Show();
         }
 
         private void rankingVendedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_TopVendedores consulta = new Frm_TopVendedores();
-            consulta.MdiParent = this;
-            consulta.Show();
+            AbrirFormularioUnico(new Frm_TopVendedores());
+            //Frm_TopVendedores consulta = new Frm_TopVendedores();
+            //consulta.MdiParent = this;
+            //consulta.Show();
         }
 
         private void controlDeStockToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_ControlStock consulta = new Frm_ControlStock();
-            consulta.MdiParent = this;
-            consulta.Show();
+            AbrirFormularioUnico(new Frm_ControlStock());
+            //Frm_ControlStock consulta = new Frm_ControlStock();
+            //consulta.MdiParent = this;
+            //consulta.Show();
         }
 
         private void backupToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_Backup backup = new Frm_Backup();
-            backup.MdiParent = this;
-            backup.Show();
+
+            AbrirFormularioUnico(new Frm_Backup());
+            //Frm_Backup backup = new Frm_Backup();
+            //backup.MdiParent = this;
+            //backup.Show();
+        }
+
+        private void OPC_Consultar_Articulos_Click(object sender, EventArgs e)
+        {
+            //Frm_Consultar_Articulo consulta = new Frm_Consultar_Articulo();
+            //consulta.MdiParent = this;
+            //consulta.Show();
+
+            AbrirFormularioUnico(new Frm_Consultar_Articulo());
+        }
+
+        //Método: Este método se agrego para evitar que haya formularios repetidos abiertos a la vez que puedan
+        // sobrecargar el sistema, de esta manera se mantiene todo mas ordenado y se evitan errores.
+        private void AbrirFormularioUnico(Form nuevoFormulario)
+        {
+            //Así estaba en la documentación
+            Form formularioExistente = Application.OpenForms
+                .Cast<Form>()
+                .FirstOrDefault(f => f.GetType() == nuevoFormulario.GetType());
+
+            //Verifico que existe el formulario abierto o no
+            if (formularioExistente != null)
+            {
+                DialogResult resultado = MessageBox.Show(
+                    "El formulario ya está abierto.\n¿Desea cerrarlo y abrir uno nuevo?",
+                    "Formulario abierto",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (resultado == DialogResult.Yes)
+                {
+                    formularioExistente.Close();
+                }
+                else
+                {
+                    //Si se elige que NO, el formulario vuelve a emerger al usuario por si no lo encontraba.
+                    formularioExistente.BringToFront();
+                    return;
+                }
+            }
+
+            nuevoFormulario.MdiParent = this;
+            nuevoFormulario.Show();
         }
     }
     

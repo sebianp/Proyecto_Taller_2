@@ -108,7 +108,7 @@ namespace Presentacion
             
             TxtDescripcion.Clear();
             PanelCodigo.BackgroundImage = null;
-            BtnGuardarCodigo.Enabled = true;
+            BtnGuardarCodigo.Enabled = false;
             TxtDescripcion.Clear();
             BtnInsertar.Visible = true;
             BtnActualizar.Visible = false;
@@ -374,8 +374,9 @@ namespace Presentacion
                 TxtStock.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Stock"].Value);
                 TxtDescripcion.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Descripcion"].Value);
 
-                //Imagen
-                MessageBox.Show("Imagen en DB: [" +DgvListado.CurrentRow.Cells["Imagen"].Value + "]");
+                //Imagen CONTROL DE LOCALIZACION
+                //MessageBox.Show("Imagen en DB: [" +DgvListado.CurrentRow.Cells["Imagen"].Value + "]");
+
                 string imagen = Convert.ToString(DgvListado.CurrentRow.Cells["Imagen"].Value);
                 if( imagen != string.Empty)
                 {
@@ -505,7 +506,7 @@ namespace Presentacion
                 DgvListado.Columns[0].Visible = true;
                 BtnActivar.Visible = true;
                 BtnDesactivar.Visible = true;
-                BtnEliminar.Visible = true;
+                BtnEliminar.Visible = false;
 
             }
             else
@@ -661,6 +662,11 @@ namespace Presentacion
         {
             Reportes.FrmReporteArticulos Reporte = new Reportes.FrmReporteArticulos();
             Reporte.ShowDialog();
+        }
+
+        private void TxtBuscar_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

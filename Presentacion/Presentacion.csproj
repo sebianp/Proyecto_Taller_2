@@ -219,6 +219,12 @@
     <Compile Include="Frm_Backup.Designer.cs">
       <DependentUpon>Frm_Backup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Consultar_Articulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Consultar_Articulo.Designer.cs">
+      <DependentUpon>Frm_Consultar_Articulo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_ControlStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +242,12 @@
     </Compile>
     <Compile Include="Frm_TopVendedores.Designer.cs">
       <DependentUpon>Frm_TopVendedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Ver_Articulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Ver_Articulo.Designer.cs">
+      <DependentUpon>Frm_Ver_Articulo.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -307,6 +319,9 @@
     <EmbeddedResource Include="Frm_Backup.resx">
       <DependentUpon>Frm_Backup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Consultar_Articulo.resx">
+      <DependentUpon>Frm_Consultar_Articulo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_ControlStock.resx">
       <DependentUpon>Frm_ControlStock.cs</DependentUpon>
     </EmbeddedResource>
@@ -315,6 +330,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_TopVendedores.resx">
       <DependentUpon>Frm_TopVendedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Ver_Articulo.resx">
+      <DependentUpon>Frm_Ver_Articulo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -385,6 +403,25 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Libertel.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\shop_16px.png" />
+    <None Include="Resources\shop_64px.png" />
+    <None Include="Resources\shop_32px.png" />
+    <None Include="Resources\cart_32px.png" />
+    <None Include="Resources\send_32px.png" />
+    <None Include="Resources\users_32px.png" />
+    <None Include="Resources\consultas_32px.png" />
+    <None Include="Resources\stats_32px.png" />
+    <None Include="Resources\refresh_32px.png" />
+    <None Include="Resources\exit_32px.png" />
+    <None Include="Resources\cancel_32px.png" />
+    <None Include="Resources\carpeta_32px.png" />
+    <None Include="Resources\folder2_32px.png" />
+    <None Include="Resources\refresh_32px1.png" />
+    <None Include="Resources\acept_32px.png" />
+    <None Include="Resources\delete_24px.png" />
+    <None Include="Resources\update_24px.png" />
+    <None Include="Resources\save_24px.png" />
+    <None Include="Resources\barcode_24px.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

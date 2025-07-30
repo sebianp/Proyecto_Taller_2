@@ -123,10 +123,11 @@ namespace Presentacion
                 string respuesta = "";
 
                 //El nombre debe tener algun valor porque es obligatorio
-                if (TxtNombre.Text == string.Empty)
+                if (TxtNombre.Text == string.Empty || TxtDescripcion.Text == string.Empty)
                 {
                     this.MensajeError("Faltan ingresar datos");
                     ErrorIcono.SetError(TxtNombre, "Ingrese un nombre");
+                    ErrorIcono.SetError(TxtDescripcion, "Ingrese descripción");
                 }
                 else //En caso de cumplir con el campo obligatorio del nombre, se puede almacenar
                 {
@@ -240,7 +241,7 @@ namespace Presentacion
                 DgvListado.Columns[0].Visible = true;
                 BtnActivar.Visible = true;
                 BtnDesactivar.Visible = true;
-                BtnEliminar.Visible = true;
+                BtnEliminar.Visible = false;
 
             }
             else

@@ -40,7 +40,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.DtpFechaFin = new System.Windows.Forms.DateTimePicker();
             this.DtpFechaInicio = new System.Windows.Forms.DateTimePicker();
-            this.BtnComprobante = new System.Windows.Forms.Button();
             this.PanelMostrar = new System.Windows.Forms.Panel();
             this.TxtTotalD = new System.Windows.Forms.TextBox();
             this.TxtImpuestosD = new System.Windows.Forms.TextBox();
@@ -127,7 +126,6 @@
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.DtpFechaFin);
             this.tabPage1.Controls.Add(this.DtpFechaInicio);
-            this.tabPage1.Controls.Add(this.BtnComprobante);
             this.tabPage1.Controls.Add(this.PanelMostrar);
             this.tabPage1.Controls.Add(this.BtnBuscar);
             this.tabPage1.Controls.Add(this.LblTotal);
@@ -175,15 +173,6 @@
             this.DtpFechaInicio.Size = new System.Drawing.Size(200, 28);
             this.DtpFechaInicio.TabIndex = 8;
             // 
-            // BtnComprobante
-            // 
-            this.BtnComprobante.Location = new System.Drawing.Point(732, 25);
-            this.BtnComprobante.Name = "BtnComprobante";
-            this.BtnComprobante.Size = new System.Drawing.Size(124, 28);
-            this.BtnComprobante.TabIndex = 7;
-            this.BtnComprobante.Text = "Comprobante";
-            this.BtnComprobante.UseVisualStyleBackColor = true;
-            // 
             // PanelMostrar
             // 
             this.PanelMostrar.BackColor = System.Drawing.Color.Khaki;
@@ -196,9 +185,9 @@
             this.PanelMostrar.Controls.Add(this.label13);
             this.PanelMostrar.Controls.Add(this.label12);
             this.PanelMostrar.Controls.Add(this.DgvMostrarDetalle);
-            this.PanelMostrar.Location = new System.Drawing.Point(6, 69);
+            this.PanelMostrar.Location = new System.Drawing.Point(7, 59);
             this.PanelMostrar.Name = "PanelMostrar";
-            this.PanelMostrar.Size = new System.Drawing.Size(1156, 496);
+            this.PanelMostrar.Size = new System.Drawing.Size(1140, 496);
             this.PanelMostrar.TabIndex = 6;
             this.PanelMostrar.Visible = false;
             // 
@@ -235,9 +224,9 @@
             this.BtnCerrarDetalle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnCerrarDetalle.Font = new System.Drawing.Font("Microsoft Tai Le", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCerrarDetalle.ForeColor = System.Drawing.Color.Red;
-            this.BtnCerrarDetalle.Location = new System.Drawing.Point(1110, 4);
+            this.BtnCerrarDetalle.Location = new System.Drawing.Point(1094, 3);
             this.BtnCerrarDetalle.Name = "BtnCerrarDetalle";
-            this.BtnCerrarDetalle.Size = new System.Drawing.Size(41, 35);
+            this.BtnCerrarDetalle.Size = new System.Drawing.Size(41, 36);
             this.BtnCerrarDetalle.TabIndex = 4;
             this.BtnCerrarDetalle.Text = "X";
             this.BtnCerrarDetalle.UseVisualStyleBackColor = false;
@@ -276,7 +265,7 @@
             this.DgvMostrarDetalle.AllowUserToDeleteRows = false;
             this.DgvMostrarDetalle.BackgroundColor = System.Drawing.SystemColors.Menu;
             this.DgvMostrarDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvMostrarDetalle.Location = new System.Drawing.Point(33, 45);
+            this.DgvMostrarDetalle.Location = new System.Drawing.Point(28, 45);
             this.DgvMostrarDetalle.Name = "DgvMostrarDetalle";
             this.DgvMostrarDetalle.ReadOnly = true;
             this.DgvMostrarDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -294,7 +283,7 @@
             this.ClientSize = new System.Drawing.Size(1187, 647);
             this.Controls.Add(this.TabGeneral);
             this.Name = "FrmConsulta_ComprasFecha";
-            this.Text = "FrmConsulta_ComprasFecha";
+            this.Text = "Ingresos por Fecha";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).EndInit();
             this.TabGeneral.ResumeLayout(false);
@@ -317,7 +306,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker DtpFechaFin;
         private System.Windows.Forms.DateTimePicker DtpFechaInicio;
-        private System.Windows.Forms.Button BtnComprobante;
         private System.Windows.Forms.Panel PanelMostrar;
         private System.Windows.Forms.TextBox TxtTotalD;
         private System.Windows.Forms.TextBox TxtImpuestosD;
