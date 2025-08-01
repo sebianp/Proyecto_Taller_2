@@ -50,6 +50,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TabGeneral = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.BtnDesactivar = new System.Windows.Forms.Button();
+            this.BtnActivar = new System.Windows.Forms.Button();
             this.BtnEliminar = new System.Windows.Forms.Button();
             this.ChkSeleccionar = new System.Windows.Forms.CheckBox();
             this.BtnBuscar = new System.Windows.Forms.Button();
@@ -57,8 +59,6 @@
             this.LblTotal = new System.Windows.Forms.Label();
             this.DgvListado = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.BtnDesactivar = new System.Windows.Forms.Button();
-            this.BtnActivar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.TabGeneral.SuspendLayout();
@@ -96,6 +96,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage2.Controls.Add(this.TxtEmail);
             this.tabPage2.Controls.Add(this.TxtTelefono);
@@ -121,7 +122,6 @@
             this.tabPage2.Size = new System.Drawing.Size(1306, 484);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // TxtNumDocumento
             // 
@@ -278,6 +278,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage1.Controls.Add(this.BtnDesactivar);
             this.tabPage1.Controls.Add(this.BtnActivar);
@@ -294,7 +295,32 @@
             this.tabPage1.Size = new System.Drawing.Size(1306, 484);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // BtnDesactivar
+            // 
+            this.BtnDesactivar.BackColor = System.Drawing.Color.DarkKhaki;
+            this.BtnDesactivar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnDesactivar.Location = new System.Drawing.Point(322, 435);
+            this.BtnDesactivar.Name = "BtnDesactivar";
+            this.BtnDesactivar.Size = new System.Drawing.Size(125, 26);
+            this.BtnDesactivar.TabIndex = 9;
+            this.BtnDesactivar.Text = "Desactivar";
+            this.BtnDesactivar.UseVisualStyleBackColor = false;
+            this.BtnDesactivar.Visible = false;
+            this.BtnDesactivar.Click += new System.EventHandler(this.BtnDesactivar_Click);
+            // 
+            // BtnActivar
+            // 
+            this.BtnActivar.BackColor = System.Drawing.Color.CadetBlue;
+            this.BtnActivar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnActivar.Location = new System.Drawing.Point(191, 435);
+            this.BtnActivar.Name = "BtnActivar";
+            this.BtnActivar.Size = new System.Drawing.Size(125, 26);
+            this.BtnActivar.TabIndex = 8;
+            this.BtnActivar.Text = "Activar";
+            this.BtnActivar.UseVisualStyleBackColor = false;
+            this.BtnActivar.Visible = false;
+            this.BtnActivar.Click += new System.EventHandler(this.BtnActivar_Click);
             // 
             // BtnEliminar
             // 
@@ -372,32 +398,6 @@
             this.Seleccionar.HeaderText = "Seleccionar";
             this.Seleccionar.Name = "Seleccionar";
             this.Seleccionar.ReadOnly = true;
-            // 
-            // BtnDesactivar
-            // 
-            this.BtnDesactivar.BackColor = System.Drawing.Color.DarkKhaki;
-            this.BtnDesactivar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnDesactivar.Location = new System.Drawing.Point(322, 435);
-            this.BtnDesactivar.Name = "BtnDesactivar";
-            this.BtnDesactivar.Size = new System.Drawing.Size(125, 26);
-            this.BtnDesactivar.TabIndex = 9;
-            this.BtnDesactivar.Text = "Desactivar";
-            this.BtnDesactivar.UseVisualStyleBackColor = false;
-            this.BtnDesactivar.Visible = false;
-            this.BtnDesactivar.Click += new System.EventHandler(this.BtnDesactivar_Click);
-            // 
-            // BtnActivar
-            // 
-            this.BtnActivar.BackColor = System.Drawing.Color.CadetBlue;
-            this.BtnActivar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnActivar.Location = new System.Drawing.Point(191, 435);
-            this.BtnActivar.Name = "BtnActivar";
-            this.BtnActivar.Size = new System.Drawing.Size(125, 26);
-            this.BtnActivar.TabIndex = 8;
-            this.BtnActivar.Text = "Activar";
-            this.BtnActivar.UseVisualStyleBackColor = false;
-            this.BtnActivar.Visible = false;
-            this.BtnActivar.Click += new System.EventHandler(this.BtnActivar_Click);
             // 
             // FrmCliente
             // 

@@ -82,7 +82,7 @@
             this.BtnActualizar.BackColor = System.Drawing.Color.Khaki;
             this.BtnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnActualizar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnActualizar.Location = new System.Drawing.Point(636, 344);
+            this.BtnActualizar.Location = new System.Drawing.Point(716, 344);
             this.BtnActualizar.Name = "BtnActualizar";
             this.BtnActualizar.Size = new System.Drawing.Size(123, 36);
             this.BtnActualizar.TabIndex = 8;
@@ -104,7 +104,7 @@
             this.BtnCancelar.BackColor = System.Drawing.Color.IndianRed;
             this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelar.Location = new System.Drawing.Point(940, 344);
+            this.BtnCancelar.Location = new System.Drawing.Point(887, 344);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(123, 36);
             this.BtnCancelar.TabIndex = 6;
@@ -117,7 +117,7 @@
             this.BtnInsertar.BackColor = System.Drawing.Color.CornflowerBlue;
             this.BtnInsertar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnInsertar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnInsertar.Location = new System.Drawing.Point(636, 344);
+            this.BtnInsertar.Location = new System.Drawing.Point(716, 344);
             this.BtnInsertar.Name = "BtnInsertar";
             this.BtnInsertar.Size = new System.Drawing.Size(123, 36);
             this.BtnInsertar.TabIndex = 5;
@@ -154,6 +154,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.TxtTelefono);
@@ -180,7 +181,6 @@
             this.tabPage2.Size = new System.Drawing.Size(1103, 484);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -434,6 +434,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage1.Controls.Add(this.BtnEliminar);
             this.tabPage1.Controls.Add(this.BtnDesactivar);
@@ -450,7 +451,6 @@
             this.tabPage1.Size = new System.Drawing.Size(1103, 484);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // TabGeneral
             // 

@@ -66,6 +66,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
@@ -83,7 +84,6 @@
             this.tabPage1.Size = new System.Drawing.Size(1173, 599);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -131,7 +131,7 @@
             // 
             // PanelMostrar
             // 
-            this.PanelMostrar.BackColor = System.Drawing.Color.Khaki;
+            this.PanelMostrar.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.PanelMostrar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PanelMostrar.Controls.Add(this.TxtTotalD);
             this.PanelMostrar.Controls.Add(this.TxtImpuestosD);
@@ -141,7 +141,7 @@
             this.PanelMostrar.Controls.Add(this.label13);
             this.PanelMostrar.Controls.Add(this.label12);
             this.PanelMostrar.Controls.Add(this.DgvMostrarDetalle);
-            this.PanelMostrar.Location = new System.Drawing.Point(7, 59);
+            this.PanelMostrar.Location = new System.Drawing.Point(20, 78);
             this.PanelMostrar.Name = "PanelMostrar";
             this.PanelMostrar.Size = new System.Drawing.Size(1032, 496);
             this.PanelMostrar.TabIndex = 6;

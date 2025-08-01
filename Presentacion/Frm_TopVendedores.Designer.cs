@@ -50,19 +50,19 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.dtpFechaFin);
             this.panel1.Controls.Add(this.dtpFechaInicio);
-            this.panel1.Location = new System.Drawing.Point(-15, 5);
+            this.panel1.Location = new System.Drawing.Point(-15, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1006, 80);
+            this.panel1.Size = new System.Drawing.Size(1006, 96);
             this.panel1.TabIndex = 2;
             // 
             // BtnGenerarGrafico
             // 
             this.BtnGenerarGrafico.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BtnGenerarGrafico.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnGenerarGrafico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnGenerarGrafico.Location = new System.Drawing.Point(694, 28);
+            this.BtnGenerarGrafico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnGenerarGrafico.Location = new System.Drawing.Point(682, 25);
             this.BtnGenerarGrafico.Name = "BtnGenerarGrafico";
-            this.BtnGenerarGrafico.Size = new System.Drawing.Size(138, 23);
+            this.BtnGenerarGrafico.Size = new System.Drawing.Size(138, 32);
             this.BtnGenerarGrafico.TabIndex = 4;
             this.BtnGenerarGrafico.Text = "Visualizar";
             this.BtnGenerarGrafico.UseVisualStyleBackColor = false;
@@ -124,6 +124,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Snow;
             this.ClientSize = new System.Drawing.Size(976, 533);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.chartRankingVendedores);

@@ -33,7 +33,9 @@
             this.datagrid_productos = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.LblTotal = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid_productos)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnBuscar
@@ -41,7 +43,7 @@
             this.BtnBuscar.BackColor = System.Drawing.Color.CadetBlue;
             this.BtnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnBuscar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscar.Location = new System.Drawing.Point(375, 12);
+            this.BtnBuscar.Location = new System.Drawing.Point(370, 8);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(103, 28);
             this.BtnBuscar.TabIndex = 5;
@@ -52,9 +54,10 @@
             // TxtBuscar
             // 
             this.TxtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtBuscar.Location = new System.Drawing.Point(12, 12);
+            this.TxtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtBuscar.Location = new System.Drawing.Point(7, 12);
             this.TxtBuscar.Name = "TxtBuscar";
-            this.TxtBuscar.Size = new System.Drawing.Size(357, 20);
+            this.TxtBuscar.Size = new System.Drawing.Size(357, 22);
             this.TxtBuscar.TabIndex = 4;
             // 
             // datagrid_productos
@@ -66,11 +69,11 @@
             this.datagrid_productos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagrid_productos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar});
-            this.datagrid_productos.Location = new System.Drawing.Point(12, 46);
+            this.datagrid_productos.Location = new System.Drawing.Point(7, 46);
             this.datagrid_productos.Name = "datagrid_productos";
             this.datagrid_productos.ReadOnly = true;
             this.datagrid_productos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagrid_productos.Size = new System.Drawing.Size(1231, 366);
+            this.datagrid_productos.Size = new System.Drawing.Size(1212, 366);
             this.datagrid_productos.TabIndex = 3;
             this.datagrid_productos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellDoubleClick);
             // 
@@ -83,27 +86,39 @@
             // LblTotal
             // 
             this.LblTotal.AutoSize = true;
-            this.LblTotal.Location = new System.Drawing.Point(1045, 30);
+            this.LblTotal.Location = new System.Drawing.Point(1055, 23);
             this.LblTotal.Name = "LblTotal";
             this.LblTotal.Size = new System.Drawing.Size(37, 13);
             this.LblTotal.TabIndex = 6;
             this.LblTotal.Text = "Total: ";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.BtnBuscar);
+            this.panel1.Controls.Add(this.datagrid_productos);
+            this.panel1.Controls.Add(this.TxtBuscar);
+            this.panel1.Controls.Add(this.LblTotal);
+            this.panel1.Location = new System.Drawing.Point(4, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1243, 434);
+            this.panel1.TabIndex = 7;
+            // 
             // Frm_Consultar_Articulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1259, 429);
-            this.Controls.Add(this.LblTotal);
-            this.Controls.Add(this.BtnBuscar);
-            this.Controls.Add(this.TxtBuscar);
-            this.Controls.Add(this.datagrid_productos);
+            this.BackColor = System.Drawing.Color.Snow;
+            this.ClientSize = new System.Drawing.Size(1259, 464);
+            this.Controls.Add(this.panel1);
             this.Name = "Frm_Consultar_Articulo";
             this.Text = "Consultar Artículo";
             this.Load += new System.EventHandler(this.Frm_Consultar_Articulo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagrid_productos)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -114,5 +129,6 @@
         private System.Windows.Forms.DataGridView datagrid_productos;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.Label LblTotal;
+        private System.Windows.Forms.Panel panel1;
     }
 }
