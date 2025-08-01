@@ -45,8 +45,10 @@
             this.TxtPrice = new System.Windows.Forms.Label();
             this.PanelCodigo = new System.Windows.Forms.Panel();
             this.BtnGuardarCodigo = new System.Windows.Forms.Button();
+            this.BtnGenerar = new System.Windows.Forms.Button();
             this.TxtCodigo = new System.Windows.Forms.TextBox();
             this.TxtCod = new System.Windows.Forms.Label();
+            this.PicImagen = new System.Windows.Forms.PictureBox();
             this.BtnCargarImagen = new System.Windows.Forms.Button();
             this.TxtImagen = new System.Windows.Forms.TextBox();
             this.TxtImg = new System.Windows.Forms.Label();
@@ -65,14 +67,12 @@
             this.BtnActivar = new System.Windows.Forms.Button();
             this.ChkSeleccionar = new System.Windows.Forms.CheckBox();
             this.BtnBuscar = new System.Windows.Forms.Button();
-            this.BtnGenerar = new System.Windows.Forms.Button();
-            this.PicImagen = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicImagen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).BeginInit();
             this.TabGeneral.SuspendLayout();
             this.BtnReporte.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PicImagen)).BeginInit();
             this.SuspendLayout();
             // 
             // ErrorIcono
@@ -149,23 +149,23 @@
             // TxtNombre
             // 
             this.TxtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtNombre.Location = new System.Drawing.Point(246, 81);
+            this.TxtNombre.Location = new System.Drawing.Point(248, 81);
             this.TxtNombre.Name = "TxtNombre";
-            this.TxtNombre.Size = new System.Drawing.Size(369, 28);
+            this.TxtNombre.Size = new System.Drawing.Size(367, 28);
             this.TxtNombre.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(149, 388);
+            this.label2.Location = new System.Drawing.Point(128, 386);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 21);
+            this.label2.Size = new System.Drawing.Size(112, 21);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Descripción";
+            this.label2.Text = "Descripción (*)";
             // 
             // tabPage2
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.Snow;
+            this.tabPage2.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage2.Controls.Add(this.TxtStock);
             this.tabPage2.Controls.Add(this.TxtStk);
@@ -247,7 +247,7 @@
             // 
             // BtnGuardarCodigo
             // 
-            this.BtnGuardarCodigo.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.BtnGuardarCodigo.BackColor = System.Drawing.Color.Snow;
             this.BtnGuardarCodigo.Enabled = false;
             this.BtnGuardarCodigo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnGuardarCodigo.Image = global::Presentacion.Properties.Resources.save_24px;
@@ -259,6 +259,20 @@
             this.BtnGuardarCodigo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnGuardarCodigo.UseVisualStyleBackColor = false;
             this.BtnGuardarCodigo.Click += new System.EventHandler(this.BtnGuardarCodigo_Click);
+            // 
+            // BtnGenerar
+            // 
+            this.BtnGenerar.BackColor = System.Drawing.Color.Snow;
+            this.BtnGenerar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnGenerar.Image = global::Presentacion.Properties.Resources.barcode_24px;
+            this.BtnGenerar.Location = new System.Drawing.Point(248, 158);
+            this.BtnGenerar.Name = "BtnGenerar";
+            this.BtnGenerar.Size = new System.Drawing.Size(153, 34);
+            this.BtnGenerar.TabIndex = 17;
+            this.BtnGenerar.Text = "Generar Código";
+            this.BtnGenerar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnGenerar.UseVisualStyleBackColor = false;
+            this.BtnGenerar.Click += new System.EventHandler(this.BtnGenerar_Click);
             // 
             // TxtCodigo
             // 
@@ -278,6 +292,17 @@
             this.TxtCod.Size = new System.Drawing.Size(129, 21);
             this.TxtCod.TabIndex = 15;
             this.TxtCod.Text = "Código de Barras";
+            // 
+            // PicImagen
+            // 
+            this.PicImagen.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.PicImagen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PicImagen.Location = new System.Drawing.Point(748, 112);
+            this.PicImagen.Name = "PicImagen";
+            this.PicImagen.Size = new System.Drawing.Size(252, 191);
+            this.PicImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicImagen.TabIndex = 14;
+            this.PicImagen.TabStop = false;
             // 
             // BtnCargarImagen
             // 
@@ -391,6 +416,7 @@
             // 
             // BtnReporte
             // 
+            this.BtnReporte.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.BtnReporte.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.BtnReporte.Controls.Add(this.button1);
             this.BtnReporte.Controls.Add(this.BtnEliminar);
@@ -408,7 +434,6 @@
             this.BtnReporte.Size = new System.Drawing.Size(1247, 468);
             this.BtnReporte.TabIndex = 0;
             this.BtnReporte.Text = "Listado";
-            this.BtnReporte.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -482,31 +507,6 @@
             this.BtnBuscar.UseVisualStyleBackColor = false;
             this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
             // 
-            // BtnGenerar
-            // 
-            this.BtnGenerar.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.BtnGenerar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnGenerar.Image = global::Presentacion.Properties.Resources.barcode_24px;
-            this.BtnGenerar.Location = new System.Drawing.Point(248, 158);
-            this.BtnGenerar.Name = "BtnGenerar";
-            this.BtnGenerar.Size = new System.Drawing.Size(153, 34);
-            this.BtnGenerar.TabIndex = 17;
-            this.BtnGenerar.Text = "Generar Código";
-            this.BtnGenerar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnGenerar.UseVisualStyleBackColor = false;
-            this.BtnGenerar.Click += new System.EventHandler(this.BtnGenerar_Click);
-            // 
-            // PicImagen
-            // 
-            this.PicImagen.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.PicImagen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PicImagen.Location = new System.Drawing.Point(748, 112);
-            this.PicImagen.Name = "PicImagen";
-            this.PicImagen.Size = new System.Drawing.Size(252, 191);
-            this.PicImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PicImagen.TabIndex = 14;
-            this.PicImagen.TabStop = false;
-            // 
             // FrmArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -521,11 +521,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicImagen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).EndInit();
             this.TabGeneral.ResumeLayout(false);
             this.BtnReporte.ResumeLayout(false);
             this.BtnReporte.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PicImagen)).EndInit();
             this.ResumeLayout(false);
 
         }

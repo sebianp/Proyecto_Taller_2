@@ -467,5 +467,61 @@ namespace Datos
             return respuesta;
 
         }
+
+        //Metodo para dar de baja a una persona en el sistema
+        public string DarDeBaja(int id)
+        {
+            string respuesta = "";
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand comando = new SqlCommand("persona_cambiar_estado", SqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("@idpersona", SqlDbType.Int).Value = id;
+                comando.Parameters.Add("@estado", SqlDbType.Bit).Value = 0; //Dar de baja implica poner un 0
+                SqlCon.Open();
+                respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "No se pudo dar de baja el registro";
+            }
+            catch (Exception ex)
+            {
+                respuesta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+
+            return respuesta;
+        }
+
+        //Metodo para dar de alta a personas
+        public string DarDeAlta(int id)
+        {
+            string respuesta = "";
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand comando = new SqlCommand("persona_cambiar_estado", SqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("@idpersona", SqlDbType.Int).Value = id;
+                comando.Parameters.Add("@estado", SqlDbType.Bit).Value = 1; //Alta modificando el valor de estado en 1
+                SqlCon.Open();
+                respuesta = comando.ExecuteNonQuery() == 1 ? "OK" : "No se pudo dar de alta el registro";
+            }
+            catch (Exception ex)
+            {
+                respuesta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+
+            return respuesta;
+        }
     }
 }

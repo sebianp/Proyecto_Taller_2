@@ -165,5 +165,19 @@ namespace Negocio
 
             return datos.Eliminar(id);
         }
+
+        //Metodo para dar de baja un registro de la tabla Persona
+        public static string DarDeBaja(int id)
+        {
+            DPersona datos = new DPersona();
+            return datos.DarDeBaja(id);
+        }
+
+        //Metodo para dar de alta un registro de la tabla Persona
+        public static string DarDeAlta(int id)
+        {
+            DPersona datos = new DPersona();
+            return datos.DarDeAlta(id);
+        }
     }
 }

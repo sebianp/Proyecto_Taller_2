@@ -68,7 +68,7 @@ namespace Presentacion
             }
 
             DgvListado.Columns[0].Visible = false; // Seleccionar (checkbox)
-            DgvListado.Columns[0].Width = 50;
+            DgvListado.Columns[0].Width = 100;
 
             DgvListado.Columns[1].Visible = false; // idventa
             DgvListado.Columns[2].Visible = false; // idusuario
@@ -85,16 +85,16 @@ namespace Presentacion
             DgvListado.Columns[6].Width = 70;      // Serie
             DgvListado.Columns[6].HeaderText = "Serie";
 
-            DgvListado.Columns[7].Width = 70;      // Número
+            DgvListado.Columns[7].Width = 90;      // Número
             DgvListado.Columns[7].HeaderText = "Número";
 
-            DgvListado.Columns[8].Width = 130;     // Fecha
+            DgvListado.Columns[8].Width = 140;     // Fecha
             DgvListado.Columns[8].HeaderText = "Fecha";
 
-            DgvListado.Columns[9].Width = 100;     // Impuesto
+            DgvListado.Columns[9].Width = 90;     // Impuesto
             DgvListado.Columns[9].HeaderText = "Impuesto";
 
-            DgvListado.Columns[10].Width = 100;    // Total
+            DgvListado.Columns[10].Width = 120;    // Total
             DgvListado.Columns[10].HeaderText = "Total";
 
             DgvListado.Columns[11].Width = 100;    // Estado
@@ -654,5 +654,44 @@ namespace Presentacion
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void BtnBuscarArticulo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                //Creamos un DataTable que es lo que nos va a devolver la capa negocios.
+                DataTable tabla = new DataTable();
+                tabla = NArticulo.BuscarCodigoVenta(TxtCodigo.Text.Trim()); //Trim() borra los espacios al inicio y final
+
+                if (tabla.Rows.Count <= 0)
+                {
+                    this.MensajeError("No existe un articulo con ese código o no hay stock disponible.");
+                }
+                else
+                {
+                    //Se agrega el articulo al detalle
+                    this.AgregarDetalle(
+                            Convert.ToInt32(tabla.Rows[0][0]),
+                            Convert.ToString(tabla.Rows[0][1]),
+                            Convert.ToString(tabla.Rows[0][2]),
+                            Convert.ToInt32(tabla.Rows[0][4]),
+                            Convert.ToDecimal(tabla.Rows[0][3])
+                     );
+
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+        
+
     }
 }

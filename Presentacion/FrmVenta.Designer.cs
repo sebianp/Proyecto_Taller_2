@@ -63,6 +63,7 @@
             this.LblTotal = new System.Windows.Forms.Label();
             this.DgvListado = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.BtnComprobante = new System.Windows.Forms.Button();
             this.TxtCodigo = new System.Windows.Forms.TextBox();
             this.TabGeneral = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -86,7 +87,6 @@
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnInsertar = new System.Windows.Forms.Button();
             this.ErrorIcono = new System.Windows.Forms.ErrorProvider(this.components);
-            this.BtnComprobante = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMostrarDetalle)).BeginInit();
             this.PanelMostrar.SuspendLayout();
@@ -105,21 +105,22 @@
             // 
             this.BtnBuscarArticulo.BackColor = System.Drawing.Color.LightSteelBlue;
             this.BtnBuscarArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnBuscarArticulo.Location = new System.Drawing.Point(754, 31);
+            this.BtnBuscarArticulo.Location = new System.Drawing.Point(355, 25);
             this.BtnBuscarArticulo.Name = "BtnBuscarArticulo";
-            this.BtnBuscarArticulo.Size = new System.Drawing.Size(76, 28);
+            this.BtnBuscarArticulo.Size = new System.Drawing.Size(76, 34);
             this.BtnBuscarArticulo.TabIndex = 17;
-            this.BtnBuscarArticulo.Text = "Buscar";
+            this.BtnBuscarArticulo.Text = "Agregar";
             this.BtnBuscarArticulo.UseVisualStyleBackColor = false;
+            this.BtnBuscarArticulo.Click += new System.EventHandler(this.BtnBuscarArticulo_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(23, 38);
+            this.label7.Location = new System.Drawing.Point(23, 32);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 21);
+            this.label7.Size = new System.Drawing.Size(118, 21);
             this.label7.TabIndex = 17;
-            this.label7.Text = "Artículo";
+            this.label7.Text = "Código Artículo";
             // 
             // groupBox1
             // 
@@ -139,7 +140,7 @@
             this.groupBox1.Controls.Add(this.TxtId);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1157, 161);
+            this.groupBox1.Size = new System.Drawing.Size(1157, 127);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cabecera";
@@ -149,7 +150,7 @@
             this.BtnActualizarTotales.BackColor = System.Drawing.Color.LightSteelBlue;
             this.BtnActualizarTotales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnActualizarTotales.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnActualizarTotales.Location = new System.Drawing.Point(981, 107);
+            this.BtnActualizarTotales.Location = new System.Drawing.Point(981, 85);
             this.BtnActualizarTotales.Name = "BtnActualizarTotales";
             this.BtnActualizarTotales.Size = new System.Drawing.Size(156, 28);
             this.BtnActualizarTotales.TabIndex = 17;
@@ -160,9 +161,8 @@
             // TxtImpuesto
             // 
             this.TxtImpuesto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtImpuesto.Location = new System.Drawing.Point(903, 107);
+            this.TxtImpuesto.Location = new System.Drawing.Point(903, 85);
             this.TxtImpuesto.Name = "TxtImpuesto";
-            this.TxtImpuesto.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.TxtImpuesto.Size = new System.Drawing.Size(59, 28);
             this.TxtImpuesto.TabIndex = 16;
             this.TxtImpuesto.Text = "0,21";
@@ -172,7 +172,7 @@
             this.BtnBuscarCliente.BackColor = System.Drawing.Color.LightSteelBlue;
             this.BtnBuscarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnBuscarCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscarCliente.Location = new System.Drawing.Point(813, 40);
+            this.BtnBuscarCliente.Location = new System.Drawing.Point(813, 29);
             this.BtnBuscarCliente.Name = "BtnBuscarCliente";
             this.BtnBuscarCliente.Size = new System.Drawing.Size(74, 28);
             this.BtnBuscarCliente.TabIndex = 15;
@@ -183,7 +183,7 @@
             // TxtNumComprobante
             // 
             this.TxtNumComprobante.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtNumComprobante.Location = new System.Drawing.Point(556, 107);
+            this.TxtNumComprobante.Location = new System.Drawing.Point(556, 85);
             this.TxtNumComprobante.Name = "TxtNumComprobante";
             this.TxtNumComprobante.Size = new System.Drawing.Size(234, 28);
             this.TxtNumComprobante.TabIndex = 14;
@@ -191,7 +191,7 @@
             // TxtSerieComprobante
             // 
             this.TxtSerieComprobante.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtSerieComprobante.Location = new System.Drawing.Point(326, 107);
+            this.TxtSerieComprobante.Location = new System.Drawing.Point(326, 85);
             this.TxtSerieComprobante.Name = "TxtSerieComprobante";
             this.TxtSerieComprobante.Size = new System.Drawing.Size(220, 28);
             this.TxtSerieComprobante.TabIndex = 13;
@@ -204,7 +204,7 @@
             "FACTURA",
             "BOLETA",
             "TICKET"});
-            this.CboComprobante.Location = new System.Drawing.Point(141, 106);
+            this.CboComprobante.Location = new System.Drawing.Point(141, 84);
             this.CboComprobante.Name = "CboComprobante";
             this.CboComprobante.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.CboComprobante.Size = new System.Drawing.Size(159, 29);
@@ -215,7 +215,7 @@
             // 
             this.TxtNombreCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtNombreCliente.Enabled = false;
-            this.TxtNombreCliente.Location = new System.Drawing.Point(326, 40);
+            this.TxtNombreCliente.Location = new System.Drawing.Point(326, 29);
             this.TxtNombreCliente.Name = "TxtNombreCliente";
             this.TxtNombreCliente.Size = new System.Drawing.Size(464, 28);
             this.TxtNombreCliente.TabIndex = 11;
@@ -224,7 +224,7 @@
             // 
             this.TxtIdCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtIdCliente.Enabled = false;
-            this.TxtIdCliente.Location = new System.Drawing.Point(141, 40);
+            this.TxtIdCliente.Location = new System.Drawing.Point(141, 29);
             this.TxtIdCliente.Name = "TxtIdCliente";
             this.TxtIdCliente.Size = new System.Drawing.Size(159, 28);
             this.TxtIdCliente.TabIndex = 10;
@@ -232,7 +232,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(809, 109);
+            this.label6.Location = new System.Drawing.Point(809, 87);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(96, 21);
             this.label6.TabIndex = 9;
@@ -241,7 +241,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(322, 83);
+            this.label5.Location = new System.Drawing.Point(322, 61);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(45, 21);
             this.label5.TabIndex = 8;
@@ -250,7 +250,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(552, 83);
+            this.label4.Location = new System.Drawing.Point(552, 61);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(68, 21);
             this.label4.TabIndex = 7;
@@ -259,7 +259,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 109);
+            this.label2.Location = new System.Drawing.Point(8, 87);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(127, 21);
             this.label2.TabIndex = 6;
@@ -268,7 +268,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 47);
+            this.label1.Location = new System.Drawing.Point(36, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 21);
             this.label1.TabIndex = 5;
@@ -315,7 +315,7 @@
             this.PanelMostrar.Controls.Add(this.label13);
             this.PanelMostrar.Controls.Add(this.label12);
             this.PanelMostrar.Controls.Add(this.DgvMostrarDetalle);
-            this.PanelMostrar.Location = new System.Drawing.Point(55, 94);
+            this.PanelMostrar.Location = new System.Drawing.Point(6, 59);
             this.PanelMostrar.Name = "PanelMostrar";
             this.PanelMostrar.Size = new System.Drawing.Size(1019, 496);
             this.PanelMostrar.TabIndex = 6;
@@ -393,7 +393,7 @@
             // 
             this.BtnAnular.BackColor = System.Drawing.Color.DarkKhaki;
             this.BtnAnular.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnAnular.Location = new System.Drawing.Point(525, 611);
+            this.BtnAnular.Location = new System.Drawing.Point(527, 561);
             this.BtnAnular.Name = "BtnAnular";
             this.BtnAnular.Size = new System.Drawing.Size(125, 26);
             this.BtnAnular.TabIndex = 5;
@@ -404,7 +404,7 @@
             // ChkSeleccionar
             // 
             this.ChkSeleccionar.AutoSize = true;
-            this.ChkSeleccionar.Location = new System.Drawing.Point(6, 610);
+            this.ChkSeleccionar.Location = new System.Drawing.Point(40, 563);
             this.ChkSeleccionar.Name = "ChkSeleccionar";
             this.ChkSeleccionar.Size = new System.Drawing.Size(108, 25);
             this.ChkSeleccionar.TabIndex = 3;
@@ -436,7 +436,7 @@
             // LblTotal
             // 
             this.LblTotal.AutoSize = true;
-            this.LblTotal.Location = new System.Drawing.Point(891, 614);
+            this.LblTotal.Location = new System.Drawing.Point(908, 32);
             this.LblTotal.Name = "LblTotal";
             this.LblTotal.Size = new System.Drawing.Size(51, 21);
             this.LblTotal.TabIndex = 1;
@@ -455,7 +455,7 @@
             this.DgvListado.Name = "DgvListado";
             this.DgvListado.ReadOnly = true;
             this.DgvListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvListado.Size = new System.Drawing.Size(1158, 548);
+            this.DgvListado.Size = new System.Drawing.Size(1158, 496);
             this.DgvListado.TabIndex = 0;
             this.DgvListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellContentClick);
             this.DgvListado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellDoubleClick);
@@ -475,17 +475,27 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1173, 649);
+            this.tabPage1.Size = new System.Drawing.Size(1193, 652);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // BtnComprobante
+            // 
+            this.BtnComprobante.Location = new System.Drawing.Point(508, 25);
+            this.BtnComprobante.Name = "BtnComprobante";
+            this.BtnComprobante.Size = new System.Drawing.Size(124, 28);
+            this.BtnComprobante.TabIndex = 7;
+            this.BtnComprobante.Text = "Comprobante";
+            this.BtnComprobante.UseVisualStyleBackColor = true;
+            this.BtnComprobante.Click += new System.EventHandler(this.BtnComprobante_Click);
+            // 
             // TxtCodigo
             // 
             this.TxtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtCodigo.Location = new System.Drawing.Point(93, 31);
+            this.TxtCodigo.Location = new System.Drawing.Point(141, 27);
             this.TxtCodigo.Name = "TxtCodigo";
-            this.TxtCodigo.Size = new System.Drawing.Size(655, 28);
+            this.TxtCodigo.Size = new System.Drawing.Size(208, 28);
             this.TxtCodigo.TabIndex = 17;
             this.TxtCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtCodigo_KeyDown);
             // 
@@ -498,7 +508,7 @@
             this.TabGeneral.Multiline = true;
             this.TabGeneral.Name = "TabGeneral";
             this.TabGeneral.SelectedIndex = 0;
-            this.TabGeneral.Size = new System.Drawing.Size(1181, 678);
+            this.TabGeneral.Size = new System.Drawing.Size(1201, 649);
             this.TabGeneral.TabIndex = 2;
             // 
             // tabPage2
@@ -513,7 +523,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1173, 649);
+            this.tabPage2.Size = new System.Drawing.Size(1193, 620);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Nueva Venta";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -532,7 +542,7 @@
             this.groupBox2.Controls.Add(this.BtnBuscarArticulo);
             this.groupBox2.Controls.Add(this.TxtCodigo);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Location = new System.Drawing.Point(6, 173);
+            this.groupBox2.Location = new System.Drawing.Point(6, 139);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1157, 424);
             this.groupBox2.TabIndex = 9;
@@ -549,7 +559,7 @@
             this.PanelArticulos.Controls.Add(this.BtnFiltrarArticulos);
             this.PanelArticulos.Controls.Add(this.TxtBuscarArticulo);
             this.PanelArticulos.Controls.Add(this.label11);
-            this.PanelArticulos.Location = new System.Drawing.Point(6, 82);
+            this.PanelArticulos.Location = new System.Drawing.Point(12, 71);
             this.PanelArticulos.Name = "PanelArticulos";
             this.PanelArticulos.Size = new System.Drawing.Size(1145, 353);
             this.PanelArticulos.TabIndex = 26;
@@ -625,11 +635,11 @@
             // 
             this.BtnVerListado.BackColor = System.Drawing.Color.LightSteelBlue;
             this.BtnVerListado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnVerListado.Location = new System.Drawing.Point(851, 31);
+            this.BtnVerListado.Location = new System.Drawing.Point(452, 25);
             this.BtnVerListado.Name = "BtnVerListado";
-            this.BtnVerListado.Size = new System.Drawing.Size(111, 28);
+            this.BtnVerListado.Size = new System.Drawing.Size(168, 34);
             this.BtnVerListado.TabIndex = 25;
-            this.BtnVerListado.Text = "Ver Lista";
+            this.BtnVerListado.Text = "Ver Lista de Artículos";
             this.BtnVerListado.UseVisualStyleBackColor = false;
             this.BtnVerListado.Click += new System.EventHandler(this.BtnVerListado_Click);
             // 
@@ -702,7 +712,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(253, 611);
+            this.label3.Location = new System.Drawing.Point(253, 577);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(217, 21);
             this.label3.TabIndex = 7;
@@ -711,9 +721,9 @@
             // BtnCancelar
             // 
             this.BtnCancelar.BackColor = System.Drawing.Color.IndianRed;
-            this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnCancelar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelar.Location = new System.Drawing.Point(615, 603);
+            this.BtnCancelar.Location = new System.Drawing.Point(615, 569);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(123, 36);
             this.BtnCancelar.TabIndex = 6;
@@ -723,14 +733,14 @@
             // 
             // BtnInsertar
             // 
-            this.BtnInsertar.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.BtnInsertar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnInsertar.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.BtnInsertar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnInsertar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnInsertar.Location = new System.Drawing.Point(476, 603);
+            this.BtnInsertar.Location = new System.Drawing.Point(476, 569);
             this.BtnInsertar.Name = "BtnInsertar";
             this.BtnInsertar.Size = new System.Drawing.Size(123, 36);
             this.BtnInsertar.TabIndex = 5;
-            this.BtnInsertar.Text = "INSERTAR";
+            this.BtnInsertar.Text = "CONFIRMAR";
             this.BtnInsertar.UseVisualStyleBackColor = false;
             this.BtnInsertar.Click += new System.EventHandler(this.BtnInsertar_Click);
             // 
@@ -738,22 +748,12 @@
             // 
             this.ErrorIcono.ContainerControl = this;
             // 
-            // BtnComprobante
-            // 
-            this.BtnComprobante.Location = new System.Drawing.Point(508, 25);
-            this.BtnComprobante.Name = "BtnComprobante";
-            this.BtnComprobante.Size = new System.Drawing.Size(124, 28);
-            this.BtnComprobante.TabIndex = 7;
-            this.BtnComprobante.Text = "Comprobante";
-            this.BtnComprobante.UseVisualStyleBackColor = true;
-            this.BtnComprobante.Click += new System.EventHandler(this.BtnComprobante_Click);
-            // 
             // FrmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1217, 679);
+            this.ClientSize = new System.Drawing.Size(1217, 653);
             this.Controls.Add(this.TabGeneral);
             this.Name = "FrmVenta";
             this.Text = "Ventas";

@@ -188,5 +188,10 @@ namespace Presentacion
             MessageBox.Show("La lista de archivos de backup se ha actualizado.",
                                 "Lista Actualizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

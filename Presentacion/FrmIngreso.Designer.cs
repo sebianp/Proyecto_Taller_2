@@ -166,6 +166,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.groupBox1);
@@ -179,7 +180,6 @@
             this.tabPage2.Size = new System.Drawing.Size(1173, 649);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Nuevo Ingreso";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -610,6 +610,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage1.Controls.Add(this.PanelMostrar);
             this.tabPage1.Controls.Add(this.BtnAnular);
@@ -625,11 +626,10 @@
             this.tabPage1.Size = new System.Drawing.Size(1173, 649);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // PanelMostrar
             // 
-            this.PanelMostrar.BackColor = System.Drawing.Color.Khaki;
+            this.PanelMostrar.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.PanelMostrar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PanelMostrar.Controls.Add(this.TxtTotalD);
             this.PanelMostrar.Controls.Add(this.TxtImpuestosD);

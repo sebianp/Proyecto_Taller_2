@@ -72,6 +72,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage1.Controls.Add(this.BtnEliminar);
             this.tabPage1.Controls.Add(this.BtnDesactivar);
@@ -88,7 +89,6 @@
             this.tabPage1.Size = new System.Drawing.Size(842, 415);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // BtnEliminar
             // 
@@ -193,7 +193,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.Snow;
+            this.tabPage2.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage2.Controls.Add(this.BtnActualizar);
             this.tabPage2.Controls.Add(this.label3);
@@ -322,6 +322,7 @@
             this.ClientSize = new System.Drawing.Size(857, 456);
             this.Controls.Add(this.TabGeneral);
             this.Name = "FrmCategoria";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Categorias";
             this.Load += new System.EventHandler(this.FrmCategoria_Load);
             this.TabGeneral.ResumeLayout(false);

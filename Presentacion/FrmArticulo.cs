@@ -382,10 +382,6 @@ namespace Presentacion
                 {
                     string rutaCompleta = Path.Combine(this.directorio, imagen);
 
-                    //begin verificacion
-                    //MessageBox.Show("Buscando imagen en: " + rutaCompleta);
-                    //end verificacion
-
                     if (File.Exists(rutaCompleta))
                     {
                         

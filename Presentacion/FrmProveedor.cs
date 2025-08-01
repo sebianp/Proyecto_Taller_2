@@ -69,10 +69,10 @@ namespace Presentacion
             DgvListado.Columns[2].Width = 100;
             DgvListado.Columns[3].Width = 170;
             DgvListado.Columns[4].Width = 100;
-            DgvListado.Columns[5].Width = 100;
-            DgvListado.Columns[6].Width = 120;
-            DgvListado.Columns[7].Width = 100;
-            DgvListado.Columns[8].Width = 120;
+            DgvListado.Columns[5].Width = 130;
+            DgvListado.Columns[6].Width = 180;
+            DgvListado.Columns[7].Width = 130;
+            DgvListado.Columns[8].Width = 200;
 
             //Headers
             DgvListado.Columns[2].HeaderText = "Tipo Persona";
@@ -133,10 +133,13 @@ namespace Presentacion
                 string respuesta = "";
 
                 //El nombre debe tener algun valor porque es obligatorio
-                if (TxtNombre.Text == string.Empty)
+                if (TxtNombre.Text == string.Empty || TxtNumDocumento.Text == string.Empty || TxtDireccion.Text == string.Empty || TxtTelefono.Text == string.Empty)
                 {
                     this.MensajeError("Faltan ingresar datos");
                     ErrorIcono.SetError(TxtNombre, "Ingrese un nombre");
+                    ErrorIcono.SetError(TxtNumDocumento, "Ingrese un número de documento");
+                    ErrorIcono.SetError(TxtDireccion, "Ingrese una dirección");
+                    ErrorIcono.SetError(TxtTelefono, "Ingrese un número de teléfono");
                 }
                 else //En caso de cumplir con el campo obligatorio del nombre, se puede almacenar
                 {
@@ -203,10 +206,13 @@ namespace Presentacion
                 string respuesta = "";
 
                 //El nombre debe tener algun valor porque es obligatorio
-                if (TxtNombre.Text == string.Empty || TxtId.Text == string.Empty)
+                if (TxtNombre.Text == string.Empty || TxtNumDocumento.Text == string.Empty || TxtDireccion.Text == string.Empty || TxtTelefono.Text == string.Empty || TxtId.Text == string.Empty)
                 {
                     this.MensajeError("Faltan ingresar datos");
                     ErrorIcono.SetError(TxtNombre, "Ingrese un nombre");
+                    ErrorIcono.SetError(TxtNumDocumento, "Ingrese un número de documento");
+                    ErrorIcono.SetError(TxtDireccion, "Ingrese una dirección");
+                    ErrorIcono.SetError(TxtTelefono, "Ingrese un número de teléfono");
                 }
                 else //En caso de cumplir con el campo obligatorio del nombre, se puede almacenar
                 {
@@ -250,7 +256,9 @@ namespace Presentacion
             {
                 //Si el check box Seleccionar esta activado se activan las siguientes funcionalidades
                 DgvListado.Columns[0].Visible = true;
-                BtnEliminar.Visible = true;
+                BtnEliminar.Visible = false;
+                BtnActivar.Visible = true;
+                BtnDesactivar.Visible = true;
 
             }
             else
@@ -258,6 +266,8 @@ namespace Presentacion
                 //Si el check box Seleccionar esta desactivado se desactivan las siguientes funcionalidades
                 DgvListado.Columns[0].Visible = false;
                 BtnEliminar.Visible = false;
+                BtnActivar.Visible = false;
+                BtnDesactivar.Visible = false;
             }
         }
 
@@ -311,6 +321,100 @@ namespace Presentacion
                     }
                     this.Listar();
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        //Metodo que se ejecuta al hacer click en Activar: Activa nuevamente un registro de la tabla Persona
+        private void BtnActivar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Verificacion de si hay registros seleccionados o no
+                int seleccionados = 0;
+
+                foreach (DataGridViewRow row in DgvListado.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells["Seleccionar"].Value))
+                    {
+                        seleccionados++;
+                    }
+                }
+
+                if (seleccionados == 0)
+                {
+                    MessageBox.Show("Debe seleccionar al menos un registro para continuar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; // Sale del evento
+                }
+
+                //SI HAY SELECCIONADOS, se pasa a este bloque de código
+                foreach (DataGridViewRow row in DgvListado.Rows)
+                {
+                    bool seleccionado = Convert.ToBoolean(row.Cells["Seleccionar"].Value);
+                    if (seleccionado)
+                    {
+                        int idpersona = Convert.ToInt32(row.Cells["ID"].Value);
+                        string respuesta = NPersona.DarDeAlta(idpersona);
+
+                        if (respuesta != "OK")
+                        {
+                            MessageBox.Show($"Error al dar de alta a la persona con ID {idpersona}: {respuesta}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+
+                MessageBox.Show("Los registros seleccionados fueron dados de alta correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Listar(); //recargar lista
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        //Metodo que al presionar el botón Desactivar de la baja de un registro de la tabla Persona.
+        private void BtnDesactivar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Verificacion de si hay registros seleccionados o no
+                int seleccionados = 0;
+
+                foreach (DataGridViewRow row in DgvListado.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells["Seleccionar"].Value))
+                    {
+                        seleccionados++;
+                    }
+                }
+
+                if (seleccionados == 0)
+                {
+                    MessageBox.Show("Debe seleccionar al menos un registro para continuar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; // Sale del evento
+                }
+
+                //SI HAY SELECCIONADOS, se pasa a este bloque de código
+                foreach (DataGridViewRow row in DgvListado.Rows)
+                {
+                    bool seleccionado = Convert.ToBoolean(row.Cells["Seleccionar"].Value);
+                    if (seleccionado)
+                    {
+                        int idpersona = Convert.ToInt32(row.Cells["ID"].Value);
+                        string respuesta = NPersona.DarDeBaja(idpersona);
+
+                        if (respuesta != "OK")
+                        {
+                            MessageBox.Show($"Error al dar de baja a la persona con ID {idpersona}: {respuesta}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+
+                MessageBox.Show("Los registros seleccionados fueron dados de baja correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Listar(); // Re-carga la lista
             }
             catch (Exception ex)
             {

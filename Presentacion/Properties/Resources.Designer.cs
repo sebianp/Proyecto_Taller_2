@@ -183,6 +183,16 @@ namespace Presentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LIBERTEL_LOGO {
+            get {
+                object obj = ResourceManager.GetObject("LIBERTEL_LOGO", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap refresh_32px {
             get {
                 object obj = ResourceManager.GetObject("refresh_32px", resourceCulture);

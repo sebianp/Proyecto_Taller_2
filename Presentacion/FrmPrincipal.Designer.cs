@@ -62,7 +62,7 @@
             // 
             // menuStrip
             // 
-            this.menuStrip.BackColor = System.Drawing.Color.Khaki;
+            this.menuStrip.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.menuStrip.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MnuAlmacen,
@@ -96,14 +96,14 @@
             // OPC_Categorias
             // 
             this.OPC_Categorias.Name = "OPC_Categorias";
-            this.OPC_Categorias.Size = new System.Drawing.Size(180, 26);
+            this.OPC_Categorias.Size = new System.Drawing.Size(154, 26);
             this.OPC_Categorias.Text = "Cate&gorías";
             this.OPC_Categorias.Click += new System.EventHandler(this.categoríasToolStripMenuItem_Click);
             // 
             // OPC_articulos
             // 
             this.OPC_articulos.Name = "OPC_articulos";
-            this.OPC_articulos.Size = new System.Drawing.Size(180, 26);
+            this.OPC_articulos.Size = new System.Drawing.Size(154, 26);
             this.OPC_articulos.Text = "&Articulos";
             this.OPC_articulos.Click += new System.EventHandler(this.articulosToolStripMenuItem_Click);
             // 
