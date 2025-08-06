@@ -47,7 +47,7 @@ namespace Presentacion
             area.AxisX.LabelStyle.Format = "dd/MM/yyyy";//día/mes/año
             area.AxisX.IntervalType = DateTimeIntervalType.Days;
             
-            //controlar cuántas etiquetas se dibujan
+            //controlador cuantas etiquetas se dibujan
             area.AxisX.Interval = Math.Max(1, dt.Rows.Count / 10);
 
             area.AxisY.Title = "Total Ventas";
@@ -70,5 +70,7 @@ namespace Presentacion
             //Título del gráfico
             chartVentas.Titles.Add("Evolución de Ventas");
         }
+
+        
     }
 }

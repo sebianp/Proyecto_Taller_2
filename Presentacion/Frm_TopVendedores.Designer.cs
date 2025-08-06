@@ -44,7 +44,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Khaki;
+            this.panel1.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.panel1.Controls.Add(this.BtnGenerarGrafico);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -52,7 +52,7 @@
             this.panel1.Controls.Add(this.dtpFechaInicio);
             this.panel1.Location = new System.Drawing.Point(-15, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1006, 96);
+            this.panel1.Size = new System.Drawing.Size(1006, 86);
             this.panel1.TabIndex = 2;
             // 
             // BtnGenerarGrafico
@@ -110,13 +110,13 @@
             this.chartRankingVendedores.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartRankingVendedores.Legends.Add(legend1);
-            this.chartRankingVendedores.Location = new System.Drawing.Point(-15, 91);
+            this.chartRankingVendedores.Location = new System.Drawing.Point(-15, 86);
             this.chartRankingVendedores.Name = "chartRankingVendedores";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chartRankingVendedores.Series.Add(series1);
-            this.chartRankingVendedores.Size = new System.Drawing.Size(1006, 436);
+            this.chartRankingVendedores.Size = new System.Drawing.Size(1006, 441);
             this.chartRankingVendedores.TabIndex = 3;
             this.chartRankingVendedores.Text = "chart1";
             // 

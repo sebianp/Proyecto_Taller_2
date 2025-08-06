@@ -95,36 +95,36 @@ namespace Presentacion
                 return;
             }
 
-            // 0: ID (oculto)
+            //0: ID (oculto)
             DgvMostrarDetalle.Columns[0].Visible = false;
 
-            // 1: CODIGO
+            //1: CODIGO
             DgvMostrarDetalle.Columns[1].Visible = true;
             DgvMostrarDetalle.Columns[1].HeaderText = "Código";
             DgvMostrarDetalle.Columns[1].Width = 100;
 
-            // 2: ARTICULO
+            //2: ARTICULO
             DgvMostrarDetalle.Columns[2].Visible = true;
             DgvMostrarDetalle.Columns[2].HeaderText = "Artículo";
             DgvMostrarDetalle.Columns[2].Width = 200;
 
-            // 3: CANTIDAD
+            //3: CANTIDAD
             DgvMostrarDetalle.Columns[3].Visible = true;
             DgvMostrarDetalle.Columns[3].HeaderText = "Cantidad";
             DgvMostrarDetalle.Columns[3].Width = 80;
-            DgvMostrarDetalle.Columns[3].DefaultCellStyle.Format = "N0";  // entero
+            DgvMostrarDetalle.Columns[3].DefaultCellStyle.Format = "N0"; //entero
 
-            // 4: PRECIO
+            //4: PRECIO
             DgvMostrarDetalle.Columns[4].Visible = true;
             DgvMostrarDetalle.Columns[4].HeaderText = "Precio";
             DgvMostrarDetalle.Columns[4].Width = 100;
-            DgvMostrarDetalle.Columns[4].DefaultCellStyle.Format = "C2";  // moneda
+            DgvMostrarDetalle.Columns[4].DefaultCellStyle.Format = "C2"; //moneda
 
-            // 5: IMPORTE
+            //5: IMPORTE
             DgvMostrarDetalle.Columns[5].Visible = true;
             DgvMostrarDetalle.Columns[5].HeaderText = "Importe";
             DgvMostrarDetalle.Columns[5].Width = 100;
-            DgvMostrarDetalle.Columns[5].DefaultCellStyle.Format = "C2";  // moneda
+            DgvMostrarDetalle.Columns[5].DefaultCellStyle.Format = "C2"; //moneda
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)

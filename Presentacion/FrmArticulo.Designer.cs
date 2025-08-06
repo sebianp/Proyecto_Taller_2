@@ -67,6 +67,8 @@
             this.BtnActivar = new System.Windows.Forms.Button();
             this.ChkSeleccionar = new System.Windows.Forms.CheckBox();
             this.BtnBuscar = new System.Windows.Forms.Button();
+            this.lblInstruccionDobleClick = new System.Windows.Forms.Label();
+            this.toolTipGeneral = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicImagen)).BeginInit();
@@ -204,8 +206,10 @@
             this.TxtStock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtStock.Location = new System.Drawing.Point(877, 334);
             this.TxtStock.Name = "TxtStock";
+            this.TxtStock.ReadOnly = true;
             this.TxtStock.Size = new System.Drawing.Size(123, 28);
             this.TxtStock.TabIndex = 23;
+            this.TxtStock.Visible = false;
             this.TxtStock.TextChanged += new System.EventHandler(this.TxtStock_TextChanged);
             this.TxtStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtStock_KeyPress);
             // 
@@ -217,6 +221,7 @@
             this.TxtStk.Size = new System.Drawing.Size(69, 21);
             this.TxtStk.TabIndex = 22;
             this.TxtStk.Text = "Stock (*)";
+            this.TxtStk.Visible = false;
             // 
             // TxtPrecioVenta
             // 
@@ -225,6 +230,7 @@
             this.TxtPrecioVenta.Name = "TxtPrecioVenta";
             this.TxtPrecioVenta.Size = new System.Drawing.Size(123, 28);
             this.TxtPrecioVenta.TabIndex = 21;
+            this.TxtPrecioVenta.Visible = false;
             this.TxtPrecioVenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPrecioVenta_KeyPress);
             // 
             // TxtPrice
@@ -235,6 +241,7 @@
             this.TxtPrice.Size = new System.Drawing.Size(74, 21);
             this.TxtPrice.TabIndex = 20;
             this.TxtPrice.Text = "Precio (*)";
+            this.TxtPrice.Visible = false;
             // 
             // PanelCodigo
             // 
@@ -418,6 +425,7 @@
             // 
             this.BtnReporte.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.BtnReporte.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.BtnReporte.Controls.Add(this.lblInstruccionDobleClick);
             this.BtnReporte.Controls.Add(this.button1);
             this.BtnReporte.Controls.Add(this.BtnEliminar);
             this.BtnReporte.Controls.Add(this.BtnDesactivar);
@@ -507,6 +515,17 @@
             this.BtnBuscar.UseVisualStyleBackColor = false;
             this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
             // 
+            // lblInstruccionDobleClick
+            // 
+            this.lblInstruccionDobleClick.AutoSize = true;
+            this.lblInstruccionDobleClick.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblInstruccionDobleClick.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInstruccionDobleClick.Location = new System.Drawing.Point(983, 40);
+            this.lblInstruccionDobleClick.Name = "lblInstruccionDobleClick";
+            this.lblInstruccionDobleClick.Size = new System.Drawing.Size(254, 16);
+            this.lblInstruccionDobleClick.TabIndex = 8;
+            this.lblInstruccionDobleClick.Text = "🛈 Doble clic sobre un artículo para modificarlo\n";
+            // 
             // FrmArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -570,5 +589,7 @@
         private System.Windows.Forms.TextBox TxtPrecioVenta;
         private System.Windows.Forms.Label TxtPrice;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblInstruccionDobleClick;
+        private System.Windows.Forms.ToolTip toolTipGeneral;
     }
 }

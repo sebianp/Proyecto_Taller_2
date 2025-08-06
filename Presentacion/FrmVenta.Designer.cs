@@ -87,6 +87,7 @@
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnInsertar = new System.Windows.Forms.Button();
             this.ErrorIcono = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblInstruccionDobleClick = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMostrarDetalle)).BeginInit();
             this.PanelMostrar.SuspendLayout();
@@ -551,15 +552,16 @@
             // 
             // PanelArticulos
             // 
-            this.PanelArticulos.BackColor = System.Drawing.Color.Khaki;
+            this.PanelArticulos.BackColor = System.Drawing.Color.Snow;
             this.PanelArticulos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelArticulos.Controls.Add(this.lblInstruccionDobleClick);
             this.PanelArticulos.Controls.Add(this.LblTotalArticulos);
             this.PanelArticulos.Controls.Add(this.DgvArticulos);
             this.PanelArticulos.Controls.Add(this.BtnCerrarArticulos);
             this.PanelArticulos.Controls.Add(this.BtnFiltrarArticulos);
             this.PanelArticulos.Controls.Add(this.TxtBuscarArticulo);
             this.PanelArticulos.Controls.Add(this.label11);
-            this.PanelArticulos.Location = new System.Drawing.Point(12, 71);
+            this.PanelArticulos.Location = new System.Drawing.Point(12, 32);
             this.PanelArticulos.Name = "PanelArticulos";
             this.PanelArticulos.Size = new System.Drawing.Size(1145, 353);
             this.PanelArticulos.TabIndex = 26;
@@ -579,6 +581,7 @@
             this.DgvArticulos.AllowUserToAddRows = false;
             this.DgvArticulos.AllowUserToDeleteRows = false;
             this.DgvArticulos.AllowUserToOrderColumns = true;
+            this.DgvArticulos.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.DgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvArticulos.Location = new System.Drawing.Point(27, 48);
             this.DgvArticulos.Name = "DgvArticulos";
@@ -590,7 +593,7 @@
             // 
             // BtnCerrarArticulos
             // 
-            this.BtnCerrarArticulos.BackColor = System.Drawing.Color.DimGray;
+            this.BtnCerrarArticulos.BackColor = System.Drawing.Color.Silver;
             this.BtnCerrarArticulos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnCerrarArticulos.Font = new System.Drawing.Font("Microsoft Tai Le", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCerrarArticulos.ForeColor = System.Drawing.Color.Red;
@@ -748,6 +751,17 @@
             // 
             this.ErrorIcono.ContainerControl = this;
             // 
+            // lblInstruccionDobleClick
+            // 
+            this.lblInstruccionDobleClick.AutoSize = true;
+            this.lblInstruccionDobleClick.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblInstruccionDobleClick.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInstruccionDobleClick.Location = new System.Drawing.Point(540, 29);
+            this.lblInstruccionDobleClick.Name = "lblInstruccionDobleClick";
+            this.lblInstruccionDobleClick.Size = new System.Drawing.Size(243, 16);
+            this.lblInstruccionDobleClick.TabIndex = 9;
+            this.lblInstruccionDobleClick.Text = "🛈 Doble clic sobre un artículo para agregarlo";
+            // 
             // FrmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -840,5 +854,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TxtId;
         private System.Windows.Forms.Button BtnComprobante;
+        private System.Windows.Forms.Label lblInstruccionDobleClick;
     }
 }

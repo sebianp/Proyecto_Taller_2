@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.nudTopN = new System.Windows.Forms.NumericUpDown();
@@ -47,7 +47,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Khaki;
+            this.panel1.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.nudTopN);
             this.panel1.Controls.Add(this.btnTopProductos);
@@ -146,16 +146,16 @@
             // 
             // chartTopProductos
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartTopProductos.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartTopProductos.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chartTopProductos.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartTopProductos.Legends.Add(legend1);
             this.chartTopProductos.Location = new System.Drawing.Point(-1, 93);
             this.chartTopProductos.Name = "chartTopProductos";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartTopProductos.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartTopProductos.Series.Add(series1);
             this.chartTopProductos.Size = new System.Drawing.Size(1061, 436);
             this.chartTopProductos.TabIndex = 3;
             this.chartTopProductos.Text = "chart1";

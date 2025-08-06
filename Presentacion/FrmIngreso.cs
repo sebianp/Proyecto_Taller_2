@@ -162,7 +162,7 @@ namespace Presentacion
             DgvArticulos.Columns[4].Width = 150;
             DgvArticulos.Columns[5].Width = 100;
             DgvArticulos.Columns[5].HeaderText = "Precio Venta";
-            DgvArticulos.Columns[6].Width = 600;
+            DgvArticulos.Columns[6].Width = 60;
             DgvArticulos.Columns[7].Width = 200;
             DgvArticulos.Columns[7].HeaderText = "Descripción";
             DgvArticulos.Columns[8].Width = 100;
@@ -344,8 +344,26 @@ namespace Presentacion
             }
         }
 
+        //Refresca la lista de artículos al poner "VER LISTADO"
+        private void CargarListadoArticulos()
+        {
+            try
+            {
+                string vacio = string.Empty;
+                DgvArticulos.DataSource = NArticulo.Buscar(vacio);
+                this.FormatoArticulo();
+                LblTotalArticulos.Text = "Total Registros: " + Convert.ToString(DgvArticulos.Rows.Count);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void BtnVerListado_Click(object sender, EventArgs e)
         {
+            CargarListadoArticulos(); //Actualiza la lista de productos del panel
+            //Luego de actualizar, muestra la lista del panel.
             PanelArticulos.Visible = true;
         }
 

@@ -119,6 +119,7 @@
             this.chartVentas.Size = new System.Drawing.Size(1034, 445);
             this.chartVentas.TabIndex = 1;
             this.chartVentas.Text = "chart1";
+            
             // 
             // FrmGrafico_VentasPorFecha
             // 

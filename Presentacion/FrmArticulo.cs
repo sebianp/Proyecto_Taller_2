@@ -159,6 +159,8 @@ namespace Presentacion
             this.Listar();
             this.CargarCategoria();
             BtnGuardarCodigo.Enabled = false;
+            //mensaje sobre el datagrid avisando que puede hacer doble click para modificar.
+            toolTipGeneral.SetToolTip(DgvListado, "Doble clic en una fila para modificar el artículo");
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
@@ -250,15 +252,13 @@ namespace Presentacion
                 //1) Validaciones básicas de campos obligatorios
                 if (string.IsNullOrWhiteSpace(TxtNombre.Text) ||
                     string.IsNullOrWhiteSpace(TxtImagen.Text) ||
-                    string.IsNullOrWhiteSpace(CboCategoria.Text) ||
-                    string.IsNullOrWhiteSpace(TxtPrecioVenta.Text) ||
-                    string.IsNullOrWhiteSpace(TxtStock.Text))
+                    string.IsNullOrWhiteSpace(CboCategoria.Text))
                 {
                     this.MensajeError("Faltan ingresar datos");
                     ErrorIcono.SetError(TxtNombre, "Ingrese un nombre");
                     ErrorIcono.SetError(CboCategoria, "Seleccione una Categoría");
-                    ErrorIcono.SetError(TxtPrecioVenta, "Ingrese un Precio de Venta");
-                    ErrorIcono.SetError(TxtStock, "Ingrese un valor de Stock");
+                    //ErrorIcono.SetError(TxtPrecioVenta, "Ingrese un Precio de Venta");
+                    //ErrorIcono.SetError(TxtStock, "Ingrese un valor de Stock");
                     ErrorIcono.SetError(TxtImagen, "Ingrese una imagen representativa");
                     return;
                 }
@@ -279,13 +279,15 @@ namespace Presentacion
                     return; //El sistema sale antes insertar en la BD
                 }
 
+                //Variable de los campos que se van a cargar por defecto en el alta del producto.
+
                 //3)Inserto el artículo
                 string respuesta = NArticulo.Insertar(
                     Convert.ToInt32(CboCategoria.SelectedValue),
                     TxtCodigo.Text.Trim(),
                     TxtNombre.Text.Trim(),
-                    Convert.ToDecimal(TxtPrecioVenta.Text),
-                    Convert.ToInt32(TxtStock.Text),
+                    0,
+                    0,
                     TxtDescripcion.Text.Trim(),
                     nombreArchivo
                 );
@@ -363,8 +365,16 @@ namespace Presentacion
             try
             {
                 this.Limpiar();
+                //Labels
+                TxtPrice.Visible = true;
+                TxtStk.Visible = true;
+                //textBox
+                TxtPrecioVenta.Visible = true;
+                TxtStock.Visible = true;
+                //Botones
                 BtnActualizar.Visible = true;
                 BtnInsertar.Visible = false;
+                //TextBox del producto
                 TxtId.Text = Convert.ToString(DgvListado.CurrentRow.Cells["ID"].Value);
                 CboCategoria.SelectedValue = Convert.ToString(DgvListado.CurrentRow.Cells["idcategoria"].Value);
                 TxtCodigo.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Codigo"].Value);
@@ -480,6 +490,13 @@ namespace Presentacion
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.Limpiar();
+            //Labels
+            TxtPrice.Visible = false;
+            TxtStk.Visible = false;
+            //textBox
+            TxtPrecioVenta.Visible = false;
+            TxtStock.Visible = false;
+            //Regresa al tab de listado
             TabGeneral.SelectedIndex = 0;
         }
 

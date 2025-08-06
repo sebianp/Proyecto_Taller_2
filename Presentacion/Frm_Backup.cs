@@ -77,7 +77,7 @@ namespace Presentacion
             {
                 Filter = "Backup (*.bak)|*.bak",
                 InitialDirectory = backupFolder,
-                // Generamos un nombre con fecha y hora legibles
+                //Genera un nombre con fecha y hora
                 FileName = $"CopiaSeguridad_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.bak"
             })
             {
