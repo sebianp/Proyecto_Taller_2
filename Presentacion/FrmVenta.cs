@@ -25,7 +25,7 @@ namespace Presentacion
             {
                 //Agregamos como recurso del Datagrid el listado obtenido de la BD
                 //Esto permite cargar y mostrar los datos de la tabla Categoria
-                DgvListado.DataSource = NVenta.Listar();
+                DgvListado.DataSource = NVenta.ListarVentasVendedor(Variables.IdUsuario);
                 this.Formato();
                 this.Limpiar();
                 LblTotal.Text = "Total Registros: " + Convert.ToString(DgvListado.Rows.Count); //Cuenta todas las filas
@@ -67,54 +67,93 @@ namespace Presentacion
                 return;
             }
 
-            DgvListado.Columns[0].Visible = false; // Seleccionar (checkbox)
+            DgvListado.Columns[0].Visible = false; //Seleccionar
             DgvListado.Columns[0].Width = 100;
 
-            DgvListado.Columns[1].Visible = false; // idventa
-            DgvListado.Columns[2].Visible = false; // idusuario
+            DgvListado.Columns[1].Visible = false; //idventa
+            DgvListado.Columns[2].Visible = false; //idusuario
 
-            DgvListado.Columns[3].Width = 150;     // Usuario
+            DgvListado.Columns[3].Width = 150;     //Usuario
             DgvListado.Columns[3].HeaderText = "Vendedor";
 
-            DgvListado.Columns[4].Width = 170;     // Cliente
+            DgvListado.Columns[4].Width = 170;     //Cliente
             DgvListado.Columns[4].HeaderText = "Cliente";
 
-            DgvListado.Columns[5].Width = 100;     // Documento
+            DgvListado.Columns[5].Width = 100;     //Documento
             DgvListado.Columns[5].HeaderText = "Documento";
 
-            DgvListado.Columns[6].Width = 70;      // Serie
+            DgvListado.Columns[6].Width = 70;      //Serie
             DgvListado.Columns[6].HeaderText = "Serie";
 
-            DgvListado.Columns[7].Width = 90;      // Número
+            DgvListado.Columns[7].Width = 90;      //Número
             DgvListado.Columns[7].HeaderText = "Número";
 
-            DgvListado.Columns[8].Width = 140;     // Fecha
+            DgvListado.Columns[8].Width = 140;     //Fecha
             DgvListado.Columns[8].HeaderText = "Fecha";
 
-            DgvListado.Columns[9].Width = 90;     // Impuesto
+            DgvListado.Columns[9].Width = 90;     //Impuesto
             DgvListado.Columns[9].HeaderText = "Impuesto";
 
-            DgvListado.Columns[10].Width = 120;    // Total
+            DgvListado.Columns[10].Width = 120;    //Total
             DgvListado.Columns[10].HeaderText = "Total";
 
-            DgvListado.Columns[11].Width = 100;    // Estado
+            DgvListado.Columns[11].Width = 100;    //Estado
             DgvListado.Columns[11].HeaderText = "Estado";
         }
 
         private void FormatoArticulo()
         {
-            DgvArticulos.Columns[1].Visible = false;
-            DgvArticulos.Columns[1].Width = 100;
+            //Ocultas
+            DgvArticulos.Columns[0].Visible = false; // ID
+            DgvArticulos.Columns[1].Visible = false; //idcategoria
+            DgvArticulos.Columns[11].Visible = false; //imagen
+
+            //categoria
             DgvArticulos.Columns[2].HeaderText = "Categoría";
-            DgvArticulos.Columns[3].Width = 100;
+            DgvArticulos.Columns[2].Width = 140;
+
+            //codigo
             DgvArticulos.Columns[3].HeaderText = "Código";
+            DgvArticulos.Columns[3].Width = 100;
+
+            //nombre
+            DgvArticulos.Columns[4].HeaderText = "Nombre";
             DgvArticulos.Columns[4].Width = 150;
+
+            //marca
+            DgvArticulos.Columns[5].HeaderText = "Marca";
             DgvArticulos.Columns[5].Width = 100;
-            DgvArticulos.Columns[5].HeaderText = "Precio Venta";
-            DgvArticulos.Columns[6].Width = 60;
-            DgvArticulos.Columns[7].Width = 200;
-            DgvArticulos.Columns[7].HeaderText = "Descripción";
+
+            //memoria
+            DgvArticulos.Columns[6].HeaderText = "Memoria";
+            DgvArticulos.Columns[6].Width = 100;
+
+            //color
+            DgvArticulos.Columns[7].HeaderText = "Color";
+            DgvArticulos.Columns[7].Width = 90;
+
+            //precio de venta
+            DgvArticulos.Columns[8].HeaderText = "Precio Venta";
             DgvArticulos.Columns[8].Width = 100;
+            DgvArticulos.Columns[8].DefaultCellStyle.Format = "N2";
+            DgvArticulos.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            //stock
+            DgvArticulos.Columns[9].HeaderText = "Stock";
+            DgvArticulos.Columns[9].Width = 60;
+            DgvArticulos.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            //descripción
+            DgvArticulos.Columns[10].HeaderText = "Descripción";
+            DgvArticulos.Columns[10].Width = 220;
+
+            // Estado
+            DgvArticulos.Columns[12].HeaderText = "Estado";
+            DgvArticulos.Columns[12].Width = 60;
+
+            DgvArticulos.ReadOnly = true;
+            DgvArticulos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DgvArticulos.MultiSelect = false;
         }
 
         //Metodo Limpiar: Vacia las textbox de mantenimiento y buscar de listado
@@ -154,43 +193,56 @@ namespace Presentacion
 
         private void CrearTabla()
         {
-            this.DtDetalle.Columns.Add("idarticulo", System.Type.GetType("System.Int32"));
-            this.DtDetalle.Columns.Add("codigo", System.Type.GetType("System.String"));
-            this.DtDetalle.Columns.Add("articulo", System.Type.GetType("System.String"));
-            this.DtDetalle.Columns.Add("stock", System.Type.GetType("System.Int32"));
-            this.DtDetalle.Columns.Add("cantidad", System.Type.GetType("System.Int32"));
-            this.DtDetalle.Columns.Add("precio", System.Type.GetType("System.Decimal"));
-            this.DtDetalle.Columns.Add("descuento", System.Type.GetType("System.Int32"));
-            this.DtDetalle.Columns.Add("importe", System.Type.GetType("System.Decimal"));
+            this.DtDetalle.Columns.Add("idarticulo", typeof(int));
+            this.DtDetalle.Columns.Add("codigo", typeof(string));
+            this.DtDetalle.Columns.Add("articulo", typeof(string));
+            this.DtDetalle.Columns.Add("marca", typeof(string));
+            this.DtDetalle.Columns.Add("memoria", typeof(string));
+            this.DtDetalle.Columns.Add("color", typeof(string));
+            this.DtDetalle.Columns.Add("stock", typeof(int));
+            this.DtDetalle.Columns.Add("cantidad", typeof(int));
+            this.DtDetalle.Columns.Add("precio", typeof(decimal));
+            this.DtDetalle.Columns.Add("descuento", typeof(decimal));//decimal
+            this.DtDetalle.Columns.Add("importe", typeof(decimal));
 
-            //Indico que la fuente de datos para el Data Grid View sea el dataTable DtDetalle
             DgvDetalle.DataSource = this.DtDetalle;
 
-            //Formato de la tabla
-            DgvDetalle.Columns[0].Visible = false;
-            DgvDetalle.Columns[1].HeaderText = "Código";
-            DgvDetalle.Columns[1].Width = 120;
-            DgvDetalle.Columns[2].HeaderText = "Artículo";
-            DgvDetalle.Columns[2].Width = 250;
-            DgvDetalle.Columns[3].HeaderText = "Stock";
-            DgvDetalle.Columns[3].Width = 50;
-            DgvDetalle.Columns[4].HeaderText = "Cantidad";
-            DgvDetalle.Columns[4].Width = 80;
-            DgvDetalle.Columns[5].HeaderText = "Precio";
-            DgvDetalle.Columns[5].Width = 150;
-            DgvDetalle.Columns[6].HeaderText = "Descuento (%)";
-            DgvDetalle.Columns[6].Width = 150;
-            DgvDetalle.Columns[7].HeaderText = "Importe";
-            DgvDetalle.Columns[7].Width = 150;
+            //formato de columnas
+            DgvDetalle.Columns["idarticulo"].Visible = false;
+            DgvDetalle.Columns["codigo"].HeaderText = "Código";
+            DgvDetalle.Columns["codigo"].Width = 100;
+            DgvDetalle.Columns["articulo"].HeaderText = "Artículo";
+            DgvDetalle.Columns["articulo"].Width = 180;
+            DgvDetalle.Columns["marca"].HeaderText = "Marca";
+            DgvDetalle.Columns["marca"].Width = 100;
+            DgvDetalle.Columns["memoria"].HeaderText = "Memoria";
+            DgvDetalle.Columns["memoria"].Width = 100;
+            DgvDetalle.Columns["color"].HeaderText = "Color";
+            DgvDetalle.Columns["color"].Width = 100;
+            DgvDetalle.Columns["stock"].HeaderText = "Stock";
+            DgvDetalle.Columns["stock"].Width = 50;
+            DgvDetalle.Columns["cantidad"].HeaderText = "Cantidad";
+            DgvDetalle.Columns["cantidad"].Width = 80;
+            DgvDetalle.Columns["precio"].HeaderText = "Precio";
+            DgvDetalle.Columns["precio"].Width = 100;
+            DgvDetalle.Columns["descuento"].HeaderText = "Descuento (%)";
+            DgvDetalle.Columns["descuento"].Width = 100;
+            DgvDetalle.Columns["importe"].HeaderText = "Importe";
+            DgvDetalle.Columns["importe"].Width = 100;
 
-            DgvDetalle.Columns[1].ReadOnly = true;
-            DgvDetalle.Columns[2].ReadOnly = true;
-            DgvDetalle.Columns[3].ReadOnly = true;
-            DgvDetalle.Columns[5].ReadOnly = true;
-            DgvDetalle.Columns[7].ReadOnly = true;
+            //columnas de solo lectura
+            DgvDetalle.Columns["codigo"].ReadOnly = true;
+            DgvDetalle.Columns["articulo"].ReadOnly = true;
+            DgvDetalle.Columns["marca"].ReadOnly = true;
+            DgvDetalle.Columns["memoria"].ReadOnly = true;
+            DgvDetalle.Columns["color"].ReadOnly = true;
+            DgvDetalle.Columns["stock"].ReadOnly = true;
+            DgvDetalle.Columns["precio"].ReadOnly = true;
+            DgvDetalle.Columns["importe"].ReadOnly = true;
 
 
         }
+
         private void FrmVenta_Load(object sender, EventArgs e)
         {
             this.Listar();
@@ -233,8 +285,11 @@ namespace Presentacion
                                 Convert.ToInt32(tabla.Rows[0][0]), //idarticulo
                                 Convert.ToString(tabla.Rows[0][1]), //codigo
                                 Convert.ToString(tabla.Rows[0][2]), //nombre
-                                Convert.ToInt32(tabla.Rows[0][4]), //precio_venta
-                                Convert.ToDecimal(tabla.Rows[0][3]) //stock
+                                Convert.ToString(tabla.Rows[0][3]), //marca
+                                Convert.ToString(tabla.Rows[0][4]), //memoria
+                                Convert.ToString(tabla.Rows[0][5]), //color
+                                Convert.ToInt32(tabla.Rows[0][7]),  //stock
+                                Convert.ToDecimal(tabla.Rows[0][6]) //precio_venta
                             );
                     }
                 }
@@ -246,7 +301,7 @@ namespace Presentacion
             }
         }
 
-        private void AgregarDetalle(int IdArticulo, string Codigo, string Nombre,int Stock, decimal Precio)
+        private void AgregarDetalle(int IdArticulo, string Codigo, string Nombre, string Marca, string Memoria, string Color, int Stock, decimal Precio)
         {
             bool agregar = true;
 
@@ -254,10 +309,15 @@ namespace Presentacion
             foreach (DataRow FilaTemp in DtDetalle.Rows)
             {
                 //Si el id de un articulo que estoy por agregar ya existe, entonces no se agrega
-                if (Convert.ToInt32(FilaTemp["idarticulo"]) == IdArticulo)
-                {
+                if (
+                    Convert.ToInt32(FilaTemp["idarticulo"]) == IdArticulo &&
+                    Convert.ToString(FilaTemp["marca"]) == Marca &&
+                    Convert.ToString(FilaTemp["memoria"]) == Memoria &&
+                    Convert.ToString(FilaTemp["color"]) == Color
+                 ){
                     agregar = false;
-                    this.MensajeError("El artículo ya ha sido agregado al detalle.");
+                    this.MensajeError("El artículo con la misma Marca, Memoria y Color ya fue agregado.");
+                    break;
                 }
             }
 
@@ -270,6 +330,9 @@ namespace Presentacion
                 Fila["idarticulo"] = IdArticulo;
                 Fila["codigo"] = Codigo;
                 Fila["articulo"] = Nombre;
+                Fila["marca"] = Marca;
+                Fila["memoria"] = Memoria;
+                Fila["color"] = Color;
                 Fila["stock"] = Stock;
                 Fila["cantidad"] = 1;
                 Fila["precio"] = Precio;
@@ -283,7 +346,7 @@ namespace Presentacion
                 this.CalcularTotales();
 
                 //Mensaje de exito
-                this.MensajeOk("Se agrego el articulo: " + Nombre + " al detalle.");
+                this.MensajeOk($"Se agregó el artículo: {Nombre} ({Marca} - {Memoria} - {Color}) al detalle.");
             }
 
 
@@ -338,8 +401,13 @@ namespace Presentacion
             try
             {
                 string vacio = string.Empty;
+
+                DgvArticulos.Columns.Clear();//evita columnas duplicadas
+                DgvArticulos.AutoGenerateColumns = true;
+
                 DgvArticulos.DataSource = NArticulo.BuscarVenta(vacio);
                 this.FormatoArticulo();
+
                 LblTotalArticulos.Text = "Total Registros: " + Convert.ToString(DgvArticulos.Rows.Count);
             }
             catch (Exception ex)
@@ -352,11 +420,15 @@ namespace Presentacion
         {
             CargarListadoArticulos(); //Actualiza la lista de productos del panel
             //Luego de actualizar, muestra la lista del panel.
+            BtnInsertar.Enabled = false;
+            BtnCancelar.Enabled = false;
             PanelArticulos.Visible = true;
         }
 
         private void BtnCerrarArticulos_Click(object sender, EventArgs e)
         {
+            BtnInsertar.Enabled = true;
+            BtnCancelar.Enabled = true;
             PanelArticulos.Visible = false;
 
         }
@@ -377,53 +449,99 @@ namespace Presentacion
 
         private void DgvArticulos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //Declaramos las variables que vamos a usar
+            //Variables que utilozo
             int IdArticulo;
-            string Codigo, Nombre;
+            string Codigo, Nombre, Marca, Memoria, Color;
             decimal Precio;
             int Stock;
 
-            //Agregamos a las variables los valores de la fila a la que se hizo doble click
+            //Cargo los valores necesarios
             IdArticulo = Convert.ToInt32(DgvArticulos.CurrentRow.Cells["ID"].Value);
             Codigo = Convert.ToString(DgvArticulos.CurrentRow.Cells["Codigo"].Value);
             Nombre = Convert.ToString(DgvArticulos.CurrentRow.Cells["Nombre"].Value);
+            Marca = Convert.ToString(DgvArticulos.CurrentRow.Cells["Marca"].Value);
+            Memoria = Convert.ToString(DgvArticulos.CurrentRow.Cells["Memoria"].Value);
+            Color = Convert.ToString(DgvArticulos.CurrentRow.Cells["Color"].Value);
             Stock = Convert.ToInt32(DgvArticulos.CurrentRow.Cells["Stock"].Value);
             Precio = Convert.ToDecimal(DgvArticulos.CurrentRow.Cells["Precio_Venta"].Value);
 
-            //Cargamos al detalle
-            this.AgregarDetalle(IdArticulo, Codigo, Nombre, Stock, Precio);
+            //Paso al metodo de agregarDetalle para el carrito
+            this.AgregarDetalle(IdArticulo, Codigo, Nombre, Marca, Memoria, Color, Stock, Precio);
         }
 
         private void DgvDetalle_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            DataRow Fila = (DataRow)DtDetalle.Rows[e.RowIndex];
-            string Articulo = Convert.ToString(Fila["articulo"]);
-            int Cantidad = Convert.ToInt32(Fila["cantidad"]);
-            int Stock = Convert.ToInt32(Fila["stock"]);
-            decimal Precio = Convert.ToDecimal(Fila["precio"]);
-            decimal Descuento = Convert.ToDecimal(Fila["descuento"]);
+            if (e.RowIndex < 0 || e.RowIndex >= DtDetalle.Rows.Count) return;
 
-            //Control de cantidades y stock
-            if (Cantidad > Stock)
+            DataRow Fila = DtDetalle.Rows[e.RowIndex];
+
+            string Articulo = Convert.ToString(Fila["articulo"]);
+            int Cantidad = 1;
+            int Stock = 0;
+            decimal Precio = 0m;
+            decimal Descuento = 0m;
+
+            // cantidad segura (mín 1; máx Stock)
+            int.TryParse(Convert.ToString(Fila["cantidad"]), out Cantidad);
+            if (Cantidad < 1) Cantidad = 1;
+
+            int.TryParse(Convert.ToString(Fila["stock"]), out Stock);
+            if (Stock > 0 && Cantidad > Stock)
             {
                 Cantidad = Stock;
-                this.MensajeError("La cantidad de venta de " + Articulo + " no puede superar el stock disponible. (Unidades Disponibles: " + Stock + ")");
-                Fila["Cantidad"] = Cantidad;
+                this.MensajeError($"La cantidad de venta de {Articulo} no puede superar el stock disponible. (Unidades disponibles: {Stock})");
             }
-            else if (Cantidad <= 0)
-            {
-                Cantidad = 1;
-                this.MensajeError("La cantidad de venta de " + Articulo + " no puede ser cero ni negativo.");
-                Fila["Cantidad"] = Cantidad;
-            }
+            Fila["cantidad"] = Cantidad;
 
-                //Calculamos el importe
-                Fila["importe"] = (Precio * Cantidad) - ((Precio * Cantidad)*Descuento/100);
+            // precio
+            decimal.TryParse(Convert.ToString(Fila["precio"]), out Precio);
 
-            //Volver a calcular totales
+            // descuento seguro (vacío -> 0; rango 0..80)
+            var vDesc = Fila["descuento"];
+            if (vDesc != DBNull.Value && !string.IsNullOrWhiteSpace(Convert.ToString(vDesc)))
+                decimal.TryParse(Convert.ToString(vDesc), out Descuento);
+            if (Descuento < 0) Descuento = 0m;
+            if (Descuento > 80) Descuento = 80m;
+            Fila["descuento"] = Descuento;
+
+            // importe = Precio * Cantidad * (1 - Descuento/100)
+            var bruto = Precio * Cantidad;
+            var importe = bruto * (1 - (Descuento / 100m));
+            Fila["importe"] = importe;
+
             this.CalcularTotales();
         }
 
+        //Metodo de adaptación de la tabla DtDetalle para enviar los parametros necesarios unicamente para el detalle_venta
+        private DataTable CrearTablaEnvio()
+        {
+            DataTable tablaEnvio = new DataTable();
+
+            tablaEnvio.Columns.Add("idarticulo", typeof(int));
+            tablaEnvio.Columns.Add("codigo", typeof(string));
+            tablaEnvio.Columns.Add("articulo", typeof(string));
+            tablaEnvio.Columns.Add("stock", typeof(int));
+            tablaEnvio.Columns.Add("cantidad", typeof(int));
+            tablaEnvio.Columns.Add("precio", typeof(decimal));
+            tablaEnvio.Columns.Add("descuento", typeof(decimal));
+            tablaEnvio.Columns.Add("importe", typeof(decimal));
+
+            foreach (DataRow fila in DtDetalle.Rows)
+            {
+                tablaEnvio.Rows.Add(
+                    Convert.ToInt32(fila["idarticulo"]),
+                    fila["codigo"].ToString(),
+                    fila["articulo"].ToString(),
+                    Convert.ToInt32(fila["stock"]),
+                    Convert.ToInt32(fila["cantidad"]),
+                    Convert.ToDecimal(fila["precio"]),
+                    Convert.ToDecimal(fila["descuento"]),
+                    Convert.ToDecimal(fila["importe"])
+                );
+            }
+
+            return tablaEnvio;
+        }
         private void BtnInsertar_Click(object sender, EventArgs e)
         {
             try
@@ -441,7 +559,17 @@ namespace Presentacion
                 }
                 else //En caso de cumplir con los campos obligatorios, se puede almacenar
                 {
-
+                    //Mensaje de confirmación de la Venta.
+                    if (MessageBox.Show("¿Está seguro que desea realizar la venta?",
+                                        "Confirmar venta",
+                                        MessageBoxButtons.YesNo,
+                                        MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        return; //Si elige NO vuelve hacia atrás.
+                    }
+                    //Encapsulamos en esta variable solo los datos necesarios para el detalle_venta, ignorando varios que se usaron
+                    //unicamente para la visualizacion del carrito.
+                    DataTable tablaEnvio = CrearTablaEnvio();
                     //Se almacena la respuesta recibida al insertar un nuevo registro
                     //Enviado por el metodo insertar de la capa negocio
                     respuesta = NVenta.Insertar
@@ -453,13 +581,13 @@ namespace Presentacion
                                                 TxtNumComprobante.Text.Trim(),
                                                 Convert.ToDecimal(TxtImpuesto.Text),
                                                 Convert.ToDecimal(TxtTotal.Text),
-                                                DtDetalle
+                                                tablaEnvio
                     );
                     //Validamos que tipo de mensaje recibimos para mostrar al usuario
                     if (respuesta.Equals("OK"))
                     {
                         //Si almaceno correctamente recibirá OK y va a mostrar la respuesta OK
-                        this.MensajeOk("El registro se almacenó de forma correcta");
+                        this.MensajeOk("La VENTA fue realizada con éxito");
                         this.Limpiar();
                         this.Listar();
                     }
@@ -482,6 +610,15 @@ namespace Presentacion
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
+            //Mensaje de confirmación de cancelacion.
+            if (MessageBox.Show("¿Está seguro que desea CANCELAR la venta?",
+                                "Confirmar Cancelación",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return; //Si elige NO vuelve hacia atrás.
+            }
+            //Si selecciona SI entonces se resetean todos los datos de la venta.
             this.Limpiar();
             TabGeneral.SelectedIndex = 0;
         }
@@ -493,20 +630,65 @@ namespace Presentacion
 
         private void DgvDetalle_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            //indice de la columna del descuento
-            int columnaDescuento = 6;
+            if (e.RowIndex < 0) return;
 
-            if (e.ColumnIndex == columnaDescuento)
+            var grid = (DataGridView)sender;
+            string col = grid.Columns[e.ColumnIndex].Name;
+
+            // Obtenemos la DataRow de la fila actual
+            var rowView = grid.Rows[e.RowIndex].DataBoundItem as DataRowView;
+            if (rowView == null) return;
+            var Fila = rowView.Row;
+
+            // ===== Validación CANTIDAD (entero, 1..Stock) =====
+            if (col.Equals("cantidad", StringComparison.OrdinalIgnoreCase))
             {
-                if (!decimal.TryParse(e.FormattedValue.ToString(), out decimal valor))
+                string texto = Convert.ToString(e.FormattedValue)?.Trim();
+                if (!int.TryParse(texto, out int cant))
                 {
-                    MessageBox.Show("El valor ingresado no es válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.MensajeError("La cantidad debe ser un número entero.");
                     e.Cancel = true;
+                    return;
                 }
-                else if (valor < 0)
+
+                int stock = 0;
+                int.TryParse(Convert.ToString(Fila["stock"]), out stock);
+
+                if (cant < 1)
                 {
-                    MessageBox.Show("No se permite ingresar descuentos negativos.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.MensajeError("La cantidad mínima es 1.");
                     e.Cancel = true;
+                    return;
+                }
+                if (stock > 0 && cant > stock)
+                {
+                    this.MensajeError($"La cantidad no puede superar el stock disponible ({stock}).");
+                    e.Cancel = true;
+                    return;
+                }
+            }
+
+            // ===== Validación DESCUENTO (decimal, 0..80) =====
+            if (col.Equals("descuento", StringComparison.OrdinalIgnoreCase))
+            {
+                string texto = Convert.ToString(e.FormattedValue)?.Trim();
+                if (string.IsNullOrWhiteSpace(texto))
+                {
+                    // Permitimos vacío, lo transformaremos a 0 en EndEdit
+                    return;
+                }
+
+                if (!decimal.TryParse(texto, out decimal desc))
+                {
+                    this.MensajeError("El descuento debe ser un número.");
+                    e.Cancel = true;
+                    return;
+                }
+                if (desc < 0 || desc > 80)
+                {
+                    this.MensajeError("El descuento debe estar entre 0 y 80.");
+                    e.Cancel = true;
+                    return;
                 }
             }
         }
@@ -515,19 +697,78 @@ namespace Presentacion
         {
             try
             {
+                //Ignorar doble click en encabezados o fuera de filas
+                if (e.RowIndex < 0) return;
+
+                //Ignorar si doble click fue en la columna "Seleccionar"
+                var col = DgvListado.Columns[e.ColumnIndex];
+                if (col is DataGridViewCheckBoxColumn ||
+                    col.Name.Equals("Seleccionar", StringComparison.OrdinalIgnoreCase))
+                {
+                    return;
+                }
                 //Los datos obtenemos de listar detalles y como parametro usamos el ID de la fila seleccionada
                 DgvMostrarDetalle.DataSource = NVenta.ListarDetalle(Convert.ToInt32(DgvListado.CurrentRow.Cells["ID"].Value));
-                
+
                 //Formato de columnas
-                DgvMostrarDetalle.Columns[5].HeaderText = "Descuento (%)";
-                DgvMostrarDetalle.Columns["IMPORTE"].DefaultCellStyle.Format = "C2";
-                DgvMostrarDetalle.Columns["PRECIO"].DefaultCellStyle.Format = "C2";
-                DgvMostrarDetalle.Columns["DESCUENTO"].DefaultCellStyle.Format = "N0";
-                DgvMostrarDetalle.Columns[0].Width = 50;
-                DgvMostrarDetalle.Columns[2].Width = 250;
-                DgvMostrarDetalle.Columns[4].Width = 200;
-                DgvMostrarDetalle.Columns[5].Width = 150;
-                DgvMostrarDetalle.Columns[6].Width = 200;
+                // ----- Formato de columnas -----
+                var g = DgvMostrarDetalle;
+
+                //Orden visual
+                g.Columns["ID"].DisplayIndex = 0;
+                g.Columns["CODIGO"].DisplayIndex = 1;
+                g.Columns["ARTICULO"].DisplayIndex = 2;
+                g.Columns["MARCA"].DisplayIndex = 3;
+                g.Columns["MEMORIA"].DisplayIndex = 4;
+                g.Columns["COLOR"].DisplayIndex = 5;
+                g.Columns["CANTIDAD"].DisplayIndex = 6;
+                g.Columns["PRECIO"].DisplayIndex = 7;
+                g.Columns["DESCUENTO"].DisplayIndex = 8;
+                g.Columns["IMPORTE"].DisplayIndex = 9;
+
+                //encabezados
+                g.Columns["ID"].Visible = false;
+                g.Columns["CODIGO"].HeaderText = "Código";
+                g.Columns["ARTICULO"].HeaderText = "Artículo";
+                g.Columns["MARCA"].HeaderText = "Marca";
+                g.Columns["MEMORIA"].HeaderText = "Memoria";
+                g.Columns["COLOR"].HeaderText = "Color";
+                g.Columns["CANTIDAD"].HeaderText = "Cantidad";
+                g.Columns["PRECIO"].HeaderText = "Precio";
+                g.Columns["DESCUENTO"].HeaderText = "Descuento (%)";
+                g.Columns["IMPORTE"].HeaderText = "Importe";
+
+                //ancho
+                g.Columns["CODIGO"].Width = 100;
+                g.Columns["ARTICULO"].Width = 180;
+                g.Columns["MARCA"].Width = 100;
+                g.Columns["MEMORIA"].Width = 90;
+                g.Columns["COLOR"].Width = 90;
+                g.Columns["CANTIDAD"].Width = 80;
+                g.Columns["PRECIO"].Width = 120;
+                g.Columns["DESCUENTO"].Width = 130;
+                g.Columns["IMPORTE"].Width = 150;
+
+                //formato de numero
+                g.Columns["PRECIO"].DefaultCellStyle.Format = "C2";
+                g.Columns["IMPORTE"].DefaultCellStyle.Format = "C2";
+                g.Columns["DESCUENTO"].DefaultCellStyle.Format = "N2"; //% con decimales
+                g.Columns["CANTIDAD"].DefaultCellStyle.Format = "N0";
+
+                //Alineacion
+                g.Columns["CANTIDAD"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                g.Columns["PRECIO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                g.Columns["DESCUENTO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                g.Columns["IMPORTE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                //Solo lectura en los campos calculados
+                g.Columns["CODIGO"].ReadOnly = true;
+                g.Columns["ARTICULO"].ReadOnly = true;
+                g.Columns["MARCA"].ReadOnly = true;
+                g.Columns["MEMORIA"].ReadOnly = true;
+                g.Columns["COLOR"].ReadOnly = true;
+                g.Columns["PRECIO"].ReadOnly = true;
+                g.Columns["IMPORTE"].ReadOnly = true;
 
                 //Variables a mostrar
                 decimal Total, Subtotal;
@@ -690,11 +931,14 @@ namespace Presentacion
                 {
                     //Se agrega el articulo al detalle
                     this.AgregarDetalle(
-                            Convert.ToInt32(tabla.Rows[0][0]),
-                            Convert.ToString(tabla.Rows[0][1]),
-                            Convert.ToString(tabla.Rows[0][2]),
-                            Convert.ToInt32(tabla.Rows[0][4]),
-                            Convert.ToDecimal(tabla.Rows[0][3])
+                            Convert.ToInt32(tabla.Rows[0][0]), //idarticulo
+                            Convert.ToString(tabla.Rows[0][1]), //codigo
+                            Convert.ToString(tabla.Rows[0][2]), //nombre
+                            Convert.ToString(tabla.Rows[0][3]), //marca
+                            Convert.ToString(tabla.Rows[0][4]), //memoria
+                            Convert.ToString(tabla.Rows[0][5]), //color
+                            Convert.ToInt32(tabla.Rows[0][7]),  //stock
+                            Convert.ToDecimal(tabla.Rows[0][6]) //precio_venta
                      );
 
 
@@ -708,8 +952,6 @@ namespace Presentacion
             }
         }
 
-
         
-
     }
 }

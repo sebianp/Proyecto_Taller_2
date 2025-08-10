@@ -17,6 +17,12 @@ namespace Negocio
             return Datos.Listar();
         }
 
+        public static DataTable ListarVentasVendedor(int idusuario)
+        {
+            DVenta Datos = new DVenta();
+            return Datos.ListarVentasVendedor(idusuario);
+        }
+
         public static DataTable Buscar(string Valor)
         {
             DVenta Datos = new DVenta();

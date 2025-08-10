@@ -59,11 +59,14 @@
             this.LblTotal = new System.Windows.Forms.Label();
             this.DgvListado = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTitulo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.TabGeneral.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ErrorIcono
@@ -73,7 +76,7 @@
             // TxtEmail
             // 
             this.TxtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtEmail.Location = new System.Drawing.Point(501, 319);
+            this.TxtEmail.Location = new System.Drawing.Point(501, 350);
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(367, 28);
             this.TxtEmail.TabIndex = 19;
@@ -81,7 +84,7 @@
             // TxtTelefono
             // 
             this.TxtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtTelefono.Location = new System.Drawing.Point(500, 272);
+            this.TxtTelefono.Location = new System.Drawing.Point(500, 303);
             this.TxtTelefono.Name = "TxtTelefono";
             this.TxtTelefono.Size = new System.Drawing.Size(367, 28);
             this.TxtTelefono.TabIndex = 17;
@@ -89,7 +92,7 @@
             // TxtDireccion
             // 
             this.TxtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtDireccion.Location = new System.Drawing.Point(501, 221);
+            this.TxtDireccion.Location = new System.Drawing.Point(501, 252);
             this.TxtDireccion.Name = "TxtDireccion";
             this.TxtDireccion.Size = new System.Drawing.Size(367, 28);
             this.TxtDireccion.TabIndex = 16;
@@ -98,6 +101,7 @@
             // 
             this.tabPage2.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabPage2.Controls.Add(this.panel1);
             this.tabPage2.Controls.Add(this.TxtEmail);
             this.tabPage2.Controls.Add(this.TxtTelefono);
             this.tabPage2.Controls.Add(this.TxtDireccion);
@@ -126,7 +130,7 @@
             // TxtNumDocumento
             // 
             this.TxtNumDocumento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtNumDocumento.Location = new System.Drawing.Point(500, 169);
+            this.TxtNumDocumento.Location = new System.Drawing.Point(500, 200);
             this.TxtNumDocumento.Name = "TxtNumDocumento";
             this.TxtNumDocumento.Size = new System.Drawing.Size(367, 28);
             this.TxtNumDocumento.TabIndex = 15;
@@ -134,7 +138,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(445, 326);
+            this.label8.Location = new System.Drawing.Point(445, 357);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(48, 21);
             this.label8.TabIndex = 19;
@@ -147,7 +151,7 @@
             "DNI",
             "CUIL/CUIT",
             "PASAPORTE"});
-            this.CboTipoDocumento.Location = new System.Drawing.Point(499, 117);
+            this.CboTipoDocumento.Location = new System.Drawing.Point(499, 148);
             this.CboTipoDocumento.Name = "CboTipoDocumento";
             this.CboTipoDocumento.Size = new System.Drawing.Size(369, 29);
             this.CboTipoDocumento.TabIndex = 14;
@@ -156,7 +160,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(397, 228);
+            this.label7.Location = new System.Drawing.Point(397, 259);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(96, 21);
             this.label7.TabIndex = 13;
@@ -165,7 +169,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(319, 176);
+            this.label6.Location = new System.Drawing.Point(319, 207);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(174, 21);
             this.label6.TabIndex = 12;
@@ -174,7 +178,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(347, 125);
+            this.label5.Location = new System.Drawing.Point(347, 156);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(146, 21);
             this.label5.TabIndex = 11;
@@ -185,7 +189,7 @@
             this.BtnActualizar.BackColor = System.Drawing.Color.Khaki;
             this.BtnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnActualizar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnActualizar.Location = new System.Drawing.Point(501, 405);
+            this.BtnActualizar.Location = new System.Drawing.Point(501, 436);
             this.BtnActualizar.Name = "BtnActualizar";
             this.BtnActualizar.Size = new System.Drawing.Size(123, 36);
             this.BtnActualizar.TabIndex = 8;
@@ -196,7 +200,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(569, 360);
+            this.label3.Location = new System.Drawing.Point(569, 391);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(217, 21);
             this.label3.TabIndex = 7;
@@ -207,7 +211,7 @@
             this.BtnCancelar.BackColor = System.Drawing.Color.IndianRed;
             this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelar.Location = new System.Drawing.Point(744, 405);
+            this.BtnCancelar.Location = new System.Drawing.Point(744, 436);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(123, 36);
             this.BtnCancelar.TabIndex = 6;
@@ -220,7 +224,7 @@
             this.BtnInsertar.BackColor = System.Drawing.Color.CornflowerBlue;
             this.BtnInsertar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnInsertar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnInsertar.Location = new System.Drawing.Point(500, 405);
+            this.BtnInsertar.Location = new System.Drawing.Point(500, 436);
             this.BtnInsertar.Name = "BtnInsertar";
             this.BtnInsertar.Size = new System.Drawing.Size(123, 36);
             this.BtnInsertar.TabIndex = 5;
@@ -232,7 +236,7 @@
             // 
             this.TxtId.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.TxtId.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TxtId.Location = new System.Drawing.Point(767, 16);
+            this.TxtId.Location = new System.Drawing.Point(873, 95);
             this.TxtId.Name = "TxtId";
             this.TxtId.Size = new System.Drawing.Size(100, 21);
             this.TxtId.TabIndex = 4;
@@ -241,7 +245,7 @@
             // TxtNombre
             // 
             this.TxtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtNombre.Location = new System.Drawing.Point(498, 64);
+            this.TxtNombre.Location = new System.Drawing.Point(498, 95);
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(369, 28);
             this.TxtNombre.TabIndex = 2;
@@ -249,7 +253,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(402, 279);
+            this.label2.Location = new System.Drawing.Point(402, 310);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 21);
             this.label2.TabIndex = 1;
@@ -258,7 +262,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(404, 71);
+            this.label1.Location = new System.Drawing.Point(404, 102);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 21);
             this.label1.TabIndex = 0;
@@ -399,6 +403,26 @@
             this.Seleccionar.Name = "Seleccionar";
             this.Seleccionar.ReadOnly = true;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Snow;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.lblTitulo);
+            this.panel1.Location = new System.Drawing.Point(425, 6);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(500, 67);
+            this.panel1.TabIndex = 27;
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Tai Le", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(122, 16);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(253, 37);
+            this.lblTitulo.TabIndex = 24;
+            this.lblTitulo.Text = "ALTA DE CLIENTE";
+            // 
             // FrmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -415,6 +439,8 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -451,5 +477,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.Button BtnDesactivar;
         private System.Windows.Forms.Button BtnActivar;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblTitulo;
     }
 }

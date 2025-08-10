@@ -57,6 +57,35 @@ namespace Datos
             }
         }
 
+        public DataTable ListarVentasVendedor(int idusuario)
+        {
+            SqlDataReader resultado;
+            DataTable tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+
+                SqlCommand comando = new SqlCommand("venta_listar_vendedor", SqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("@idusuario", SqlDbType.Int).Value = idusuario;
+
+                SqlCon.Open();
+                resultado = comando.ExecuteReader();
+                tabla.Load(resultado);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
+
         //Metodo para buscar registros de la tabla que coincidan con un valor
         //Recibe un parámetro string con el que buscará las coincidencias
         //Devuelve un objeto del tipo DataTable que contendrá la lista de los registros que coinciden

@@ -22,7 +22,12 @@ namespace Presentacion
         private string rutaOrigen; //Ruta de la imagen
         private string rutaDestino; //Directorio del proyecto donde se carga la imagen
         private string directorio = "C:\\Users\\sebia\\OneDrive\\Escritorio\\Proyecto_Taller_2_LIBERTEL\\Imagenes\\"; //Directorio donde se almacenaran las imagenes del sistema 
-        private string nombreAnt; //Variable utilizada para actualizar un articulo
+        
+        //Variables utilizadas para actualizar un articulo (Control de que se trate del mismo o que se este arreglando un error)
+        private string nombreAnt;
+        private string marcaAnt;
+        private string memoriaAnt;
+        private string colorAnt;
 
         //Constructor
         public FrmArticulo()
@@ -69,25 +74,82 @@ namespace Presentacion
             }
         }
 
-        //Este metodo permite darle un formato a las columnas del datagrid Categorias
+        //Metodo que permite la busqueda de articulos aplicando filtros de Categoria y de Marca
+        private void BuscarFiltros()
+        {
+            try
+            {
+                string texto = TxtBuscar.Text.Trim();
+                int idCategoria = (CboCategoriaBuscar.SelectedValue != null)? Convert.ToInt32(CboCategoriaBuscar.SelectedValue) : 0;
+                string marca = (CboMarcaBuscar.SelectedIndex > 0)? CboMarcaBuscar.SelectedItem.ToString() : string.Empty;
+
+                
+                DgvListado.DataSource = NArticulo.BuscarFiltros(texto, idCategoria, marca);
+
+                Formato(); // tu formato actual
+                LblTotal.Text = "Total Registros: " + DgvListado.Rows.Count.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        //Este metodo permite darle un formato a las columnas del datagrid del listado
         private void Formato()
         {
-            DgvListado.Columns[0].Visible = false;
-            DgvListado.Columns[2].Visible = false;
+            //Columna 0: CheckBox para seleccionar
             DgvListado.Columns[0].Width = 100;
-            DgvListado.Columns[1].Width = 50;
+
+            //Columna 1: ID (oculta)
+            DgvListado.Columns[1].Visible = false;
+
+            //Columna 2: idcategoria (oculta)
+            DgvListado.Columns[2].Visible = false;
+
+            //Columna 3: Categoria
             DgvListado.Columns[3].Width = 100;
             DgvListado.Columns[3].HeaderText = "Categoría";
+
+            //Columna 4: Código
             DgvListado.Columns[4].Width = 100;
             DgvListado.Columns[4].HeaderText = "Código";
-            DgvListado.Columns[5].Width = 250;
+
+            //Columna 5: Nombre
+            DgvListado.Columns[5].Width = 150;
+            DgvListado.Columns[5].HeaderText = "Nombre";
+
+            //Columna 6: Marca
             DgvListado.Columns[6].Width = 100;
-            DgvListado.Columns[6].HeaderText = "Precio";
-            DgvListado.Columns[7].Width = 50;
-            DgvListado.Columns[8].Width = 400;
-            DgvListado.Columns[8].HeaderText = "Descripción";
-            DgvListado.Columns[9].Width = 100;
-            DgvListado.Columns[10].Width = 100;
+            DgvListado.Columns[6].HeaderText = "Marca";
+
+            //Columna 7: Memoria
+            DgvListado.Columns[7].Width = 80;
+            DgvListado.Columns[7].HeaderText = "Memoria";
+
+            //Columna 8: Color
+            DgvListado.Columns[8].Width = 100;
+            DgvListado.Columns[8].HeaderText = "Color";
+
+            //Columna 9: Precio
+            DgvListado.Columns[9].Width = 120;
+            DgvListado.Columns[9].HeaderText = "Precio";
+
+            //Columna 10: Stock
+            DgvListado.Columns[10].Width = 60;
+            DgvListado.Columns[10].HeaderText = "Stock";
+
+            //Columna 11: Descripción
+            DgvListado.Columns[11].Width = 250;
+            DgvListado.Columns[11].HeaderText = "Descripción";
+
+            //Columna 12: Imagen
+            DgvListado.Columns[12].Width = 120;
+            DgvListado.Columns[12].HeaderText = "Imagen";
+
+            //Columna 13: Estado
+            DgvListado.Columns[13].Width = 80;
+            DgvListado.Columns[13].HeaderText = "Estado";
 
         }
 
@@ -105,7 +167,9 @@ namespace Presentacion
                 TxtImagen.Clear();
                 PicImagen.Image = null;
             }
-            
+            CboColor.SelectedIndex = -1;
+            CboMemoria.SelectedIndex = -1;
+            CboMarca.SelectedIndex = -1;
             TxtDescripcion.Clear();
             PanelCodigo.BackgroundImage = null;
             BtnGuardarCodigo.Enabled = false;
@@ -135,6 +199,32 @@ namespace Presentacion
             MessageBox.Show(Mensaje, "COMPLETADO", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void CargarCategoriaBuscar()
+        {
+            try
+            {
+                DataTable dt = NCategoria.Seleccionar();
+
+                //Inserto "Todas" al inicio para buscar todas las categorias
+                //creo una nueva row con el formato datatable
+                DataRow dr = dt.NewRow();
+                //se le asigna valores al nuevo row, en este caso Todas (para buscar en todas las categorias)
+                dr["idcategoria"] = 0;
+                dr["nombre"] = "Todas";
+                //Agrego la nueva row en el indice 0
+                dt.Rows.InsertAt(dr, 0);
+                //Cargo el ComboBox CboCategoriaBuscar
+                CboCategoriaBuscar.DataSource = dt;
+                CboCategoriaBuscar.ValueMember = "idcategoria";
+                CboCategoriaBuscar.DisplayMember = "nombre";
+                CboCategoriaBuscar.SelectedIndex = 0; //por defecto "Todas"
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
         private void CargarCategoria()
         {
             try
@@ -156,8 +246,10 @@ namespace Presentacion
 
         private void FrmArticulo_Load(object sender, EventArgs e)
         {
-            this.Listar();
-            this.CargarCategoria();
+            this.Listar(); //Listar todos los artículos
+            this.CargarCategoria(); //Para alta y modificacion
+            this.CargarCategoriaBuscar(); //Para busquedas con filtro
+            lblTitulo.Text = "ALTA DE ARTÍCULO";
             BtnGuardarCodigo.Enabled = false;
             //mensaje sobre el datagrid avisando que puede hacer doble click para modificar.
             toolTipGeneral.SetToolTip(DgvListado, "Doble clic en una fila para modificar el artículo");
@@ -165,7 +257,7 @@ namespace Presentacion
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-            this.Buscar();
+            this.BuscarFiltros();
         }
 
         //Metodo asociado el evento click Cargar Imagen
@@ -252,13 +344,18 @@ namespace Presentacion
                 //1) Validaciones básicas de campos obligatorios
                 if (string.IsNullOrWhiteSpace(TxtNombre.Text) ||
                     string.IsNullOrWhiteSpace(TxtImagen.Text) ||
-                    string.IsNullOrWhiteSpace(CboCategoria.Text))
+                    string.IsNullOrWhiteSpace(CboCategoria.Text) ||
+                    string.IsNullOrWhiteSpace(CboMarca.Text) ||
+                    string.IsNullOrWhiteSpace(CboColor.Text) ||
+                    string.IsNullOrWhiteSpace(CboMemoria.Text)
+                    )
                 {
                     this.MensajeError("Faltan ingresar datos");
                     ErrorIcono.SetError(TxtNombre, "Ingrese un nombre");
                     ErrorIcono.SetError(CboCategoria, "Seleccione una Categoría");
-                    //ErrorIcono.SetError(TxtPrecioVenta, "Ingrese un Precio de Venta");
-                    //ErrorIcono.SetError(TxtStock, "Ingrese un valor de Stock");
+                    ErrorIcono.SetError(CboMarca, "Ingrese la marca del artículo");
+                    ErrorIcono.SetError(CboColor, "Ingrese el color del artículo");
+                    ErrorIcono.SetError(CboMemoria, "Ingrese las memorias del artículo");
                     ErrorIcono.SetError(TxtImagen, "Ingrese una imagen representativa");
                     return;
                 }
@@ -283,11 +380,14 @@ namespace Presentacion
 
                 //3)Inserto el artículo
                 string respuesta = NArticulo.Insertar(
-                    Convert.ToInt32(CboCategoria.SelectedValue),
+                     Convert.ToInt32(CboCategoria.SelectedValue),
                     TxtCodigo.Text.Trim(),
                     TxtNombre.Text.Trim(),
-                    0,
-                    0,
+                    CboMarca.Text.Trim(),
+                    CboMemoria.Text.Trim(),
+                    CboColor.Text.Trim(),
+                    0, //Precio por defecto
+                    0, //Stock por defecto
                     TxtDescripcion.Text.Trim(),
                     nombreArchivo
                 );
@@ -364,37 +464,58 @@ namespace Presentacion
         {
             try
             {
+                //Ignorar doble click en encabezados o fuera de filas
+                if (e.RowIndex < 0) return;
+
+                //Ignorar si doble click fue en la columna "Seleccionar"
+                var col = DgvListado.Columns[e.ColumnIndex];
+                if (col is DataGridViewCheckBoxColumn ||
+                    col.Name.Equals("Seleccionar", StringComparison.OrdinalIgnoreCase))
+                {
+                    return;
+                }
+
                 this.Limpiar();
-                //Labels
+                lblTitulo.Text = "MODIFICAR ARTÍCULO";
+
+                //Mostrar campos visibles de modificación
                 TxtPrice.Visible = true;
                 TxtStk.Visible = true;
-                //textBox
                 TxtPrecioVenta.Visible = true;
                 TxtStock.Visible = true;
-                //Botones
                 BtnActualizar.Visible = true;
                 BtnInsertar.Visible = false;
-                //TextBox del producto
+
+                //DATOS DEL ARTICULO QUE SE CARGAN
                 TxtId.Text = Convert.ToString(DgvListado.CurrentRow.Cells["ID"].Value);
                 CboCategoria.SelectedValue = Convert.ToString(DgvListado.CurrentRow.Cells["idcategoria"].Value);
                 TxtCodigo.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Codigo"].Value);
+
+                //Nombre
                 this.nombreAnt = Convert.ToString(DgvListado.CurrentRow.Cells["Nombre"].Value);
-                TxtNombre.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Nombre"].Value);
+                TxtNombre.Text = nombreAnt;
+                //Marca
+                this.marcaAnt = Convert.ToString(DgvListado.CurrentRow.Cells["Marca"].Value);
+                CboMarca.Text = marcaAnt;
+                //Memoria
+                this.memoriaAnt = Convert.ToString(DgvListado.CurrentRow.Cells["Memoria"].Value);
+                CboMemoria.Text = memoriaAnt;
+                //Color
+                this.colorAnt = Convert.ToString(DgvListado.CurrentRow.Cells["Color"].Value);
+                CboColor.Text = colorAnt;
+                //Precio y stock
                 TxtPrecioVenta.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Precio_Venta"].Value);
                 TxtStock.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Stock"].Value);
+                //Descripción
                 TxtDescripcion.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Descripcion"].Value);
-
-                //Imagen CONTROL DE LOCALIZACION
-                //MessageBox.Show("Imagen en DB: [" +DgvListado.CurrentRow.Cells["Imagen"].Value + "]");
-
+                //Imagen (Se verifica si la imagen existe)
                 string imagen = Convert.ToString(DgvListado.CurrentRow.Cells["Imagen"].Value);
-                if( imagen != string.Empty)
+                if (imagen != string.Empty)
                 {
                     string rutaCompleta = Path.Combine(this.directorio, imagen);
 
                     if (File.Exists(rutaCompleta))
                     {
-                        
                         PicImagen.Image = Image.FromFile(rutaCompleta);
                         TxtImagen.Text = imagen;
                     }
@@ -409,80 +530,91 @@ namespace Presentacion
                     TxtImagen = null;
                 }
 
+                // Cambiar a la pestaña de modificación
                 TabGeneral.SelectedIndex = 1;
-
-            } catch (Exception ex) {
-
-                //Mostramos el mensaje en caso de que haya alguna excepcion y que el programa pueda
-                //seguir ejecutandose, proporcionando una explicación de lo que ocurrio
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show("Seleccione desde la celda nombre con doble click " + ex.Message + ex.StackTrace);
             }
         }
 
+        //Método BTN actualizar. Evento Click.
         private void BtnActualizar_Click(object sender, EventArgs e)
         {
             try
             {
                 string respuesta = "";
 
-                //El nombre debe tener algun valor porque es obligatorio
-                if (TxtId.Text == string.Empty || TxtImagen.Text == string.Empty || TxtNombre.Text == string.Empty || CboCategoria.Text == string.Empty || TxtPrecioVenta.Text == string.Empty || TxtStock.Text == string.Empty)
+                // Validación de campos obligatorios
+                if (TxtId.Text == string.Empty || TxtImagen.Text == string.Empty ||
+                    TxtNombre.Text == string.Empty || CboCategoria.Text == string.Empty ||
+                    CboMarca.Text == string.Empty || CboMemoria.Text == string.Empty || CboColor.Text == string.Empty ||
+                    TxtPrecioVenta.Text == string.Empty || TxtStock.Text == string.Empty)
                 {
                     this.MensajeError("Faltan ingresar datos");
                     ErrorIcono.SetError(TxtNombre, "Ingrese un nombre");
                     ErrorIcono.SetError(CboCategoria, "Seleccione una Categoría");
+                    ErrorIcono.SetError(CboMarca, "Seleccione la marca del artículo");
+                    ErrorIcono.SetError(CboMemoria, "Seleccione la memoria del artículo");
+                    ErrorIcono.SetError(CboColor, "Seleccione el color del artículo");
                     ErrorIcono.SetError(TxtPrecioVenta, "Ingrese un Precio de Venta");
-                    ErrorIcono.SetError(TxtStock, "Ingrese un valor de Stock");
+                    ErrorIcono.SetError(TxtStock, "Ingrese un valor de Stock"); //Esta deshabilitado pero por las dudas.
                     ErrorIcono.SetError(TxtImagen, "Ingrese una imagen representativa");
-
+                    return;
                 }
-                else //En caso de cumplir con el campo obligatorio del nombre, se puede almacenar
+
+                //Llamada al método de la capa negocio con todos los datos
+                respuesta = NArticulo.Actualizar(
+                    Convert.ToInt32(TxtId.Text),
+                    Convert.ToInt32(CboCategoria.SelectedValue),
+                    TxtCodigo.Text.Trim(),
+                    nombreAnt,
+                    marcaAnt,
+                    memoriaAnt,
+                    colorAnt,
+                    TxtNombre.Text.Trim(),
+                    CboMarca.Text,
+                    CboMemoria.Text,
+                    CboColor.Text,
+                    Convert.ToDecimal(TxtPrecioVenta.Text),
+                    Convert.ToInt32(TxtStock.Text),
+                    TxtDescripcion.Text.Trim(),
+                    TxtImagen.Text.Trim()
+                );
+
+                if (respuesta.Equals("OK"))
                 {
-                    //Se almacena la respuesta recibida al insertar un nuevo registro
-                    //Enviado por el metodo insertar de la capa negocio
-                    respuesta = NArticulo.Actualizar(Convert.ToInt32(TxtId.Text), Convert.ToInt32(CboCategoria.SelectedValue), TxtCodigo.Text.Trim(), this.nombreAnt, TxtNombre.Text.Trim(), Convert.ToDecimal(TxtPrecioVenta.Text), Convert.ToInt32(TxtStock.Text), TxtDescripcion.Text.Trim(), TxtImagen.Text.Trim());
-                    //Validamos que tipo de mensaje recibimos para mostrar al usuario
-                    if (respuesta.Equals("OK"))
+                    this.MensajeOk("El registro se actualizó de forma correcta");
+
+                    //Guardado y Verificación de imagen. Si ya existe una similar se reemplaza
+                    if (TxtImagen.Text != string.Empty && this.rutaOrigen != string.Empty)
                     {
-                        //Si almaceno correctamente recibirá OK y va a mostrar la respuesta OK
-                        this.MensajeOk("El registro se actualizó de forma correcta");
-                        //Verificacion de insercion de imagen
-                        if (TxtImagen.Text != string.Empty && this.rutaOrigen != string.Empty)
+                        this.rutaDestino = this.directorio + TxtImagen.Text;
+
+                        GC.Collect();
+                        GC.WaitForPendingFinalizers();
+                        System.Threading.Thread.Sleep(50);
+
+                        if (File.Exists(this.rutaDestino))
                         {
-                            //Se utiliza el directorio definido como variable inicial para guardar
-                            this.rutaDestino = this.directorio + TxtImagen.Text;
-
-                            //Liberar recursos
-                            GC.Collect();
-                            GC.WaitForPendingFinalizers();
-
-                            //pausa
-                            System.Threading.Thread.Sleep(50); // 50ms de espera
-
-                            // Eliminar la imagen anterior si existe
-                            if (File.Exists(this.rutaDestino))
-                            {
-                                File.Delete(this.rutaDestino);
-                            }
-
-                            File.Copy(this.rutaOrigen, this.rutaDestino);
+                            File.Delete(this.rutaDestino);
                         }
-                        this.Listar();
-                        TabGeneral.SelectedIndex = 0;
-                    }
-                    else
-                    {
-                        //Si hay algún error que muestre como un mensaje de error
-                        this.MensajeError(respuesta);
+
+                        File.Copy(this.rutaOrigen, this.rutaDestino);
                     }
 
+                    this.Listar();
+                    TabGeneral.SelectedIndex = 0;
+                }
+                else
+                {
+                    this.MensajeError(respuesta);
                 }
 
             }
             catch (Exception ex)
             {
-                //Mostramos el mensaje en caso de que haya alguna excepcion y que el programa pueda
-                //seguir ejecutandose, proporcionando una explicación de lo que ocurrio
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
@@ -490,6 +622,7 @@ namespace Presentacion
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.Limpiar();
+            lblTitulo.Text = "ALTA DE ARTÍCULO";
             //Labels
             TxtPrice.Visible = false;
             TxtStk.Visible = false;
@@ -680,6 +813,29 @@ namespace Presentacion
         private void TxtBuscar_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void BtnBuscar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BuscarFiltros();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void CboCategoria_DropDown(object sender, EventArgs e)
+        {
+            this.CargarCategoria(); //Para alta y modificacion
+        }
+
+        //Si se selecciona este FORM se ejecutan estos métodos.
+        private void FrmArticulo_Activated(object sender, EventArgs e)
+        {
+            this.Listar();
+            this.CargarCategoria();
+            this.CargarCategoriaBuscar();
         }
     }
 }

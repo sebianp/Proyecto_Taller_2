@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControlStock = new System.Windows.Forms.TabControl();
             this.tpCritico = new System.Windows.Forms.TabPage();
             this.chartStockCritico = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -80,7 +80,7 @@
             this.tabControlStock.Location = new System.Drawing.Point(-1, 1);
             this.tabControlStock.Name = "tabControlStock";
             this.tabControlStock.SelectedIndex = 0;
-            this.tabControlStock.Size = new System.Drawing.Size(1023, 519);
+            this.tabControlStock.Size = new System.Drawing.Size(1097, 563);
             this.tabControlStock.TabIndex = 0;
             // 
             // tpCritico
@@ -90,24 +90,24 @@
             this.tpCritico.Location = new System.Drawing.Point(4, 25);
             this.tpCritico.Name = "tpCritico";
             this.tpCritico.Padding = new System.Windows.Forms.Padding(3);
-            this.tpCritico.Size = new System.Drawing.Size(1015, 490);
+            this.tpCritico.Size = new System.Drawing.Size(1089, 534);
             this.tpCritico.TabIndex = 0;
             this.tpCritico.Text = "Stock Critico";
             this.tpCritico.UseVisualStyleBackColor = true;
             // 
             // chartStockCritico
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chartStockCritico.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chartStockCritico.Legends.Add(legend4);
+            chartArea1.Name = "ChartArea1";
+            this.chartStockCritico.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartStockCritico.Legends.Add(legend1);
             this.chartStockCritico.Location = new System.Drawing.Point(3, 102);
             this.chartStockCritico.Name = "chartStockCritico";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chartStockCritico.Series.Add(series4);
-            this.chartStockCritico.Size = new System.Drawing.Size(1006, 383);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartStockCritico.Series.Add(series1);
+            this.chartStockCritico.Size = new System.Drawing.Size(1079, 426);
             this.chartStockCritico.TabIndex = 1;
             this.chartStockCritico.Text = "chart1";
             // 
@@ -121,7 +121,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1012, 93);
+            this.panel1.Size = new System.Drawing.Size(1089, 93);
             this.panel1.TabIndex = 0;
             // 
             // lblTotalCritico
@@ -180,24 +180,24 @@
             this.tpPorCategoria.Location = new System.Drawing.Point(4, 25);
             this.tpPorCategoria.Name = "tpPorCategoria";
             this.tpPorCategoria.Padding = new System.Windows.Forms.Padding(3);
-            this.tpPorCategoria.Size = new System.Drawing.Size(1015, 490);
+            this.tpPorCategoria.Size = new System.Drawing.Size(1089, 534);
             this.tpPorCategoria.TabIndex = 1;
             this.tpPorCategoria.Text = "Stock por Categoría";
             this.tpPorCategoria.UseVisualStyleBackColor = true;
             // 
             // chartStockPorCategoria
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chartStockPorCategoria.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chartStockPorCategoria.Legends.Add(legend5);
+            chartArea2.Name = "ChartArea1";
+            this.chartStockPorCategoria.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartStockPorCategoria.Legends.Add(legend2);
             this.chartStockPorCategoria.Location = new System.Drawing.Point(6, 102);
             this.chartStockPorCategoria.Name = "chartStockPorCategoria";
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.chartStockPorCategoria.Series.Add(series5);
-            this.chartStockPorCategoria.Size = new System.Drawing.Size(1003, 388);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartStockPorCategoria.Series.Add(series2);
+            this.chartStockPorCategoria.Size = new System.Drawing.Size(1076, 426);
             this.chartStockPorCategoria.TabIndex = 2;
             this.chartStockPorCategoria.Text = "chart1";
             // 
@@ -208,7 +208,7 @@
             this.panel2.Controls.Add(this.btnPorCategoria);
             this.panel2.Location = new System.Drawing.Point(0, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1012, 93);
+            this.panel2.Size = new System.Drawing.Size(1089, 93);
             this.panel2.TabIndex = 1;
             // 
             // btnPorCategoria
@@ -216,7 +216,7 @@
             this.btnPorCategoria.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnPorCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPorCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPorCategoria.Location = new System.Drawing.Point(404, 26);
+            this.btnPorCategoria.Location = new System.Drawing.Point(485, 28);
             this.btnPorCategoria.Name = "btnPorCategoria";
             this.btnPorCategoria.Size = new System.Drawing.Size(133, 28);
             this.btnPorCategoria.TabIndex = 0;
@@ -230,24 +230,24 @@
             this.tpSinVentas.Controls.Add(this.panel3);
             this.tpSinVentas.Location = new System.Drawing.Point(4, 25);
             this.tpSinVentas.Name = "tpSinVentas";
-            this.tpSinVentas.Size = new System.Drawing.Size(1015, 490);
+            this.tpSinVentas.Size = new System.Drawing.Size(1089, 534);
             this.tpSinVentas.TabIndex = 2;
             this.tpSinVentas.Text = "Sin Ventas";
             this.tpSinVentas.UseVisualStyleBackColor = true;
             // 
             // chartStockSinVentas
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chartStockSinVentas.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chartStockSinVentas.Legends.Add(legend6);
+            chartArea3.Name = "ChartArea1";
+            this.chartStockSinVentas.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartStockSinVentas.Legends.Add(legend3);
             this.chartStockSinVentas.Location = new System.Drawing.Point(9, 102);
             this.chartStockSinVentas.Name = "chartStockSinVentas";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.chartStockSinVentas.Series.Add(series6);
-            this.chartStockSinVentas.Size = new System.Drawing.Size(996, 383);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chartStockSinVentas.Series.Add(series3);
+            this.chartStockSinVentas.Size = new System.Drawing.Size(1073, 428);
             this.chartStockSinVentas.TabIndex = 2;
             this.chartStockSinVentas.Text = "chart1";
             // 
@@ -263,13 +263,13 @@
             this.panel3.Controls.Add(this.dtpSinVentasInicio);
             this.panel3.Location = new System.Drawing.Point(0, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1012, 93);
+            this.panel3.Size = new System.Drawing.Size(1089, 93);
             this.panel3.TabIndex = 1;
             // 
             // lblTotalSinVentas
             // 
             this.lblTotalSinVentas.AutoSize = true;
-            this.lblTotalSinVentas.Location = new System.Drawing.Point(797, 53);
+            this.lblTotalSinVentas.Location = new System.Drawing.Point(663, 39);
             this.lblTotalSinVentas.Name = "lblTotalSinVentas";
             this.lblTotalSinVentas.Size = new System.Drawing.Size(113, 16);
             this.lblTotalSinVentas.TabIndex = 5;
@@ -329,7 +329,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
-            this.ClientSize = new System.Drawing.Size(1020, 520);
+            this.ClientSize = new System.Drawing.Size(1097, 568);
             this.Controls.Add(this.tabControlStock);
             this.Name = "Frm_ControlStock";
             this.Text = "Control de Stock";

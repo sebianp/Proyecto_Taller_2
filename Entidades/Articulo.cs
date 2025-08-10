@@ -12,6 +12,9 @@ namespace Entidades
         public int IdCategoria { get; set; }
         public string Codigo { get; set; }
         public string Nombre { get; set; }
+        public string Marca { get; set; }
+        public string Memoria { get; set; }
+        public string Color { get; set; }
         public decimal PrecioVenta {  get; set; }
         public int Stock {  get; set; }
         public string Descripcion { get; set; }

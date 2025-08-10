@@ -109,6 +109,46 @@ namespace Presentacion
         {
             this.Buscar();
         }
+        private void FormatoDetalleVenta()
+        {
+            var g = DgvMostrarDetalle;
+
+            // Oculto ID (si querés verlo, quitá esta línea)
+            if (g.Columns.Contains("ID"))
+                g.Columns["ID"].Visible = false;
+
+            g.Columns["CODIGO"].HeaderText = "Código";
+            g.Columns["CODIGO"].Width = 100;
+
+            g.Columns["ARTICULO"].HeaderText = "Artículo";
+            g.Columns["ARTICULO"].Width = 220;
+
+            g.Columns["MARCA"].Width = 120;
+            g.Columns["MEMORIA"].Width = 90;
+            g.Columns["COLOR"].Width = 90;
+
+            g.Columns["CANTIDAD"].HeaderText = "Cant.";
+            g.Columns["CANTIDAD"].Width = 60;
+            g.Columns["CANTIDAD"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            g.Columns["PRECIO"].DefaultCellStyle.Format = "C2";
+            g.Columns["PRECIO"].Width = 100;
+            g.Columns["PRECIO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            g.Columns["DESCUENTO"].HeaderText = "Descuento (%)";
+            g.Columns["DESCUENTO"].DefaultCellStyle.Format = "N0";
+            g.Columns["DESCUENTO"].Width = 110;
+            g.Columns["DESCUENTO"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            g.Columns["IMPORTE"].DefaultCellStyle.Format = "C2";
+            g.Columns["IMPORTE"].Width = 110;
+            g.Columns["IMPORTE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            // Opcionales que ayudan:
+            g.ReadOnly = true; // es un detalle histórico
+            g.AllowUserToAddRows = false;
+            g.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+        }
 
         private void DgvListado_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -118,15 +158,7 @@ namespace Presentacion
                 DgvMostrarDetalle.DataSource = NVenta.ListarDetalle(Convert.ToInt32(DgvListado.CurrentRow.Cells["ID"].Value));
 
                 //Formato de columnas
-                DgvMostrarDetalle.Columns[5].HeaderText = "Descuento (%)";
-                DgvMostrarDetalle.Columns["IMPORTE"].DefaultCellStyle.Format = "C2";
-                DgvMostrarDetalle.Columns["PRECIO"].DefaultCellStyle.Format = "C2";
-                DgvMostrarDetalle.Columns["DESCUENTO"].DefaultCellStyle.Format = "N0";
-                DgvMostrarDetalle.Columns[0].Width = 50;
-                DgvMostrarDetalle.Columns[2].Width = 250;
-                DgvMostrarDetalle.Columns[4].Width = 200;
-                DgvMostrarDetalle.Columns[5].Width = 150;
-                DgvMostrarDetalle.Columns[6].Width = 200;
+                this.FormatoDetalleVenta();
 
                 //Variables a mostrar
                 decimal Total, Subtotal;

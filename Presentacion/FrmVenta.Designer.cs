@@ -67,14 +67,15 @@
             this.TxtCodigo = new System.Windows.Forms.TextBox();
             this.TabGeneral = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.PanelArticulos = new System.Windows.Forms.Panel();
+            this.lblInstruccionDobleClick = new System.Windows.Forms.Label();
             this.LblTotalArticulos = new System.Windows.Forms.Label();
             this.DgvArticulos = new System.Windows.Forms.DataGridView();
             this.BtnCerrarArticulos = new System.Windows.Forms.Button();
             this.BtnFiltrarArticulos = new System.Windows.Forms.Button();
             this.TxtBuscarArticulo = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.BtnVerListado = new System.Windows.Forms.Button();
             this.TxtSubTotal = new System.Windows.Forms.TextBox();
             this.TxtTotalImpuesto = new System.Windows.Forms.TextBox();
@@ -87,7 +88,6 @@
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnInsertar = new System.Windows.Forms.Button();
             this.ErrorIcono = new System.Windows.Forms.ErrorProvider(this.components);
-            this.lblInstruccionDobleClick = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMostrarDetalle)).BeginInit();
             this.PanelMostrar.SuspendLayout();
@@ -95,9 +95,9 @@
             this.tabPage1.SuspendLayout();
             this.TabGeneral.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.PanelArticulos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvArticulos)).BeginInit();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.SuspendLayout();
@@ -529,27 +529,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Nueva Venta";
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.PanelArticulos);
-            this.groupBox2.Controls.Add(this.BtnVerListado);
-            this.groupBox2.Controls.Add(this.TxtSubTotal);
-            this.groupBox2.Controls.Add(this.TxtTotalImpuesto);
-            this.groupBox2.Controls.Add(this.TxtTotal);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.DgvDetalle);
-            this.groupBox2.Controls.Add(this.BtnBuscarArticulo);
-            this.groupBox2.Controls.Add(this.TxtCodigo);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Location = new System.Drawing.Point(6, 139);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1157, 424);
-            this.groupBox2.TabIndex = 9;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Detalle";
-            // 
             // PanelArticulos
             // 
             this.PanelArticulos.BackColor = System.Drawing.Color.Snow;
@@ -561,11 +540,22 @@
             this.PanelArticulos.Controls.Add(this.BtnFiltrarArticulos);
             this.PanelArticulos.Controls.Add(this.TxtBuscarArticulo);
             this.PanelArticulos.Controls.Add(this.label11);
-            this.PanelArticulos.Location = new System.Drawing.Point(12, 32);
+            this.PanelArticulos.Location = new System.Drawing.Point(12, 61);
             this.PanelArticulos.Name = "PanelArticulos";
             this.PanelArticulos.Size = new System.Drawing.Size(1145, 353);
             this.PanelArticulos.TabIndex = 26;
             this.PanelArticulos.Visible = false;
+            // 
+            // lblInstruccionDobleClick
+            // 
+            this.lblInstruccionDobleClick.AutoSize = true;
+            this.lblInstruccionDobleClick.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblInstruccionDobleClick.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInstruccionDobleClick.Location = new System.Drawing.Point(540, 29);
+            this.lblInstruccionDobleClick.Name = "lblInstruccionDobleClick";
+            this.lblInstruccionDobleClick.Size = new System.Drawing.Size(243, 16);
+            this.lblInstruccionDobleClick.TabIndex = 9;
+            this.lblInstruccionDobleClick.Text = "🛈 Doble clic sobre un artículo para agregarlo";
             // 
             // LblTotalArticulos
             // 
@@ -633,6 +623,27 @@
             this.label11.Size = new System.Drawing.Size(56, 21);
             this.label11.TabIndex = 0;
             this.label11.Text = "Buscar";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.PanelArticulos);
+            this.groupBox2.Controls.Add(this.BtnVerListado);
+            this.groupBox2.Controls.Add(this.TxtSubTotal);
+            this.groupBox2.Controls.Add(this.TxtTotalImpuesto);
+            this.groupBox2.Controls.Add(this.TxtTotal);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.DgvDetalle);
+            this.groupBox2.Controls.Add(this.BtnBuscarArticulo);
+            this.groupBox2.Controls.Add(this.TxtCodigo);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Location = new System.Drawing.Point(6, 139);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1157, 424);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Detalle";
             // 
             // BtnVerListado
             // 
@@ -751,17 +762,6 @@
             // 
             this.ErrorIcono.ContainerControl = this;
             // 
-            // lblInstruccionDobleClick
-            // 
-            this.lblInstruccionDobleClick.AutoSize = true;
-            this.lblInstruccionDobleClick.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.lblInstruccionDobleClick.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInstruccionDobleClick.Location = new System.Drawing.Point(540, 29);
-            this.lblInstruccionDobleClick.Name = "lblInstruccionDobleClick";
-            this.lblInstruccionDobleClick.Size = new System.Drawing.Size(243, 16);
-            this.lblInstruccionDobleClick.TabIndex = 9;
-            this.lblInstruccionDobleClick.Text = "🛈 Doble clic sobre un artículo para agregarlo";
-            // 
             // FrmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -783,11 +783,11 @@
             this.TabGeneral.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.PanelArticulos.ResumeLayout(false);
             this.PanelArticulos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvArticulos)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDetalle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).EndInit();
             this.ResumeLayout(false);

@@ -38,6 +38,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.PanelArticulos = new System.Windows.Forms.Panel();
+            this.lblInstruccionDobleClick = new System.Windows.Forms.Label();
             this.LblTotalArticulos = new System.Windows.Forms.Label();
             this.DgvArticulos = new System.Windows.Forms.DataGridView();
             this.BtnCerrarArticulos = new System.Windows.Forms.Button();
@@ -86,7 +87,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.DgvMostrarDetalle = new System.Windows.Forms.DataGridView();
             this.TabGeneral = new System.Windows.Forms.TabControl();
-            this.lblInstruccionDobleClick = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -214,11 +214,22 @@
             this.PanelArticulos.Controls.Add(this.BtnFiltrarArticulos);
             this.PanelArticulos.Controls.Add(this.TxtBuscarArticulo);
             this.PanelArticulos.Controls.Add(this.label11);
-            this.PanelArticulos.Location = new System.Drawing.Point(12, 62);
+            this.PanelArticulos.Location = new System.Drawing.Point(12, 65);
             this.PanelArticulos.Name = "PanelArticulos";
             this.PanelArticulos.Size = new System.Drawing.Size(1145, 353);
             this.PanelArticulos.TabIndex = 26;
             this.PanelArticulos.Visible = false;
+            // 
+            // lblInstruccionDobleClick
+            // 
+            this.lblInstruccionDobleClick.AutoSize = true;
+            this.lblInstruccionDobleClick.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblInstruccionDobleClick.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInstruccionDobleClick.Location = new System.Drawing.Point(540, 29);
+            this.lblInstruccionDobleClick.Name = "lblInstruccionDobleClick";
+            this.lblInstruccionDobleClick.Size = new System.Drawing.Size(243, 16);
+            this.lblInstruccionDobleClick.TabIndex = 10;
+            this.lblInstruccionDobleClick.Text = "🛈 Doble clic sobre un artículo para agregarlo";
             // 
             // LblTotalArticulos
             // 
@@ -291,11 +302,11 @@
             // 
             this.BtnVerListado.BackColor = System.Drawing.Color.LightSteelBlue;
             this.BtnVerListado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnVerListado.Location = new System.Drawing.Point(851, 31);
+            this.BtnVerListado.Location = new System.Drawing.Point(482, 27);
             this.BtnVerListado.Name = "BtnVerListado";
-            this.BtnVerListado.Size = new System.Drawing.Size(111, 28);
+            this.BtnVerListado.Size = new System.Drawing.Size(174, 32);
             this.BtnVerListado.TabIndex = 25;
-            this.BtnVerListado.Text = "Ver Lista";
+            this.BtnVerListado.Text = "Ver Lista de Artículos";
             this.BtnVerListado.UseVisualStyleBackColor = false;
             this.BtnVerListado.Click += new System.EventHandler(this.BtnVerListado_Click);
             // 
@@ -370,31 +381,31 @@
             // 
             this.BtnBuscarArticulo.BackColor = System.Drawing.Color.LightSteelBlue;
             this.BtnBuscarArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnBuscarArticulo.Location = new System.Drawing.Point(754, 31);
+            this.BtnBuscarArticulo.Location = new System.Drawing.Point(374, 27);
             this.BtnBuscarArticulo.Name = "BtnBuscarArticulo";
-            this.BtnBuscarArticulo.Size = new System.Drawing.Size(76, 28);
+            this.BtnBuscarArticulo.Size = new System.Drawing.Size(76, 32);
             this.BtnBuscarArticulo.TabIndex = 17;
-            this.BtnBuscarArticulo.Text = "Buscar";
+            this.BtnBuscarArticulo.Text = "Agregar";
             this.BtnBuscarArticulo.UseVisualStyleBackColor = false;
             this.BtnBuscarArticulo.Click += new System.EventHandler(this.BtnBuscarArticulo_Click);
             // 
             // TxtCodigo
             // 
             this.TxtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtCodigo.Location = new System.Drawing.Point(93, 31);
+            this.TxtCodigo.Location = new System.Drawing.Point(141, 31);
             this.TxtCodigo.Name = "TxtCodigo";
-            this.TxtCodigo.Size = new System.Drawing.Size(655, 28);
+            this.TxtCodigo.Size = new System.Drawing.Size(226, 28);
             this.TxtCodigo.TabIndex = 17;
             this.TxtCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtCodigo_KeyDown);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(23, 38);
+            this.label7.Location = new System.Drawing.Point(17, 35);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 21);
+            this.label7.Size = new System.Drawing.Size(118, 21);
             this.label7.TabIndex = 17;
-            this.label7.Text = "Artículo";
+            this.label7.Text = "Código Artículo";
             // 
             // groupBox1
             // 
@@ -740,17 +751,6 @@
             this.TabGeneral.SelectedIndex = 0;
             this.TabGeneral.Size = new System.Drawing.Size(1181, 655);
             this.TabGeneral.TabIndex = 1;
-            // 
-            // lblInstruccionDobleClick
-            // 
-            this.lblInstruccionDobleClick.AutoSize = true;
-            this.lblInstruccionDobleClick.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.lblInstruccionDobleClick.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInstruccionDobleClick.Location = new System.Drawing.Point(540, 29);
-            this.lblInstruccionDobleClick.Name = "lblInstruccionDobleClick";
-            this.lblInstruccionDobleClick.Size = new System.Drawing.Size(243, 16);
-            this.lblInstruccionDobleClick.TabIndex = 10;
-            this.lblInstruccionDobleClick.Text = "🛈 Doble clic sobre un artículo para agregarlo";
             // 
             // FrmIngreso
             // 

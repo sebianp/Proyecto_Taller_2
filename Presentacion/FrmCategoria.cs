@@ -108,6 +108,7 @@ namespace Presentacion
         {
             //Cuando el formulario se cargue, se hace referencia al metodo Listar que
             //proporciona la información al bloque Listado para mostrar todas las categorias
+            lblTitulo.Text = "ALTA DE CATEGORIA";
             this.Listar();
         }
 
@@ -162,6 +163,7 @@ namespace Presentacion
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.Limpiar();
+            lblTitulo.Text = "ALTA DE CATEGORIA";
             TabGeneral.SelectedIndex = 0;
         }
 
@@ -170,6 +172,17 @@ namespace Presentacion
 
             try
             {
+                //Ignorar doble click en encabezados o fuera de filas
+                if (e.RowIndex < 0) return;
+
+                //Ignorar si doble click fue en la columna "Seleccionar"
+                var col = DgvListado.Columns[e.ColumnIndex];
+                if (col is DataGridViewCheckBoxColumn ||
+                    col.Name.Equals("Seleccionar", StringComparison.OrdinalIgnoreCase))
+                {
+                    return;
+                }
+                lblTitulo.Text = "MODIFICAR CATEGORIA";
                 this.Limpiar();
                 //Modificamos la visibilidad de los botones para actualizar
                 BtnActualizar.Visible = true;

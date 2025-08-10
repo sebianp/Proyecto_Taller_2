@@ -175,6 +175,16 @@ namespace Presentacion
         {
             try
             {
+                //Ignorar doble click en encabezados o fuera de filas
+                if (e.RowIndex < 0) return;
+
+                //Ignorar si doble click fue en la columna "Seleccionar"
+                var col = DgvListado.Columns[e.ColumnIndex];
+                if (col is DataGridViewCheckBoxColumn ||
+                    col.Name.Equals("Seleccionar", StringComparison.OrdinalIgnoreCase))
+                {
+                    return;
+                }
                 //Se prepara la ventana del formulario para Actualizar
                 this.Limpiar();
                 BtnActualizar.Visible = true;

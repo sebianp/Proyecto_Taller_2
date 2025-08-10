@@ -50,6 +50,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.DgvMostrarDetalle = new System.Windows.Forms.DataGridView();
             this.ErrorIcono = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblInstruccionDobleClick = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).BeginInit();
             this.TabGeneral.SuspendLayout();
@@ -123,6 +124,7 @@
             // 
             this.tabPage1.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabPage1.Controls.Add(this.lblInstruccionDobleClick);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.DtpFechaFin);
@@ -276,6 +278,17 @@
             // 
             this.ErrorIcono.ContainerControl = this;
             // 
+            // lblInstruccionDobleClick
+            // 
+            this.lblInstruccionDobleClick.AutoSize = true;
+            this.lblInstruccionDobleClick.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblInstruccionDobleClick.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInstruccionDobleClick.Location = new System.Drawing.Point(876, 40);
+            this.lblInstruccionDobleClick.Name = "lblInstruccionDobleClick";
+            this.lblInstruccionDobleClick.Size = new System.Drawing.Size(287, 16);
+            this.lblInstruccionDobleClick.TabIndex = 12;
+            this.lblInstruccionDobleClick.Text = "🛈 Doble clic sobre un registro para visualizar detalles.";
+            // 
             // FrmConsulta_ComprasFecha
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,6 +297,7 @@
             this.Controls.Add(this.TabGeneral);
             this.Name = "FrmConsulta_ComprasFecha";
             this.Text = "Ingresos por Fecha";
+            this.Load += new System.EventHandler(this.FrmConsulta_ComprasFecha_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).EndInit();
             this.TabGeneral.ResumeLayout(false);
@@ -320,5 +334,6 @@
         private System.Windows.Forms.DataGridView DgvListado;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.ErrorProvider ErrorIcono;
+        private System.Windows.Forms.Label lblInstruccionDobleClick;
     }
 }

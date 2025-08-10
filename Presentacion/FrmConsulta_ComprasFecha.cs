@@ -68,7 +68,7 @@ namespace Presentacion
             DgvListado.Columns[7].HeaderText = "Número";
 
             // Fecha
-            DgvListado.Columns[8].Width = 100;
+            DgvListado.Columns[8].Width = 130;
             DgvListado.Columns[8].HeaderText = "Fecha";
 
             // Impuesto
@@ -87,44 +87,53 @@ namespace Presentacion
 
         private void FormatoArticulos()
         {
-            // Verificamos que haya al menos las 6 columnas esperadas
-            if (DgvMostrarDetalle.Columns.Count < 6)
+            var g = DgvMostrarDetalle;
+
+            //Control
+            if (g.Columns.Count < 9)
             {
-                MessageBox.Show($"Error: se esperaban 6 columnas en DgvArticulos, hay {DgvMostrarDetalle.Columns.Count}",
-                                "FormatoArticulos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show($"Se esperaban 9 columnas y hay {g.Columns.Count}.", "FormatoArticulos",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            //0: ID (oculto)
-            DgvMostrarDetalle.Columns[0].Visible = false;
+            // 0 ID
+            g.Columns[0].Visible = false;
 
-            //1: CODIGO
-            DgvMostrarDetalle.Columns[1].Visible = true;
-            DgvMostrarDetalle.Columns[1].HeaderText = "Código";
-            DgvMostrarDetalle.Columns[1].Width = 100;
+            // 1 CODIGO
+            g.Columns[1].HeaderText = "Código";
+            g.Columns[1].Width = 100;
 
-            //2: ARTICULO
-            DgvMostrarDetalle.Columns[2].Visible = true;
-            DgvMostrarDetalle.Columns[2].HeaderText = "Artículo";
-            DgvMostrarDetalle.Columns[2].Width = 200;
+            // 2 ARTICULO
+            g.Columns[2].HeaderText = "Artículo";
+            g.Columns[2].Width = 220;
 
-            //3: CANTIDAD
-            DgvMostrarDetalle.Columns[3].Visible = true;
-            DgvMostrarDetalle.Columns[3].HeaderText = "Cantidad";
-            DgvMostrarDetalle.Columns[3].Width = 80;
-            DgvMostrarDetalle.Columns[3].DefaultCellStyle.Format = "N0"; //entero
+            // 3 MARCA, 4 COLOR, 5 MEMORIA
+            g.Columns[3].Width = 120;
+            g.Columns[4].Width = 90;
+            g.Columns[5].Width = 90;
 
-            //4: PRECIO
-            DgvMostrarDetalle.Columns[4].Visible = true;
-            DgvMostrarDetalle.Columns[4].HeaderText = "Precio";
-            DgvMostrarDetalle.Columns[4].Width = 100;
-            DgvMostrarDetalle.Columns[4].DefaultCellStyle.Format = "C2"; //moneda
+            // 6 CANTIDAD
+            g.Columns[6].HeaderText = "Cantidad";
+            g.Columns[6].Width = 90;
+            g.Columns[6].DefaultCellStyle.Format = "N0";
+            g.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            //5: IMPORTE
-            DgvMostrarDetalle.Columns[5].Visible = true;
-            DgvMostrarDetalle.Columns[5].HeaderText = "Importe";
-            DgvMostrarDetalle.Columns[5].Width = 100;
-            DgvMostrarDetalle.Columns[5].DefaultCellStyle.Format = "C2"; //moneda
+            // 7 PRECIO
+            g.Columns[7].HeaderText = "Precio";
+            g.Columns[7].Width = 150;
+            g.Columns[7].DefaultCellStyle.Format = "C2";
+            g.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            // 8 IMPORTE
+            g.Columns[8].HeaderText = "Importe";
+            g.Columns[8].Width = 150;
+            g.Columns[8].DefaultCellStyle.Format = "C2";
+            g.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            g.ReadOnly = true;
+            g.AllowUserToAddRows = false;
+            g.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
@@ -179,6 +188,11 @@ namespace Presentacion
         private void BtnCerrarDetalle_Click(object sender, EventArgs e)
         {
             PanelMostrar.Visible=false;
+        }
+
+        private void FrmConsulta_ComprasFecha_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

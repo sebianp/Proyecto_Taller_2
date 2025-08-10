@@ -113,6 +113,93 @@ namespace Datos
 
             }
 
+        //Metodo que permite realizar busquedas aplicando filtros
+        public DataTable BuscarFiltros(string valor, int idCategoria, string marca)
+        {
+            SqlDataReader resultado;
+            DataTable tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+
+                SqlCommand comando = new SqlCommand("articulo_buscar_filtros", SqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                //@texto: NULL si viene vacío
+                var pTexto = comando.Parameters.Add("@texto", SqlDbType.VarChar);
+                pTexto.Value = string.IsNullOrWhiteSpace(valor) ? (object)DBNull.Value : valor;
+
+                //@idcategoria: NULL si viene 0 o negativo
+                var pCat = comando.Parameters.Add("@idcategoria", SqlDbType.Int);
+                pCat.Value = (idCategoria > 0) ? (object)idCategoria : DBNull.Value;
+
+                //@marca: NULL si viene vacío o todas
+                var pMarca = comando.Parameters.Add("@marca", SqlDbType.VarChar);
+                pMarca.Value = (string.IsNullOrWhiteSpace(marca) || marca == "Todas")
+                               ? (object)DBNull.Value : marca;
+
+                SqlCon.Open();
+                resultado = comando.ExecuteReader();
+                tabla.Load(resultado);
+
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
+
+        //Metodo que permite busqueda de articulos por filtros para ventas teniendo en cuenta el stock y precio
+        public DataTable BuscarVentaFiltros(string texto, int idCategoria, string marca)
+        {
+            SqlDataReader resultado;
+            DataTable tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+
+                SqlCommand comando = new SqlCommand("articulo_buscar_venta_filtros", SqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                //@texto:NULL si viene sin valor
+                var pTexto = comando.Parameters.Add("@texto", SqlDbType.VarChar);
+                pTexto.Value = string.IsNullOrWhiteSpace(texto) ? (object)DBNull.Value : texto;
+
+                // @idcategoria:NULL si viene 0 o negativo
+                var pCat = comando.Parameters.Add("@idcategoria", SqlDbType.Int);
+                pCat.Value = (idCategoria > 0) ? (object)idCategoria : DBNull.Value;
+
+                // @marca:NULL si viene vacío o todas
+                var pMarca = comando.Parameters.Add("@marca", SqlDbType.VarChar);
+                pMarca.Value = (string.IsNullOrWhiteSpace(marca) || marca == "Todas")
+                               ? (object)DBNull.Value : marca;
+
+                SqlCon.Open();
+                resultado = comando.ExecuteReader();
+                tabla.Load(resultado);
+
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
+
+        //metodo para realizar busquedas en ventas
         public DataTable BuscarVenta(string valor)
         {
 
@@ -264,7 +351,7 @@ namespace Datos
         //Metodo para determinar si un registro ya existe registro en tabla categoria
         //Recibe un objeto del tipo Entidad categoria que lo almacenara como nuevo registro
         //Devuelve una cadena con los resultados de la operación
-        public string Existe(string valor)
+        public string Existe(string nombre, string marca, string memoria, string color)
             {
                 string respuesta = ""; //Iniciamos la variable de respuesta que devuelve el metodo en base a lo obtenido
 
@@ -278,18 +365,25 @@ namespace Datos
                     //Recibe dos parametros: el nombre del procedimiento y la conexion a la BD especifica
                     SqlCommand comando = new SqlCommand("articulo_existe", SqlCon);
                     comando.CommandType = CommandType.StoredProcedure; //Indico que estoy haciendo referencia a un comando de la BD
-                    comando.Parameters.Add("@valor", SqlDbType.VarChar).Value = valor;
+                    //Parametros de entrada
+                    comando.Parameters.Add("@nombre", SqlDbType.VarChar).Value = nombre;
+                    comando.Parameters.Add("@marca", SqlDbType.VarChar).Value = marca;
+                    comando.Parameters.Add("@memoria", SqlDbType.VarChar).Value = memoria;
+                    comando.Parameters.Add("@color", SqlDbType.VarChar).Value = color;
+
+                    //Parametros de Salida
                     SqlParameter ParExiste = new SqlParameter(); //Se crea un objeto del tipo parametro para recibir resultado del procedimiento
                     ParExiste.ParameterName = "@existe"; //Enlazamos el valor de los parametros
                     ParExiste.SqlDbType = SqlDbType.Int; //Indicamos que ese parametro es un entero
                     ParExiste.Direction = ParameterDirection.Output; //Indicamos que es un parametro de salida
+
                     comando.Parameters.Add(ParExiste); //Añadimos el parametro al objeto instanciado comando
                     SqlCon.Open(); //Se abre la conexion
 
                     //Se ejecuta el comando
                     comando.ExecuteNonQuery();
 
-                    respuesta = Convert.ToString(ParExiste.Value);
+                    respuesta = Convert.ToString(ParExiste.Value); //Acá es dónde se almacena 1 o 0 dependiendo si existe o no el artículo.
 
                 }
                 catch (Exception ex)
@@ -325,6 +419,9 @@ namespace Datos
                     comando.Parameters.Add("@idcategoria", SqlDbType.Int).Value = Obj.IdCategoria;
                     comando.Parameters.Add("@codigo", SqlDbType.VarChar).Value = Obj.Codigo;
                     comando.Parameters.Add("@nombre", SqlDbType.VarChar).Value = Obj.Nombre;
+                    comando.Parameters.Add("@marca", SqlDbType.VarChar).Value = Obj.Marca;
+                    comando.Parameters.Add("@memoria", SqlDbType.VarChar).Value = Obj.Memoria;
+                    comando.Parameters.Add("@color", SqlDbType.VarChar).Value = Obj.Color;
                     comando.Parameters.Add("@precio_venta", SqlDbType.Decimal).Value = Obj.PrecioVenta;
                     comando.Parameters.Add("@stock", SqlDbType.Int).Value = Obj.Stock;
                     comando.Parameters.Add("@descripcion", SqlDbType.VarChar).Value = Obj.Descripcion;
@@ -367,14 +464,19 @@ namespace Datos
                     //Recibe dos parametros: el nombre del procedimiento y la conexion a la BD especifica
                     SqlCommand comando = new SqlCommand("articulo_actualizar", SqlCon);
                     comando.CommandType = CommandType.StoredProcedure; //Indico que estoy haciendo referencia a un comando de la BD
+                    //Parametros:
                     comando.Parameters.Add("@idarticulo", SqlDbType.Int).Value = Obj.IdArticulo;
                     comando.Parameters.Add("@idcategoria", SqlDbType.Int).Value = Obj.IdCategoria;
                     comando.Parameters.Add("@codigo", SqlDbType.VarChar).Value = Obj.Codigo;
                     comando.Parameters.Add("@nombre", SqlDbType.VarChar).Value = Obj.Nombre;
+                    comando.Parameters.Add("@marca", SqlDbType.VarChar).Value = Obj.Marca;
+                    comando.Parameters.Add("@memoria", SqlDbType.VarChar).Value = Obj.Memoria;
+                    comando.Parameters.Add("@color", SqlDbType.VarChar).Value = Obj.Color;
                     comando.Parameters.Add("@precio_venta", SqlDbType.Decimal).Value = Obj.PrecioVenta;
                     comando.Parameters.Add("@stock", SqlDbType.Int).Value = Obj.Stock;
                     comando.Parameters.Add("@descripcion", SqlDbType.VarChar).Value = Obj.Descripcion;
                     comando.Parameters.Add("@imagen", SqlDbType.VarChar, 255).Value = Obj.Imagen;
+
                     SqlCon.Open(); //Se abre la conexion
 
                     //Establecemos el valor de la respuesta en base al resultado de la operacion

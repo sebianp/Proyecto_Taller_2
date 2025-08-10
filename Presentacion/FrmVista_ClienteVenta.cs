@@ -65,7 +65,27 @@ namespace Presentacion
 
         private void FrmVista_ClienteVenta_Load(object sender, EventArgs e)
         {
+            this.Listar();
+        }
 
+        private void Listar()
+        {
+            string valor = "";
+            try
+            {
+                //Agregamos como recurso del Datagrid el listado obtenido de la BD
+                //Esto permite cargar y mostrar los datos de la tabla Categoria
+                DgvListado.DataSource = NPersona.BuscarClientes(valor);
+                this.Formato();
+                
+                LblTotal.Text = "Total Registros: " + Convert.ToString(DgvListado.Rows.Count); //Cuenta todas las filas
+            }
+            catch (Exception ex)
+            {
+                //Mostramos el mensaje en caso de que haya alguna excepcion y que el programa pueda
+                //seguir ejecutandose, proporcionando una explicación de lo que ocurrio
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)

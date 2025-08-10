@@ -1,11 +1,12 @@
-﻿using Entidades;
+﻿using Datos;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Datos;
 
 namespace Negocio
 {
@@ -37,6 +38,22 @@ namespace Negocio
             //Devolvemos el metodo buscar de la clase incluyendo el parametro valor de busqueda
             return datos.Buscar(valor);
 
+        }
+
+        public static DataTable BuscarVentaFiltros(string texto, int idCategoria, string marca)
+        {
+            //Instanciamos un objeto de la clase
+            DArticulo datos = new DArticulo();
+            //Devolvemos el metodo buscar de la clase incluyendo el parametro valor de busqueda
+            return datos.BuscarVentaFiltros(texto, idCategoria, marca);
+        }
+
+        public static DataTable BuscarFiltros(string texto, int idCategoria, string marca)
+        {
+            //Instanciamos un objeto de la clase
+            DArticulo datos = new DArticulo();
+            //Devolvemos el metodo buscar de la clase incluyendo el parametro valor de busqueda
+            return datos.BuscarFiltros(texto, idCategoria, marca);
         }
 
         public static DataTable BuscarVenta(string valor)
@@ -71,12 +88,12 @@ namespace Negocio
         }
         //Metodo para insertar una nueva categoria en la base de datos
         //Devuelve una cadena con los resultados
-        public static string Insertar(int idCategoria, string codigo ,string nombre, decimal precioVenta, int stock, string descripcion, string imagen)
+        public static string Insertar(int idCategoria, string codigo ,string nombre, string marca, string memoria, string color, decimal precioVenta, int stock, string descripcion, string imagen)
         {
             DArticulo datos = new DArticulo();
 
             //Se verifica si la categoria que intento insertar existe o no
-            string existe = datos.Existe(nombre);
+            string existe = datos.Existe(nombre, marca, memoria, color);
 
             //Aplicamos la lógica dependiendo de si ya existe el objeto
             if (existe.Equals("1"))
@@ -94,6 +111,9 @@ namespace Negocio
                 Obj.IdCategoria = idCategoria;
                 Obj.Codigo = codigo;
                 Obj.Nombre = nombre;
+                Obj.Marca = marca;
+                Obj.Memoria = memoria;
+                Obj.Color = color;
                 Obj.PrecioVenta = precioVenta;
                 Obj.Stock = stock;
                 Obj.Descripcion = descripcion;
@@ -109,58 +129,43 @@ namespace Negocio
 
         //Metodo para actualizar un objeto existente en la base de datos
         //Devuelve una cadena los resultados de la operacion.
-        public static string Actualizar(int id, int idCategoria, string codigo, string nombreAnt, string nombre, decimal precioVenta, int stock, string descripcion, string imagen)
+        public static string Actualizar(int id, int idCategoria, string codigo, string nombreAnt, string marcaAnt, string memoriaAnt, string colorAnt, string nombre, string marca, string memoria,string color, decimal precioVenta, int stock, string descripcion, string imagen)
         {
             DArticulo datos = new DArticulo();
             //Crea el objeto de la clase
             Articulo Obj = new Articulo();
 
-            //Si existe el nombre quiere decir que no se esta modificando el nombre, sino los otros parametros.
-            if (nombreAnt.Equals(nombre))
-            {
-                //Una vez instanciado el objeto de la clase se le ingresan los datos
-                Obj.IdArticulo = id;
-                Obj.IdCategoria = idCategoria;
-                Obj.Codigo = codigo;
-                Obj.Nombre = nombre;
-                Obj.PrecioVenta= precioVenta;
-                Obj.Stock = stock;
-                Obj.Descripcion = descripcion;
-                Obj.Imagen = imagen;
+            //Verificar si se modificó la combinación de identidad
+            bool modificoIdentidad =
+                !nombreAnt.Equals(nombre) ||
+                !marcaAnt.Equals(marca) ||
+                !memoriaAnt.Equals(memoria) ||
+                !colorAnt.Equals(color);
 
-                //Al enviar el objeto al metodo actualizar este retorna una cadena de confirmacion
-                return datos.Actualizar(Obj);
-            }
-            else
+            //Si se modifico algun parametro clave del producto, se verifica si ese producto ya no esta en existencia.
+            if (modificoIdentidad)
             {
-                //Se verifica si el objeto que intento insertar ya existe
-                string existe = datos.Existe(nombre);
-
-                //Aplicamos la lógica dependiendo de si ya existe el objeto
+                string existe = datos.Existe(nombre, marca, memoria, color);
                 if (existe.Equals("1"))
                 {
-                    //El objeto existe y se notifica al usuario
-                    return "El articulo ya existe";
-                }
-                else
-                {
-                    //Una vez instanciado el objeto de la clase se ingresan los datos
-                    Obj.IdArticulo = id;
-                    Obj.IdCategoria = idCategoria;
-                    Obj.Codigo = codigo;
-                    Obj.Nombre = nombre;
-                    Obj.PrecioVenta = precioVenta;
-                    Obj.Stock = stock;
-                    Obj.Descripcion = descripcion;
-                    Obj.Imagen = imagen;
-                    return datos.Actualizar(Obj);
-
+                    return "Ya existe un artículo con el mismo nombre, marca, memoria y color.";
                 }
             }
 
+            //Continua actualizacion luego de controlar lo anterior.
+            Obj.IdArticulo = id;
+            Obj.IdCategoria = idCategoria;
+            Obj.Codigo = codigo;
+            Obj.Nombre = nombre;
+            Obj.Marca = marca;
+            Obj.Memoria = memoria;
+            Obj.Color = color;
+            Obj.PrecioVenta = precioVenta;
+            Obj.Stock = stock;
+            Obj.Descripcion = descripcion;
+            Obj.Imagen = imagen;
 
-
-
+            return datos.Actualizar(Obj);
         }
 
         //Metodo para eliminar un registro que no sea de utilidad o este obsoleto
