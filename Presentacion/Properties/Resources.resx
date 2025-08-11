@@ -127,9 +127,6 @@
   <data name="carpeta_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\carpeta_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="folder2_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\folder2_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="shop_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shop_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -138,6 +135,9 @@
   </data>
   <data name="update_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\update_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="acceso_usuario_128px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\acceso_usuario_128px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cart_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cart_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,8 +151,14 @@
   <data name="shop_64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shop_64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="venta_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\venta_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="barcode_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\barcode_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LIBERTEL_LOGO" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LIBERTEL_LOGO.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="exit_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\exit_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,17 +172,14 @@
   <data name="acept_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\acept_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="delete_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="cart_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cart_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="venta_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\venta_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="delete_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="acceso_usuario_128px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\acceso_usuario_128px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="folder2_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\folder2_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shop_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shop_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,7 +187,7 @@
   <data name="refresh_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\refresh_32px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LIBERTEL_LOGO" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LIBERTEL_LOGO.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="delete_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

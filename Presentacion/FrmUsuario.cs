@@ -254,6 +254,9 @@ namespace Presentacion
                     {
                         //Si almaceno correctamente recibirá OK y va a mostrar la respuesta OK
                         this.MensajeOk("El Usuario se actualizó de forma correcta");
+                        this.Limpiar();
+                        lblTitulo.Text = "ALTA DE USUARIO";
+                        TabGeneral.SelectedIndex = 0;
                         this.Listar();
                     }
                     else

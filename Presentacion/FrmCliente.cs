@@ -240,6 +240,7 @@ namespace Presentacion
                         this.MensajeOk("El cliente se actualizo de forma correcta");
                         this.Limpiar();
                         this.Listar();
+                        lblTitulo.Text = "ALTA DE CLIENTE";
                         //Volver a la página inicial
                         TabGeneral.SelectedIndex = 0;
                     }

@@ -17,10 +17,17 @@ namespace Negocio
             return Datos.Listar();
         }
 
-        public static DataTable Buscar(string Valor)
+        public static DataTable ListarComprador(int IdUsuario)
         {
             DIngreso Datos = new DIngreso();
-            return Datos.Buscar(Valor);
+            return Datos.ListarComprador(IdUsuario);
+        }
+
+
+        public static DataTable Buscar(string Valor, int IdUsuario)
+        {
+            DIngreso Datos = new DIngreso();
+            return Datos.Buscar(Valor,IdUsuario);
         }
 
         //Método para buscar ingresos por fecha

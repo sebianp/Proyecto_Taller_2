@@ -118,6 +118,7 @@ namespace Presentacion
 
         private void FrmProveedor_Load(object sender, EventArgs e)
         {
+            lblTitulo.Text = "ALTA DE PROVEEDOR";
             this.Listar();
         }
 
@@ -186,6 +187,7 @@ namespace Presentacion
                     return;
                 }
                 //Se prepara la ventana del formulario para Actualizar
+                lblTitulo.Text = "MODIFICAR PROVEEDOR";
                 this.Limpiar();
                 BtnActualizar.Visible = true;
                 BtnInsertar.Visible = false;
@@ -236,6 +238,8 @@ namespace Presentacion
                         this.MensajeOk("El Proveedor se actualizo de forma correcta");
                         this.Limpiar();
                         this.Listar();
+                        lblTitulo.Text = "ALTA DE PROVEEDOR";
+                        TabGeneral.SelectedIndex = 0;
                     }
                     else
                     {
@@ -256,7 +260,9 @@ namespace Presentacion
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
+
             this.Limpiar();
+            lblTitulo.Text = "ALTA DE PROVEEDOR";
             TabGeneral.SelectedIndex = 0;
         }
 

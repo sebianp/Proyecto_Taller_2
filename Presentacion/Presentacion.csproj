@@ -423,6 +423,7 @@
     <None Include="Resources\save_24px.png" />
     <None Include="Resources\barcode_24px.png" />
     <None Include="Resources\LIBERTEL_LOGO.jpg" />
+    <None Include="Resources\delete_16px.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -605,6 +605,7 @@ namespace Presentacion
                     }
 
                     this.Listar();
+                    lblTitulo.Text = "ALTA DE ARTÍCULO";
                     TabGeneral.SelectedIndex = 0;
                 }
                 else

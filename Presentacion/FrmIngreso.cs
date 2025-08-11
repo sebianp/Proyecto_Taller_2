@@ -27,7 +27,7 @@ namespace Presentacion
             {
                 //Agregamos como recurso del Datagrid el listado obtenido de la BD
                 //Esto permite cargar y mostrar los datos de la tabla Categoria
-                DgvListado.DataSource = NIngreso.Listar();
+                DgvListado.DataSource = NIngreso.ListarComprador(Variables.IdUsuario);
                 this.Formato();
                 this.Limpiar();
                 LblTotal.Text = "Total Registros: " + Convert.ToString(DgvListado.Rows.Count); //Cuenta todas las filas
@@ -47,7 +47,7 @@ namespace Presentacion
             {
                 //Agregamos como recurso el listado obtenido de la BD en base al parametro enviado
                 //Esto permite mostrar los datos recibidos con los resultados de la busqueda
-                DgvListado.DataSource = NIngreso.Buscar(TxtBuscar.Text);
+                DgvListado.DataSource = NIngreso.Buscar(TxtBuscar.Text, Variables.IdUsuario);
                 this.Formato();
                 LblTotal.Text = "Total Registros: " + Convert.ToString(DgvListado.Rows.Count); //Cuenta todas las filas
             }
@@ -76,9 +76,9 @@ namespace Presentacion
             DgvListado.Columns[5].HeaderText = "Documento";
             DgvListado.Columns[6].Width = 70;
             DgvListado.Columns[6].HeaderText = "Serie";
-            DgvListado.Columns[7].Width = 70;
+            DgvListado.Columns[7].Width = 120;
             DgvListado.Columns[7].HeaderText = "Número";
-            DgvListado.Columns[8].Width = 60;
+            DgvListado.Columns[8].Width = 140;
             DgvListado.Columns[9].Width = 100;
             DgvListado.Columns[10].Width = 100;
             DgvListado.Columns[11].Width = 100;
@@ -97,7 +97,7 @@ namespace Presentacion
             TxtNumComprobante.Clear();
             DtDetalle.Clear();
             TxtSubTotal.Text = "0";
-            TxtImpuesto.Text = "0";
+            //TxtImpuesto.Text = "0";
             TxtTotal.Text = "0";
 
             BtnInsertar.Visible = true;
@@ -408,6 +408,7 @@ namespace Presentacion
             CargarListadoArticulos(); //Actualiza la lista de productos del panel
             BtnInsertar.Enabled = false;
             BtnCancelar.Enabled = false;
+            BtnEliminarItem.Enabled = false;
             //Luego de actualizar, muestra la lista del panel.
             PanelArticulos.Visible = true;
         }
@@ -416,6 +417,7 @@ namespace Presentacion
         {
             BtnInsertar.Enabled = true;
             BtnCancelar.Enabled = true;
+            BtnEliminarItem.Enabled = true;
             PanelArticulos.Visible = false;
         }
 
@@ -558,9 +560,10 @@ namespace Presentacion
                     if (respuesta.Equals("OK"))
                     {
                         //Si almaceno correctamente recibirá OK y va a mostrar la respuesta OK
-                        this.MensajeOk("El registro se almacenó de forma correcta");
+                        this.MensajeOk("El IBGRESO se almacenó de forma correcta");
                         this.Limpiar();
                         this.Listar();
+                        TabGeneral.SelectedIndex = 0;
                     }
                     else
                     {
@@ -737,6 +740,38 @@ namespace Presentacion
                 BtnAnular.Visible = false;
                 
             }
+        }
+
+        private void DgvListado_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            this.CalcularTotales();
+        }
+
+        private void BtnEliminarItem_Click(object sender, EventArgs e)
+        {
+            //nada seleccionado
+            if (DgvDetalle.CurrentRow == null || DgvDetalle.CurrentRow.IsNewRow)
+            {
+                MessageBox.Show("Seleccioná un Artículo primero.");
+                return;
+            }
+
+            //confirmar
+            if (MessageBox.Show("¿Eliminar el Artículo seleccionado?", "Confirmar",
+                                MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                return;
+
+            //cerrar edición por las dudas
+            DgvDetalle.EndEdit();
+
+            //si está enlazado a DataTable/BindingSource
+            var view = DgvDetalle.CurrentRow.DataBoundItem as DataRowView;
+            if (view != null)
+                view.Row.Delete();//elimina de la DataTable
+            else
+                DgvDetalle.Rows.Remove(DgvDetalle.CurrentRow);// grilla no enlazada
+
+            CalcularTotales(); //
         }
     }
 }

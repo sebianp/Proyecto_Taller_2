@@ -59,11 +59,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ErrorIcono = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label15 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.TabGeneral.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabGeneral
@@ -82,6 +86,7 @@
             // 
             this.tabPage1.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabPage1.Controls.Add(this.label15);
             this.tabPage1.Controls.Add(this.BtnDesactivar);
             this.tabPage1.Controls.Add(this.BtnEliminar);
             this.tabPage1.Controls.Add(this.BtnActivar);
@@ -205,6 +210,7 @@
             // 
             this.tabPage2.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabPage2.Controls.Add(this.panel1);
             this.tabPage2.Controls.Add(this.TxtEmail);
             this.tabPage2.Controls.Add(this.TxtTelefono);
             this.tabPage2.Controls.Add(this.TxtDireccion);
@@ -233,7 +239,7 @@
             // TxtEmail
             // 
             this.TxtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtEmail.Location = new System.Drawing.Point(479, 312);
+            this.TxtEmail.Location = new System.Drawing.Point(479, 357);
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(367, 28);
             this.TxtEmail.TabIndex = 19;
@@ -241,7 +247,7 @@
             // TxtTelefono
             // 
             this.TxtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtTelefono.Location = new System.Drawing.Point(478, 265);
+            this.TxtTelefono.Location = new System.Drawing.Point(479, 307);
             this.TxtTelefono.Name = "TxtTelefono";
             this.TxtTelefono.Size = new System.Drawing.Size(367, 28);
             this.TxtTelefono.TabIndex = 17;
@@ -249,7 +255,7 @@
             // TxtDireccion
             // 
             this.TxtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtDireccion.Location = new System.Drawing.Point(479, 214);
+            this.TxtDireccion.Location = new System.Drawing.Point(479, 257);
             this.TxtDireccion.Name = "TxtDireccion";
             this.TxtDireccion.Size = new System.Drawing.Size(367, 28);
             this.TxtDireccion.TabIndex = 16;
@@ -257,7 +263,7 @@
             // TxtNumDocumento
             // 
             this.TxtNumDocumento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtNumDocumento.Location = new System.Drawing.Point(478, 162);
+            this.TxtNumDocumento.Location = new System.Drawing.Point(479, 207);
             this.TxtNumDocumento.Name = "TxtNumDocumento";
             this.TxtNumDocumento.Size = new System.Drawing.Size(367, 28);
             this.TxtNumDocumento.TabIndex = 15;
@@ -265,7 +271,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(422, 319);
+            this.label8.Location = new System.Drawing.Point(422, 368);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(48, 21);
             this.label8.TabIndex = 19;
@@ -278,7 +284,7 @@
             "DNI",
             "CUIL/CUIT",
             "PASAPORTE"});
-            this.CboTipoDocumento.Location = new System.Drawing.Point(477, 110);
+            this.CboTipoDocumento.Location = new System.Drawing.Point(478, 156);
             this.CboTipoDocumento.Name = "CboTipoDocumento";
             this.CboTipoDocumento.Size = new System.Drawing.Size(369, 29);
             this.CboTipoDocumento.TabIndex = 14;
@@ -287,7 +293,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(374, 221);
+            this.label7.Location = new System.Drawing.Point(374, 270);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(96, 21);
             this.label7.TabIndex = 13;
@@ -296,7 +302,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(297, 169);
+            this.label6.Location = new System.Drawing.Point(297, 218);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(174, 21);
             this.label6.TabIndex = 12;
@@ -305,7 +311,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(325, 118);
+            this.label5.Location = new System.Drawing.Point(325, 167);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(146, 21);
             this.label5.TabIndex = 11;
@@ -316,7 +322,7 @@
             this.BtnActualizar.BackColor = System.Drawing.Color.Khaki;
             this.BtnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnActualizar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnActualizar.Location = new System.Drawing.Point(479, 398);
+            this.BtnActualizar.Location = new System.Drawing.Point(479, 433);
             this.BtnActualizar.Name = "BtnActualizar";
             this.BtnActualizar.Size = new System.Drawing.Size(123, 36);
             this.BtnActualizar.TabIndex = 8;
@@ -327,7 +333,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(547, 353);
+            this.label3.Location = new System.Drawing.Point(547, 388);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(217, 21);
             this.label3.TabIndex = 7;
@@ -338,7 +344,7 @@
             this.BtnCancelar.BackColor = System.Drawing.Color.IndianRed;
             this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelar.Location = new System.Drawing.Point(722, 398);
+            this.BtnCancelar.Location = new System.Drawing.Point(722, 433);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(123, 36);
             this.BtnCancelar.TabIndex = 6;
@@ -351,7 +357,7 @@
             this.BtnInsertar.BackColor = System.Drawing.Color.CornflowerBlue;
             this.BtnInsertar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnInsertar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnInsertar.Location = new System.Drawing.Point(478, 398);
+            this.BtnInsertar.Location = new System.Drawing.Point(478, 433);
             this.BtnInsertar.Name = "BtnInsertar";
             this.BtnInsertar.Size = new System.Drawing.Size(123, 36);
             this.BtnInsertar.TabIndex = 5;
@@ -363,7 +369,7 @@
             // 
             this.TxtId.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.TxtId.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TxtId.Location = new System.Drawing.Point(745, 9);
+            this.TxtId.Location = new System.Drawing.Point(747, 79);
             this.TxtId.Name = "TxtId";
             this.TxtId.Size = new System.Drawing.Size(100, 21);
             this.TxtId.TabIndex = 4;
@@ -372,7 +378,7 @@
             // TxtNombre
             // 
             this.TxtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtNombre.Location = new System.Drawing.Point(476, 57);
+            this.TxtNombre.Location = new System.Drawing.Point(478, 106);
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(369, 28);
             this.TxtNombre.TabIndex = 2;
@@ -380,7 +386,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(379, 272);
+            this.label2.Location = new System.Drawing.Point(379, 321);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 21);
             this.label2.TabIndex = 1;
@@ -389,7 +395,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(381, 64);
+            this.label1.Location = new System.Drawing.Point(381, 113);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 21);
             this.label1.TabIndex = 0;
@@ -398,6 +404,37 @@
             // ErrorIcono
             // 
             this.ErrorIcono.ContainerControl = this;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.label15.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(1009, 40);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(240, 16);
+            this.label15.TabIndex = 15;
+            this.label15.Text = "🛈 Doble clic sobre registro para modificarlo.";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Snow;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.lblTitulo);
+            this.panel1.Location = new System.Drawing.Point(405, 6);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(500, 67);
+            this.panel1.TabIndex = 26;
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Tai Le", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(103, 14);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(311, 37);
+            this.lblTitulo.TabIndex = 24;
+            this.lblTitulo.Text = "ALTA DE PROVEEDOR";
             // 
             // FrmProveedor
             // 
@@ -415,6 +452,8 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -451,5 +490,8 @@
         private System.Windows.Forms.ErrorProvider ErrorIcono;
         private System.Windows.Forms.Button BtnDesactivar;
         private System.Windows.Forms.Button BtnActivar;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblTitulo;
     }
 }

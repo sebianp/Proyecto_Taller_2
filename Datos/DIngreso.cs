@@ -56,10 +56,56 @@ namespace Datos
             }
         }
 
+        public DataTable ListarComprador(int IdUsuario)
+        {
+            //DataReader nos proporciona una forma de leer una secuencia de filas en una BD de SQL server
+            SqlDataReader resultado;
+
+            //DataTable representa a una tabla
+            DataTable tabla = new DataTable();
+
+            //Variable que establece una nueva conexion con la BD
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                //Referenciamos a la clase Conexion
+                //Al no poder hacer una instancia directa porque el constructor esta encapsulado por seguridad
+                //se referencia primeramente al método getInstancia()
+                //CrearConexion() me devuelve una variable SqlConnection
+                SqlCon = Conexion.getInstancia().CrearConexion();
+
+                //SqlCommand representa una instruccion transact SQL o un procedimiento
+                //Recibe dos parametros: el nombre del procedimiento y la conexion a la BD especifica
+                SqlCommand comando = new SqlCommand("ingreso_listar_comprador", SqlCon);
+                comando.CommandType = CommandType.StoredProcedure; //Indico que estoy haciendo referencia a un comando de la BD
+                comando.Parameters.Add("@idusuario", SqlDbType.Int).Value = IdUsuario;
+                SqlCon.Open(); //Se abre la conexion
+                resultado = comando.ExecuteReader(); //Se almacena el resultado de ejecutar el comando
+
+                //Rellenamos la DataTable con los resultados obtenidos al ejecutar el comando
+                tabla.Load(resultado);
+
+                //Si todo se ejecuto de forma correcta se devuelve la tabla con los datos
+                return tabla;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            //Siempre se ejecuta finally para cerrar la conexion a la BD
+            finally
+            {
+                //Se verifica si la conexion esta abierta, si es así, se cierra.
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
+
         //Metodo para buscar registros de la tabla que coincidan con un valor
         //Recibe un parámetro string con el que buscará las coincidencias
         //Devuelve un objeto del tipo DataTable que contendrá la lista de los registros que coinciden
-        public DataTable Buscar(string valor)
+        public DataTable Buscar(string valor, int IdUsuario)
         {
 
             //DataReader nos proporciona una forma de leer una secuencia de filas en una BD de SQL server
@@ -84,6 +130,7 @@ namespace Datos
                 SqlCommand comando = new SqlCommand("ingreso_buscar", SqlCon);
                 comando.CommandType = CommandType.StoredProcedure; //Indico que estoy haciendo referencia a un comando de la BD
                 comando.Parameters.Add("@valor", SqlDbType.VarChar).Value = valor; //Especifico el valor que envio de parametro al procedimiento
+                comando.Parameters.Add("@idusuario", SqlDbType.Int).Value = IdUsuario;
                 SqlCon.Open(); //Se abre la conexion
                 resultado = comando.ExecuteReader(); //Se almacena el resultado de ejecutar el comando
 

@@ -130,6 +130,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmVista_ClienteVenta";
             this.Text = "Seleccionar Cliente";
+            this.Activated += new System.EventHandler(this.FrmVista_ClienteVenta_Activated);
             this.Load += new System.EventHandler(this.FrmVista_ClienteVenta_Load);
             this.TabGeneral.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

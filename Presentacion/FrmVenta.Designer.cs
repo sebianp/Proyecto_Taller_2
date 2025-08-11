@@ -63,10 +63,13 @@
             this.LblTotal = new System.Windows.Forms.Label();
             this.DgvListado = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label15 = new System.Windows.Forms.Label();
             this.BtnComprobante = new System.Windows.Forms.Button();
             this.TxtCodigo = new System.Windows.Forms.TextBox();
             this.TabGeneral = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.BtnEliminarItem = new System.Windows.Forms.Button();
             this.PanelArticulos = new System.Windows.Forms.Panel();
             this.lblInstruccionDobleClick = new System.Windows.Forms.Label();
             this.LblTotalArticulos = new System.Windows.Forms.Label();
@@ -75,7 +78,6 @@
             this.BtnFiltrarArticulos = new System.Windows.Forms.Button();
             this.TxtBuscarArticulo = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.BtnVerListado = new System.Windows.Forms.Button();
             this.TxtSubTotal = new System.Windows.Forms.TextBox();
             this.TxtTotalImpuesto = new System.Windows.Forms.TextBox();
@@ -88,6 +90,7 @@
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnInsertar = new System.Windows.Forms.Button();
             this.ErrorIcono = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvMostrarDetalle)).BeginInit();
             this.PanelMostrar.SuspendLayout();
@@ -95,9 +98,9 @@
             this.tabPage1.SuspendLayout();
             this.TabGeneral.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.PanelArticulos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvArticulos)).BeginInit();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.SuspendLayout();
@@ -186,6 +189,7 @@
             this.TxtNumComprobante.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtNumComprobante.Location = new System.Drawing.Point(556, 85);
             this.TxtNumComprobante.Name = "TxtNumComprobante";
+            this.TxtNumComprobante.ReadOnly = true;
             this.TxtNumComprobante.Size = new System.Drawing.Size(234, 28);
             this.TxtNumComprobante.TabIndex = 14;
             // 
@@ -194,8 +198,10 @@
             this.TxtSerieComprobante.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtSerieComprobante.Location = new System.Drawing.Point(326, 85);
             this.TxtSerieComprobante.Name = "TxtSerieComprobante";
+            this.TxtSerieComprobante.ReadOnly = true;
             this.TxtSerieComprobante.Size = new System.Drawing.Size(220, 28);
             this.TxtSerieComprobante.TabIndex = 13;
+            this.TxtSerieComprobante.Text = "001";
             // 
             // CboComprobante
             // 
@@ -316,7 +322,7 @@
             this.PanelMostrar.Controls.Add(this.label13);
             this.PanelMostrar.Controls.Add(this.label12);
             this.PanelMostrar.Controls.Add(this.DgvMostrarDetalle);
-            this.PanelMostrar.Location = new System.Drawing.Point(6, 59);
+            this.PanelMostrar.Location = new System.Drawing.Point(40, 75);
             this.PanelMostrar.Name = "PanelMostrar";
             this.PanelMostrar.Size = new System.Drawing.Size(1019, 496);
             this.PanelMostrar.TabIndex = 6;
@@ -437,7 +443,7 @@
             // LblTotal
             // 
             this.LblTotal.AutoSize = true;
-            this.LblTotal.Location = new System.Drawing.Point(908, 32);
+            this.LblTotal.Location = new System.Drawing.Point(663, 35);
             this.LblTotal.Name = "LblTotal";
             this.LblTotal.Size = new System.Drawing.Size(51, 21);
             this.LblTotal.TabIndex = 1;
@@ -465,6 +471,7 @@
             // 
             this.tabPage1.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabPage1.Controls.Add(this.label15);
             this.tabPage1.Controls.Add(this.BtnComprobante);
             this.tabPage1.Controls.Add(this.PanelMostrar);
             this.tabPage1.Controls.Add(this.BtnAnular);
@@ -480,6 +487,17 @@
             this.tabPage1.Size = new System.Drawing.Size(1193, 620);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.label15.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(925, 40);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(238, 16);
+            this.label15.TabIndex = 15;
+            this.label15.Text = "🛈 Doble clic sobre registro para ver detalles.";
             // 
             // BtnComprobante
             // 
@@ -529,6 +547,43 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Nueva Venta";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.BtnEliminarItem);
+            this.groupBox2.Controls.Add(this.PanelArticulos);
+            this.groupBox2.Controls.Add(this.BtnVerListado);
+            this.groupBox2.Controls.Add(this.TxtSubTotal);
+            this.groupBox2.Controls.Add(this.TxtTotalImpuesto);
+            this.groupBox2.Controls.Add(this.TxtTotal);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.DgvDetalle);
+            this.groupBox2.Controls.Add(this.BtnBuscarArticulo);
+            this.groupBox2.Controls.Add(this.TxtCodigo);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Location = new System.Drawing.Point(6, 139);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1157, 424);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Detalle";
+            // 
+            // BtnEliminarItem
+            // 
+            this.BtnEliminarItem.BackColor = System.Drawing.Color.Coral;
+            this.BtnEliminarItem.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnEliminarItem.Image = global::Presentacion.Properties.Resources.delete_16px;
+            this.BtnEliminarItem.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.BtnEliminarItem.Location = new System.Drawing.Point(1041, 43);
+            this.BtnEliminarItem.Name = "BtnEliminarItem";
+            this.BtnEliminarItem.Size = new System.Drawing.Size(81, 26);
+            this.BtnEliminarItem.TabIndex = 27;
+            this.BtnEliminarItem.Text = "Quitar";
+            this.BtnEliminarItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnEliminarItem.UseVisualStyleBackColor = false;
+            this.BtnEliminarItem.Click += new System.EventHandler(this.BtnEliminarItem_Click);
+            // 
             // PanelArticulos
             // 
             this.PanelArticulos.BackColor = System.Drawing.Color.Snow;
@@ -540,7 +595,7 @@
             this.PanelArticulos.Controls.Add(this.BtnFiltrarArticulos);
             this.PanelArticulos.Controls.Add(this.TxtBuscarArticulo);
             this.PanelArticulos.Controls.Add(this.label11);
-            this.PanelArticulos.Location = new System.Drawing.Point(12, 61);
+            this.PanelArticulos.Location = new System.Drawing.Point(12, 71);
             this.PanelArticulos.Name = "PanelArticulos";
             this.PanelArticulos.Size = new System.Drawing.Size(1145, 353);
             this.PanelArticulos.TabIndex = 26;
@@ -580,6 +635,8 @@
             this.DgvArticulos.Size = new System.Drawing.Size(1090, 261);
             this.DgvArticulos.TabIndex = 4;
             this.DgvArticulos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvArticulos_CellDoubleClick);
+            this.DgvArticulos.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.DgvArticulos_RowsRemoved);
+            this.DgvArticulos.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DgvArticulos_UserDeletedRow);
             // 
             // BtnCerrarArticulos
             // 
@@ -623,27 +680,6 @@
             this.label11.Size = new System.Drawing.Size(56, 21);
             this.label11.TabIndex = 0;
             this.label11.Text = "Buscar";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.PanelArticulos);
-            this.groupBox2.Controls.Add(this.BtnVerListado);
-            this.groupBox2.Controls.Add(this.TxtSubTotal);
-            this.groupBox2.Controls.Add(this.TxtTotalImpuesto);
-            this.groupBox2.Controls.Add(this.TxtTotal);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.DgvDetalle);
-            this.groupBox2.Controls.Add(this.BtnBuscarArticulo);
-            this.groupBox2.Controls.Add(this.TxtCodigo);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Location = new System.Drawing.Point(6, 139);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1157, 424);
-            this.groupBox2.TabIndex = 9;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Detalle";
             // 
             // BtnVerListado
             // 
@@ -714,14 +750,17 @@
             // DgvDetalle
             // 
             this.DgvDetalle.AllowUserToAddRows = false;
+            this.DgvDetalle.AllowUserToDeleteRows = false;
             this.DgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvDetalle.Location = new System.Drawing.Point(27, 75);
             this.DgvDetalle.Name = "DgvDetalle";
             this.DgvDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvDetalle.Size = new System.Drawing.Size(1097, 291);
             this.DgvDetalle.TabIndex = 18;
+            this.DgvDetalle.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvDetalle_CellContentClick);
             this.DgvDetalle.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvDetalle_CellEndEdit);
             this.DgvDetalle.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.DgvDetalle_CellValidating);
+            this.DgvDetalle.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DgvDetalle_UserDeletedRow);
             // 
             // label3
             // 
@@ -762,6 +801,13 @@
             // 
             this.ErrorIcono.ContainerControl = this;
             // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "";
+            this.dataGridViewImageColumn1.Image = global::Presentacion.Properties.Resources.delete_16px;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
+            // 
             // FrmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -783,11 +829,11 @@
             this.TabGeneral.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.PanelArticulos.ResumeLayout(false);
             this.PanelArticulos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvArticulos)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDetalle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).EndInit();
             this.ResumeLayout(false);
@@ -855,5 +901,8 @@
         private System.Windows.Forms.TextBox TxtId;
         private System.Windows.Forms.Button BtnComprobante;
         private System.Windows.Forms.Label lblInstruccionDobleClick;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.Button BtnEliminarItem;
     }
 }

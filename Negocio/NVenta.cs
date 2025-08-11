@@ -23,10 +23,16 @@ namespace Negocio
             return Datos.ListarVentasVendedor(idusuario);
         }
 
-        public static DataTable Buscar(string Valor)
+        public static DataTable Buscar(string Valor, int IdUsuario)
         {
             DVenta Datos = new DVenta();
-            return Datos.Buscar(Valor);
+            return Datos.Buscar(Valor, IdUsuario);
+        }
+
+        //Obtiene el ultimo valor del comprobante que debe agregarse,
+        public static string ObtenerSiguienteNumeroVenta()
+        {
+            return new DVenta().VentaSiguienteNumero();
         }
 
         public static DataTable ConsultaFechas(DateTime FechaInicio, DateTime FechaFin)

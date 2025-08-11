@@ -89,7 +89,7 @@ namespace Datos
         //Metodo para buscar registros de la tabla que coincidan con un valor
         //Recibe un parámetro string con el que buscará las coincidencias
         //Devuelve un objeto del tipo DataTable que contendrá la lista de los registros que coinciden
-        public DataTable Buscar(string valor)
+        public DataTable Buscar(string valor, int IdUsuario)
         {
 
             //DataReader nos proporciona una forma de leer una secuencia de filas en una BD de SQL server
@@ -114,6 +114,7 @@ namespace Datos
                 SqlCommand comando = new SqlCommand("venta_buscar", SqlCon);
                 comando.CommandType = CommandType.StoredProcedure; //Indico que estoy haciendo referencia a un comando de la BD
                 comando.Parameters.Add("@valor", SqlDbType.VarChar).Value = valor; //Especifico el valor que envio de parametro al procedimiento
+                comando.Parameters.Add("@idusuario", SqlDbType.Int).Value = IdUsuario;
                 SqlCon.Open(); //Se abre la conexion
                 resultado = comando.ExecuteReader(); //Se almacena el resultado de ejecutar el comando
 
@@ -233,6 +234,39 @@ namespace Datos
                 if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
             }
 
+        }
+
+        //Este metodo permite aumentar de uno en uno el numero de comprobante teniendo
+        // en cuenta el ultimo valor añadido.
+        public string VentaSiguienteNumero()
+        {
+            SqlDataReader resultado;
+            DataTable tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand comando = new SqlCommand("venta_siguiente_numero", SqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+                SqlCon.Open();
+
+                resultado = comando.ExecuteReader();
+                tabla.Load(resultado);
+
+                if (tabla.Rows.Count > 0)
+                    return tabla.Rows[0]["NumeroTexto"].ToString();
+
+                return "0001"; // Si no hay ventas, empieza en 0001
+            }
+            catch
+            {
+                return "0001";
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
         }
 
         public string Insertar(Venta Obj)

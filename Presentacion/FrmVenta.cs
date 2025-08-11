@@ -45,7 +45,7 @@ namespace Presentacion
             {
                 //Agregamos como recurso el listado obtenido de la BD en base al parametro enviado
                 //Esto permite mostrar los datos recibidos con los resultados de la busqueda
-                DgvListado.DataSource = NVenta.Buscar(TxtBuscar.Text);
+                DgvListado.DataSource = NVenta.Buscar(TxtBuscar.Text, Variables.IdUsuario);
                 this.Formato();
                 LblTotal.Text = "Total Registros: " + Convert.ToString(DgvListado.Rows.Count); //Cuenta todas las filas
             }
@@ -85,7 +85,7 @@ namespace Presentacion
             DgvListado.Columns[6].Width = 70;      //Serie
             DgvListado.Columns[6].HeaderText = "Serie";
 
-            DgvListado.Columns[7].Width = 90;      //Número
+            DgvListado.Columns[7].Width = 120;      //Número
             DgvListado.Columns[7].HeaderText = "Número";
 
             DgvListado.Columns[8].Width = 140;     //Fecha
@@ -164,11 +164,11 @@ namespace Presentacion
             TxtCodigo.Clear();
             TxtIdCliente.Clear();
             TxtNombreCliente.Clear();
-            TxtSerieComprobante.Clear();
-            TxtNumComprobante.Clear();
+            //TxtSerieComprobante.Clear();
+            //TxtNumComprobante.Clear();
             DtDetalle.Clear();
             TxtSubTotal.Text = "0";
-            TxtImpuesto.Text = "0";
+            //TxtImpuesto.Text = "0";
             TxtTotal.Text = "0";
 
             BtnInsertar.Visible = true;
@@ -245,6 +245,7 @@ namespace Presentacion
 
         private void FrmVenta_Load(object sender, EventArgs e)
         {
+            TxtNumComprobante.Text = NVenta.ObtenerSiguienteNumeroVenta();
             this.Listar();
             this.CrearTabla();
         }
@@ -422,6 +423,7 @@ namespace Presentacion
             //Luego de actualizar, muestra la lista del panel.
             BtnInsertar.Enabled = false;
             BtnCancelar.Enabled = false;
+            BtnEliminarItem.Enabled = false;
             PanelArticulos.Visible = true;
         }
 
@@ -429,6 +431,7 @@ namespace Presentacion
         {
             BtnInsertar.Enabled = true;
             BtnCancelar.Enabled = true;
+            BtnEliminarItem.Enabled = true;
             PanelArticulos.Visible = false;
 
         }
@@ -589,7 +592,10 @@ namespace Presentacion
                         //Si almaceno correctamente recibirá OK y va a mostrar la respuesta OK
                         this.MensajeOk("La VENTA fue realizada con éxito");
                         this.Limpiar();
+                        TxtNumComprobante.Text = NVenta.ObtenerSiguienteNumeroVenta();
                         this.Listar();
+                        TabGeneral.SelectedIndex = 0;
+
                     }
                     else
                     {
@@ -952,6 +958,69 @@ namespace Presentacion
             }
         }
 
-        
+        private void DgvArticulos_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            this.CalcularTotales();
+        }
+
+        private void DgvArticulos_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            this.CalcularTotales();
+        }
+
+        private void DgvDetalle_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            this.CalcularTotales();
+        }
+
+        private void DgvDetalle_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && DgvDetalle.Columns[e.ColumnIndex].Name == "ColEliminar")
+            {
+                DgvDetalle.EndEdit();
+
+                //Si está enlazado a DataTable:
+                var view = DgvDetalle.Rows[e.RowIndex].DataBoundItem as DataRowView;
+                if (view != null)
+                {
+                    view.Row.Delete();
+                    
+                    CalcularTotales();
+                }
+                else
+                {
+                    //Grilla no enlazada
+                    DgvDetalle.Rows.RemoveAt(e.RowIndex);
+                    CalcularTotales();
+                }
+            }
+        }
+
+        private void BtnEliminarItem_Click(object sender, EventArgs e)
+        {
+            //nada seleccionado
+            if (DgvDetalle.CurrentRow == null || DgvDetalle.CurrentRow.IsNewRow)
+            {
+                MessageBox.Show("Seleccioná un Artículo primero.");
+                return;
+            }
+
+            //confirmar
+            if (MessageBox.Show("¿Eliminar el Artículo seleccionado?", "Confirmar",
+                                MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                return;
+
+            //cerrar edición por las dudas
+            DgvDetalle.EndEdit();
+
+            //si está enlazado a DataTable/BindingSource
+            var view = DgvDetalle.CurrentRow.DataBoundItem as DataRowView;
+            if (view != null)
+                view.Row.Delete();//elimina de la DataTable
+            else
+                DgvDetalle.Rows.Remove(DgvDetalle.CurrentRow);// grilla no enlazada
+
+            CalcularTotales(); //
+        }
     }
 }

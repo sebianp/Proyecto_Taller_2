@@ -228,6 +228,8 @@ namespace Presentacion
                         this.MensajeOk("El registro se actualizó de forma correcta");
                         this.Limpiar();
                         this.Listar();
+                        lblTitulo.Text = "ALTA DE CATEGORIA";
+                        TabGeneral.SelectedIndex = 0;
                     }
                     else
                     {

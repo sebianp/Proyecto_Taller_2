@@ -37,6 +37,7 @@
             this.TxtId = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.BtnEliminarItem = new System.Windows.Forms.Button();
             this.PanelArticulos = new System.Windows.Forms.Panel();
             this.lblInstruccionDobleClick = new System.Windows.Forms.Label();
             this.LblTotalArticulos = new System.Windows.Forms.Label();
@@ -77,6 +78,7 @@
             this.LblTotal = new System.Windows.Forms.Label();
             this.DgvListado = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label15 = new System.Windows.Forms.Label();
             this.PanelMostrar = new System.Windows.Forms.Panel();
             this.TxtTotalD = new System.Windows.Forms.TextBox();
             this.TxtImpuestosD = new System.Windows.Forms.TextBox();
@@ -184,6 +186,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.BtnEliminarItem);
             this.groupBox2.Controls.Add(this.PanelArticulos);
             this.groupBox2.Controls.Add(this.BtnVerListado);
             this.groupBox2.Controls.Add(this.TxtSubTotal);
@@ -203,6 +206,21 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalle";
             // 
+            // BtnEliminarItem
+            // 
+            this.BtnEliminarItem.BackColor = System.Drawing.Color.Coral;
+            this.BtnEliminarItem.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnEliminarItem.Image = global::Presentacion.Properties.Resources.delete_16px;
+            this.BtnEliminarItem.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.BtnEliminarItem.Location = new System.Drawing.Point(1043, 43);
+            this.BtnEliminarItem.Name = "BtnEliminarItem";
+            this.BtnEliminarItem.Size = new System.Drawing.Size(81, 26);
+            this.BtnEliminarItem.TabIndex = 28;
+            this.BtnEliminarItem.Text = "Quitar";
+            this.BtnEliminarItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnEliminarItem.UseVisualStyleBackColor = false;
+            this.BtnEliminarItem.Click += new System.EventHandler(this.BtnEliminarItem_Click);
+            // 
             // PanelArticulos
             // 
             this.PanelArticulos.BackColor = System.Drawing.Color.Snow;
@@ -214,7 +232,7 @@
             this.PanelArticulos.Controls.Add(this.BtnFiltrarArticulos);
             this.PanelArticulos.Controls.Add(this.TxtBuscarArticulo);
             this.PanelArticulos.Controls.Add(this.label11);
-            this.PanelArticulos.Location = new System.Drawing.Point(12, 65);
+            this.PanelArticulos.Location = new System.Drawing.Point(17, 82);
             this.PanelArticulos.Name = "PanelArticulos";
             this.PanelArticulos.Size = new System.Drawing.Size(1145, 353);
             this.PanelArticulos.TabIndex = 26;
@@ -367,6 +385,7 @@
             // DgvDetalle
             // 
             this.DgvDetalle.AllowUserToAddRows = false;
+            this.DgvDetalle.AllowUserToDeleteRows = false;
             this.DgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvDetalle.Location = new System.Drawing.Point(27, 75);
             this.DgvDetalle.Name = "DgvDetalle";
@@ -451,7 +470,7 @@
             this.TxtImpuesto.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.TxtImpuesto.Size = new System.Drawing.Size(49, 28);
             this.TxtImpuesto.TabIndex = 16;
-            this.TxtImpuesto.Text = "0,21";
+            this.TxtImpuesto.Text = "0,05";
             // 
             // BtnBuscarProveedor
             // 
@@ -598,7 +617,7 @@
             // LblTotal
             // 
             this.LblTotal.AutoSize = true;
-            this.LblTotal.Location = new System.Drawing.Point(891, 576);
+            this.LblTotal.Location = new System.Drawing.Point(545, 35);
             this.LblTotal.Name = "LblTotal";
             this.LblTotal.Size = new System.Drawing.Size(51, 21);
             this.LblTotal.TabIndex = 1;
@@ -621,11 +640,13 @@
             this.DgvListado.TabIndex = 0;
             this.DgvListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellContentClick);
             this.DgvListado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellDoubleClick);
+            this.DgvListado.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.DgvListado_RowsRemoved);
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabPage1.Controls.Add(this.label15);
             this.tabPage1.Controls.Add(this.PanelMostrar);
             this.tabPage1.Controls.Add(this.BtnAnular);
             this.tabPage1.Controls.Add(this.ChkSeleccionar);
@@ -641,6 +662,17 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.label15.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(925, 40);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(238, 16);
+            this.label15.TabIndex = 14;
+            this.label15.Text = "🛈 Doble clic sobre registro para ver detalles.";
+            // 
             // PanelMostrar
             // 
             this.PanelMostrar.BackColor = System.Drawing.Color.PaleGoldenrod;
@@ -653,7 +685,7 @@
             this.PanelMostrar.Controls.Add(this.label13);
             this.PanelMostrar.Controls.Add(this.label12);
             this.PanelMostrar.Controls.Add(this.DgvMostrarDetalle);
-            this.PanelMostrar.Location = new System.Drawing.Point(55, 59);
+            this.PanelMostrar.Location = new System.Drawing.Point(64, 77);
             this.PanelMostrar.Name = "PanelMostrar";
             this.PanelMostrar.Size = new System.Drawing.Size(1019, 496);
             this.PanelMostrar.TabIndex = 6;
@@ -844,5 +876,7 @@
         private System.Windows.Forms.TextBox TxtTotalD;
         private System.Windows.Forms.TextBox TxtImpuestosD;
         private System.Windows.Forms.Label lblInstruccionDobleClick;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button BtnEliminarItem;
     }
 }

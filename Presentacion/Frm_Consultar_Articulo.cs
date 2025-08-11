@@ -140,8 +140,8 @@ namespace Presentacion
             datagrid_productos.Columns[10].Width = 300;
 
             // 11: Imagen (si no te sirve mostrarla, podés ocultarla)
-            datagrid_productos.Columns[11].HeaderText = "Imagen";
-            datagrid_productos.Columns[11].Width = 120; // o Visible=false;
+            //datagrid_productos.Columns[11].HeaderText = "Imagen";
+            datagrid_productos.Columns[11].Visible=false;
 
             // 12: Estado
             datagrid_productos.Columns[12].HeaderText = "Estado";
@@ -233,6 +233,12 @@ namespace Presentacion
 
                 ver.ShowDialog();
             }
+        }
+
+        private void Frm_Consultar_Articulo_Activated(object sender, EventArgs e)
+        {
+            this.Listar();
+            this.CargarCategoriaBuscar();
         }
     }
 }

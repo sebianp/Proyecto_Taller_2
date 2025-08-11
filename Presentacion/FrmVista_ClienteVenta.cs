@@ -100,5 +100,10 @@ namespace Presentacion
             Variables.NombreCliente = Convert.ToString(DgvListado.CurrentRow.Cells["Nombre"].Value);
             this.Close();
         }
+
+        private void FrmVista_ClienteVenta_Activated(object sender, EventArgs e)
+        {
+            this.Listar();
+        }
     }
 }
