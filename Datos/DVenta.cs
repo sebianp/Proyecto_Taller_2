@@ -86,6 +86,39 @@ namespace Datos
             }
         }
 
+        public DataTable ConsultaVentasFechasUsuario(DateTime fecha_inicio, DateTime fecha_fin, int idUsuario)
+        {
+            SqlDataReader resultado;
+            DataTable tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+
+                SqlCommand comando = new SqlCommand("venta_consulta_fechas_usuario", SqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                comando.Parameters.Add("@fecha_inicio", SqlDbType.Date).Value = fecha_inicio.Date;
+                comando.Parameters.Add("@fecha_fin", SqlDbType.Date).Value = fecha_fin.Date;
+                comando.Parameters.Add("@idusuario", SqlDbType.Int).Value = idUsuario;
+
+                SqlCon.Open();
+                resultado = comando.ExecuteReader();
+
+                tabla.Load(resultado);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
+
         //Metodo para buscar registros de la tabla que coincidan con un valor
         //Recibe un parámetro string con el que buscará las coincidencias
         //Devuelve un objeto del tipo DataTable que contendrá la lista de los registros que coinciden

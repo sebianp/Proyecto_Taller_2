@@ -63,7 +63,9 @@ namespace Presentacion
         {
             //Visibilidad
             DgvListado.Columns[0].Visible = false;
-            
+            DgvListado.Columns[2].Visible = false;
+            DgvListado.Columns[4].Visible = false;
+
 
             //Dimensiones
             DgvListado.Columns[1].Width = 50;

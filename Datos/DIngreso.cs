@@ -183,6 +183,49 @@ namespace Datos
             }
         }
 
+        public DataTable ConsultaIngresosFechasUsuario(DateTime fecha_inicio, DateTime fecha_fin, int idUsuario)
+        {
+            //DataReader nos proporciona una forma de leer una secuencia de filas
+            SqlDataReader resultado;
+
+            //DataTable representa a una tabla
+            DataTable tabla = new DataTable();
+
+            //Variable que establece una nueva conexion con la BD
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                // Obtenemos la conexión con el patrón de tu clase Conexion
+                SqlCon = Conexion.getInstancia().CrearConexion();
+
+                // Preparamos el procedimiento almacenado
+                SqlCommand comando = new SqlCommand("ingreso_consulta_fechas_usuario", SqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                // Parámetros
+                comando.Parameters.Add("@fecha_inicio", SqlDbType.DateTime).Value = fecha_inicio;
+                comando.Parameters.Add("@fecha_fin", SqlDbType.DateTime).Value = fecha_fin;
+                comando.Parameters.Add("@idusuario", SqlDbType.Int).Value = idUsuario;
+
+                // Ejecutamos
+                SqlCon.Open();
+                resultado = comando.ExecuteReader();
+
+                // Llenamos la tabla y devolvemos
+                tabla.Load(resultado);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
+
         public DataTable ListarDetalle(int Id)
         {
 

@@ -27,7 +27,15 @@ namespace Presentacion
             {
                 //Agregamos como recurso del Datagrid el listado obtenido de la BD
                 //Esto permite cargar y mostrar los datos de la tabla Categoria
-                DgvListado.DataSource = NIngreso.ListarComprador(Variables.IdUsuario);
+                if (Variables.UsuarioRol == "Administrador")
+                {
+                    DgvListado.DataSource = NIngreso.Listar();
+                }
+                else
+                {
+                    DgvListado.DataSource = NIngreso.ListarComprador(Variables.IdUsuario);
+                }
+                
                 this.Formato();
                 this.Limpiar();
                 LblTotal.Text = "Total Registros: " + Convert.ToString(DgvListado.Rows.Count); //Cuenta todas las filas

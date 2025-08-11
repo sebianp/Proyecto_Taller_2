@@ -48,6 +48,7 @@ namespace Presentacion
                     { 
                         FrmPrincipal frm = new FrmPrincipal();
                         Variables.IdUsuario = Convert.ToInt32(tabla.Rows[0][0]);
+                        Variables.UsuarioRol = Convert.ToString(tabla.Rows[0]["rol"]);
                         frm.idUsuario = Convert.ToInt32(tabla.Rows[0][0]);
                         frm.idRol = Convert.ToInt32(tabla.Rows[0][1]);
                         frm.rol = Convert.ToString(tabla.Rows[0][2]);
@@ -64,6 +65,11 @@ namespace Presentacion
             {
                 MessageBox.Show("Ha ocurrido un error: " + ex.Message);
             }
+        }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

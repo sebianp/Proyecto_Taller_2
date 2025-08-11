@@ -24,7 +24,15 @@ namespace Presentacion
             {
                 //Agregamos como recurso el listado obtenido de la BD en base al parametro enviado
                 //Esto permite mostrar los datos recibidos con los resultados de la busqueda
-                DgvListado.DataSource = NVenta.ConsultaFechas(Convert.ToDateTime(DtpFechaInicio.Value), Convert.ToDateTime(DtpFechaFin.Value));
+                if (Variables.UsuarioRol == "Administrador")
+                {
+                    DgvListado.DataSource = NVenta.ConsultaFechas(Convert.ToDateTime(DtpFechaInicio.Value), Convert.ToDateTime(DtpFechaFin.Value));
+                }
+                else
+                {
+                    DgvListado.DataSource = NVenta.ConsultaVentasFechasUsuario(Convert.ToDateTime(DtpFechaInicio.Value), Convert.ToDateTime(DtpFechaFin.Value),Variables.IdUsuario);
+                }
+                
                 this.Formato();
                 this.Limpiar();
                 LblTotal.Text = "Total Registros: " + Convert.ToString(DgvListado.Rows.Count); //Cuenta todas las filas

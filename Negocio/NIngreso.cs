@@ -37,6 +37,12 @@ namespace Negocio
             return Datos.ConsultaFechas(FechaInicio, FechaFin);
         }
 
+        public static DataTable ConsultaIngresosFechasUsuario(DateTime fecha_inicio, DateTime fecha_fin, int idUsuario)
+        {
+            DIngreso Datos = new DIngreso();
+            return Datos.ConsultaIngresosFechasUsuario(fecha_inicio, fecha_fin, idUsuario);
+        }
+
         public static DataTable ListarDetalle(int Id)
         {
             DIngreso Datos = new DIngreso();

@@ -10,6 +10,7 @@ namespace Presentacion
     {
         //Datos de inicio de sesion
         public static int IdUsuario;
+        public static string UsuarioRol;
 
         //Datos de proveedor seleccionado
         public static int IdProveedor;

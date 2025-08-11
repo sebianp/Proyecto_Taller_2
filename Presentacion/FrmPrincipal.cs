@@ -183,7 +183,12 @@ namespace Presentacion
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("Bienvenido " + this.nombre, "LIBERTEL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(
+                    "Bienvenido " + this.nombre + " - ROL: " + Variables.UsuarioRol,
+                    "Inicio de sesión", // Este es el título de la ventana
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                    );
             StBarraInferior.Text = "Desarrollado por Sebastian Prado - Taller de Programación 2 - UNNE - 2025  ----------- USUARIO:" + this.nombre;
             if (this.rol.Equals("Administrador"))
             {

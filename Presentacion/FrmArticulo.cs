@@ -35,6 +35,7 @@ namespace Presentacion
             InitializeComponent();
         }
 
+
         private void Listar()
         {
             try
@@ -45,6 +46,8 @@ namespace Presentacion
                 this.Formato();
                 ChkSeleccionar.Checked = false;
                 DgvListado.Columns[0].Visible = false;
+                BtnActivar.Visible = false;
+                BtnDesactivar.Visible = false;
                 //this.Limpiar();
                 LblTotal.Text = "Total Registros: " + Convert.ToString(DgvListado.Rows.Count); //Cuenta todas las filas
             }

@@ -145,8 +145,14 @@ namespace Presentacion
                 DateTime ff = DtpFechaFin.Value.Date.AddDays(1).AddTicks(-1);
 
                 //Efectuar la consulta
-                DataTable Datos = NIngreso.ConsultaFechas(fi, ff);
-                DgvListado.DataSource = Datos;
+                if (Variables.UsuarioRol == "Administrador")
+                {
+                    DgvListado.DataSource = NIngreso.ConsultaFechas(fi, ff);
+                }
+                else
+                {
+                    DgvListado.DataSource = NIngreso.ConsultaIngresosFechasUsuario(fi, ff, Variables.IdUsuario);
+                }
 
                 //Formato y Reset de selección
                 Formato();
