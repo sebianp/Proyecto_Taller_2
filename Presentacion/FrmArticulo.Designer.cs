@@ -789,6 +789,7 @@
             this.BtnEliminar.TabIndex = 6;
             this.BtnEliminar.Text = "Eliminar";
             this.BtnEliminar.UseVisualStyleBackColor = false;
+            this.BtnEliminar.Visible = false;
             this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
             // BtnDesactivar

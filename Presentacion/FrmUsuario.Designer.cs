@@ -38,6 +38,8 @@
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.TxtClave = new System.Windows.Forms.TextBox();
             this.TxtEmail = new System.Windows.Forms.TextBox();
@@ -64,17 +66,15 @@
             this.LblTotal = new System.Windows.Forms.Label();
             this.DgvListado = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.TabGeneral = new System.Windows.Forms.TabControl();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblTitulo = new System.Windows.Forms.Label();
             this.lblInstruccionDobleClick = new System.Windows.Forms.Label();
+            this.TabGeneral = new System.Windows.Forms.TabControl();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.TabGeneral.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ErrorIcono
@@ -187,6 +187,26 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Snow;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.lblTitulo);
+            this.panel1.Location = new System.Drawing.Point(311, 6);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(500, 67);
+            this.panel1.TabIndex = 26;
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Tai Le", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(108, 18);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(269, 37);
+            this.lblTitulo.TabIndex = 24;
+            this.lblTitulo.Text = "ALTA DE USUARIO";
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.TxtClave);
@@ -253,6 +273,7 @@
             this.TxtTelefono.Name = "TxtTelefono";
             this.TxtTelefono.Size = new System.Drawing.Size(367, 28);
             this.TxtTelefono.TabIndex = 17;
+            this.TxtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtTelefono_KeyPress);
             // 
             // TxtDireccion
             // 
@@ -269,6 +290,7 @@
             this.TxtNumDocumento.Name = "TxtNumDocumento";
             this.TxtNumDocumento.Size = new System.Drawing.Size(367, 28);
             this.TxtNumDocumento.TabIndex = 15;
+            this.TxtNumDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNumDocumento_KeyPress);
             // 
             // CboTipoDocumento
             // 
@@ -352,6 +374,7 @@
             this.BtnEliminar.TabIndex = 6;
             this.BtnEliminar.Text = "Eliminar";
             this.BtnEliminar.UseVisualStyleBackColor = false;
+            this.BtnEliminar.Visible = false;
             this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
             // BtnDesactivar
@@ -458,6 +481,17 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
             // 
+            // lblInstruccionDobleClick
+            // 
+            this.lblInstruccionDobleClick.AutoSize = true;
+            this.lblInstruccionDobleClick.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblInstruccionDobleClick.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInstruccionDobleClick.Location = new System.Drawing.Point(836, 40);
+            this.lblInstruccionDobleClick.Name = "lblInstruccionDobleClick";
+            this.lblInstruccionDobleClick.Size = new System.Drawing.Size(257, 16);
+            this.lblInstruccionDobleClick.TabIndex = 13;
+            this.lblInstruccionDobleClick.Text = "🛈 Doble clic sobre un registro para modificarlo.";
+            // 
             // TabGeneral
             // 
             this.TabGeneral.Controls.Add(this.tabPage1);
@@ -469,37 +503,6 @@
             this.TabGeneral.SelectedIndex = 0;
             this.TabGeneral.Size = new System.Drawing.Size(1111, 513);
             this.TabGeneral.TabIndex = 1;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Snow;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.lblTitulo);
-            this.panel1.Location = new System.Drawing.Point(311, 6);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(500, 67);
-            this.panel1.TabIndex = 26;
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Tai Le", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(108, 18);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(269, 37);
-            this.lblTitulo.TabIndex = 24;
-            this.lblTitulo.Text = "ALTA DE USUARIO";
-            // 
-            // lblInstruccionDobleClick
-            // 
-            this.lblInstruccionDobleClick.AutoSize = true;
-            this.lblInstruccionDobleClick.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.lblInstruccionDobleClick.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInstruccionDobleClick.Location = new System.Drawing.Point(836, 40);
-            this.lblInstruccionDobleClick.Name = "lblInstruccionDobleClick";
-            this.lblInstruccionDobleClick.Size = new System.Drawing.Size(257, 16);
-            this.lblInstruccionDobleClick.TabIndex = 13;
-            this.lblInstruccionDobleClick.Text = "🛈 Doble clic sobre un registro para modificarlo.";
             // 
             // Usuarios
             // 
@@ -514,14 +517,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.TabGeneral.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

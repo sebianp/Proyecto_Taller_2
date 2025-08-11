@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -164,6 +165,13 @@ namespace Presentacion
                 }
                 else //En caso de cumplir con el campo obligatorio del nombre, se puede almacenar
                 {
+                    if (!EsEmailValido(TxtEmail.Text))
+                    {
+                        MessageBox.Show("El correo ingresado no es válido.", "Validación",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        TxtEmail.Focus();
+                        return; // no sigue con el insert
+                    }
                     //Se almacena la respuesta recibida al insertar un nuevo registro
                     //Enviado por el metodo insertar de la capa negocio
                     respuesta = NUsuario.Insertar(Convert.ToInt32(CboRol.SelectedValue) ,TxtNombre.Text.Trim(), CboTipoDocumento.Text, TxtNumDocumento.Text.Trim(), TxtDireccion.Text.Trim(), TxtTelefono.Text.Trim(), TxtEmail.Text.Trim(), TxtClave.Text.Trim());
@@ -246,6 +254,13 @@ namespace Presentacion
                 }
                 else //En caso de cumplir con el campo obligatorio del nombre, se puede almacenar
                 {
+                    if (!EsEmailValido(TxtEmail.Text))
+                    {
+                        MessageBox.Show("El correo ingresado no es válido.", "Validación",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        TxtEmail.Focus();
+                        return; // no sigue con el insert
+                    }
                     //Se almacena la respuesta recibida al insertar un nuevo registro
                     //Enviado por el metodo insertar de la capa negocio
                     respuesta = NUsuario.Actualizar(Convert.ToInt32(TxtId.Text), Convert.ToInt32(CboRol.SelectedValue), TxtNombre.Text.Trim(), CboTipoDocumento.Text, TxtNumDocumento.Text.Trim(), TxtDireccion.Text.Trim(), TxtTelefono.Text.Trim(), this.emailAnt, TxtEmail.Text.Trim(), TxtClave.Text.Trim());
@@ -302,7 +317,7 @@ namespace Presentacion
                 DgvListado.Columns[0].Visible = true;
                 BtnActivar.Visible = true;
                 BtnDesactivar.Visible = true;
-                BtnEliminar.Visible = true;
+                //BtnEliminar.Visible = true;
 
             }
             else
@@ -311,7 +326,7 @@ namespace Presentacion
                 DgvListado.Columns[0].Visible = false;
                 BtnActivar.Visible = false;
                 BtnDesactivar.Visible = false;
-                BtnEliminar.Visible = false;
+                //BtnEliminar.Visible = false;
             }
         }
 
@@ -451,6 +466,32 @@ namespace Presentacion
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
+        }
+
+        private void TxtNumDocumento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Permitir solo números y tecla de backspace
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TxtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Permitir solo números y tecla de backspace
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        
+
+        private bool EsEmailValido(string email)
+        {
+            string patron = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return Regex.IsMatch(email, patron, RegexOptions.IgnoreCase);
         }
     }
 }

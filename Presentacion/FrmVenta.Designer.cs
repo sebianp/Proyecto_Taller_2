@@ -170,6 +170,8 @@
             this.TxtImpuesto.Size = new System.Drawing.Size(59, 28);
             this.TxtImpuesto.TabIndex = 16;
             this.TxtImpuesto.Text = "0,21";
+            this.TxtImpuesto.TextChanged += new System.EventHandler(this.TxtImpuesto_TextChanged);
+            this.TxtImpuesto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtImpuesto_KeyPress);
             // 
             // BtnBuscarCliente
             // 
@@ -224,6 +226,7 @@
             this.TxtNombreCliente.Enabled = false;
             this.TxtNombreCliente.Location = new System.Drawing.Point(326, 29);
             this.TxtNombreCliente.Name = "TxtNombreCliente";
+            this.TxtNombreCliente.ReadOnly = true;
             this.TxtNombreCliente.Size = new System.Drawing.Size(464, 28);
             this.TxtNombreCliente.TabIndex = 11;
             // 
@@ -233,6 +236,7 @@
             this.TxtIdCliente.Enabled = false;
             this.TxtIdCliente.Location = new System.Drawing.Point(141, 29);
             this.TxtIdCliente.Name = "TxtIdCliente";
+            this.TxtIdCliente.ReadOnly = true;
             this.TxtIdCliente.Size = new System.Drawing.Size(159, 28);
             this.TxtIdCliente.TabIndex = 10;
             // 
@@ -517,6 +521,7 @@
             this.TxtCodigo.Size = new System.Drawing.Size(208, 28);
             this.TxtCodigo.TabIndex = 17;
             this.TxtCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtCodigo_KeyDown);
+            this.TxtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCodigo_KeyPress);
             // 
             // TabGeneral
             // 

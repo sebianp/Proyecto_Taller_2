@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.TabGeneral = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label15 = new System.Windows.Forms.Label();
             this.BtnDesactivar = new System.Windows.Forms.Button();
             this.BtnEliminar = new System.Windows.Forms.Button();
             this.BtnActivar = new System.Windows.Forms.Button();
@@ -41,6 +42,8 @@
             this.DgvListado = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.TxtEmail = new System.Windows.Forms.TextBox();
             this.TxtTelefono = new System.Windows.Forms.TextBox();
             this.TxtDireccion = new System.Windows.Forms.TextBox();
@@ -59,15 +62,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ErrorIcono = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label15 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblTitulo = new System.Windows.Forms.Label();
             this.TabGeneral.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.SuspendLayout();
             // 
             // TabGeneral
@@ -102,6 +102,17 @@
             this.tabPage1.Size = new System.Drawing.Size(1259, 484);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.label15.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(1009, 40);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(240, 16);
+            this.label15.TabIndex = 15;
+            this.label15.Text = "🛈 Doble clic sobre registro para modificarlo.";
             // 
             // BtnDesactivar
             // 
@@ -236,6 +247,26 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Snow;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.lblTitulo);
+            this.panel1.Location = new System.Drawing.Point(405, 6);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(500, 67);
+            this.panel1.TabIndex = 26;
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Tai Le", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(103, 14);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(311, 37);
+            this.lblTitulo.TabIndex = 24;
+            this.lblTitulo.Text = "ALTA DE PROVEEDOR";
+            // 
             // TxtEmail
             // 
             this.TxtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -243,6 +274,7 @@
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(367, 28);
             this.TxtEmail.TabIndex = 19;
+            
             // 
             // TxtTelefono
             // 
@@ -251,6 +283,7 @@
             this.TxtTelefono.Name = "TxtTelefono";
             this.TxtTelefono.Size = new System.Drawing.Size(367, 28);
             this.TxtTelefono.TabIndex = 17;
+            this.TxtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtTelefono_KeyPress);
             // 
             // TxtDireccion
             // 
@@ -267,6 +300,7 @@
             this.TxtNumDocumento.Name = "TxtNumDocumento";
             this.TxtNumDocumento.Size = new System.Drawing.Size(367, 28);
             this.TxtNumDocumento.TabIndex = 15;
+            this.TxtNumDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNumDocumento_KeyPress);
             // 
             // label8
             // 
@@ -405,37 +439,6 @@
             // 
             this.ErrorIcono.ContainerControl = this;
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.label15.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(1009, 40);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(240, 16);
-            this.label15.TabIndex = 15;
-            this.label15.Text = "🛈 Doble clic sobre registro para modificarlo.";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Snow;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.lblTitulo);
-            this.panel1.Location = new System.Drawing.Point(405, 6);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(500, 67);
-            this.panel1.TabIndex = 26;
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Tai Le", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(103, 14);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(311, 37);
-            this.lblTitulo.TabIndex = 24;
-            this.lblTitulo.Text = "ALTA DE PROVEEDOR";
-            // 
             // FrmProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -451,9 +454,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -89,6 +89,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.DgvMostrarDetalle = new System.Windows.Forms.DataGridView();
             this.TabGeneral = new System.Windows.Forms.TabControl();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -416,6 +417,7 @@
             this.TxtCodigo.Size = new System.Drawing.Size(226, 28);
             this.TxtCodigo.TabIndex = 17;
             this.TxtCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtCodigo_KeyDown);
+            this.TxtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCodigo_KeyPress);
             // 
             // label7
             // 
@@ -471,6 +473,8 @@
             this.TxtImpuesto.Size = new System.Drawing.Size(49, 28);
             this.TxtImpuesto.TabIndex = 16;
             this.TxtImpuesto.Text = "0,05";
+            this.TxtImpuesto.TextChanged += new System.EventHandler(this.TxtImpuesto_TextChanged);
+            this.TxtImpuesto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtImpuesto_KeyPress);
             // 
             // BtnBuscarProveedor
             // 
@@ -492,6 +496,7 @@
             this.TxtNumComprobante.Name = "TxtNumComprobante";
             this.TxtNumComprobante.Size = new System.Drawing.Size(234, 28);
             this.TxtNumComprobante.TabIndex = 14;
+            this.TxtNumComprobante.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNumComprobante_KeyPress);
             // 
             // TxtSerieComprobante
             // 
@@ -500,6 +505,7 @@
             this.TxtSerieComprobante.Name = "TxtSerieComprobante";
             this.TxtSerieComprobante.Size = new System.Drawing.Size(220, 28);
             this.TxtSerieComprobante.TabIndex = 13;
+            this.TxtSerieComprobante.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtSerieComprobante_KeyPress);
             // 
             // TxtNombreProveedor
             // 
@@ -507,6 +513,7 @@
             this.TxtNombreProveedor.Enabled = false;
             this.TxtNombreProveedor.Location = new System.Drawing.Point(326, 27);
             this.TxtNombreProveedor.Name = "TxtNombreProveedor";
+            this.TxtNombreProveedor.ReadOnly = true;
             this.TxtNombreProveedor.Size = new System.Drawing.Size(464, 28);
             this.TxtNombreProveedor.TabIndex = 11;
             // 
@@ -516,6 +523,7 @@
             this.TxtIdProveedor.Enabled = false;
             this.TxtIdProveedor.Location = new System.Drawing.Point(141, 27);
             this.TxtIdProveedor.Name = "TxtIdProveedor";
+            this.TxtIdProveedor.ReadOnly = true;
             this.TxtIdProveedor.Size = new System.Drawing.Size(159, 28);
             this.TxtIdProveedor.TabIndex = 10;
             // 
@@ -598,7 +606,7 @@
             this.BtnBuscar.BackColor = System.Drawing.Color.CadetBlue;
             this.BtnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnBuscar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscar.Location = new System.Drawing.Point(369, 25);
+            this.BtnBuscar.Location = new System.Drawing.Point(191, 25);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(103, 28);
             this.BtnBuscar.TabIndex = 2;
@@ -611,13 +619,14 @@
             this.TxtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtBuscar.Location = new System.Drawing.Point(6, 25);
             this.TxtBuscar.Name = "TxtBuscar";
-            this.TxtBuscar.Size = new System.Drawing.Size(357, 28);
+            this.TxtBuscar.Size = new System.Drawing.Size(179, 28);
             this.TxtBuscar.TabIndex = 1;
+            this.TxtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtBuscar_KeyPress);
             // 
             // LblTotal
             // 
             this.LblTotal.AutoSize = true;
-            this.LblTotal.Location = new System.Drawing.Point(545, 35);
+            this.LblTotal.Location = new System.Drawing.Point(460, 32);
             this.LblTotal.Name = "LblTotal";
             this.LblTotal.Size = new System.Drawing.Size(51, 21);
             this.LblTotal.TabIndex = 1;
@@ -646,6 +655,7 @@
             // 
             this.tabPage1.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabPage1.Controls.Add(this.label16);
             this.tabPage1.Controls.Add(this.label15);
             this.tabPage1.Controls.Add(this.PanelMostrar);
             this.tabPage1.Controls.Add(this.BtnAnular);
@@ -784,6 +794,16 @@
             this.TabGeneral.Size = new System.Drawing.Size(1181, 655);
             this.TabGeneral.TabIndex = 1;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(15, 6);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(159, 16);
+            this.label16.TabIndex = 15;
+            this.label16.Text = "Número de Comprobante";
+            // 
             // FrmIngreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -878,5 +898,6 @@
         private System.Windows.Forms.Label lblInstruccionDobleClick;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button BtnEliminarItem;
+        private System.Windows.Forms.Label label16;
     }
 }

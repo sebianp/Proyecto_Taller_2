@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -145,6 +146,13 @@ namespace Presentacion
                 }
                 else //En caso de cumplir con el campo obligatorio del nombre, se puede almacenar
                 {
+                    if (!EsEmailValido(TxtEmail.Text))
+                    {
+                        MessageBox.Show("El correo ingresado no es válido.", "Validación",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        TxtEmail.Focus();
+                        return; //no sigue con el insert
+                    }
                     //Se almacena la respuesta recibida al insertar un nuevo registro
                     //Enviado por el metodo insertar de la capa negocio
                     respuesta = NPersona.Insertar("Cliente", TxtNombre.Text.Trim(), CboTipoDocumento.Text, TxtNumDocumento.Text.Trim(), TxtDireccion.Text.Trim(), TxtTelefono.Text.Trim(), TxtEmail.Text.Trim());
@@ -230,6 +238,13 @@ namespace Presentacion
                 }
                 else //En caso de cumplir con el campo obligatorio del nombre, se puede almacenar
                 {
+                    if (!EsEmailValido(TxtEmail.Text))
+                    {
+                        MessageBox.Show("El correo ingresado no es válido.", "Validación",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        TxtEmail.Focus();
+                        return; // no sigue con el insert
+                    }
                     //Se almacena la respuesta recibida al insertar un nuevo registro
                     //Enviado por el metodo insertar de la capa negocio
                     respuesta = NPersona.Actualizar(Convert.ToInt32(TxtId.Text), "Cliente", this.nombreAnt, TxtNombre.Text.Trim(), CboTipoDocumento.Text, TxtNumDocumento.Text.Trim(), TxtDireccion.Text.Trim(), TxtTelefono.Text.Trim(), TxtEmail.Text.Trim());
@@ -441,6 +456,32 @@ namespace Presentacion
         private void BtnBuscar_Click_1(object sender, EventArgs e)
         {
             this.Buscar();
+        }
+
+        private void TxtNumDocumento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Permitir solo números y tecla de backspace
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TxtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Permitir solo números y tecla de backspace
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        
+
+        private bool EsEmailValido(string email)
+        {
+            string patron = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return Regex.IsMatch(email, patron, RegexOptions.IgnoreCase);
         }
     }
 

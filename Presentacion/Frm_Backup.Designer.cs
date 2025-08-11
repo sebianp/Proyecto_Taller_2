@@ -179,6 +179,7 @@
             this.Name = "Frm_Backup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Backup";
+            this.Activated += new System.EventHandler(this.Frm_Backup_Activated);
             this.Load += new System.EventHandler(this.Frm_Backup_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

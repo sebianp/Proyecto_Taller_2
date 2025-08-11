@@ -111,14 +111,6 @@ namespace Presentacion
             //2)Si input es null => Cancel o cerró, salimos sin mensaje
             if (input == null) return;
 
-            //CONTROL: Mostramos en un MessageBox los dos valores entre comillas
-            //MessageBox.Show(
-            //    $"Valor ingresado:  '{input}'\n" +
-            //    $"Valor esperado:   '{restorePassword}'",
-            //    "DEBUG Contraseña",
-            //    MessageBoxButtons.OK,
-            //    MessageBoxIcon.Information
-            // );
 
             //Si se ingresa de forma incorrecta la contraseña
             if (!string.Equals(input.Trim(), restorePassword.Trim(),
@@ -142,6 +134,17 @@ namespace Presentacion
 
             string elegido = LBCopiasAnteriores.SelectedItem.ToString();
             string rutaBak = Path.Combine(backupFolder, elegido);
+
+            // Si el archivo ya no existe (lo borraron con el formulario abierto)
+            if (!File.Exists(rutaBak))
+            {
+                MessageBox.Show(
+                    "El archivo seleccionado ya no existe. Se actualizará la lista.",
+                    "Copia no encontrada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                RefreshBackupList();//Recarga la lista para no tener errores.
+                return;
+            }
 
             var dr = MessageBox.Show(
                 $"Se va a RESTAURAR la base desde:\n{elegido}\n\n" +
@@ -192,6 +195,11 @@ namespace Presentacion
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void Frm_Backup_Activated(object sender, EventArgs e)
+        {
+            RefreshBackupList();
         }
     }
 }

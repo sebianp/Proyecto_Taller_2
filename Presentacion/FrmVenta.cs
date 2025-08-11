@@ -1022,5 +1022,39 @@ namespace Presentacion
 
             CalcularTotales(); //
         }
+
+        private void TxtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Permitir solo números y tecla de backspace
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TxtImpuesto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Permitir control (retroceso, suprimir, etc.) y números
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
+            {
+                e.Handled = true;
+            }
+
+            //Permitir solo una coma para evitar errores
+            if (e.KeyChar == ',' && (sender as TextBox).Text.Contains(","))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TxtImpuesto_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TxtImpuesto.Text))
+            {
+                TxtImpuesto.Text = "0";
+                TxtImpuesto.SelectionStart = TxtImpuesto.Text.Length; //Pone el cursor al final
+            }
+            this.CalcularTotales();
+        }
     }
 }

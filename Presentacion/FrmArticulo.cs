@@ -43,7 +43,9 @@ namespace Presentacion
                 //Esto permite cargar y mostrar los datos de la tabla Categoria
                 DgvListado.DataSource = NArticulo.Listar();
                 this.Formato();
-                this.Limpiar();
+                ChkSeleccionar.Checked = false;
+                DgvListado.Columns[0].Visible = false;
+                //this.Limpiar();
                 LblTotal.Text = "Total Registros: " + Convert.ToString(DgvListado.Rows.Count); //Cuenta todas las filas
             }
             catch (Exception ex)
@@ -156,6 +158,7 @@ namespace Presentacion
         //Metodo Limpiar: Vacia las textbox de mantenimiento y buscar de listado
         private void Limpiar()
         {
+            lblTitulo.Text = "ALTA DE ARTÍCULO";
             TxtBuscar.Clear();
             TxtNombre.Clear();
             TxtId.Clear();
@@ -401,7 +404,10 @@ namespace Presentacion
                     File.Copy(this.rutaOrigen, rutaDestino);
 
                     // 6) Refresco el listado
+                    this.Limpiar();
+                    
                     this.Listar();
+
                 }
                 else
                 {
@@ -605,6 +611,7 @@ namespace Presentacion
                     }
 
                     this.Listar();
+                    this.Limpiar();
                     lblTitulo.Text = "ALTA DE ARTÍCULO";
                     TabGeneral.SelectedIndex = 0;
                 }
@@ -623,7 +630,7 @@ namespace Presentacion
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.Limpiar();
-            lblTitulo.Text = "ALTA DE ARTÍCULO";
+            
             //Labels
             TxtPrice.Visible = false;
             TxtStk.Visible = false;

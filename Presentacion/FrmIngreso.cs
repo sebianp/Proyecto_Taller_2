@@ -157,10 +157,10 @@ namespace Presentacion
             DgvDetalle.Columns[6].Width = 80;
 
             DgvDetalle.Columns[7].HeaderText = "Precio Compra";
-            DgvDetalle.Columns[7].Width = 130;
+            DgvDetalle.Columns[7].Width = 150;
 
             DgvDetalle.Columns[8].HeaderText = "Importe";
-            DgvDetalle.Columns[8].Width = 100;
+            DgvDetalle.Columns[8].Width = 150;
 
             // Establecer columnas de solo lectura
             DgvDetalle.Columns[1].ReadOnly = true;
@@ -772,6 +772,67 @@ namespace Presentacion
                 DgvDetalle.Rows.Remove(DgvDetalle.CurrentRow);// grilla no enlazada
 
             CalcularTotales(); //
+        }
+
+        private void TxtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Permitir solo números y tecla de backspace
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TxtSerieComprobante_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Permitir solo números y tecla de backspace
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TxtNumComprobante_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Permitir solo números y tecla de backspace
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TxtImpuesto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Permitir control (retroceso, suprimir, etc.) y números
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
+            {
+                e.Handled = true;
+            }
+
+            //Permitir solo una coma para evitar errores
+            if (e.KeyChar == ',' && (sender as TextBox).Text.Contains(","))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TxtImpuesto_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TxtImpuesto.Text))
+            {
+                TxtImpuesto.Text = "0";
+                TxtImpuesto.SelectionStart = TxtImpuesto.Text.Length; //Pone el cursor al final
+            }
+            this.CalcularTotales();
+        }
+
+        private void TxtBuscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Permitir solo números y tecla de backspace
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

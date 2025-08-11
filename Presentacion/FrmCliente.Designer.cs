@@ -52,6 +52,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TabGeneral = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblInstruccionDobleClick = new System.Windows.Forms.Label();
             this.BtnDesactivar = new System.Windows.Forms.Button();
             this.BtnActivar = new System.Windows.Forms.Button();
             this.BtnEliminar = new System.Windows.Forms.Button();
@@ -61,7 +62,6 @@
             this.LblTotal = new System.Windows.Forms.Label();
             this.DgvListado = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.lblInstruccionDobleClick = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -81,6 +81,7 @@
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(367, 28);
             this.TxtEmail.TabIndex = 19;
+          
             // 
             // TxtTelefono
             // 
@@ -89,6 +90,7 @@
             this.TxtTelefono.Name = "TxtTelefono";
             this.TxtTelefono.Size = new System.Drawing.Size(367, 28);
             this.TxtTelefono.TabIndex = 17;
+            this.TxtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtTelefono_KeyPress);
             // 
             // TxtDireccion
             // 
@@ -155,6 +157,7 @@
             this.TxtNumDocumento.Name = "TxtNumDocumento";
             this.TxtNumDocumento.Size = new System.Drawing.Size(367, 28);
             this.TxtNumDocumento.TabIndex = 15;
+            this.TxtNumDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNumDocumento_KeyPress);
             // 
             // label8
             // 
@@ -322,6 +325,17 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
             // 
+            // lblInstruccionDobleClick
+            // 
+            this.lblInstruccionDobleClick.AutoSize = true;
+            this.lblInstruccionDobleClick.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblInstruccionDobleClick.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInstruccionDobleClick.Location = new System.Drawing.Point(1039, 40);
+            this.lblInstruccionDobleClick.Name = "lblInstruccionDobleClick";
+            this.lblInstruccionDobleClick.Size = new System.Drawing.Size(257, 16);
+            this.lblInstruccionDobleClick.TabIndex = 14;
+            this.lblInstruccionDobleClick.Text = "🛈 Doble clic sobre un registro para modificarlo.";
+            // 
             // BtnDesactivar
             // 
             this.BtnDesactivar.BackColor = System.Drawing.Color.DarkKhaki;
@@ -424,17 +438,6 @@
             this.Seleccionar.HeaderText = "Seleccionar";
             this.Seleccionar.Name = "Seleccionar";
             this.Seleccionar.ReadOnly = true;
-            // 
-            // lblInstruccionDobleClick
-            // 
-            this.lblInstruccionDobleClick.AutoSize = true;
-            this.lblInstruccionDobleClick.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.lblInstruccionDobleClick.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInstruccionDobleClick.Location = new System.Drawing.Point(1039, 40);
-            this.lblInstruccionDobleClick.Name = "lblInstruccionDobleClick";
-            this.lblInstruccionDobleClick.Size = new System.Drawing.Size(257, 16);
-            this.lblInstruccionDobleClick.TabIndex = 14;
-            this.lblInstruccionDobleClick.Text = "🛈 Doble clic sobre un registro para modificarlo.";
             // 
             // FrmCliente
             // 
