@@ -46,11 +46,12 @@
             // BtnBuscar
             // 
             this.BtnBuscar.BackColor = System.Drawing.Color.CadetBlue;
-            this.BtnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnBuscar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBuscar.Location = new System.Drawing.Point(627, 37);
+            this.BtnBuscar.Location = new System.Drawing.Point(942, 49);
+            this.BtnBuscar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.BtnBuscar.Name = "BtnBuscar";
-            this.BtnBuscar.Size = new System.Drawing.Size(103, 28);
+            this.BtnBuscar.Size = new System.Drawing.Size(133, 30);
             this.BtnBuscar.TabIndex = 5;
             this.BtnBuscar.Text = "BUSCAR";
             this.BtnBuscar.UseVisualStyleBackColor = false;
@@ -63,11 +64,13 @@
             this.datagrid_productos.AllowUserToOrderColumns = true;
             this.datagrid_productos.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.datagrid_productos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datagrid_productos.Location = new System.Drawing.Point(7, 79);
+            this.datagrid_productos.GridColor = System.Drawing.SystemColors.Control;
+            this.datagrid_productos.Location = new System.Drawing.Point(5, 127);
+            this.datagrid_productos.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.datagrid_productos.Name = "datagrid_productos";
             this.datagrid_productos.ReadOnly = true;
             this.datagrid_productos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagrid_productos.Size = new System.Drawing.Size(1212, 333);
+            this.datagrid_productos.Size = new System.Drawing.Size(1398, 402);
             this.datagrid_productos.TabIndex = 3;
             this.datagrid_productos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellDoubleClick);
             // 
@@ -75,7 +78,8 @@
             // 
             this.LblTotal.AutoSize = true;
             this.LblTotal.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTotal.Location = new System.Drawing.Point(752, 55);
+            this.LblTotal.Location = new System.Drawing.Point(1146, 103);
+            this.LblTotal.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.LblTotal.Name = "LblTotal";
             this.LblTotal.Size = new System.Drawing.Size(51, 21);
             this.LblTotal.TabIndex = 6;
@@ -95,9 +99,10 @@
             this.panel1.Controls.Add(this.BtnBuscar);
             this.panel1.Controls.Add(this.datagrid_productos);
             this.panel1.Controls.Add(this.LblTotal);
-            this.panel1.Location = new System.Drawing.Point(4, 12);
+            this.panel1.Location = new System.Drawing.Point(14, 14);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1243, 434);
+            this.panel1.Size = new System.Drawing.Size(1413, 547);
             this.panel1.TabIndex = 7;
             // 
             // lblInstruccionDobleClick
@@ -105,7 +110,8 @@
             this.lblInstruccionDobleClick.AutoSize = true;
             this.lblInstruccionDobleClick.BackColor = System.Drawing.SystemColors.ControlLight;
             this.lblInstruccionDobleClick.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInstruccionDobleClick.Location = new System.Drawing.Point(958, 60);
+            this.lblInstruccionDobleClick.Location = new System.Drawing.Point(456, 106);
+            this.lblInstruccionDobleClick.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblInstruccionDobleClick.Name = "lblInstruccionDobleClick";
             this.lblInstruccionDobleClick.Size = new System.Drawing.Size(261, 16);
             this.lblInstruccionDobleClick.TabIndex = 20;
@@ -115,7 +121,8 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(496, 14);
+            this.label9.Location = new System.Drawing.Point(745, 27);
+            this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(53, 21);
             this.label9.TabIndex = 19;
@@ -125,7 +132,8 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(285, 14);
+            this.label8.Location = new System.Drawing.Point(427, 27);
+            this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(77, 21);
             this.label8.TabIndex = 18;
@@ -135,7 +143,8 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(75, 14);
+            this.label7.Location = new System.Drawing.Point(114, 29);
+            this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 21);
             this.label7.TabIndex = 17;
@@ -203,36 +212,41 @@
             "Vention",
             "Manhattan",
             "Otros"});
-            this.CboMarcaBuscar.Location = new System.Drawing.Point(427, 38);
+            this.CboMarcaBuscar.Location = new System.Drawing.Point(643, 52);
+            this.CboMarcaBuscar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.CboMarcaBuscar.Name = "CboMarcaBuscar";
-            this.CboMarcaBuscar.Size = new System.Drawing.Size(194, 28);
+            this.CboMarcaBuscar.Size = new System.Drawing.Size(289, 28);
             this.CboMarcaBuscar.TabIndex = 16;
             // 
             // CboCategoriaBuscar
             // 
             this.CboCategoriaBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CboCategoriaBuscar.FormattingEnabled = true;
-            this.CboCategoriaBuscar.Location = new System.Drawing.Point(227, 37);
+            this.CboCategoriaBuscar.Location = new System.Drawing.Point(335, 52);
+            this.CboCategoriaBuscar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.CboCategoriaBuscar.Name = "CboCategoriaBuscar";
-            this.CboCategoriaBuscar.Size = new System.Drawing.Size(194, 28);
+            this.CboCategoriaBuscar.Size = new System.Drawing.Size(289, 28);
             this.CboCategoriaBuscar.TabIndex = 15;
             // 
             // TxtBuscar
             // 
             this.TxtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtBuscar.Location = new System.Drawing.Point(7, 38);
+            this.TxtBuscar.Location = new System.Drawing.Point(5, 53);
+            this.TxtBuscar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.TxtBuscar.Name = "TxtBuscar";
-            this.TxtBuscar.Size = new System.Drawing.Size(214, 26);
+            this.TxtBuscar.Size = new System.Drawing.Size(320, 26);
             this.TxtBuscar.TabIndex = 14;
             // 
             // Frm_Consultar_Articulo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
-            this.ClientSize = new System.Drawing.Size(1259, 464);
+            this.ClientSize = new System.Drawing.Size(1440, 577);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "Frm_Consultar_Articulo";
             this.Text = "Consultar Artículo";
             this.Activated += new System.EventHandler(this.Frm_Consultar_Articulo_Activated);

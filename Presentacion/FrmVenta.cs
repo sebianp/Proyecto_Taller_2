@@ -103,8 +103,10 @@ namespace Presentacion
             DgvListado.Columns[9].Width = 90;     //Impuesto
             DgvListado.Columns[9].HeaderText = "Impuesto";
 
-            DgvListado.Columns[10].Width = 120;    //Total
+            DgvListado.Columns[10].Width = 140;    //Total
             DgvListado.Columns[10].HeaderText = "Total";
+            DgvListado.Columns["total"].DefaultCellStyle.Format = "C2";
+            
 
             DgvListado.Columns[11].Width = 100;    //Estado
             DgvListado.Columns[11].HeaderText = "Estado";
@@ -233,11 +235,13 @@ namespace Presentacion
             DgvDetalle.Columns["cantidad"].HeaderText = "Cantidad";
             DgvDetalle.Columns["cantidad"].Width = 80;
             DgvDetalle.Columns["precio"].HeaderText = "Precio";
+            DgvDetalle.Columns["precio"].DefaultCellStyle.Format = "C2";
             DgvDetalle.Columns["precio"].Width = 100;
             DgvDetalle.Columns["descuento"].HeaderText = "Descuento (%)";
             DgvDetalle.Columns["descuento"].Width = 100;
             DgvDetalle.Columns["importe"].HeaderText = "Importe";
             DgvDetalle.Columns["importe"].Width = 100;
+            DgvDetalle.Columns["importe"].DefaultCellStyle.Format = "C2";
 
             //columnas de solo lectura
             DgvDetalle.Columns["codigo"].ReadOnly = true;
@@ -726,7 +730,7 @@ namespace Presentacion
                 DgvMostrarDetalle.DataSource = NVenta.ListarDetalle(Convert.ToInt32(DgvListado.CurrentRow.Cells["ID"].Value));
 
                 //Formato de columnas
-                // ----- Formato de columnas -----
+                //----- Formato de columnas -----
                 var g = DgvMostrarDetalle;
 
                 //Orden visual

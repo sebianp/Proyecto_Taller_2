@@ -123,6 +123,10 @@ namespace Presentacion
         {
             lblTitulo.Text = "ALTA DE CLIENTE";
             this.Listar();
+            if(Variables.UsuarioRol == "Administrador")
+            {
+                ChkSeleccionar.Visible = true;
+            }
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)

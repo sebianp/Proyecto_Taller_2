@@ -81,7 +81,6 @@
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(367, 28);
             this.TxtEmail.TabIndex = 19;
-          
             // 
             // TxtTelefono
             // 
@@ -383,6 +382,7 @@
             this.ChkSeleccionar.TabIndex = 3;
             this.ChkSeleccionar.Text = "Seleccionar";
             this.ChkSeleccionar.UseVisualStyleBackColor = true;
+            this.ChkSeleccionar.Visible = false;
             this.ChkSeleccionar.CheckedChanged += new System.EventHandler(this.ChkSeleccionar_CheckedChanged);
             // 
             // BtnBuscar

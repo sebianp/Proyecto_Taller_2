@@ -126,8 +126,9 @@ namespace Presentacion
 
             // 8: Precio
             datagrid_productos.Columns[8].HeaderText = "Precio";
-            datagrid_productos.Columns[8].Width = 110;
-            datagrid_productos.Columns[8].DefaultCellStyle.Format = "N2";
+            datagrid_productos.Columns[8].Width = 140;
+            //datagrid_productos.Columns[8].DefaultCellStyle.Format = "N2";
+            datagrid_productos.Columns[8].DefaultCellStyle.Format = "C2";
             datagrid_productos.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             // 9: Stock

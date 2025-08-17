@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -190,6 +191,15 @@ namespace Presentacion
                     MessageBoxIcon.Information
                     );
             StBarraInferior.Text = "Desarrollado por Sebastian Prado - Taller de Programación 2 - UNNE - 2025  ----------- USUARIO:" + this.nombre;
+
+            //MENSAJE DE STOCK CRITICO PARA ROL "ALMACENERO (Encargado del deposito)"
+            if (Variables.UsuarioRol == "Almacenero")
+            {
+                const int UMBRAL_STOCK_CRITICO = 5; //UMBRAL DE STOCK CRITICO
+                MostrarAvisoStockCritico(UMBRAL_STOCK_CRITICO);
+            }
+
+
             if (this.rol.Equals("Administrador"))
             {
                 MnuAlmacen.Enabled = true;
@@ -220,6 +230,7 @@ namespace Presentacion
                     OPC_rank_vendedores.Enabled = true;
                     OPC_evol_ventas.Enabled = false;
                     OPC_rank_articulos.Enabled = true;
+                    consultarComprasToolStripMenuItem.Enabled = false;
 
                 }
                 else
@@ -237,6 +248,7 @@ namespace Presentacion
                         OPC_rank_vendedores.Enabled = false;
                         OPC_evol_ventas.Enabled = false;
                         OPC_rank_articulos.Enabled = true;
+                        consultarVentasToolStripMenuItem.Enabled= false;
 
                     }
                     else
@@ -396,6 +408,46 @@ namespace Presentacion
 
             nuevoFormulario.MdiParent = this;
             nuevoFormulario.Show();
+        }
+
+        private void MostrarAvisoStockCritico(int umbral)
+        {
+            try
+            {
+                DataTable dt = NReporte.EstadisticaStockCritico(umbral); // ya lo tenés hecho
+
+                if (dt == null || dt.Rows.Count == 0)
+                    return; // no hay avisos, no mostramos nada
+
+                var sb = new System.Text.StringBuilder();
+                sb.AppendLine($"Artículos con stock ≤ {umbral}");
+                sb.AppendLine(new string('-', 38));
+
+                // Columnas que devuelve tu SP: ID, Producto, Cantidad
+                foreach (DataRow fila in dt.Rows)
+                {
+                    string producto = Convert.ToString(fila["Producto"]);
+                    int cantidad = Convert.ToInt32(fila["Cantidad"]);
+                    sb.AppendLine($"• {producto} — Stock: {cantidad}");
+                }
+
+                MessageBox.Show(
+                    sb.ToString(),
+                    "Advertencia de Stock",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+            }
+            catch (Exception ex)
+            {
+                // Evitamos que un error al consultar corte la carga del sistema
+                MessageBox.Show(
+                    "No se pudo obtener el stock crítico.\nDetalle: " + ex.Message,
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+            }
         }
     }
     
