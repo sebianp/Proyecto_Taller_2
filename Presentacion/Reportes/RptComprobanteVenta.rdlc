@@ -15,10 +15,10 @@
               <Width>2.12549cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.34479cm</Width>
+              <Width>2.87487cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>5.06737cm</Width>
+              <Width>4.51174cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -313,7 +313,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -373,7 +372,7 @@
         <Top>0.17639cm</Top>
         <Left>0.37042cm</Left>
         <Height>1.27938cm</Height>
-        <Width>20.44848cm</Width>
+        <Width>20.42293cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -384,7 +383,7 @@
     <Height>0.95833in</Height>
     <Style />
   </Body>
-  <Width>21cm</Width>
+  <Width>20.8992cm</Width>
   <Page>
     <PageHeader>
       <Height>6.31224cm</Height>
@@ -423,8 +422,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>tipo_comprobante</rd:DefaultName>
-          <Top>0.46523cm</Top>
-          <Left>13.35828cm</Left>
+          <Top>0.8621cm</Top>
+          <Left>13.73188cm</Left>
           <Height>0.78521cm</Height>
           <Width>5.30458cm</Width>
           <ZIndex>1</ZIndex>
@@ -457,7 +456,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>serie_comprobante</rd:DefaultName>
-          <Top>1.42682cm</Top>
+          <Top>1.78842cm</Top>
           <Left>13.35828cm</Left>
           <Height>0.6cm</Height>
           <Width>1.65241cm</Width>
@@ -491,7 +490,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>num_comprobante</rd:DefaultName>
-          <Top>1.42682cm</Top>
+          <Top>1.78842cm</Top>
           <Left>15.92792cm</Left>
           <Height>0.6cm</Height>
           <Width>1.38875cm</Width>
@@ -527,7 +526,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox10</rd:DefaultName>
-          <Top>1.42682cm</Top>
+          <Top>1.78842cm</Top>
           <Left>15.28882cm</Left>
           <Height>0.62646cm</Height>
           <Width>0.46271cm</Width>
@@ -686,7 +685,7 @@
           <Top>4.33724cm</Top>
           <Left>14.41569cm</Left>
           <Height>0.6cm</Height>
-          <Width>2.5cm</Width>
+          <Width>5.25259cm</Width>
           <ZIndex>9</ZIndex>
           <Style>
             <Border>
@@ -715,9 +714,9 @@
           </Paragraphs>
           <rd:DefaultName>fecha</rd:DefaultName>
           <Top>5.11363cm</Top>
-          <Left>3.33785cm</Left>
+          <Left>3.04681cm</Left>
           <Height>0.6cm</Height>
-          <Width>4.08278cm</Width>
+          <Width>4.37382cm</Width>
           <ZIndex>10</ZIndex>
           <Style>
             <Border>
@@ -748,7 +747,7 @@
           <Top>5.11363cm</Top>
           <Left>14.41569cm</Left>
           <Height>0.6cm</Height>
-          <Width>2.5cm</Width>
+          <Width>5.25259cm</Width>
           <ZIndex>11</ZIndex>
           <Style>
             <Border>

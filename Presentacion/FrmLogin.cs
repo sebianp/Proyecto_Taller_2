@@ -45,8 +45,11 @@ namespace Presentacion
                         MessageBox.Show("El usuario ingresado NO esta activo", "Acceso al Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else 
-                    { 
+                    {
+                        this.Hide();//Se oculta el login
+                        //Carga de el formulario principal de inicio
                         FrmPrincipal frm = new FrmPrincipal();
+                        //Guardado de variables relevantes para la sesión
                         Variables.IdUsuario = Convert.ToInt32(tabla.Rows[0][0]);
                         Variables.UsuarioRol = Convert.ToString(tabla.Rows[0]["rol"]);
                         frm.idUsuario = Convert.ToInt32(tabla.Rows[0][0]);
@@ -54,8 +57,9 @@ namespace Presentacion
                         frm.rol = Convert.ToString(tabla.Rows[0][2]);
                         frm.nombre = Convert.ToString(tabla.Rows[0][3]);
                         frm.estado = Convert.ToBoolean(tabla.Rows[0][4]);
+                        //Se muestra el formulario principal de inicio
                         frm.Show();
-                        this.Hide();
+                        
 
                     }
 

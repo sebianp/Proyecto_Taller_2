@@ -174,11 +174,26 @@ namespace Presentacion
                 }
 
                 //Cierra este formulario
-                this.Close();
+                this.Hide();
 
-                //Muestra el login
-                FrmLogin frm = new FrmLogin();
-                frm.Show();
+                FrmLogin login = Application.OpenForms["FrmLogin"] as FrmLogin;
+
+                if (login != null)
+                {
+                    login.Show(); //reabre el login ya oculto
+                }
+                else
+                {
+                    FrmLogin nuevoLogin = new FrmLogin();
+                    nuevoLogin.Show();
+                }
+
+                ////Muestra el login
+                //FrmLogin frm = new FrmLogin();
+                //frm.Show();
+
+                //Reinicia la aplicación mostrando el login
+                //Application.Restart();
             }
         }
 

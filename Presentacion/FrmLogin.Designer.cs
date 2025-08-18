@@ -99,6 +99,7 @@
             // BtnCancelar
             // 
             this.BtnCancelar.BackColor = System.Drawing.Color.DarkSalmon;
+            this.BtnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelar.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelar.Location = new System.Drawing.Point(419, 252);
@@ -132,9 +133,11 @@
             // 
             // FrmLogin
             // 
+            this.AcceptButton = this.BtnAcceder;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.CancelButton = this.BtnCancelar;
             this.ClientSize = new System.Drawing.Size(582, 308);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.BtnCancelar);
