@@ -257,6 +257,7 @@ namespace Presentacion
             this.CargarCategoriaBuscar(); //Para busquedas con filtro
             lblTitulo.Text = "ALTA DE ARTÍCULO";
             BtnGuardarCodigo.Enabled = false;
+            BtnActualizar.Visible = false;
             //mensaje sobre el datagrid avisando que puede hacer doble click para modificar.
             toolTipGeneral.SetToolTip(DgvListado, "Doble clic en una fila para modificar el artículo");
         }
@@ -353,7 +354,7 @@ namespace Presentacion
                     string.IsNullOrWhiteSpace(CboCategoria.Text) ||
                     string.IsNullOrWhiteSpace(CboMarca.Text) ||
                     string.IsNullOrWhiteSpace(CboColor.Text) ||
-                    string.IsNullOrWhiteSpace(CboMemoria.Text)
+                    string.IsNullOrWhiteSpace(CboMemoria.Text) 
                     )
                 {
                     this.MensajeError("Faltan ingresar datos");
@@ -363,6 +364,28 @@ namespace Presentacion
                     ErrorIcono.SetError(CboColor, "Ingrese el color del artículo");
                     ErrorIcono.SetError(CboMemoria, "Ingrese las memorias del artículo");
                     ErrorIcono.SetError(TxtImagen, "Ingrese una imagen representativa");
+                    
+                    return;
+                }
+
+                //1.1 Validación del código del producto, si el código ya existe entonces no se puede agregar
+                // Ya también tiene la restricción UNIQUE en la base de datos
+                string cod = TxtCodigo.Text.Trim();
+
+                if (string.IsNullOrWhiteSpace(cod))
+                {
+                    MessageBox.Show("El código es obligatorio.", "Validación",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    ErrorIcono.SetError(TxtCodigo, "Ingrese un código válido");
+                    return;
+                }
+
+                if (NArticulo.ExisteCodigo(cod))
+                {
+                    MessageBox.Show("El código ingresado ya existe. Ingrese uno diferente.",
+                                    "Código duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    TxtCodigo.Focus();
+                    TxtCodigo.SelectAll();
                     return;
                 }
 
@@ -570,6 +593,27 @@ namespace Presentacion
                     ErrorIcono.SetError(TxtPrecioVenta, "Ingrese un Precio de Venta");
                     ErrorIcono.SetError(TxtStock, "Ingrese un valor de Stock"); //Esta deshabilitado pero por las dudas.
                     ErrorIcono.SetError(TxtImagen, "Ingrese una imagen representativa");
+                    return;
+                }
+
+                //1.1 Validación del código del producto, si el código ya existe entonces no se puede agregar
+                // Ya también tiene la restricción UNIQUE en la base de datos
+                string cod = TxtCodigo.Text.Trim();
+
+                if (string.IsNullOrWhiteSpace(cod))
+                {
+                    MessageBox.Show("El código es obligatorio.", "Validación",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    ErrorIcono.SetError(TxtCodigo, "Ingrese un código válido");
+                    return;
+                }
+
+                if (NArticulo.ExisteCodigo(cod))
+                {
+                    MessageBox.Show("El código ingresado ya existe. Ingrese uno diferente.",
+                                    "Código duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    TxtCodigo.Focus();
+                    TxtCodigo.SelectAll();
                     return;
                 }
 

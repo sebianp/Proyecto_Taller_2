@@ -170,6 +170,7 @@
             this.Controls.Add(this.chartTopProductos);
             this.Name = "Frm_TopArticulosVendidos";
             this.Text = "Articulos mas Vendidos";
+            this.Load += new System.EventHandler(this.Frm_TopArticulosVendidos_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTopN)).EndInit();

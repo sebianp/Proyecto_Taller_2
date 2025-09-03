@@ -78,6 +78,7 @@
             this.LblTotal = new System.Windows.Forms.Label();
             this.DgvListado = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.PanelMostrar = new System.Windows.Forms.Panel();
             this.TxtTotalD = new System.Windows.Forms.TextBox();
@@ -89,7 +90,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.DgvMostrarDetalle = new System.Windows.Forms.DataGridView();
             this.TabGeneral = new System.Windows.Forms.TabControl();
-            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -475,6 +475,7 @@
             this.TxtImpuesto.Text = "0,05";
             this.TxtImpuesto.TextChanged += new System.EventHandler(this.TxtImpuesto_TextChanged);
             this.TxtImpuesto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtImpuesto_KeyPress);
+            this.TxtImpuesto.Leave += new System.EventHandler(this.TxtImpuesto_Leave);
             // 
             // BtnBuscarProveedor
             // 
@@ -672,6 +673,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(15, 6);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(159, 16);
+            this.label16.TabIndex = 15;
+            this.label16.Text = "Número de Comprobante";
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -793,16 +804,6 @@
             this.TabGeneral.SelectedIndex = 0;
             this.TabGeneral.Size = new System.Drawing.Size(1181, 655);
             this.TabGeneral.TabIndex = 1;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(15, 6);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(159, 16);
-            this.label16.TabIndex = 15;
-            this.label16.Text = "Número de Comprobante";
             // 
             // FrmIngreso
             // 

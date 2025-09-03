@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -236,11 +237,11 @@ namespace Presentacion
             DgvDetalle.Columns["cantidad"].Width = 80;
             DgvDetalle.Columns["precio"].HeaderText = "Precio";
             DgvDetalle.Columns["precio"].DefaultCellStyle.Format = "C2";
-            DgvDetalle.Columns["precio"].Width = 100;
+            DgvDetalle.Columns["precio"].Width = 140;
             DgvDetalle.Columns["descuento"].HeaderText = "Descuento (%)";
             DgvDetalle.Columns["descuento"].Width = 100;
             DgvDetalle.Columns["importe"].HeaderText = "Importe";
-            DgvDetalle.Columns["importe"].Width = 100;
+            DgvDetalle.Columns["importe"].Width = 140;
             DgvDetalle.Columns["importe"].DefaultCellStyle.Format = "C2";
 
             //columnas de solo lectura
@@ -1047,27 +1048,66 @@ namespace Presentacion
 
         private void TxtImpuesto_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //Permitir control (retroceso, suprimir, etc.) y números
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
+            if (char.IsControl(e.KeyChar)) return;
+
+            if (char.IsDigit(e.KeyChar)) return;
+
+            if (e.KeyChar == ',')
             {
-                e.Handled = true;
+                //solo una coma
+                if (TxtImpuesto.Text.Contains(",")) { e.Handled = true; return; }
+
+                //si intenta empezar con coma se antepone el 0,
+                if (TxtImpuesto.SelectionStart == 0)
+                {
+                    TxtImpuesto.Text = "0,";
+                    TxtImpuesto.SelectionStart = TxtImpuesto.Text.Length;
+                    e.Handled = true;
+                }
+                return;
             }
 
-            //Permitir solo una coma para evitar errores
-            if (e.KeyChar == ',' && (sender as TextBox).Text.Contains(","))
-            {
-                e.Handled = true;
-            }
+            //Bloquea punto y cualquier otro carácter
+            e.Handled = true;
         }
 
         private void TxtImpuesto_TextChanged(object sender, EventArgs e)
         {
+            // reemplazar puntos que puedan llegar por Pegar
+            if (TxtImpuesto.Text.Contains("."))
+            {
+                int caret = TxtImpuesto.SelectionStart;
+                TxtImpuesto.Text = TxtImpuesto.Text.Replace('.', ',');
+                TxtImpuesto.SelectionStart = Math.Min(caret, TxtImpuesto.Text.Length);
+            }
+
             if (string.IsNullOrWhiteSpace(TxtImpuesto.Text))
             {
                 TxtImpuesto.Text = "0";
-                TxtImpuesto.SelectionStart = TxtImpuesto.Text.Length; //Pone el cursor al final
+                TxtImpuesto.SelectionStart = TxtImpuesto.Text.Length;
+                CalcularTotales();
+                return;
             }
-            this.CalcularTotales();
+
+            // si el usuario está escribiendo "0," dejarlo seguir
+            if (TxtImpuesto.Text.EndsWith(",")) return;
+
+            var esAR = new CultureInfo("es-AR");
+            if (!decimal.TryParse(TxtImpuesto.Text, NumberStyles.Number, esAR, out var v)) return;
+
+            // rango [0, 1)
+            if (v < 0m) v = 0m;
+            if (v >= 1m) v = 0.99m;
+
+            string norm = v.ToString("0.##", esAR); // siempre con coma
+            if (TxtImpuesto.Text != norm)
+            {
+                int caret = TxtImpuesto.SelectionStart;
+                TxtImpuesto.Text = norm;
+                TxtImpuesto.SelectionStart = Math.Min(caret, TxtImpuesto.Text.Length);
+            }
+
+            CalcularTotales();
         }
     }
 }

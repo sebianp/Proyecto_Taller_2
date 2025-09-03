@@ -211,10 +211,11 @@ namespace Presentacion
                 string respuesta = "";
 
                 //El nombre debe tener algun valor porque es obligatorio
-                if (TxtNombre.Text == string.Empty || TxtId.Text == string.Empty)
+                if (TxtNombre.Text == string.Empty || TxtId.Text == string.Empty || TxtDescripcion.Text == string.Empty)
                 {
                     this.MensajeError("Faltan ingresar datos");
                     ErrorIcono.SetError(TxtNombre, "Ingrese un nombre");
+                    ErrorIcono.SetError(TxtDescripcion, "Ingrese un nombre");
                 }
                 else //En caso de cumplir con el campo obligatorio del nombre, se puede almacenar
                 {

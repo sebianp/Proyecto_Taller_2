@@ -300,6 +300,40 @@ namespace Datos
 
         }
 
+        public bool ExisteCodigo(string codigo)
+        {
+            SqlDataReader resultado;
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand comando = new SqlCommand("articulo_existe_codigo", SqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Add("@codigo", SqlDbType.VarChar).Value = codigo;
+
+                SqlCon.Open();
+                resultado = comando.ExecuteReader();
+
+                bool existe = false;
+                if (resultado.Read())
+                {
+                    existe = Convert.ToInt32(resultado["Existe"]) == 1;
+                }
+
+                return existe;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
+
+
         public DataTable BuscarCodigoVenta(string valor)
         {
 

@@ -44,6 +44,12 @@ namespace Presentacion
 
             area.AxisY.Title = "Total Importe";
 
+            //quitar cuadrícula y limpiar fondo
+            area.AxisX.MajorGrid.Enabled = false;
+            area.AxisY.MajorGrid.Enabled = false;
+            area.AxisX.MinorGrid.Enabled = false;
+            area.AxisY.MinorGrid.Enabled = false;
+
             //5)Serie de columnas
             var serie = new Series("Importe")
             {
@@ -53,17 +59,17 @@ namespace Presentacion
                 IsValueShownAsLabel = true
             };
 
-            var serie2 = new Series("Ventas")
-            {
-                ChartType = SeriesChartType.Line,
-                XValueMember = "Vendedor",
-                YValueMembers = "NumVentas",
-                BorderWidth = 2,
-                Color = Color.DarkRed
-            };
+            //var serie2 = new Series("Ventas")
+            //{
+            //    ChartType = SeriesChartType.Line,
+            //    XValueMember = "Vendedor",
+            //    YValueMembers = "NumVentas",
+            //    BorderWidth = 2,
+            //    Color = Color.DarkRed
+            //};
 
             chartRankingVendedores.Series.Add(serie);
-            chartRankingVendedores.Series.Add(serie2);
+            //chartRankingVendedores.Series.Add(serie2);
 
             
 
@@ -77,6 +83,10 @@ namespace Presentacion
             );
 
         }
-    
+
+        private void Frm_TopVendedores_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

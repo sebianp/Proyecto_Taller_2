@@ -42,6 +42,8 @@ namespace Presentacion
         {
             //Visibilidad
             DgvListado.Columns[0].Visible = false;
+            DgvListado.Columns[2].Visible = false;
+            DgvListado.Columns[4].Visible = false;
 
 
             //Dimensiones

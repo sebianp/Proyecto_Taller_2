@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
+
 namespace Presentacion
 {
     public partial class Frm_ControlStock : Form
@@ -64,6 +65,12 @@ namespace Presentacion
             area.AxisX.Interval = 1;
             area.AxisX.LabelStyle.IsStaggered = false;
 
+            // quitar cuadrícula y limpiar fondo
+            area.AxisX.MajorGrid.Enabled = false;
+            area.AxisY.MajorGrid.Enabled = false;
+            area.AxisX.MinorGrid.Enabled = false;
+            area.AxisY.MinorGrid.Enabled = false;
+
             // Eje Y (cantidad)
             area.AxisY.Title = "Cantidad";
 
@@ -99,6 +106,12 @@ namespace Presentacion
             area.AxisX.Interval = 1;
             area.AxisY.Title = "Total Stock";
 
+            //quitar cuadrícula y limpiar fondo
+            area.AxisX.MajorGrid.Enabled = false;
+            area.AxisY.MajorGrid.Enabled = false;
+            area.AxisX.MinorGrid.Enabled = false;
+            area.AxisY.MinorGrid.Enabled = false;
+
             //Serie
             var serie = new Series("StockCat")
             {
@@ -114,58 +127,127 @@ namespace Presentacion
             chartStockPorCategoria.Titles.Add("Distribución de Stock por Categoría");
         }
 
+        //Método que activa el boton sin ventas. Esto trae los datos desde la BD y los muestra en un chart.
         private void btnSinVentas_Click(object sender, EventArgs e)
         {
+            if (CboCategoria.SelectedValue == null)
+            {
+                MessageBox.Show("Seleccione una categoría para continuar.", "Validación",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int idCategoria = Convert.ToInt32(CboCategoria.SelectedValue);
             DateTime fi = dtpSinVentasInicio.Value.Date;
             DateTime ff = dtpSinVentasFin.Value.Date.AddDays(1).AddTicks(-1);
 
-            DataTable dt = NReporte.EstadisticaStockSinVentas(fi, ff);
+            DataTable dt = NReporte.EstadisticaStockSinVentas(fi, ff, idCategoria);
 
-            //cantidad de artículos encontrados
             lblTotalSinVentas.Text = $"Total de artículos: {dt.Rows.Count}";
-
             if (dt.Rows.Count == 0)
             {
-                MessageBox.Show(
-                    $"No se encontraron artículos sin ventas en el periodo seleccionado.",
-                    "Sin resultados",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
-                return; //Sale
+                chartStockSinVentas.Series.Clear();
+                chartStockSinVentas.ChartAreas.Clear();
+                chartStockSinVentas.Titles.Clear();
+                MessageBox.Show("No se encontraron artículos sin ventas en el periodo seleccionado.",
+                                "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
 
-            //Limpiar chart
+            // Orden por Stock desc y luego nombre
+            dt.DefaultView.Sort = "StockActual DESC, Producto ASC";
+            DataTable datos = dt.DefaultView.ToTable();
+
+            // Limpiar y configurar
             chartStockSinVentas.Series.Clear();
             chartStockSinVentas.ChartAreas.Clear();
             chartStockSinVentas.Titles.Clear();
 
-            //Area
             var area = new ChartArea("AreaSinVentas");
             chartStockSinVentas.ChartAreas.Add(area);
             area.AxisX.Title = "Producto";
             area.AxisX.LabelStyle.Angle = -45;
             area.AxisX.Interval = 1;
-            area.AxisY.Title = "Stock Actual";
 
-            //Serie
+            // Scroll/zoom en X (si hay muchos productos)
+            int visibles = Math.Min(20, datos.Rows.Count);
+            area.AxisX.ScaleView.Size = visibles;
+            area.AxisX.ScrollBar.Enabled = (datos.Rows.Count > visibles);
+            area.CursorX.IsUserEnabled = (datos.Rows.Count > visibles);
+            area.CursorX.IsUserSelectionEnabled = (datos.Rows.Count > visibles);
+
+            area.AxisY.Title = "Stock Actual";
+            area.AxisY.Minimum = 0;
+
+            // quitar cuadrícula y limpiar fondo
+            area.AxisX.MajorGrid.Enabled = false;
+            area.AxisY.MajorGrid.Enabled = false;
+            area.AxisX.MinorGrid.Enabled = false;
+            area.AxisY.MinorGrid.Enabled = false;
+
+            area.BackColor = Color.Transparent;          // área sin fondo
+            chartStockSinVentas.BackColor = Color.White; // fondo del chart
+
+            // ejes más livianos (opcional)
+            area.AxisX.LineColor = Color.Silver;
+            area.AxisY.LineColor = Color.Silver;
+
+            // Serie
             var serie = new Series("SinVentas")
             {
                 ChartType = SeriesChartType.Column,
                 XValueMember = "Producto",
                 YValueMembers = "StockActual",
-                IsValueShownAsLabel = true
+                IsValueShownAsLabel = true,
+                LabelFormat = "N0"
             };
+            serie.ChartArea = area.Name; // aseguro que use esta área
+            serie["PointWidth"] = "0.55";  // deja un poco de espacio entre columnas
+            serie.BorderWidth = 0;         // sin borde en las barras
+
             chartStockSinVentas.Series.Add(serie);
 
-            chartStockSinVentas.DataSource = dt;
+            chartStockSinVentas.DataSource = datos;
             chartStockSinVentas.DataBind();
-            chartStockSinVentas.Titles.Add($"Productos sin ventas ({fi:dd/MM/yyyy} – {ff:dd/MM/yyyy})");
+            chartStockSinVentas.Titles.Add(
+                $"Productos sin ventas ({fi:dd/MM/yyyy} – {ff:dd/MM/yyyy}) · Categoría: {CboCategoria.Text}"
+            );
         }
 
         private void Frm_ControlStock_Load(object sender, EventArgs e)
         {
+            CargarCategoriasObligatorio(CboCategoria);
+        }
 
+        //Método para cargar el Combo Box de categorias
+        private void CargarCategoriasObligatorio(ComboBox combo)
+        {
+            try
+            {
+                DataTable dt = NCategoria.Seleccionar();
+
+                // Ordenar por nombre (opcional)
+                DataView dv = dt.DefaultView;
+                dv.Sort = "nombre ASC";
+                DataTable dtOrdenado = dv.ToTable();
+
+                combo.DataSource = dtOrdenado;
+                combo.ValueMember = "idcategoria";
+                combo.DisplayMember = "nombre";
+
+                combo.DropDownStyle = ComboBoxStyle.DropDownList; // no permite escribir
+                combo.SelectedIndex = -1;                         // obliga a elegir
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        //Al activarse el formulario se ejecutan los siguientes métodos.
+        private void Frm_ControlStock_Activated(object sender, EventArgs e)
+        {
+            CargarCategoriasObligatorio(CboCategoria);
         }
     }
 }

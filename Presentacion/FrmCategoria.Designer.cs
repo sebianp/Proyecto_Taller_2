@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.TabGeneral = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblInstruccionDobleClick = new System.Windows.Forms.Label();
             this.BtnEliminar = new System.Windows.Forms.Button();
             this.BtnDesactivar = new System.Windows.Forms.Button();
             this.BtnActivar = new System.Windows.Forms.Button();
@@ -41,6 +42,8 @@
             this.DgvListado = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.BtnActualizar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.BtnCancelar = new System.Windows.Forms.Button();
@@ -51,15 +54,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ErrorIcono = new System.Windows.Forms.ErrorProvider(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.lblInstruccionDobleClick = new System.Windows.Forms.Label();
             this.TabGeneral.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.SuspendLayout();
             // 
             // TabGeneral
@@ -94,6 +94,17 @@
             this.tabPage1.Size = new System.Drawing.Size(842, 415);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
+            // 
+            // lblInstruccionDobleClick
+            // 
+            this.lblInstruccionDobleClick.AutoSize = true;
+            this.lblInstruccionDobleClick.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblInstruccionDobleClick.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInstruccionDobleClick.Location = new System.Drawing.Point(575, 40);
+            this.lblInstruccionDobleClick.Name = "lblInstruccionDobleClick";
+            this.lblInstruccionDobleClick.Size = new System.Drawing.Size(257, 16);
+            this.lblInstruccionDobleClick.TabIndex = 13;
+            this.lblInstruccionDobleClick.Text = "🛈 Doble clic sobre un registro para modificarlo.";
             // 
             // BtnEliminar
             // 
@@ -218,12 +229,32 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Snow;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.lblTitulo);
+            this.panel1.Location = new System.Drawing.Point(179, 7);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(500, 67);
+            this.panel1.TabIndex = 27;
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Tai Le", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(95, 15);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(302, 37);
+            this.lblTitulo.TabIndex = 24;
+            this.lblTitulo.Text = "ALTA DE CATEGORIA";
+            // 
             // BtnActualizar
             // 
             this.BtnActualizar.BackColor = System.Drawing.Color.Khaki;
             this.BtnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnActualizar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnActualizar.Location = new System.Drawing.Point(243, 354);
+            this.BtnActualizar.Location = new System.Drawing.Point(77, 318);
             this.BtnActualizar.Name = "BtnActualizar";
             this.BtnActualizar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.BtnActualizar.Size = new System.Drawing.Size(150, 34);
@@ -320,37 +351,6 @@
             // 
             this.ErrorIcono.ContainerControl = this;
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Snow;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.lblTitulo);
-            this.panel1.Location = new System.Drawing.Point(179, 7);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(500, 67);
-            this.panel1.TabIndex = 27;
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Tai Le", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(95, 15);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(302, 37);
-            this.lblTitulo.TabIndex = 24;
-            this.lblTitulo.Text = "ALTA DE CATEGORIA";
-            // 
-            // lblInstruccionDobleClick
-            // 
-            this.lblInstruccionDobleClick.AutoSize = true;
-            this.lblInstruccionDobleClick.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.lblInstruccionDobleClick.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInstruccionDobleClick.Location = new System.Drawing.Point(575, 40);
-            this.lblInstruccionDobleClick.Name = "lblInstruccionDobleClick";
-            this.lblInstruccionDobleClick.Size = new System.Drawing.Size(257, 16);
-            this.lblInstruccionDobleClick.TabIndex = 13;
-            this.lblInstruccionDobleClick.Text = "🛈 Doble clic sobre un registro para modificarlo.";
-            // 
             // FrmCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -368,9 +368,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).EndInit();
             this.ResumeLayout(false);
 
         }

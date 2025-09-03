@@ -77,7 +77,7 @@
             // TxtEmail
             // 
             this.TxtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtEmail.Location = new System.Drawing.Point(501, 350);
+            this.TxtEmail.Location = new System.Drawing.Point(434, 351);
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(367, 28);
             this.TxtEmail.TabIndex = 19;
@@ -85,7 +85,7 @@
             // TxtTelefono
             // 
             this.TxtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtTelefono.Location = new System.Drawing.Point(500, 303);
+            this.TxtTelefono.Location = new System.Drawing.Point(433, 304);
             this.TxtTelefono.Name = "TxtTelefono";
             this.TxtTelefono.Size = new System.Drawing.Size(367, 28);
             this.TxtTelefono.TabIndex = 17;
@@ -94,7 +94,7 @@
             // TxtDireccion
             // 
             this.TxtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtDireccion.Location = new System.Drawing.Point(501, 252);
+            this.TxtDireccion.Location = new System.Drawing.Point(434, 253);
             this.TxtDireccion.Name = "TxtDireccion";
             this.TxtDireccion.Size = new System.Drawing.Size(367, 28);
             this.TxtDireccion.TabIndex = 16;
@@ -125,7 +125,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1306, 484);
+            this.tabPage2.Size = new System.Drawing.Size(1148, 484);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
             // 
@@ -134,7 +134,7 @@
             this.panel1.BackColor = System.Drawing.Color.Snow;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.lblTitulo);
-            this.panel1.Location = new System.Drawing.Point(425, 6);
+            this.panel1.Location = new System.Drawing.Point(358, 7);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(500, 67);
             this.panel1.TabIndex = 27;
@@ -152,7 +152,7 @@
             // TxtNumDocumento
             // 
             this.TxtNumDocumento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtNumDocumento.Location = new System.Drawing.Point(500, 200);
+            this.TxtNumDocumento.Location = new System.Drawing.Point(433, 201);
             this.TxtNumDocumento.Name = "TxtNumDocumento";
             this.TxtNumDocumento.Size = new System.Drawing.Size(367, 28);
             this.TxtNumDocumento.TabIndex = 15;
@@ -161,11 +161,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(445, 357);
+            this.label8.Location = new System.Drawing.Point(357, 358);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(48, 21);
+            this.label8.Size = new System.Drawing.Size(69, 21);
             this.label8.TabIndex = 19;
-            this.label8.Text = "Email";
+            this.label8.Text = "Email (*)";
             // 
             // CboTipoDocumento
             // 
@@ -174,7 +174,7 @@
             "DNI",
             "CUIL/CUIT",
             "PASAPORTE"});
-            this.CboTipoDocumento.Location = new System.Drawing.Point(499, 148);
+            this.CboTipoDocumento.Location = new System.Drawing.Point(432, 149);
             this.CboTipoDocumento.Name = "CboTipoDocumento";
             this.CboTipoDocumento.Size = new System.Drawing.Size(369, 29);
             this.CboTipoDocumento.TabIndex = 14;
@@ -183,7 +183,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(397, 259);
+            this.label7.Location = new System.Drawing.Point(330, 260);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(96, 21);
             this.label7.TabIndex = 13;
@@ -192,7 +192,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(319, 207);
+            this.label6.Location = new System.Drawing.Point(252, 208);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(174, 21);
             this.label6.TabIndex = 12;
@@ -201,7 +201,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(347, 156);
+            this.label5.Location = new System.Drawing.Point(280, 157);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(146, 21);
             this.label5.TabIndex = 11;
@@ -212,7 +212,7 @@
             this.BtnActualizar.BackColor = System.Drawing.Color.Khaki;
             this.BtnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnActualizar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnActualizar.Location = new System.Drawing.Point(501, 436);
+            this.BtnActualizar.Location = new System.Drawing.Point(434, 437);
             this.BtnActualizar.Name = "BtnActualizar";
             this.BtnActualizar.Size = new System.Drawing.Size(123, 36);
             this.BtnActualizar.TabIndex = 8;
@@ -223,7 +223,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(569, 391);
+            this.label3.Location = new System.Drawing.Point(502, 392);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(217, 21);
             this.label3.TabIndex = 7;
@@ -234,7 +234,7 @@
             this.BtnCancelar.BackColor = System.Drawing.Color.IndianRed;
             this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelar.Location = new System.Drawing.Point(744, 436);
+            this.BtnCancelar.Location = new System.Drawing.Point(677, 437);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(123, 36);
             this.BtnCancelar.TabIndex = 6;
@@ -247,7 +247,7 @@
             this.BtnInsertar.BackColor = System.Drawing.Color.CornflowerBlue;
             this.BtnInsertar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnInsertar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnInsertar.Location = new System.Drawing.Point(500, 436);
+            this.BtnInsertar.Location = new System.Drawing.Point(433, 437);
             this.BtnInsertar.Name = "BtnInsertar";
             this.BtnInsertar.Size = new System.Drawing.Size(123, 36);
             this.BtnInsertar.TabIndex = 5;
@@ -259,7 +259,7 @@
             // 
             this.TxtId.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.TxtId.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TxtId.Location = new System.Drawing.Point(873, 95);
+            this.TxtId.Location = new System.Drawing.Point(806, 96);
             this.TxtId.Name = "TxtId";
             this.TxtId.Size = new System.Drawing.Size(100, 21);
             this.TxtId.TabIndex = 4;
@@ -268,7 +268,7 @@
             // TxtNombre
             // 
             this.TxtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtNombre.Location = new System.Drawing.Point(498, 95);
+            this.TxtNombre.Location = new System.Drawing.Point(431, 96);
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(369, 28);
             this.TxtNombre.TabIndex = 2;
@@ -276,7 +276,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(402, 310);
+            this.label2.Location = new System.Drawing.Point(335, 311);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 21);
             this.label2.TabIndex = 1;
@@ -285,7 +285,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(404, 102);
+            this.label1.Location = new System.Drawing.Point(337, 103);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 21);
             this.label1.TabIndex = 0;
@@ -300,7 +300,7 @@
             this.TabGeneral.Multiline = true;
             this.TabGeneral.Name = "TabGeneral";
             this.TabGeneral.SelectedIndex = 0;
-            this.TabGeneral.Size = new System.Drawing.Size(1314, 513);
+            this.TabGeneral.Size = new System.Drawing.Size(1156, 513);
             this.TabGeneral.TabIndex = 3;
             // 
             // tabPage1
@@ -320,7 +320,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1306, 484);
+            this.tabPage1.Size = new System.Drawing.Size(1148, 484);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
             // 
@@ -329,7 +329,7 @@
             this.lblInstruccionDobleClick.AutoSize = true;
             this.lblInstruccionDobleClick.BackColor = System.Drawing.SystemColors.ControlLight;
             this.lblInstruccionDobleClick.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInstruccionDobleClick.Location = new System.Drawing.Point(1039, 40);
+            this.lblInstruccionDobleClick.Location = new System.Drawing.Point(882, 37);
             this.lblInstruccionDobleClick.Name = "lblInstruccionDobleClick";
             this.lblInstruccionDobleClick.Size = new System.Drawing.Size(257, 16);
             this.lblInstruccionDobleClick.TabIndex = 14;
@@ -339,7 +339,7 @@
             // 
             this.BtnDesactivar.BackColor = System.Drawing.Color.DarkKhaki;
             this.BtnDesactivar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnDesactivar.Location = new System.Drawing.Point(322, 435);
+            this.BtnDesactivar.Location = new System.Drawing.Point(350, 440);
             this.BtnDesactivar.Name = "BtnDesactivar";
             this.BtnDesactivar.Size = new System.Drawing.Size(125, 26);
             this.BtnDesactivar.TabIndex = 9;
@@ -352,7 +352,7 @@
             // 
             this.BtnActivar.BackColor = System.Drawing.Color.CadetBlue;
             this.BtnActivar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnActivar.Location = new System.Drawing.Point(191, 435);
+            this.BtnActivar.Location = new System.Drawing.Point(219, 440);
             this.BtnActivar.Name = "BtnActivar";
             this.BtnActivar.Size = new System.Drawing.Size(125, 26);
             this.BtnActivar.TabIndex = 8;
@@ -365,7 +365,7 @@
             // 
             this.BtnEliminar.BackColor = System.Drawing.Color.IndianRed;
             this.BtnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnEliminar.Location = new System.Drawing.Point(453, 435);
+            this.BtnEliminar.Location = new System.Drawing.Point(1003, 442);
             this.BtnEliminar.Name = "BtnEliminar";
             this.BtnEliminar.Size = new System.Drawing.Size(125, 25);
             this.BtnEliminar.TabIndex = 6;
@@ -424,11 +424,11 @@
             this.DgvListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar});
-            this.DgvListado.Location = new System.Drawing.Point(5, 59);
+            this.DgvListado.Location = new System.Drawing.Point(6, 56);
             this.DgvListado.Name = "DgvListado";
             this.DgvListado.ReadOnly = true;
             this.DgvListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvListado.Size = new System.Drawing.Size(1291, 366);
+            this.DgvListado.Size = new System.Drawing.Size(1133, 366);
             this.DgvListado.TabIndex = 0;
             this.DgvListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellContentClick);
             this.DgvListado.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellDoubleClick);
@@ -443,7 +443,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1338, 531);
+            this.ClientSize = new System.Drawing.Size(1175, 531);
             this.Controls.Add(this.TabGeneral);
             this.Name = "FrmCliente";
             this.Text = "Clientes";

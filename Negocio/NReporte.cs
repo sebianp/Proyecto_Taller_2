@@ -48,10 +48,10 @@ namespace Negocio
         }
 
         //Metodo que devuelve los artículos sin ventas aceptadas en el rango de fechas previsto.
-        public static DataTable EstadisticaStockSinVentas(DateTime fechaInicio, DateTime fechaFin)
+        public static DataTable EstadisticaStockSinVentas(DateTime fechaInicio, DateTime fechaFin, int IdCategoria)
         {
             DReporte datos = new DReporte();
-            return datos.EstadisticaStockSinVentas(fechaInicio, fechaFin);
+            return datos.EstadisticaStockSinVentas(fechaInicio, fechaFin, IdCategoria);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Presentacion
             {
                 //Agregamos como recurso del Datagrid el listado obtenido de la BD
                 //Esto permite cargar y mostrar los datos de la tabla Categoria
-                DgvListado.DataSource = NPersona.ListarProveedores();
+                DgvListado.DataSource = NPersona.BuscarProveedores(TxtBuscar.Text);
                 this.Formato();
                 LblTotal.Text = "Total Registros: " + Convert.ToString(DgvListado.Rows.Count); //Cuenta todas las filas
             }
@@ -60,6 +60,8 @@ namespace Presentacion
         {
             //Visibilidad
             DgvListado.Columns[0].Visible = false;
+            DgvListado.Columns[2].Visible = false;
+            DgvListado.Columns[4].Visible = false;
 
 
             //Dimensiones
@@ -67,7 +69,7 @@ namespace Presentacion
             DgvListado.Columns[2].Width = 100;
             DgvListado.Columns[3].Width = 170;
             DgvListado.Columns[4].Width = 100;
-            DgvListado.Columns[5].Width = 100;
+            DgvListado.Columns[5].Width = 130;
             DgvListado.Columns[6].Width = 120;
             DgvListado.Columns[7].Width = 100;
             DgvListado.Columns[8].Width = 120;

@@ -41,6 +41,12 @@ namespace Presentacion
             area.AxisX.LabelStyle.Angle = -45;//Rotacion
             area.AxisX.Interval = 1;//cada producto
 
+            //quitar cuadrícula y limpiar fondo
+            area.AxisX.MajorGrid.Enabled = false;
+            area.AxisY.MajorGrid.Enabled = false;
+            area.AxisX.MinorGrid.Enabled = false;
+            area.AxisY.MinorGrid.Enabled = false;
+
             area.AxisY.Title = "Unidades Vendidas";
 
             //Serie de barras
@@ -59,6 +65,11 @@ namespace Presentacion
 
             //Título del chart
             chartTopProductos.Titles.Add($"Top {topN} Productos Vendidos");
+        }
+
+        private void Frm_TopArticulosVendidos_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

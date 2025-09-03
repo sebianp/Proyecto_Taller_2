@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -532,18 +533,21 @@ namespace Presentacion
                 string respuesta = "";
 
                 //Validación de que los campos que sean obligatorios no estén vacíos.
-                if (TxtIdProveedor.Text == string.Empty || TxtImpuesto.Text == string.Empty ||TxtNumComprobante.Text == string.Empty || DtDetalle.Rows.Count == 0)
+                if (TxtIdProveedor.Text == string.Empty || TxtImpuesto.Text == string.Empty ||
+                    TxtNumComprobante.Text == string.Empty || TxtSerieComprobante.Text ==string.Empty || 
+                    DtDetalle.Rows.Count == 0)
                 {
                     this.MensajeError("Faltan ingresar datos");
                     ErrorIcono.SetError(TxtIdProveedor, "Debe seleccionar un proveedor");
                     ErrorIcono.SetError(TxtImpuesto, "Debe ingresar un valor de impuesto");
+                    ErrorIcono.SetError(TxtSerieComprobante, "Ingrese la serie del comprobante");
                     ErrorIcono.SetError(TxtNumComprobante, "Ingrese el número del comprobante");
                     ErrorIcono.SetError(DgvDetalle, "Debe ingresar al menos un artículo");
                 }
                 else //En caso de cumplir con los campos obligatorios, se puede almacenar
                 {
                     //Mensaje de confirmación de la COMPRA.
-                    if (MessageBox.Show("¿Está seguro que desea realizar la COMPRA?",
+                    if (MessageBox.Show("¿Está seguro que desea realizar el INGRESO?",
                                         "Confirmar venta",
                                         MessageBoxButtons.YesNo,
                                         MessageBoxIcon.Question) == DialogResult.No)
@@ -568,7 +572,7 @@ namespace Presentacion
                     if (respuesta.Equals("OK"))
                     {
                         //Si almaceno correctamente recibirá OK y va a mostrar la respuesta OK
-                        this.MensajeOk("El IBGRESO se almacenó de forma correcta");
+                        this.MensajeOk("El INGRESO se almacenó de forma correcta");
                         this.Limpiar();
                         this.Listar();
                         TabGeneral.SelectedIndex = 0;
@@ -811,27 +815,66 @@ namespace Presentacion
 
         private void TxtImpuesto_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //Permitir control (retroceso, suprimir, etc.) y números
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
+            if (char.IsControl(e.KeyChar)) return;
+
+            if (char.IsDigit(e.KeyChar)) return;
+
+            if (e.KeyChar == ',')
             {
-                e.Handled = true;
+                //solo una coma
+                if (TxtImpuesto.Text.Contains(",")) { e.Handled = true; return; }
+
+                //si intenta empezar con coma se antepone el 0,
+                if (TxtImpuesto.SelectionStart == 0)
+                {
+                    TxtImpuesto.Text = "0,";
+                    TxtImpuesto.SelectionStart = TxtImpuesto.Text.Length;
+                    e.Handled = true;
+                }
+                return;
             }
 
-            //Permitir solo una coma para evitar errores
-            if (e.KeyChar == ',' && (sender as TextBox).Text.Contains(","))
-            {
-                e.Handled = true;
-            }
+            //Bloquea punto y cualquier otro carácter
+            e.Handled = true;
         }
 
         private void TxtImpuesto_TextChanged(object sender, EventArgs e)
         {
+            // reemplazar puntos que puedan llegar por Pegar
+            if (TxtImpuesto.Text.Contains("."))
+            {
+                int caret = TxtImpuesto.SelectionStart;
+                TxtImpuesto.Text = TxtImpuesto.Text.Replace('.', ',');
+                TxtImpuesto.SelectionStart = Math.Min(caret, TxtImpuesto.Text.Length);
+            }
+
             if (string.IsNullOrWhiteSpace(TxtImpuesto.Text))
             {
                 TxtImpuesto.Text = "0";
-                TxtImpuesto.SelectionStart = TxtImpuesto.Text.Length; //Pone el cursor al final
+                TxtImpuesto.SelectionStart = TxtImpuesto.Text.Length;
+                CalcularTotales();
+                return;
             }
-            this.CalcularTotales();
+
+            // si el usuario está escribiendo "0," dejarlo seguir
+            if (TxtImpuesto.Text.EndsWith(",")) return;
+
+            var esAR = new CultureInfo("es-AR");
+            if (!decimal.TryParse(TxtImpuesto.Text, NumberStyles.Number, esAR, out var v)) return;
+
+            // rango [0, 1)
+            if (v < 0m) v = 0m;
+            if (v >= 1m) v = 0.99m;
+
+            string norm = v.ToString("0.##", esAR); // siempre con coma
+            if (TxtImpuesto.Text != norm)
+            {
+                int caret = TxtImpuesto.SelectionStart;
+                TxtImpuesto.Text = norm;
+                TxtImpuesto.SelectionStart = Math.Min(caret, TxtImpuesto.Text.Length);
+            }
+
+            CalcularTotales();
         }
 
         private void TxtBuscar_KeyPress(object sender, KeyPressEventArgs e)
@@ -841,6 +884,11 @@ namespace Presentacion
             {
                 e.Handled = true;
             }
+        }
+
+        private void TxtImpuesto_Leave(object sender, EventArgs e)
+        {
+
         }
     }
 }

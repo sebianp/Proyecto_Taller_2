@@ -78,6 +78,12 @@ namespace Negocio
 
         }
 
+        public static bool ExisteCodigo(string codigo)
+        {
+            DArticulo Datos = new DArticulo();
+            return Datos.ExisteCodigo(codigo);
+        }
+
         public static DataTable BuscarCodigoVenta(string valor)
         {
             //Instanciamos un objeto de la clase

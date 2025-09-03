@@ -500,11 +500,11 @@
             // TxtCod
             // 
             this.TxtCod.AutoSize = true;
-            this.TxtCod.Location = new System.Drawing.Point(72, 200);
+            this.TxtCod.Location = new System.Drawing.Point(120, 200);
             this.TxtCod.Name = "TxtCod";
-            this.TxtCod.Size = new System.Drawing.Size(129, 21);
+            this.TxtCod.Size = new System.Drawing.Size(81, 21);
             this.TxtCod.TabIndex = 15;
-            this.TxtCod.Text = "Código de Barras";
+            this.TxtCod.Text = "Código (*)";
             // 
             // PicImagen
             // 

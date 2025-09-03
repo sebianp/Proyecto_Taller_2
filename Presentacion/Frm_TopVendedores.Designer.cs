@@ -130,6 +130,7 @@
             this.Controls.Add(this.chartRankingVendedores);
             this.Name = "Frm_TopVendedores";
             this.Text = "Ranking Vendedores";
+            this.Load += new System.EventHandler(this.Frm_TopVendedores_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartRankingVendedores)).EndInit();

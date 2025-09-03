@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -110,15 +111,16 @@ namespace Datos
         }
 
         // Metodo que obtiene los productos sin ventas en el rango de fechas dado.
-        public DataTable EstadisticaStockSinVentas(DateTime fechaInicio, DateTime fechaFin)
+        public DataTable EstadisticaStockSinVentas(DateTime fechaInicio, DateTime fechaFin, int IdCategoria)
         {
             DataTable tabla = new DataTable();
             using (SqlConnection cn = Conexion.getInstancia().CrearConexion())
-            using (SqlCommand cmd = new SqlCommand("estadistica_stock_sin_ventas", cn))
+            using (SqlCommand cmd = new SqlCommand("estadistica_stock_sin_ventas", cn)) //cmd quiere decir comando
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@fecha_inicio", SqlDbType.DateTime).Value = fechaInicio;
                 cmd.Parameters.Add("@fecha_fin", SqlDbType.DateTime).Value = fechaFin;
+                cmd.Parameters.Add("@idcategoria", SqlDbType.Int).Value = IdCategoria;
 
                 cn.Open();
                 using (SqlDataReader rdr = cmd.ExecuteReader())
