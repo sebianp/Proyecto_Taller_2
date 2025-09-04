@@ -387,6 +387,7 @@ namespace Presentacion
 
                     
                     }
+                TxtCodigo.Clear();
                
 
             }

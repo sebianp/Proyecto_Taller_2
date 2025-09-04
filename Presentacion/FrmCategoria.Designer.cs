@@ -254,7 +254,7 @@
             this.BtnActualizar.BackColor = System.Drawing.Color.Khaki;
             this.BtnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnActualizar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnActualizar.Location = new System.Drawing.Point(77, 318);
+            this.BtnActualizar.Location = new System.Drawing.Point(243, 354);
             this.BtnActualizar.Name = "BtnActualizar";
             this.BtnActualizar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.BtnActualizar.Size = new System.Drawing.Size(150, 34);

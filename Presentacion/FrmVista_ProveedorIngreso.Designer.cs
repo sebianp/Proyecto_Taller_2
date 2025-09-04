@@ -35,6 +35,7 @@
             this.BtnBuscar = new System.Windows.Forms.Button();
             this.TxtBuscar = new System.Windows.Forms.TextBox();
             this.LblTotal = new System.Windows.Forms.Label();
+            this.lblInstruccionDobleClick = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).BeginInit();
             this.TabGeneral.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -78,6 +79,7 @@
             // 
             this.tabPage1.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabPage1.Controls.Add(this.lblInstruccionDobleClick);
             this.tabPage1.Controls.Add(this.BtnBuscar);
             this.tabPage1.Controls.Add(this.TxtBuscar);
             this.tabPage1.Controls.Add(this.LblTotal);
@@ -120,6 +122,17 @@
             this.LblTotal.TabIndex = 1;
             this.LblTotal.Text = "Total: ";
             // 
+            // lblInstruccionDobleClick
+            // 
+            this.lblInstruccionDobleClick.AutoSize = true;
+            this.lblInstruccionDobleClick.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblInstruccionDobleClick.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInstruccionDobleClick.Location = new System.Drawing.Point(854, 37);
+            this.lblInstruccionDobleClick.Name = "lblInstruccionDobleClick";
+            this.lblInstruccionDobleClick.Size = new System.Drawing.Size(260, 16);
+            this.lblInstruccionDobleClick.TabIndex = 14;
+            this.lblInstruccionDobleClick.Text = "🛈 Doble clic sobre un proveedor para agregarlo.";
+            // 
             // FrmVista_ProveedorIngreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -147,5 +160,6 @@
         private System.Windows.Forms.Label LblTotal;
         private System.Windows.Forms.DataGridView DgvListado;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
+        private System.Windows.Forms.Label lblInstruccionDobleClick;
     }
 }

@@ -129,8 +129,6 @@ namespace Negocio
                 return datos.Insertar(Obj);
             }
 
-
-
         }
 
         //Metodo para actualizar un objeto existente en la base de datos

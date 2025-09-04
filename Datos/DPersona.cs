@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
-using Entidades;
 
 namespace Datos
 {
@@ -295,7 +296,7 @@ namespace Datos
         }
 
         //Metodo para determinar si un registro ya existe registro en tabla
-        //Recibe un objeto del tipo Entidad categoria que lo almacenara como nuevo registro
+        //Recibe un objeto del tipo Entidad  que lo almacenara como nuevo registro
         //Devuelve una cadena con los resultados de la operación
         public string Existe(string valor)
         {
@@ -338,8 +339,51 @@ namespace Datos
             return respuesta;
         }
 
+        public string PersonaEmailExiste(string valor)
+        {
+            string respuesta = ""; // Valor que devolverá el método
+
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+
+                // Nombre del SP que creamos: persona_existe_email
+                SqlCommand comando = new SqlCommand("persona_existe_email", SqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                // Parámetro de entrada
+                SqlParameter parEmail = new SqlParameter("@email", SqlDbType.VarChar, 100);
+                parEmail.Value = (valor ?? string.Empty).Trim();
+                comando.Parameters.Add(parEmail);
+
+                // Parámetro de salida (@existe BIT OUTPUT en el SP)
+                SqlParameter parExiste = new SqlParameter();
+                parExiste.ParameterName = "@existe";
+                parExiste.SqlDbType = SqlDbType.Bit;          // <-- coincide con el SP
+                parExiste.Direction = ParameterDirection.Output;
+                comando.Parameters.Add(parExiste);
+
+                SqlCon.Open();
+                comando.ExecuteNonQuery();
+
+                // Mapeo del bit a "1"/"0" como venís usando
+                respuesta = Convert.ToBoolean(parExiste.Value) ? "1" : "0";
+            }
+            catch (Exception ex)
+            {
+                respuesta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+
+            return respuesta;
+        }
+
         //Metodo para insertar un nuevo registro en tabla
-        //Recibe un objeto del tipo Entidad categoria que lo almacenara como nuevo registro
+        //Recibe un objeto del tipo Entidad  que lo almacenara como nuevo registro
         //Devuelve una cadena con los resultados de la operación
         public string Insertar(Persona Obj)
         {

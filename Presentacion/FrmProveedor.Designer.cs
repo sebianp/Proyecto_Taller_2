@@ -304,7 +304,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(281, 363);
+            this.label8.Location = new System.Drawing.Point(283, 356);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(69, 21);
             this.label8.TabIndex = 19;
@@ -326,7 +326,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(254, 269);
+            this.label7.Location = new System.Drawing.Point(256, 256);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(96, 21);
             this.label7.TabIndex = 13;
@@ -335,7 +335,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(177, 217);
+            this.label6.Location = new System.Drawing.Point(179, 206);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(174, 21);
             this.label6.TabIndex = 12;
@@ -344,7 +344,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(205, 166);
+            this.label5.Location = new System.Drawing.Point(207, 155);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(146, 21);
             this.label5.TabIndex = 11;
@@ -355,7 +355,7 @@
             this.BtnActualizar.BackColor = System.Drawing.Color.Khaki;
             this.BtnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnActualizar.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnActualizar.Location = new System.Drawing.Point(359, 432);
+            this.BtnActualizar.Location = new System.Drawing.Point(358, 432);
             this.BtnActualizar.Name = "BtnActualizar";
             this.BtnActualizar.Size = new System.Drawing.Size(123, 36);
             this.BtnActualizar.TabIndex = 8;
@@ -419,7 +419,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(259, 320);
+            this.label2.Location = new System.Drawing.Point(261, 306);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 21);
             this.label2.TabIndex = 1;
@@ -428,7 +428,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(261, 112);
+            this.label1.Location = new System.Drawing.Point(264, 105);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 21);
             this.label1.TabIndex = 0;

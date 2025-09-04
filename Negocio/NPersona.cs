@@ -75,86 +75,90 @@ namespace Negocio
         {
             DPersona datos = new DPersona();
 
-            //Se verifica si la categoria que intento insertar existe o no
-            string existe = datos.Existe(nombre);
+            // Normalizo para evitar espacios
+            string doc = (numDocumento ?? string.Empty).Trim();
+            string correo = (email ?? string.Empty).Trim();
 
-            //Aplicamos la lógica dependiendo de si ya existe el objeto
-            if (existe.Equals("1"))
+            //Verificar NÚMERO DE DOCUMENTO
+            string existeDoc = datos.Existe(doc);
+            if (existeDoc.Equals("1"))
             {
-                //Si existe y se notifica al usuario
-                return "La persona con ese nombre ya existe";
+                return "Ya existe un registro con el número de documento: " + doc;
             }
-            else
-            {
-                //Si el objeto no existe por ende se procede a su creacion
-                //Creamos el objeto de la clase
-                Persona Obj = new Persona();
 
-                //Una vez instanciado el objeto se ingresan los datos
-                Obj.TipoPersona = TipoPersona;
-                Obj.Nombre = nombre;
-                Obj.TipoDocumento = tipoDocumento;
-                Obj.NumDocumento = numDocumento;
-                Obj.Direccion = direccion;
-                Obj.Telefono = telefono;
-                Obj.Email = email;
-                
-                //Al enviar el objeto al metodo insertar, este retorna una cadena de confirmacion
-                return datos.Insertar(Obj);
+            //Verificar EMAIL
+            string existeMail = datos.PersonaEmailExiste(correo);
+            if (existeMail.Equals("1"))
+            {
+                return "Ya existe un registro con ese Email.";
             }
+
+            // 3) Crear objeto e insertar
+            Persona Obj = new Persona
+            {
+                TipoPersona = TipoPersona,
+                Nombre = nombre,
+                TipoDocumento = tipoDocumento,
+                NumDocumento = doc,
+                Direccion = direccion,
+                Telefono = telefono,
+                Email = correo
+            };
+
+            return datos.Insertar(Obj);
         }
 
         //Metodo para actualizar un objeto existente en la base de datos
         //Devuelve una cadena los resultados de la operacion.
-        public static string Actualizar(int id, string tipoPersona, string nombreAnt, string nombre, string tipoDocumento, string numDocumento, string direccion, string telefono, string email)
+        public static string Actualizar(int id, string tipoPersona, string EmailAnt, string numDocAnt, string nombre, string tipoDocumento, string numDocumento, string direccion, string telefono, string email)
         {
             DPersona datos = new DPersona();
-            //Crea el objeto de la clase
-            Persona Obj = new Persona();
 
-            //Si existe el nombre quiere decir que no se esta modificando el nombre, sino los otros parametros.
-            if (nombreAnt.Equals(nombre))
+            // --- Normalizaciones para comparar ---
+            string docAnterior = (numDocAnt ?? string.Empty).Trim();
+            string docNuevo = (numDocumento ?? string.Empty).Trim();
+
+            // Para comparar emails ignorando mayúsculas/minúsculas
+            string emailAnteriorCmp = (EmailAnt ?? string.Empty).Trim().ToLowerInvariant();
+            string emailNuevoCmp = (email ?? string.Empty).Trim().ToLowerInvariant();
+            string emailFinal = (email ?? string.Empty).Trim(); // lo que se guardará
+
+            // --- Verificación de DOCUMENTO (solo si cambió y no está vacío) ---
+            if (!docAnterior.Equals(docNuevo, StringComparison.OrdinalIgnoreCase))
             {
-                //Una vez instanciado el objeto de la clase se le ingresan los datos
-                Obj.IdPersona = id;
-                Obj.TipoPersona = tipoPersona;
-                Obj.Nombre = nombre;
-                Obj.TipoDocumento = tipoDocumento;
-                Obj.NumDocumento = numDocumento;
-                Obj.Direccion = direccion;
-                Obj.Telefono = telefono;
-                Obj.Email = email;
-                
-
-                //Al enviar el objeto al metodo actualizar este retorna una cadena de confirmacion
-                return datos.Actualizar(Obj);
-            }
-            else
-            {
-                //Se verifica si el objeto que intento insertar ya existe
-                string existe = datos.Existe(nombre);
-
-                //Aplicamos la lógica dependiendo de si ya existe el objeto
-                if (existe.Equals("1"))
+                if (!string.IsNullOrWhiteSpace(docNuevo))
                 {
-                    //El objeto existe y se notifica al usuario
-                    return "Ya existe una persona con ese nombre";
-                }
-                else
-                {
-                    //Una vez instanciado el objeto de la clase se ingresan los datos
-                    Obj.IdPersona = id;
-                    Obj.TipoPersona = tipoPersona;
-                    Obj.Nombre = nombre;
-                    Obj.TipoDocumento = tipoDocumento;
-                    Obj.NumDocumento = numDocumento;
-                    Obj.Direccion = direccion;
-                    Obj.Telefono = telefono;
-                    Obj.Email = email;
-                    return datos.Actualizar(Obj);
-
+                    string existeDoc = datos.Existe(docNuevo); // "1" = existe, "0" = no
+                    if (existeDoc == "1")
+                        return "Ya existe un registro con el DOCUMENTO: " + docNuevo;
                 }
             }
+
+            //Verificación de EMAIL
+            if (!emailAnteriorCmp.Equals(emailNuevoCmp, StringComparison.Ordinal))
+            {
+                if (!string.IsNullOrWhiteSpace(emailNuevoCmp))
+                {
+                    string existeEmail = datos.PersonaEmailExiste(emailNuevoCmp); // "1" = existe, "0" = no
+                    if (existeEmail == "1")
+                        return "Ya existe un registro con el EMAIL: " + emailNuevoCmp;
+                }
+            }
+
+            // --- Armar objeto y actualizar ---
+            Persona Obj = new Persona
+            {
+                IdPersona = id,
+                TipoPersona = tipoPersona,
+                Nombre = nombre,
+                TipoDocumento = tipoDocumento,
+                NumDocumento = docNuevo,
+                Direccion = direccion,
+                Telefono = telefono,
+                Email = emailFinal // guardamos el email como se ingreso normalizado.
+            };
+
+            return datos.Actualizar(Obj);
         }
 
         //Metodo para eliminar un registro que no sea de utilidad o este obsoleto

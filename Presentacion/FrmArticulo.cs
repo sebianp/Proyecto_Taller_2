@@ -28,6 +28,7 @@ namespace Presentacion
         private string marcaAnt;
         private string memoriaAnt;
         private string colorAnt;
+        private string codAnterior;
 
         //Constructor
         public FrmArticulo()
@@ -354,7 +355,8 @@ namespace Presentacion
                     string.IsNullOrWhiteSpace(CboCategoria.Text) ||
                     string.IsNullOrWhiteSpace(CboMarca.Text) ||
                     string.IsNullOrWhiteSpace(CboColor.Text) ||
-                    string.IsNullOrWhiteSpace(CboMemoria.Text) 
+                    string.IsNullOrWhiteSpace(CboMemoria.Text) ||
+                    string.IsNullOrWhiteSpace(TxtDescripcion.Text)
                     )
                 {
                     this.MensajeError("Faltan ingresar datos");
@@ -363,6 +365,7 @@ namespace Presentacion
                     ErrorIcono.SetError(CboMarca, "Ingrese la marca del artículo");
                     ErrorIcono.SetError(CboColor, "Ingrese el color del artículo");
                     ErrorIcono.SetError(CboMemoria, "Ingrese las memorias del artículo");
+                    ErrorIcono.SetError(TxtDescripcion, "Ingrese las memorias del artículo");
                     ErrorIcono.SetError(TxtImagen, "Ingrese una imagen representativa");
                     
                     return;
@@ -535,6 +538,8 @@ namespace Presentacion
                 //Color
                 this.colorAnt = Convert.ToString(DgvListado.CurrentRow.Cells["Color"].Value);
                 CboColor.Text = colorAnt;
+                //Codigo Anterior
+                this.codAnterior = Convert.ToString(DgvListado.CurrentRow.Cells["Codigo"].Value);
                 //Precio y stock
                 TxtPrecioVenta.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Precio_Venta"].Value);
                 TxtStock.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Stock"].Value);
@@ -582,6 +587,7 @@ namespace Presentacion
                 if (TxtId.Text == string.Empty || TxtImagen.Text == string.Empty ||
                     TxtNombre.Text == string.Empty || CboCategoria.Text == string.Empty ||
                     CboMarca.Text == string.Empty || CboMemoria.Text == string.Empty || CboColor.Text == string.Empty ||
+                    TxtDescripcion.Text == string.Empty ||
                     TxtPrecioVenta.Text == string.Empty || TxtStock.Text == string.Empty)
                 {
                     this.MensajeError("Faltan ingresar datos");
@@ -591,6 +597,7 @@ namespace Presentacion
                     ErrorIcono.SetError(CboMemoria, "Seleccione la memoria del artículo");
                     ErrorIcono.SetError(CboColor, "Seleccione el color del artículo");
                     ErrorIcono.SetError(TxtPrecioVenta, "Ingrese un Precio de Venta");
+                    ErrorIcono.SetError(TxtDescripcion, "Ingrese la descripción del producto");
                     ErrorIcono.SetError(TxtStock, "Ingrese un valor de Stock"); //Esta deshabilitado pero por las dudas.
                     ErrorIcono.SetError(TxtImagen, "Ingrese una imagen representativa");
                     return;
@@ -608,13 +615,17 @@ namespace Presentacion
                     return;
                 }
 
-                if (NArticulo.ExisteCodigo(cod))
+                //Validación si cambió el código. Si se modifico, verificar si ya existe
+                if (!cod.Equals(codAnterior, StringComparison.OrdinalIgnoreCase))
                 {
-                    MessageBox.Show("El código ingresado ya existe. Ingrese uno diferente.",
-                                    "Código duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    TxtCodigo.Focus();
-                    TxtCodigo.SelectAll();
-                    return;
+                    if (NArticulo.ExisteCodigo(cod))
+                    {
+                        MessageBox.Show("El código ingresado ya existe. Ingrese uno diferente.",
+                                        "Código duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        TxtCodigo.Focus();
+                        TxtCodigo.SelectAll();
+                        return;
+                    }
                 }
 
                 //Llamada al método de la capa negocio con todos los datos

@@ -17,6 +17,7 @@ namespace Presentacion
         //Esta variable es utilizada para determinar si el email de un usuario esta repetida
         // en el método actualizar
         private string emailAnt;
+        private string DocumentoAnt;
 
         public Usuarios()
         {
@@ -67,16 +68,17 @@ namespace Presentacion
             //Visibilidad
             DgvListado.Columns[0].Visible = false;
             DgvListado.Columns[2].Visible = false;
+            DgvListado.Columns[5].Visible = false;
 
             //Dimensiones
             DgvListado.Columns[1].Width = 50;
-            DgvListado.Columns[3].Width = 100;
-            DgvListado.Columns[4].Width = 170;
+            DgvListado.Columns[3].Width = 120;
+            DgvListado.Columns[4].Width = 200;
             DgvListado.Columns[5].Width = 100;
-            DgvListado.Columns[6].Width = 150;
-            DgvListado.Columns[7].Width = 120;
-            DgvListado.Columns[8].Width = 100;
-            DgvListado.Columns[9].Width = 120;
+            DgvListado.Columns[6].Width = 130;
+            DgvListado.Columns[7].Width = 200;
+            DgvListado.Columns[8].Width = 130;
+            DgvListado.Columns[9].Width = 170;
 
             //Headers
             DgvListado.Columns[5].HeaderText = "Documento";
@@ -155,13 +157,19 @@ namespace Presentacion
                 string respuesta = "";
 
                 //El nombre debe tener algun valor porque es obligatorio
-                if (TxtNombre.Text == string.Empty || CboRol.Text == string.Empty || TxtEmail.Text == string.Empty || TxtClave.Text == string.Empty)
+                if (TxtNombre.Text == string.Empty || CboRol.Text == string.Empty || TxtNumDocumento.Text == string.Empty ||
+                    TxtEmail.Text == string.Empty || TxtClave.Text == string.Empty ||
+                    TxtDireccion.Text == string.Empty || TxtTelefono.Text == string.Empty
+                    )
                 {
                     this.MensajeError("Faltan ingresar datos");
                     ErrorIcono.SetError(CboRol, "Ingrese un Rol");
                     ErrorIcono.SetError(TxtNombre, "Ingrese un nombre");
                     ErrorIcono.SetError(TxtEmail, "Ingrese un Email");
                     ErrorIcono.SetError(TxtClave, "Ingrese una Clave");
+                    ErrorIcono.SetError(TxtNumDocumento, "Ingrese Número de Documento");
+                    ErrorIcono.SetError(TxtTelefono, "Ingrese Número de Teléfono");
+                    ErrorIcono.SetError(TxtDireccion, "Ingrese una Dirección de Residencia");
                 }
                 else //En caso de cumplir con el campo obligatorio del nombre, se puede almacenar
                 {
@@ -181,6 +189,7 @@ namespace Presentacion
                         //Si almaceno correctamente recibirá OK y va a mostrar la respuesta OK
                         this.MensajeOk("El Usuario se registro de forma correcta");
                         this.Listar();
+                        TabGeneral.SelectedIndex = 0;
                     }
                     else
                     {
@@ -228,6 +237,7 @@ namespace Presentacion
                 TxtTelefono.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Telefono"].Value);
                 TxtEmail.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Email"].Value);
                 this.emailAnt = Convert.ToString(DgvListado.CurrentRow.Cells["Email"].Value);
+                this.DocumentoAnt = Convert.ToString(DgvListado.CurrentRow.Cells["Num_Documento"].Value);
                 TabGeneral.SelectedIndex = 1;
 
             }
@@ -244,13 +254,20 @@ namespace Presentacion
                 string respuesta = "";
 
                 //El nombre debe tener algun valor porque es obligatorio
-                if (TxtId.Text == string.Empty || TxtNombre.Text == string.Empty || CboRol.Text == string.Empty || TxtEmail.Text == string.Empty)
+                if (TxtId.Text == string.Empty || TxtNombre.Text == string.Empty ||
+                    TxtNumDocumento.Text == string.Empty || CboRol.Text == string.Empty || 
+                    TxtEmail.Text == string.Empty || TxtDireccion.Text == string.Empty ||
+                    TxtTelefono.Text == string.Empty
+                    )
                 {
                     this.MensajeError("Faltan ingresar datos");
                     ErrorIcono.SetError(CboRol, "Ingrese un Rol");
                     ErrorIcono.SetError(TxtNombre, "Ingrese un nombre");
                     ErrorIcono.SetError(TxtEmail, "Ingrese un Email");
                     ErrorIcono.SetError(TxtClave, "Ingrese una Clave");
+                    ErrorIcono.SetError(TxtNumDocumento, "Ingrese Número de Documento");
+                    ErrorIcono.SetError(TxtTelefono, "Ingrese Número de Teléfono");
+                    ErrorIcono.SetError(TxtDireccion, "Ingrese una Dirección de Residencia");
                 }
                 else //En caso de cumplir con el campo obligatorio del nombre, se puede almacenar
                 {
@@ -263,7 +280,7 @@ namespace Presentacion
                     }
                     //Se almacena la respuesta recibida al insertar un nuevo registro
                     //Enviado por el metodo insertar de la capa negocio
-                    respuesta = NUsuario.Actualizar(Convert.ToInt32(TxtId.Text), Convert.ToInt32(CboRol.SelectedValue), TxtNombre.Text.Trim(), CboTipoDocumento.Text, TxtNumDocumento.Text.Trim(), TxtDireccion.Text.Trim(), TxtTelefono.Text.Trim(), this.emailAnt, TxtEmail.Text.Trim(), TxtClave.Text.Trim());
+                    respuesta = NUsuario.Actualizar(Convert.ToInt32(TxtId.Text), Convert.ToInt32(CboRol.SelectedValue), TxtNombre.Text.Trim(), CboTipoDocumento.Text, this.DocumentoAnt, TxtNumDocumento.Text.Trim(), TxtDireccion.Text.Trim(), TxtTelefono.Text.Trim(), this.emailAnt, TxtEmail.Text.Trim(), TxtClave.Text.Trim());
                     //Validamos que tipo de mensaje recibimos para mostrar al usuario
                     if (respuesta.Equals("OK"))
                     {
@@ -380,41 +397,68 @@ namespace Presentacion
         {
             try
             {
-                //Utilizamos esta variable para guardar el resultado de la selección del mensaje
-                DialogResult Opcion;
-                //Se le pide al usuario por medio de un mensaje que confirme la eliminación
-                Opcion = MessageBox.Show("Realmente deseas desactivar el/los registro/s?", "Eliminar Categoria", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                DialogResult Opcion = MessageBox.Show(
+                    "Realmente deseas desactivar el/los registro/s?",
+                    "Desactivar Usuario", // (opcional) antes decía "Eliminar Categoria"
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Question);
 
-                //Se valida la entrada elegida por el usuario
-                if (Opcion == DialogResult.OK)
+                if (Opcion != DialogResult.OK) return;
+
+                // 1) Reunir seleccionados
+                List<int> idsSeleccionados = new List<int>();
+                foreach (DataGridViewRow row in DgvListado.Rows)
                 {
-                    int codigo;
-                    string respuesta = "";
+                    bool marcado = false;
+                    if (row.Cells[0].Value != null)
+                        marcado = Convert.ToBoolean(row.Cells[0].Value);
 
-                    //Elimino todos los registros seleccionados (ya que pueden ser muchos)
-                    foreach (DataGridViewRow row in DgvListado.Rows)
+                    if (marcado)
                     {
-                        //Si el check box esta seleccionado se elimina ese registro
-                        if (Convert.ToBoolean(row.Cells[0].Value))
+                        int id = Convert.ToInt32(row.Cells[1].Value);
+                        idsSeleccionados.Add(id);
+                    }
+                }
+
+                // 2) Validaciones previas
+                if (idsSeleccionados.Count == 0)
+                {
+                    this.MensajeError("Debe seleccionar al menos un usuario.");
+                    return;
+                }
+
+                // Si incluye al usuario logueado -> cancelar todo
+                if (idsSeleccionados.Contains(Variables.IdUsuario))
+                {
+                    this.MensajeError("No puedes desactivarte a ti mismo. Quita tu usuario de la selección.");
+                    return;
+                }
+
+                // 3) Ejecutar desactivación
+                foreach (int codigo in idsSeleccionados)
+                {
+                    string respuesta = NUsuario.Desactivar(codigo);
+
+                    if (respuesta.Equals("OK"))
+                    {
+                        // Nombre está en la col 4 según tu código original
+                        // Buscamos la fila para mostrar el nombre correcto
+                        foreach (DataGridViewRow row in DgvListado.Rows)
                         {
-                            //Guardo el codigo de la categoria que deseo eliminar
-                            codigo = Convert.ToInt32(row.Cells[1].Value);
-
-                            //envio la solicitud de eliminacion y guardo la respuesta recibida
-                            respuesta = NUsuario.Desactivar(codigo);
-
-                            if (respuesta.Equals("OK"))
+                            if (row.Cells[1].Value != null && Convert.ToInt32(row.Cells[1].Value) == codigo)
                             {
-                                this.MensajeOk("Se desactivo el Usuario: " + Convert.ToString(row.Cells[4].Value));
-                            }
-                            else
-                            {
-                                this.MensajeError(respuesta);
+                                this.MensajeOk("Se desactivó el Usuario: " + Convert.ToString(row.Cells[4].Value));
+                                break;
                             }
                         }
                     }
-                    this.Listar();
+                    else
+                    {
+                        this.MensajeError(respuesta);
+                    }
                 }
+
+                this.Listar();
             }
             catch (Exception ex)
             {

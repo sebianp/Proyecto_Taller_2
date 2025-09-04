@@ -412,5 +412,48 @@ namespace Datos
 
         }
 
+        public string ExisteNumDocumento(string numDocumento)
+        {
+            string respuesta = ""; // Valor que devolverá el método
+
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+
+                //SP: usuario_existe_num_documento (@num_documento, @existe OUTPUT)
+                SqlCommand comando = new SqlCommand("usuario_existe_num_documento", SqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                //Parámetro de entrada
+                SqlParameter parDoc = new SqlParameter("@num_documento", SqlDbType.VarChar, 20);
+                parDoc.Value = (numDocumento ?? string.Empty).Trim(); //Normalizo el dato
+                comando.Parameters.Add(parDoc);
+
+                //Parámetro de salida
+                SqlParameter parExiste = new SqlParameter();
+                parExiste.ParameterName = "@existe";
+                parExiste.SqlDbType = SqlDbType.Bit;//el SP devuelve BIT
+                parExiste.Direction = ParameterDirection.Output;
+                comando.Parameters.Add(parExiste);
+
+                SqlCon.Open();
+                comando.ExecuteNonQuery();
+
+                //Convertimos BIT a "1"/"0" para mantener tu convención
+                respuesta = Convert.ToBoolean(parExiste.Value) ? "1" : "0";
+            }
+            catch (Exception ex)
+            {
+                respuesta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+
+            return respuesta;
+        }
+
     }
 }

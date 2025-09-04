@@ -36,6 +36,7 @@
             this.DgvListado = new System.Windows.Forms.DataGridView();
             this.TabGeneral = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblInstruccionDobleClick = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.DtpFechaFin = new System.Windows.Forms.DateTimePicker();
@@ -50,7 +51,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.DgvMostrarDetalle = new System.Windows.Forms.DataGridView();
             this.ErrorIcono = new System.Windows.Forms.ErrorProvider(this.components);
-            this.lblInstruccionDobleClick = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).BeginInit();
             this.TabGeneral.SuspendLayout();
@@ -86,7 +86,7 @@
             // LblTotal
             // 
             this.LblTotal.AutoSize = true;
-            this.LblTotal.Location = new System.Drawing.Point(891, 568);
+            this.LblTotal.Location = new System.Drawing.Point(884, 483);
             this.LblTotal.Name = "LblTotal";
             this.LblTotal.Size = new System.Drawing.Size(51, 21);
             this.LblTotal.TabIndex = 1;
@@ -105,7 +105,7 @@
             this.DgvListado.Name = "DgvListado";
             this.DgvListado.ReadOnly = true;
             this.DgvListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvListado.Size = new System.Drawing.Size(1158, 496);
+            this.DgvListado.Size = new System.Drawing.Size(1158, 421);
             this.DgvListado.TabIndex = 0;
             this.DgvListado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellDoubleClick);
             // 
@@ -117,7 +117,7 @@
             this.TabGeneral.Multiline = true;
             this.TabGeneral.Name = "TabGeneral";
             this.TabGeneral.SelectedIndex = 0;
-            this.TabGeneral.Size = new System.Drawing.Size(1181, 628);
+            this.TabGeneral.Size = new System.Drawing.Size(1181, 542);
             this.TabGeneral.TabIndex = 4;
             // 
             // tabPage1
@@ -137,9 +137,20 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1173, 599);
+            this.tabPage1.Size = new System.Drawing.Size(1173, 513);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
+            // 
+            // lblInstruccionDobleClick
+            // 
+            this.lblInstruccionDobleClick.AutoSize = true;
+            this.lblInstruccionDobleClick.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblInstruccionDobleClick.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInstruccionDobleClick.Location = new System.Drawing.Point(876, 40);
+            this.lblInstruccionDobleClick.Name = "lblInstruccionDobleClick";
+            this.lblInstruccionDobleClick.Size = new System.Drawing.Size(287, 16);
+            this.lblInstruccionDobleClick.TabIndex = 12;
+            this.lblInstruccionDobleClick.Text = "🛈 Doble clic sobre un registro para visualizar detalles.";
             // 
             // label2
             // 
@@ -187,9 +198,9 @@
             this.PanelMostrar.Controls.Add(this.label13);
             this.PanelMostrar.Controls.Add(this.label12);
             this.PanelMostrar.Controls.Add(this.DgvMostrarDetalle);
-            this.PanelMostrar.Location = new System.Drawing.Point(7, 78);
+            this.PanelMostrar.Location = new System.Drawing.Point(6, 54);
             this.PanelMostrar.Name = "PanelMostrar";
-            this.PanelMostrar.Size = new System.Drawing.Size(1140, 496);
+            this.PanelMostrar.Size = new System.Drawing.Size(1140, 442);
             this.PanelMostrar.TabIndex = 6;
             this.PanelMostrar.Visible = false;
             // 
@@ -197,7 +208,7 @@
             // 
             this.TxtTotalD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtTotalD.Enabled = false;
-            this.TxtTotalD.Location = new System.Drawing.Point(931, 457);
+            this.TxtTotalD.Location = new System.Drawing.Point(930, 399);
             this.TxtTotalD.Name = "TxtTotalD";
             this.TxtTotalD.Size = new System.Drawing.Size(179, 28);
             this.TxtTotalD.TabIndex = 7;
@@ -206,7 +217,7 @@
             // 
             this.TxtImpuestosD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtImpuestosD.Enabled = false;
-            this.TxtImpuestosD.Location = new System.Drawing.Point(931, 424);
+            this.TxtImpuestosD.Location = new System.Drawing.Point(930, 366);
             this.TxtImpuestosD.Name = "TxtImpuestosD";
             this.TxtImpuestosD.Size = new System.Drawing.Size(179, 28);
             this.TxtImpuestosD.TabIndex = 6;
@@ -215,7 +226,7 @@
             // 
             this.TxtSubTotalD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtSubTotalD.Enabled = false;
-            this.TxtSubTotalD.Location = new System.Drawing.Point(931, 389);
+            this.TxtSubTotalD.Location = new System.Drawing.Point(930, 331);
             this.TxtSubTotalD.Name = "TxtSubTotalD";
             this.TxtSubTotalD.Size = new System.Drawing.Size(179, 28);
             this.TxtSubTotalD.TabIndex = 5;
@@ -237,7 +248,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(877, 460);
+            this.label14.Location = new System.Drawing.Point(876, 402);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(44, 21);
             this.label14.TabIndex = 3;
@@ -246,7 +257,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(843, 426);
+            this.label13.Location = new System.Drawing.Point(842, 368);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(82, 21);
             this.label13.TabIndex = 2;
@@ -255,7 +266,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(848, 396);
+            this.label12.Location = new System.Drawing.Point(847, 338);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(77, 21);
             this.label12.TabIndex = 1;
@@ -271,29 +282,18 @@
             this.DgvMostrarDetalle.Name = "DgvMostrarDetalle";
             this.DgvMostrarDetalle.ReadOnly = true;
             this.DgvMostrarDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvMostrarDetalle.Size = new System.Drawing.Size(1082, 337);
+            this.DgvMostrarDetalle.Size = new System.Drawing.Size(1082, 277);
             this.DgvMostrarDetalle.TabIndex = 0;
             // 
             // ErrorIcono
             // 
             this.ErrorIcono.ContainerControl = this;
             // 
-            // lblInstruccionDobleClick
-            // 
-            this.lblInstruccionDobleClick.AutoSize = true;
-            this.lblInstruccionDobleClick.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.lblInstruccionDobleClick.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInstruccionDobleClick.Location = new System.Drawing.Point(876, 40);
-            this.lblInstruccionDobleClick.Name = "lblInstruccionDobleClick";
-            this.lblInstruccionDobleClick.Size = new System.Drawing.Size(287, 16);
-            this.lblInstruccionDobleClick.TabIndex = 12;
-            this.lblInstruccionDobleClick.Text = "🛈 Doble clic sobre un registro para visualizar detalles.";
-            // 
             // FrmConsulta_ComprasFecha
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1187, 647);
+            this.ClientSize = new System.Drawing.Size(1187, 551);
             this.Controls.Add(this.TabGeneral);
             this.Name = "FrmConsulta_ComprasFecha";
             this.Text = "Ingresos por Fecha";

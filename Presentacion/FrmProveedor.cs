@@ -14,7 +14,8 @@ namespace Presentacion
 {
     public partial class FrmProveedor : Form
     {
-        private string nombreAnt;
+        private string EmailAnt;
+        private string num_documento_anterior;
         public FrmProveedor()
         {
             InitializeComponent();
@@ -204,7 +205,8 @@ namespace Presentacion
 
                 //Se cargan todos los datos correspondiente a la casilla seleccionada
                 TxtId.Text = Convert.ToString(DgvListado.CurrentRow.Cells["ID"].Value);
-                this.nombreAnt = Convert.ToString(DgvListado.CurrentRow.Cells["Nombre"].Value);
+                this.EmailAnt = Convert.ToString(DgvListado.CurrentRow.Cells["Email"].Value);
+                this.num_documento_anterior = Convert.ToString(DgvListado.CurrentRow.Cells["Num_Documento"].Value);
                 TxtNombre.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Nombre"].Value);
                 CboTipoDocumento.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Tipo_Documento"].Value);
                 TxtNumDocumento.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Num_Documento"].Value);
@@ -247,7 +249,7 @@ namespace Presentacion
                     }
                     //Se almacena la respuesta recibida al insertar un nuevo registro
                     //Enviado por el metodo insertar de la capa negocio
-                    respuesta = NPersona.Actualizar(Convert.ToInt32(TxtId.Text),"Proveedor", this.nombreAnt, TxtNombre.Text.Trim(), CboTipoDocumento.Text, TxtNumDocumento.Text.Trim(), TxtDireccion.Text.Trim(), TxtTelefono.Text.Trim(), TxtEmail.Text.Trim());
+                    respuesta = NPersona.Actualizar(Convert.ToInt32(TxtId.Text),"Proveedor", this.EmailAnt, this.num_documento_anterior, TxtNombre.Text.Trim(), CboTipoDocumento.Text, TxtNumDocumento.Text.Trim(), TxtDireccion.Text.Trim(), TxtTelefono.Text.Trim(), TxtEmail.Text.Trim());
                     //Validamos que tipo de mensaje recibimos para mostrar al usuario
                     if (respuesta.Equals("OK"))
                     {

@@ -963,7 +963,7 @@ namespace Presentacion
 
 
                 }
-
+                TxtCodigo.Clear();
 
             }
             catch (Exception ex)

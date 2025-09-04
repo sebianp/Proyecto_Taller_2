@@ -338,6 +338,7 @@
             "TCL",
             "Nokia",
             "Infinix",
+            "Panasonic",
             "Zte",
             "Colmi",
             "Noblex",

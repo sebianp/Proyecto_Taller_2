@@ -150,11 +150,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(128, 356);
+            this.label2.Location = new System.Drawing.Point(109, 349);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 21);
+            this.label2.Size = new System.Drawing.Size(91, 21);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Teléfono";
+            this.label2.Text = "Teléfono (*)";
             // 
             // tabPage2
             // 
@@ -209,6 +209,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.Menu;
             this.groupBox1.Controls.Add(this.TxtClave);
             this.groupBox1.Controls.Add(this.TxtEmail);
             this.groupBox1.Controls.Add(this.label10);
@@ -219,7 +220,7 @@
             this.groupBox1.Size = new System.Drawing.Size(427, 224);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Acceso";
+            this.groupBox1.Text = "ACCESO";
             // 
             // TxtClave
             // 
@@ -308,25 +309,25 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(123, 298);
+            this.label7.Location = new System.Drawing.Point(104, 298);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(75, 21);
+            this.label7.Size = new System.Drawing.Size(96, 21);
             this.label7.TabIndex = 13;
-            this.label7.Text = "Dirección";
+            this.label7.Text = "Dirección (*)";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(46, 246);
+            this.label6.Location = new System.Drawing.Point(26, 246);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(153, 21);
+            this.label6.Size = new System.Drawing.Size(174, 21);
             this.label6.TabIndex = 12;
-            this.label6.Text = "Número Documento";
+            this.label6.Text = "Número Documento (*)";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(74, 197);
+            this.label5.Location = new System.Drawing.Point(75, 194);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(125, 21);
             this.label5.TabIndex = 11;
@@ -335,7 +336,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(149, 95);
+            this.label4.Location = new System.Drawing.Point(150, 95);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 21);
             this.label4.TabIndex = 10;
@@ -352,7 +353,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(110, 141);
+            this.label1.Location = new System.Drawing.Point(111, 141);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 21);
             this.label1.TabIndex = 0;
