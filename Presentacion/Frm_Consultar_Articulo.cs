@@ -23,6 +23,7 @@ namespace Presentacion
         {
             this.Listar();
             this.CargarCategoriaBuscar();
+            CboMarcaBuscar.SelectedIndex = 0; //Selecciona el primer indice.
         }
 
         //Metodo para cargar las categorias para el buscador.

@@ -429,10 +429,10 @@ namespace Presentacion
         {
             try
             {
-                DataTable dt = NReporte.EstadisticaStockCritico(umbral); // ya lo tenés hecho
+                DataTable dt = NReporte.EstadisticaStockCritico(umbral, null);
 
                 if (dt == null || dt.Rows.Count == 0)
-                    return; // no hay avisos, no mostramos nada
+                    return; //no hay avisos
 
                 var sb = new System.Text.StringBuilder();
                 sb.AppendLine($"Artículos con stock ≤ {umbral}");

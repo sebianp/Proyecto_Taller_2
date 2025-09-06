@@ -602,7 +602,7 @@ namespace Presentacion
                 //Utilizamos esta variable para guardar el resultado de la selección del mensaje
                 DialogResult Opcion;
                 //Se le pide al usuario por medio de un mensaje que confirme la la activación.
-                Opcion = MessageBox.Show("Realmente deseas anular el/los registro/s?", "Eliminar Categoria", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                Opcion = MessageBox.Show("Realmente deseas anular el/los registro/s?", "Eliminar Ingresos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
                 //Se valida la entrada elegida por el usuario
                 if (Opcion == DialogResult.OK)

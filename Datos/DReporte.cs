@@ -32,7 +32,7 @@ namespace Datos
         }
 
         //Método para estadisticas de TOP productos
-        public DataTable EstadisticaTopProductos(DateTime fechaInicio, DateTime fechaFin, int topN = 10)
+        public DataTable EstadisticaTopProductos(DateTime fechaInicio, DateTime fechaFin, int topN, int? idCategoria = null)
         {
             DataTable tabla = new DataTable();
             using (SqlConnection conexion = Conexion.getInstancia().CrearConexion())
@@ -42,6 +42,13 @@ namespace Datos
                 comando.Parameters.Add("@fecha_inicio", SqlDbType.DateTime).Value = fechaInicio;
                 comando.Parameters.Add("@fecha_fin", SqlDbType.DateTime).Value = fechaFin;
                 comando.Parameters.Add("@topN", SqlDbType.Int).Value = topN;
+                SqlParameter paramCategoria = new SqlParameter("@idcategoria", SqlDbType.Int);
+                if (idCategoria.HasValue)
+                { paramCategoria.Value = idCategoria.Value; }
+                else
+                { paramCategoria.Value = DBNull.Value; }
+
+                comando.Parameters.Add(paramCategoria);
 
                 conexion.Open();
                 using (SqlDataReader reader = comando.ExecuteReader())
@@ -73,7 +80,7 @@ namespace Datos
         // CONTROL DE STOCK
 
         //metodo q obtiene los productos cuyo stock está por debajo o igual al umbral.
-        public DataTable EstadisticaStockCritico(int umbral)
+        public DataTable EstadisticaStockCritico(int umbral, int? IdCategoria)
         {
             DataTable tabla = new DataTable();
             using (SqlConnection cn = Conexion.getInstancia().CrearConexion())
@@ -81,6 +88,13 @@ namespace Datos
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@umbral", SqlDbType.Int).Value = umbral;
+                // Parámetro opcional: si viene null. Se escribe así por las limiteciones del lenguaje
+                SqlParameter paramCategoria = new SqlParameter("@idcategoria", SqlDbType.Int);
+
+                if (IdCategoria.HasValue){ paramCategoria.Value = IdCategoria.Value; }
+                else {paramCategoria.Value = DBNull.Value;}
+                    
+                cmd.Parameters.Add(paramCategoria);
 
                 cn.Open();
                 using (SqlDataReader rdr = cmd.ExecuteReader())

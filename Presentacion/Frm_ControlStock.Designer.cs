@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControlStock = new System.Windows.Forms.TabControl();
             this.tpCritico = new System.Windows.Forms.TabPage();
             this.chartStockCritico = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -52,14 +52,16 @@
             this.tpSinVentas = new System.Windows.Forms.TabPage();
             this.chartStockSinVentas = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.CboCategoria = new System.Windows.Forms.ComboBox();
             this.lblTotalSinVentas = new System.Windows.Forms.Label();
             this.btnSinVentas = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpSinVentasFin = new System.Windows.Forms.DateTimePicker();
             this.dtpSinVentasInicio = new System.Windows.Forms.DateTimePicker();
-            this.CboCategoria = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.CboCategoria2 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabControlStock.SuspendLayout();
             this.tpCritico.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartStockCritico)).BeginInit();
@@ -99,16 +101,16 @@
             // 
             // chartStockCritico
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chartStockCritico.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chartStockCritico.Legends.Add(legend4);
+            chartArea1.Name = "ChartArea1";
+            this.chartStockCritico.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartStockCritico.Legends.Add(legend1);
             this.chartStockCritico.Location = new System.Drawing.Point(3, 102);
             this.chartStockCritico.Name = "chartStockCritico";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chartStockCritico.Series.Add(series4);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartStockCritico.Series.Add(series1);
             this.chartStockCritico.Size = new System.Drawing.Size(1079, 426);
             this.chartStockCritico.TabIndex = 1;
             this.chartStockCritico.Text = "chart1";
@@ -117,6 +119,8 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.CboCategoria2);
             this.panel1.Controls.Add(this.lblTotalCritico);
             this.panel1.Controls.Add(this.btnCritico);
             this.panel1.Controls.Add(this.nudUmbral);
@@ -129,7 +133,7 @@
             // lblTotalCritico
             // 
             this.lblTotalCritico.AutoSize = true;
-            this.lblTotalCritico.Location = new System.Drawing.Point(780, 64);
+            this.lblTotalCritico.Location = new System.Drawing.Point(765, 37);
             this.lblTotalCritico.Name = "lblTotalCritico";
             this.lblTotalCritico.Size = new System.Drawing.Size(113, 16);
             this.lblTotalCritico.TabIndex = 3;
@@ -140,7 +144,7 @@
             this.btnCritico.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnCritico.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCritico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCritico.Location = new System.Drawing.Point(509, 26);
+            this.btnCritico.Location = new System.Drawing.Point(650, 26);
             this.btnCritico.Name = "btnCritico";
             this.btnCritico.Size = new System.Drawing.Size(97, 36);
             this.btnCritico.TabIndex = 2;
@@ -150,7 +154,7 @@
             // 
             // nudUmbral
             // 
-            this.nudUmbral.Location = new System.Drawing.Point(443, 35);
+            this.nudUmbral.Location = new System.Drawing.Point(317, 35);
             this.nudUmbral.Maximum = new decimal(new int[] {
             10,
             0,
@@ -169,7 +173,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(380, 37);
+            this.label1.Location = new System.Drawing.Point(254, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 16);
             this.label1.TabIndex = 0;
@@ -189,16 +193,16 @@
             // 
             // chartStockPorCategoria
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chartStockPorCategoria.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chartStockPorCategoria.Legends.Add(legend5);
+            chartArea2.Name = "ChartArea1";
+            this.chartStockPorCategoria.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartStockPorCategoria.Legends.Add(legend2);
             this.chartStockPorCategoria.Location = new System.Drawing.Point(6, 102);
             this.chartStockPorCategoria.Name = "chartStockPorCategoria";
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.chartStockPorCategoria.Series.Add(series5);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartStockPorCategoria.Series.Add(series2);
             this.chartStockPorCategoria.Size = new System.Drawing.Size(1076, 426);
             this.chartStockPorCategoria.TabIndex = 2;
             this.chartStockPorCategoria.Text = "chart1";
@@ -239,16 +243,16 @@
             // 
             // chartStockSinVentas
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chartStockSinVentas.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chartStockSinVentas.Legends.Add(legend6);
+            chartArea3.Name = "ChartArea1";
+            this.chartStockSinVentas.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartStockSinVentas.Legends.Add(legend3);
             this.chartStockSinVentas.Location = new System.Drawing.Point(9, 102);
             this.chartStockSinVentas.Name = "chartStockSinVentas";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.chartStockSinVentas.Series.Add(series6);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chartStockSinVentas.Series.Add(series3);
             this.chartStockSinVentas.Size = new System.Drawing.Size(1073, 428);
             this.chartStockSinVentas.TabIndex = 2;
             this.chartStockSinVentas.Text = "chart1";
@@ -269,6 +273,23 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1089, 93);
             this.panel3.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(564, 33);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 16);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Categoria";
+            // 
+            // CboCategoria
+            // 
+            this.CboCategoria.FormattingEnabled = true;
+            this.CboCategoria.Location = new System.Drawing.Point(636, 27);
+            this.CboCategoria.Name = "CboCategoria";
+            this.CboCategoria.Size = new System.Drawing.Size(197, 24);
+            this.CboCategoria.TabIndex = 6;
             // 
             // lblTotalSinVentas
             // 
@@ -328,22 +349,22 @@
             this.dtpSinVentasInicio.Size = new System.Drawing.Size(200, 22);
             this.dtpSinVentasInicio.TabIndex = 0;
             // 
-            // CboCategoria
+            // CboCategoria2
             // 
-            this.CboCategoria.FormattingEnabled = true;
-            this.CboCategoria.Location = new System.Drawing.Point(636, 27);
-            this.CboCategoria.Name = "CboCategoria";
-            this.CboCategoria.Size = new System.Drawing.Size(197, 24);
-            this.CboCategoria.TabIndex = 6;
+            this.CboCategoria2.FormattingEnabled = true;
+            this.CboCategoria2.Location = new System.Drawing.Point(387, 33);
+            this.CboCategoria2.Name = "CboCategoria2";
+            this.CboCategoria2.Size = new System.Drawing.Size(240, 24);
+            this.CboCategoria2.TabIndex = 4;
             // 
-            // label4
+            // label5
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(564, 33);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 16);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Categoria";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(470, 14);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(66, 16);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Categoría";
             // 
             // Frm_ControlStock
             // 
@@ -398,5 +419,7 @@
         private System.Windows.Forms.Label lblTotalSinVentas;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox CboCategoria;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox CboCategoria2;
     }
 }

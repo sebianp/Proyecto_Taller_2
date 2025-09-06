@@ -1,18 +1,19 @@
 ﻿using BarcodeStandard;
 using Negocio;
+using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using SkiaSharp;
-using System.IO;
-using System.Drawing.Imaging;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Presentacion
 {
@@ -163,6 +164,10 @@ namespace Presentacion
         private void Limpiar()
         {
             lblTitulo.Text = "ALTA DE ARTÍCULO";
+            TxtPrice.Visible = false;
+            TxtStk.Visible = false;
+            TxtPrecioVenta.Visible = false;
+            TxtStock.Visible = false;
             TxtBuscar.Clear();
             TxtNombre.Clear();
             TxtId.Clear();
@@ -256,6 +261,7 @@ namespace Presentacion
             this.Listar(); //Listar todos los artículos
             this.CargarCategoria(); //Para alta y modificacion
             this.CargarCategoriaBuscar(); //Para busquedas con filtro
+            CboMarcaBuscar.SelectedIndex = 0; // selecciona el primer elemento
             lblTitulo.Text = "ALTA DE ARTÍCULO";
             BtnGuardarCodigo.Enabled = false;
             BtnActualizar.Visible = false;

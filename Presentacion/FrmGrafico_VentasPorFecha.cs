@@ -28,7 +28,7 @@ namespace Presentacion
         {
             //Se leen las fechas
             DateTime fi = DTPInicio.Value.Date;
-            DateTime ff = DTPFinal.Value.Date;
+            DateTime ff = DTPFinal.Value.Date.AddDays(1);
 
             //Datos desde la capa de negocio
             DataTable dt = NReporte.EstadisticaVentasPeriodo(fi, ff);
@@ -51,6 +51,9 @@ namespace Presentacion
             area.AxisX.Interval = Math.Max(1, dt.Rows.Count / 10);
 
             area.AxisY.Title = "Total Ventas";
+
+            area.BackColor = Color.Transparent;          // área sin fondo
+            chartVentas.BackColor = Color.White; // fondo del chart
 
             //Crear la Serie de tipo Línea
             var serie = new Series("Ventas")

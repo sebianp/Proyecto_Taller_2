@@ -22,18 +22,25 @@ namespace Presentacion
 
         private void btnCritico_Click(object sender, EventArgs e)
         {
-            
+            if (CboCategoria2.SelectedValue == null)
+            {
+                MessageBox.Show("Seleccione una categoría para continuar.", "Validación",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             int umbral = (int)nudUmbral.Value;
-            //CONTROL
-            //MessageBox.Show($"Umbral pasado al SP: {umbral}",
-            //                "Debug", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            //Busqueda de datos y carga de datatable
-            DataTable dt = NReporte.EstadisticaStockCritico(umbral);
+            int? idCategoria = null;
 
-            //CONTROL
-            //MessageBox.Show($"Filas devueltas: {dt.Rows.Count}",
-            //    "Debug", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //Validacion que haya una categoría seleccionada
+            if (CboCategoria2.SelectedValue != null && int.TryParse(CboCategoria2.SelectedValue.ToString(), out int id))
+            {
+                idCategoria = id;
+            }
+
+            DataTable dt = NReporte.EstadisticaStockCritico(umbral, idCategoria);
+
 
             //cantidad de artículos encontrados
             lblTotalCritico.Text = $"Total de artículos: {dt.Rows.Count}";
@@ -217,6 +224,7 @@ namespace Presentacion
         private void Frm_ControlStock_Load(object sender, EventArgs e)
         {
             CargarCategoriasObligatorio(CboCategoria);
+            CargarCategoriasObligatorio(CboCategoria2);
         }
 
         //Método para cargar el Combo Box de categorias
@@ -226,7 +234,7 @@ namespace Presentacion
             {
                 DataTable dt = NCategoria.Seleccionar();
 
-                // Ordenar por nombre (opcional)
+                //Ordenar por nombre
                 DataView dv = dt.DefaultView;
                 dv.Sort = "nombre ASC";
                 DataTable dtOrdenado = dv.ToTable();
@@ -248,6 +256,7 @@ namespace Presentacion
         private void Frm_ControlStock_Activated(object sender, EventArgs e)
         {
             CargarCategoriasObligatorio(CboCategoria);
+            CargarCategoriasObligatorio(CboCategoria2);
         }
     }
 }

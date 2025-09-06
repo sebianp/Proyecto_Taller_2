@@ -26,11 +26,11 @@ namespace Presentacion
                 //Esto permite mostrar los datos recibidos con los resultados de la busqueda
                 if (Variables.UsuarioRol == "Administrador")
                 {
-                    DgvListado.DataSource = NVenta.ConsultaFechas(Convert.ToDateTime(DtpFechaInicio.Value), Convert.ToDateTime(DtpFechaFin.Value));
+                    DgvListado.DataSource = NVenta.ConsultaFechas(Convert.ToDateTime(DtpFechaInicio.Value), Convert.ToDateTime(DtpFechaFin.Value.AddDays(1)));
                 }
                 else
                 {
-                    DgvListado.DataSource = NVenta.ConsultaVentasFechasUsuario(Convert.ToDateTime(DtpFechaInicio.Value), Convert.ToDateTime(DtpFechaFin.Value),Variables.IdUsuario);
+                    DgvListado.DataSource = NVenta.ConsultaVentasFechasUsuario(Convert.ToDateTime(DtpFechaInicio.Value), Convert.ToDateTime(DtpFechaFin.Value.AddDays(1)),Variables.IdUsuario);
                 }
                 
                 this.Formato();

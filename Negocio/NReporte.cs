@@ -18,10 +18,10 @@ namespace Negocio
         }
         
         //Método para mostrar top articulos por ventas y fecha
-        public static DataTable EstadisticaTopProductos(DateTime fechaInicio, DateTime fechaFin, int topN = 10)
+        public static DataTable EstadisticaTopProductos(DateTime fechaInicio, DateTime fechaFin, int topN, int? idCategoria)
         {
             DReporte datos = new DReporte();
-            return datos.EstadisticaTopProductos(fechaInicio, fechaFin, topN);
+            return datos.EstadisticaTopProductos(fechaInicio, fechaFin, topN, idCategoria);
         }
 
         //Metodo para ranking de vendedores por fecha
@@ -34,10 +34,10 @@ namespace Negocio
         //Métodos de CONTROL DE STOCK
 
         // Metodo que devuelve los artículos con stock igual o inferior al umbral.
-        public static DataTable EstadisticaStockCritico(int umbral)
+        public static DataTable EstadisticaStockCritico(int umbral, int? IdCategoria)
         {
             DReporte datos = new DReporte();
-            return datos.EstadisticaStockCritico(umbral);
+            return datos.EstadisticaStockCritico(umbral, IdCategoria);
         }
 
         //metodo que devuelve la suma de stock por cada categoría.
