@@ -517,6 +517,7 @@
             // 
             this.TxtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtCodigo.Location = new System.Drawing.Point(141, 27);
+            this.TxtCodigo.MaxLength = 50;
             this.TxtCodigo.Name = "TxtCodigo";
             this.TxtCodigo.Size = new System.Drawing.Size(208, 28);
             this.TxtCodigo.TabIndex = 17;

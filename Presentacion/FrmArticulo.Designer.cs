@@ -157,6 +157,7 @@
             // 
             this.TxtDescripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtDescripcion.Location = new System.Drawing.Point(473, 274);
+            this.TxtDescripcion.MaxLength = 255;
             this.TxtDescripcion.Multiline = true;
             this.TxtDescripcion.Name = "TxtDescripcion";
             this.TxtDescripcion.Size = new System.Drawing.Size(369, 148);
@@ -166,6 +167,7 @@
             // 
             this.TxtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtNombre.Location = new System.Drawing.Point(207, 155);
+            this.TxtNombre.MaxLength = 100;
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(247, 28);
             this.TxtNombre.TabIndex = 2;
@@ -434,6 +436,7 @@
             // 
             this.TxtPrecioVenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtPrecioVenta.Location = new System.Drawing.Point(879, 339);
+            this.TxtPrecioVenta.MaxLength = 14;
             this.TxtPrecioVenta.Name = "TxtPrecioVenta";
             this.TxtPrecioVenta.Size = new System.Drawing.Size(123, 28);
             this.TxtPrecioVenta.TabIndex = 21;
@@ -492,6 +495,7 @@
             // 
             this.TxtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtCodigo.Location = new System.Drawing.Point(207, 198);
+            this.TxtCodigo.MaxLength = 50;
             this.TxtCodigo.Name = "TxtCodigo";
             this.TxtCodigo.Size = new System.Drawing.Size(247, 28);
             this.TxtCodigo.TabIndex = 16;

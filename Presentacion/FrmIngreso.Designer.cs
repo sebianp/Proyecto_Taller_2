@@ -494,6 +494,7 @@
             // 
             this.TxtNumComprobante.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtNumComprobante.Location = new System.Drawing.Point(556, 84);
+            this.TxtNumComprobante.MaxLength = 10;
             this.TxtNumComprobante.Name = "TxtNumComprobante";
             this.TxtNumComprobante.Size = new System.Drawing.Size(234, 28);
             this.TxtNumComprobante.TabIndex = 14;
@@ -503,6 +504,7 @@
             // 
             this.TxtSerieComprobante.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtSerieComprobante.Location = new System.Drawing.Point(326, 84);
+            this.TxtSerieComprobante.MaxLength = 7;
             this.TxtSerieComprobante.Name = "TxtSerieComprobante";
             this.TxtSerieComprobante.Size = new System.Drawing.Size(220, 28);
             this.TxtSerieComprobante.TabIndex = 13;

@@ -143,6 +143,7 @@
             // 
             this.TxtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtNombre.Location = new System.Drawing.Point(204, 141);
+            this.TxtNombre.MaxLength = 100;
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(369, 28);
             this.TxtNombre.TabIndex = 2;
@@ -234,6 +235,7 @@
             // 
             this.TxtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtEmail.Location = new System.Drawing.Point(80, 58);
+            this.TxtEmail.MaxLength = 50;
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(294, 28);
             this.TxtEmail.TabIndex = 19;
@@ -271,6 +273,7 @@
             // 
             this.TxtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtTelefono.Location = new System.Drawing.Point(206, 349);
+            this.TxtTelefono.MaxLength = 20;
             this.TxtTelefono.Name = "TxtTelefono";
             this.TxtTelefono.Size = new System.Drawing.Size(367, 28);
             this.TxtTelefono.TabIndex = 17;
@@ -280,6 +283,7 @@
             // 
             this.TxtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtDireccion.Location = new System.Drawing.Point(207, 298);
+            this.TxtDireccion.MaxLength = 70;
             this.TxtDireccion.Name = "TxtDireccion";
             this.TxtDireccion.Size = new System.Drawing.Size(367, 28);
             this.TxtDireccion.TabIndex = 16;
@@ -288,6 +292,7 @@
             // 
             this.TxtNumDocumento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtNumDocumento.Location = new System.Drawing.Point(206, 246);
+            this.TxtNumDocumento.MaxLength = 20;
             this.TxtNumDocumento.Name = "TxtNumDocumento";
             this.TxtNumDocumento.Size = new System.Drawing.Size(367, 28);
             this.TxtNumDocumento.TabIndex = 15;

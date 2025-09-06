@@ -316,6 +316,7 @@
             // 
             this.TxtDescripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtDescripcion.Location = new System.Drawing.Point(243, 152);
+            this.TxtDescripcion.MaxLength = 255;
             this.TxtDescripcion.Multiline = true;
             this.TxtDescripcion.Name = "TxtDescripcion";
             this.TxtDescripcion.Size = new System.Drawing.Size(369, 161);
@@ -325,6 +326,7 @@
             // 
             this.TxtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtNombre.Location = new System.Drawing.Point(243, 107);
+            this.TxtNombre.MaxLength = 50;
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(369, 28);
             this.TxtNombre.TabIndex = 2;
